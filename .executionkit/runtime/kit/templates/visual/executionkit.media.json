@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "executionkit-media-production/v1",
+  "theme": {
+    "paletteIds": [
+      "default"
+    ],
+    "modes": [
+      "light",
+      "dark"
+    ]
+  },
+  "surfaces": [
+    {
+      "source": "src/example-screen.dart",
+      "roles": {
+        "hero": {
+          "state": "not_applicable",
+          "reason": "Example screen does not contain this art role; independent visual reviewer evaluated exact scene and states.",
+          "reviewCell": "example.review",
+          "reviewEvidenceRef": "reviews/roles/hero.json"
+        },
+        "banner": {
+          "state": "not_applicable",
+          "reason": "Example screen does not contain this art role; independent visual reviewer evaluated exact scene and states.",
+          "reviewCell": "example.review",
+          "reviewEvidenceRef": "reviews/roles/banner.json"
+        },
+        "background": {
+          "state": "not_applicable",
+          "reason": "Example screen does not contain this art role; independent visual reviewer evaluated exact scene and states.",
+          "reviewCell": "example.review",
+          "reviewEvidenceRef": "reviews/roles/background.json"
+        },
+        "illustration": {
+          "state": "required",
+          "assetIds": [
+            "example_illustration"
+          ]
+        },
+        "icon": {
+          "state": "not_applicable",
+          "reason": "Example screen does not contain this art role; independent visual reviewer evaluated exact scene and states.",
+          "reviewCell": "example.review",
+          "reviewEvidenceRef": "reviews/roles/icon.json"
+        },
+        "empty": {
+          "state": "not_applicable",
+          "reason": "Example screen does not contain this art role; independent visual reviewer evaluated exact scene and states.",
+          "reviewCell": "example.review",
+          "reviewEvidenceRef": "reviews/roles/empty.json"
+        },
+        "dynamic": {
+          "state": "not_applicable",
+          "reason": "Example screen does not contain this art role; independent visual reviewer evaluated exact scene and states.",
+          "reviewCell": "example.review",
+          "reviewEvidenceRef": "reviews/roles/dynamic.json"
+        }
+      }
+    }
+  ],
+  "assets": [
+    {
+      "id": "example_illustration",
+      "source": "src/example-screen.dart",
+      "role": "illustration",
+      "kind": "static",
+      "themeAware": false,
+      "delivery": "local",
+      "provenance": {
+        "method": "authored-vector",
+        "generator": "local-svg-code",
+        "designSpecRef": "docs/design/art-direction.md",
+        "originalCompositionReviewed": true,
+        "promptSha256": "REPLACE_WITH_ACTUAL_SHA256",
+        "reviewerId": "REAL_REVIEWER_ID",
+        "reviewEvidenceRef": "REPLACE_WITH_REAL_SCREEN_REVIEW",
+        "sourceSvg": {
+          "path": "assets/visuals/example.svg",
+          "sha256": "REPLACE_WITH_ACTUAL_SHA256"
+        }
+      },
+      "variants": [
+        {
+          "palette": "neutral",
+          "mode": "neutral",
+          "path": "assets/visuals/example.svg",
+          "mime": "image/svg+xml",
+          "bytes": 0,
+          "sha256": "REPLACE_WITH_ACTUAL_SHA256"
+        }
+      ]
+    }
+  ],
+  "readme": "TEMPLATE NOT EVIDENCE. Replace placeholder screen/artwork/IDs, provide actual SVG or WebP bytes, measured SHA/size and honest review/rights receipts before release. Every applicable role needs real asset(s). Review receipt must be a real local JSON file with all variant hashes and a real screenshot hash; licensed web proof must point to actual source/license/search files. No fake screenshots or licenses. Every not_applicable role must have an existing executionkit-visual-role-exemption/v1 JSON receipt bound to actual source+role+reviewCell+rationale and a real screenshot SHA256; a text explanation alone is not sufficient."
+}

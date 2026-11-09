@@ -1,0 +1,231 @@
+{
+  "journal": [
+    {
+      "sequence": 1,
+      "timestamp": "2026-10-11T13:16:31.726Z",
+      "actor": "flow-registry",
+      "project": "flow",
+      "action": "project.register",
+      "correlation_id": "e96eae83-8d8d-421c-94a7-55b6c544c97b",
+      "previous_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+      "event_hash": "fe9f995e0136cbc6b184c0296349c0a628337955b0e55f2e7a81b0e6e0544bcd",
+      "data": {
+        "idempotency_key": "cdac7974c3acb07aaa04869f736236e814fa037100ed5916fe89c2cd89cf1895",
+        "result": {
+          "flutter_path": "flutter_app",
+          "flutter_version": "3.47.7",
+          "id": "flow",
+          "package_id": "com.elwazeery.flow",
+          "public_updates": true,
+          "repository": "https://github.com/Elwazeery/FLOW",
+          "required_device_gates": [
+            "install_launch",
+            "package_replacement",
+            "sms_recovery"
+          ],
+          "signing_sha256": null
+        }
+      }
+    },
+    {
+      "sequence": 2,
+      "timestamp": "2026-10-11T13:16:31.858Z",
+      "actor": "sample-registry",
+      "project": "sample",
+      "action": "project.register",
+      "correlation_id": "805f65e3-4d4d-4bee-bbc4-67aa813d9310",
+      "previous_hash": "fe9f995e0136cbc6b184c0296349c0a628337955b0e55f2e7a81b0e6e0544bcd",
+      "event_hash": "844ed44a629f1413f890a0329c41fd35f406e96eee6b1b78d5b818c6fef4df5a",
+      "data": {
+        "idempotency_key": "489cc67ac087566095e052bc9f2be9480b1c073089f6e279984f4373e81c3bcd",
+        "result": {
+          "flutter_path": "examples/sample_app",
+          "flutter_version": "3.47.7",
+          "id": "sample",
+          "package_id": "org.example.release_sample",
+          "public_updates": true,
+          "repository": "https://github.com/Elwazeery/APKrelease",
+          "required_device_gates": [
+            "install_launch",
+            "package_replacement"
+          ],
+          "signing_sha256": null
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "timestamp": "2026-10-11T14:09:22.921Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "job.enqueue",
+      "correlation_id": "509df8d8-4d44-40a3-bd5b-a4f686263fc9",
+      "previous_hash": "844ed44a629f1413f890a0329c41fd35f406e96eee6b1b78d5b818c6fef4df5a",
+      "event_hash": "ea2f3f6d4fa7b50d98674b838c512c913c5536994c0b2ecd3ad0f00ada7fb198",
+      "data": {
+        "idempotency_key": "7d9ce0fbfa8cb5251e821cf2c905c9cb8ff8c3ad9739fd3781e9fd7eaf23e1d0",
+        "result": {
+          "commit": "c24e50a7ca49909df6d86db2d8a7abf67f9a74fa",
+          "created_at": "2026-10-11T14:09:22.918Z",
+          "id": "e7e0d7dc-52f4-41ac-8bc6-8e7e542de6b7",
+          "kind": "verify",
+          "project": "sample"
+        }
+      }
+    },
+    {
+      "sequence": 4,
+      "timestamp": "2026-10-11T14:09:27.649Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "job.claim",
+      "correlation_id": "8d683bed-da99-4c99-bf7e-fd93675a7299",
+      "previous_hash": "ea2f3f6d4fa7b50d98674b838c512c913c5536994c0b2ecd3ad0f00ada7fb198",
+      "event_hash": "2d02a881ad76a116dc428e9e6ac3557a7571d2d7ddaa60acf1a1edf2f9583513",
+      "data": {
+        "idempotency_key": "08219b6e-c8ea-484d-b9e9-72db0722f8cb",
+        "result": {
+          "job": {
+            "commit": "c24e50a7ca49909df6d86db2d8a7abf67f9a74fa",
+            "created_at": "2026-10-11T14:09:22.918Z",
+            "id": "e7e0d7dc-52f4-41ac-8bc6-8e7e542de6b7",
+            "kind": "verify",
+            "project": "sample"
+          },
+          "lease_until": 1791728067647
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "timestamp": "2026-10-11T14:09:57.685Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "job.update",
+      "correlation_id": "38909c87-8d6a-45d7-ad67-134fa5d09bb0",
+      "previous_hash": "2d02a881ad76a116dc428e9e6ac3557a7571d2d7ddaa60acf1a1edf2f9583513",
+      "event_hash": "848ae4622ad1f7a85e074cb4c9712f08e7463ed96ff89216722d517fc45482a7",
+      "data": {
+        "idempotency_key": "155abe43-2a09-4656-b4cd-41a64943d602",
+        "result": {
+          "id": "e7e0d7dc-52f4-41ac-8bc6-8e7e542de6b7",
+          "state": "RUNNING"
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "timestamp": "2026-10-11T14:10:27.689Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "job.update",
+      "correlation_id": "7ee5a23d-28d3-4c81-bb96-299fdb16473d",
+      "previous_hash": "848ae4622ad1f7a85e074cb4c9712f08e7463ed96ff89216722d517fc45482a7",
+      "event_hash": "65f9343e40d1f5f3023821708f8501763b1a5818ab74868240c04f627c0ca5bc",
+      "data": {
+        "idempotency_key": "0dc5e368-21ee-49e9-a2f3-07179c28939a",
+        "result": {
+          "id": "e7e0d7dc-52f4-41ac-8bc6-8e7e542de6b7",
+          "state": "RUNNING"
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "timestamp": "2026-10-11T14:10:37.517Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "receipt.record",
+      "correlation_id": "02f65251-30d8-46cb-b974-e33dbbc1f683",
+      "previous_hash": "65f9343e40d1f5f3023821708f8501763b1a5818ab74868240c04f627c0ca5bc",
+      "event_hash": "2355045daf46e03bdbb08a70e8b910117b8be59fcf4cffd56cf3b64966e85ade",
+      "data": {
+        "idempotency_key": "4c2e524e-269e-4075-9bbd-aca1b68ecba8",
+        "result": {
+          "artifact_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+          "commit": "c24e50a7ca49909df6d86db2d8a7abf67f9a74fa",
+          "finished_at": "2026-10-11T14:10:37.453877+00:00",
+          "gates": [
+            {
+              "evidence_sha256": "888b3a34a6ca3069d146c607324fb2cbb4191af6b7668e6a73d0650a04589ded",
+              "exit_code": 0,
+              "name": "analyze",
+              "status": "PASS"
+            },
+            {
+              "evidence_sha256": "6766b8b5b0fc655522c75b5e70f8b09afc18999a7e8ac5547d3d5fff9e80181e",
+              "exit_code": 0,
+              "name": "unit",
+              "status": "PASS"
+            },
+            {
+              "evidence_sha256": "6766b8b5b0fc655522c75b5e70f8b09afc18999a7e8ac5547d3d5fff9e80181e",
+              "exit_code": 0,
+              "name": "widget",
+              "status": "PASS"
+            }
+          ],
+          "id": "c7f7f8a5-1d78-4e9d-82f1-2c8cbfd98c52",
+          "job_id": "e7e0d7dc-52f4-41ac-8bc6-8e7e542de6b7",
+          "project": "sample",
+          "runner_id": "runner",
+          "started_at": "2026-10-11T14:09:27.938063+00:00",
+          "toolchain": {
+            "dart": "3.13.5",
+            "engine": "deb287481e3ce9468f3434937ced4240a70539ca",
+            "flutter": "3.47.7"
+          }
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "timestamp": "2026-10-11T14:10:37.533Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "job.update",
+      "correlation_id": "7472ac7f-e3b1-4637-a7e5-cea061937fb7",
+      "previous_hash": "2355045daf46e03bdbb08a70e8b910117b8be59fcf4cffd56cf3b64966e85ade",
+      "event_hash": "0b673a8def0f2364f28589a326c2ac956a3959ad2a581ac5a0ced5a7e8d5fa32",
+      "data": {
+        "idempotency_key": "f6e11efe-117f-4041-a0c8-b097b0d695e4",
+        "result": {
+          "id": "e7e0d7dc-52f4-41ac-8bc6-8e7e542de6b7",
+          "state": "SUCCEEDED"
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "timestamp": "2026-10-11T14:10:47.551Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "job.claim",
+      "correlation_id": "e7313c27-dbd6-4804-b2eb-f28ebbb267ef",
+      "previous_hash": "0b673a8def0f2364f28589a326c2ac956a3959ad2a581ac5a0ced5a7e8d5fa32",
+      "event_hash": "541954b6b73bc26927cb6e6995cdd17d028cf35efab2cce4e9994303ea579dde",
+      "data": {
+        "idempotency_key": "15004ed4-5831-47ac-bce8-f304e6d8513d",
+        "result": {
+          "job": null
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "timestamp": "2026-10-11T14:10:57.561Z",
+      "actor": "sample-builder",
+      "project": "sample",
+      "action": "job.claim",
+      "correlation_id": "250adf8e-ebd4-4c24-bc32-394f7ad1cef4",
+      "previous_hash": "541954b6b73bc26927cb6e6995cdd17d028cf35efab2cce4e9994303ea579dde",
+      "event_hash": "201f046b1d0f9191b0e83a90edf1f112523651840120a85267bef490d7f8508f",
+      "data": {
+        "idempotency_key": "32fde5c8-92c3-42ca-b6bf-26950386022d",
+        "result": {
+          "job": null
+        }
+      }
+    }
+  ]
+}

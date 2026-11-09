@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "executionkit-v5-market-visual-source-evidence/v1",
+  "status": "SOURCE_ONLY",
+  "repo": "Elwazeery/AI-ExcutionKit",
+  "sourceCommit": "21ff6d6d82c0484ae1c8cc83e9a9ebc13cb80b49",
+  "sourceTree": "d3507c08097f0af01ad762a6e09cd31e0a39326a",
+  "date": "2026-10-13",
+  "pureOfflineCases": {
+    "count": 9,
+    "pass": 9,
+    "fail": 0,
+    "scope": "V8 evaluated isolated pure source functions; not Node test runner or native browser",
+    "names": [
+      "formal_sa_profile",
+      "sa_colloquial_block",
+      "normal_formal_sa_allowed",
+      "arabic_html_extraction",
+      "bounded_gemini_plan",
+      "cta_gap_p1",
+      "thin_media_review",
+      "market_quality_signal",
+      "decision_hard_deny"
+    ]
+  },
+  "sourceSyntax": "Edited ES modules parsed after import/export removal; not module-loader test",
+  "nativeNodeFocused": "NOT_RUN",
+  "fullSuite": "NOT_RUN",
+  "realVisualScreenshots": "NOT_RUN",
+  "nativeImageReviewer": "NOT_RUN",
+  "geminiGeneratedAssets": "NOT_RUN",
+  "TayfClientDeployment": "NOT_RUN",
+  "acceptance": "PENDING",
+  "nextCommands": [
+    "node bin/run-tests.mjs --target tests/v5-market-visual-assets.test.mjs --target tests/visual-os-v2.test.mjs --target tests/v5-decision-os.test.mjs --target tests/v4-audit-evidence.test.mjs --target tests/v4-cli-performance.test.mjs",
+    "npm run validate:canonical-docs",
+    "node bin/validate-agents.mjs .",
+    "node bin/validate-execution.mjs .",
+    "npm test (phase/release only)"
+  ],
+  "reason": "GitHub connector provided source read/write, but no authenticated private repo shell/runtime or actual client browser/host in this chat."
+}

@@ -1,0 +1,26 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://elwazeery.github.io/ai-executionkit/repository-external-knowledge-v1.json",
+  "title":"AI ExecutionKit External Knowledge v1",
+  "type":"object",
+  "required":["schemaVersion","artifactId","artifactType","ownershipClass","evidenceKind","repository","provider","generatedAt","sourceScopes","inputFingerprints","metrics","trust","portable","authority","conflictPolicy","entries"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "artifactId":{"const":"repository-external-knowledge"},
+    "artifactType":{"const":"external-knowledge"},
+    "ownershipClass":{"const":"GENERATED_PORTABLE"},
+    "evidenceKind":{"const":"HUMAN_DOMAIN_KNOWLEDGE"},
+    "repository":{"type":"object"},
+    "provider":{"type":"object","required":["id","version"],"properties":{"id":{"const":"native-external-knowledge-ingest"},"version":{"type":"string"}},"additionalProperties":false},
+    "generatedAt":{"type":"string","format":"date-time"},
+    "sourceScopes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},
+    "inputFingerprints":{"type":"array","minItems":1,"items":{"type":"object","required":["kind","value"]}},
+    "metrics":{"type":"object","required":["entryCount","totalBytes"],"properties":{"entryCount":{"type":"integer","minimum":1},"totalBytes":{"type":"integer","minimum":0}},"additionalProperties":false},
+    "trust":{"type":"object"},
+    "portable":{"const":true},
+    "authority":{"const":"ADVISORY_ONLY"},
+    "conflictPolicy":{"const":"LIVE_SOURCE_WINS"},
+    "entries":{"type":"array","minItems":1,"items":{"type":"object","required":["id","path","kind","ownership","sha256","bytes","sourceProvider","metadata","content"],"properties":{"id":{"type":"string","minLength":1},"path":{"type":"string","minLength":1},"kind":{"enum":["ADR","GLOSSARY","SQL_SCHEMA","OPENAPI","STRUCTURED_DOC","MARKDOWN","TEXT"]},"ownership":{"const":"HUMAN_MAINTAINED_SOURCE"},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"bytes":{"type":"integer","minimum":0},"sourceProvider":{"type":"string","minLength":1},"metadata":{"type":"object"},"content":{"type":"string"}},"additionalProperties":false}}
+  },
+  "additionalProperties":true
+}

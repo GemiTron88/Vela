@@ -1,0 +1,19 @@
+retry-before.log
+ℹ tests 8
+ℹ pass 7
+ℹ fail 1
+  Error: INSPECTION_RECEIPT_MISMATCH
+    code: 'INSPECTION_RECEIPT_MISMATCH',
+apk-final.log
+ℹ tests 69
+ℹ pass 69
+ℹ fail 0
+apk-server-safe.log
+ℹ tests 55
+ℹ pass 55
+ℹ fail 0
+apk-python-safe.log
+Ran 4 tests in 0.071s
+OK
+Ran 4 tests in 0.285s
+OK

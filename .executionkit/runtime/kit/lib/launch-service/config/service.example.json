@@ -1,0 +1,20 @@
+{
+  "stateDir": "/var/lib/mobile-release",
+  "publicUrl": "https://REPLACE_WITH_RELEASE_HOST",
+  "port": 8088,
+  "manifestKeyPath": "/etc/mobile-release/manifest-ed25519.key",
+  "manifestKeyId": "manifest-v1",
+  "maxArtifactBytes": 536870912,
+  "maxConcurrentUploads": 1,
+  "maxProjectStorageBytes": 4294967296,
+  "minimumFreeDiskBytes": 2147483648,
+  "allowedHosts": [
+    "127.0.0.1:8088",
+    "REPLACE_WITH_RELEASE_HOST"
+  ],
+  "allowedOrigins": [],
+  "principals": [],
+  "runnerKeyEnv": {},
+  "requireAgentEnrollment": true,
+  "launchGatePublicKeys": {}
+}

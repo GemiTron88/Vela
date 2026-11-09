@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "executionkit-task-proof/v1",
+  "taskId": "EK3-042",
+  "stateAtSeal": "IMPLEMENTED",
+  "phase": "V4-UPGRADE-REVALIDATION",
+  "sealedAt": "2026-09-23T02:11:02.404Z",
+  "taskSource": "TODO.md",
+  "verification": "audit all ten v4 systems plus cross-cutting Database Integrity, Repository Intelligence, evidence/proof, installer/upgrader and current revalidation flows; define a versioned invariant registry and stable fingerprint; on Kit update compute old→new invariant delta, derive only affected historical/current validation scopes, block new canonical execution only when mandatory upgrade revalidation is outstanding, persist a compact current-baseline receipt, prove unchanged upgrades are O(1)/metadata-only on the start hot path, prove DB/Visual/Docs/Content/SEO/Audit/Test/Launch/Agent/State/Execution/evidence changes route to the correct bounded revalidation, and add negative/performance regressions.",
+  "originalEvidence": "tests/v4-upgrade-revalidation.test.mjs; tests/v4-kernel-enforcement.test.mjs; tests/v4-cli-performance.test.mjs; lib/v4-invariant-registry.mjs; lib/v4-upgrade-revalidation.mjs; lib/v4-upgrade-revalidation-status.mjs",
+  "code": "lib/v4-invariant-registry.mjs; lib/v4-upgrade-revalidation.mjs; lib/v4-installer.mjs; lib/v4-kernel.mjs; lib/v4-reconcile.mjs; lib/revalidation-model.mjs; lib/database-integrity.mjs; lib/visual-os.mjs; lib/documentation-fabric.mjs; lib/v4-content-os.mjs; lib/v4-seo-os.mjs; lib/v4-test-os.mjs; lib/state-model.mjs; lib/agent-model.mjs; bin/executionkit-cli.mjs; tests/**",
+  "artifacts": [
+    {
+      "sourcePath": "tests/v4-upgrade-revalidation.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-042/artifacts/01-v4-upgrade-revalidation.test.mjs",
+      "sha256": "060dd73d076a013ffe5b8924030c1b06665105b5c08351ec9d92971a058f4b3e",
+      "bytes": 7294
+    },
+    {
+      "sourcePath": "tests/v4-kernel-enforcement.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-042/artifacts/02-v4-kernel-enforcement.test.mjs",
+      "sha256": "280267265d37d90f3d60b5aa8cb973f68310e6a7763ed3874f977c58734593b4",
+      "bytes": 12984
+    },
+    {
+      "sourcePath": "tests/v4-cli-performance.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-042/artifacts/03-v4-cli-performance.test.mjs",
+      "sha256": "52d468472e8018ee82db878c152cd4048ef2f03612ded3b2d7ad516d2f72ada1",
+      "bytes": 12631
+    },
+    {
+      "sourcePath": "lib/v4-invariant-registry.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-042/artifacts/04-v4-invariant-registry.mjs",
+      "sha256": "c67a30d15db7be8835cdc8313cb1eba75cc92a61def65fd740c40921b3e48430",
+      "bytes": 10533
+    },
+    {
+      "sourcePath": "lib/v4-upgrade-revalidation.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-042/artifacts/05-v4-upgrade-revalidation.mjs",
+      "sha256": "853c2f40e06ff66f42eda8bcacbc061d7602fa886df35417e78563e8fd440b7b",
+      "bytes": 15659
+    },
+    {
+      "sourcePath": "lib/v4-upgrade-revalidation-status.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-042/artifacts/06-v4-upgrade-revalidation-status.mjs",
+      "sha256": "86e9fa8c38fdeca6968eb4be2cf33b3b4c2cdd1a4cf34dc7a61ad9ab208d12cb",
+      "bytes": 2321
+    }
+  ],
+  "extra": {}
+}

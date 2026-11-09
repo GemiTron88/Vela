@@ -1,0 +1,703 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "executionkit-visual-config/v2"
+    },
+    "app": {
+      "type": "object",
+      "properties": {
+        "identity": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "environment": {
+          "type": "string",
+          "enum": [
+            "test",
+            "staging",
+            "production"
+          ]
+        }
+      },
+      "required": [
+        "identity",
+        "environment"
+      ],
+      "additionalProperties": false
+    },
+    "budgets": {
+      "type": "object",
+      "properties": {
+        "maxCells": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "maxCellsPerSurface": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120
+        },
+        "timeoutMs": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 1800000
+        },
+        "maxReviewCalls": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        }
+      },
+      "required": [
+        "maxCells",
+        "maxCellsPerSurface",
+        "timeoutMs",
+        "maxReviewCalls"
+      ],
+      "additionalProperties": false
+    },
+    "locales": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "locale": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "rtl",
+              "ltr"
+            ]
+          }
+        },
+        "required": [
+          "locale",
+          "direction"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "themes": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "light",
+          "dark"
+        ]
+      }
+    },
+    "viewports": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "width": {
+            "type": "integer",
+            "minimum": 240,
+            "maximum": 3840
+          },
+          "height": {
+            "type": "integer",
+            "minimum": 240,
+            "maximum": 3840
+          }
+        },
+        "required": [
+          "id",
+          "width",
+          "height"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "surfaceId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "discoveryId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "route": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "platform": {
+            "type": "string",
+            "enum": [
+              "web",
+              "flutter",
+              "android",
+              "ios"
+            ]
+          },
+          "sourcePaths": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "personas": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "authentication": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              }
+            ]
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "owner": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "states": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "loaded",
+                "loading",
+                "skeleton",
+                "empty",
+                "zero-results",
+                "validation-error",
+                "server-error",
+                "offline",
+                "permission-denied",
+                "success",
+                "destructive-confirmation",
+                "modal-open",
+                "drawer-open",
+                "dropdown-open",
+                "filters-open",
+                "form-filled",
+                "saving",
+                "upload-progress",
+                "pagination",
+                "long-content",
+                "dense-data",
+                "minimal-data"
+              ]
+            }
+          },
+          "primaryState": {
+            "type": "string",
+            "enum": [
+              "loaded",
+              "loading",
+              "skeleton",
+              "empty",
+              "zero-results",
+              "validation-error",
+              "server-error",
+              "offline",
+              "permission-denied",
+              "success",
+              "destructive-confirmation",
+              "modal-open",
+              "drawer-open",
+              "dropdown-open",
+              "filters-open",
+              "form-filled",
+              "saving",
+              "upload-progress",
+              "pagination",
+              "long-content",
+              "dense-data",
+              "minimal-data"
+            ]
+          },
+          "locales": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "themes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "light",
+                "dark"
+              ]
+            }
+          },
+          "viewports": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "entryMethod": {
+            "type": "string",
+            "enum": [
+              "route",
+              "navigation",
+              "journey",
+              "deep-link",
+              "instrumented"
+            ]
+          },
+          "criticality": {
+            "type": "string",
+            "enum": [
+              "critical",
+              "high",
+              "normal"
+            ]
+          },
+          "dependencies": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "dataStates": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "enum": [
+                "loaded",
+                "loading",
+                "skeleton",
+                "empty",
+                "zero-results",
+                "validation-error",
+                "server-error",
+                "offline",
+                "permission-denied",
+                "success",
+                "destructive-confirmation",
+                "modal-open",
+                "drawer-open",
+                "dropdown-open",
+                "filters-open",
+                "form-filled",
+                "saving",
+                "upload-progress",
+                "pagination",
+                "long-content",
+                "dense-data",
+                "minimal-data"
+              ]
+            },
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "requiredCells": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "persona": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4000
+                },
+                "locale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4000
+                },
+                "theme": {
+                  "type": "string",
+                  "enum": [
+                    "light",
+                    "dark"
+                  ]
+                },
+                "viewport": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4000
+                },
+                "state": {
+                  "type": "string",
+                  "enum": [
+                    "loaded",
+                    "loading",
+                    "skeleton",
+                    "empty",
+                    "zero-results",
+                    "validation-error",
+                    "server-error",
+                    "offline",
+                    "permission-denied",
+                    "success",
+                    "destructive-confirmation",
+                    "modal-open",
+                    "drawer-open",
+                    "dropdown-open",
+                    "filters-open",
+                    "form-filled",
+                    "saving",
+                    "upload-progress",
+                    "pagination",
+                    "long-content",
+                    "dense-data",
+                    "minimal-data"
+                  ]
+                }
+              },
+              "required": [
+                "persona",
+                "locale",
+                "theme",
+                "viewport",
+                "state"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "surfaceId",
+          "sourcePaths",
+          "personas",
+          "authentication",
+          "permissions",
+          "owner",
+          "entryMethod",
+          "criticality"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "properties": {
+        "routeExport": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "additionalProperties": false
+    },
+    "personas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "authenticated": {
+            "type": "boolean"
+          },
+          "roles": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          }
+        },
+        "required": [
+          "id",
+          "authenticated",
+          "roles",
+          "permissions"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "capture": {
+      "type": "object",
+      "properties": {
+        "producerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "dataPolicy": {
+          "type": "string",
+          "const": "synthetic-fixtures"
+        },
+        "baseUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "probeUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "playwrightPackage": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "hook": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "redactionSelectors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          }
+        },
+        "fullPage": {
+          "type": "boolean"
+        },
+        "executablePath": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "mobile": {
+          "type": "object",
+          "properties": {
+            "platform": {
+              "type": "string",
+              "enum": [
+                "android",
+                "ios"
+              ]
+            },
+            "deviceId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "bundleId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            },
+            "adb": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4000
+            }
+          },
+          "required": [
+            "platform",
+            "deviceId",
+            "bundleId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "producerId",
+        "dataPolicy",
+        "hook"
+      ],
+      "additionalProperties": false
+    },
+    "critic": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "default": "antigravity",
+          "type": "string",
+          "enum": [
+            "antigravity",
+            "openai-compatible"
+          ]
+        },
+        "reviewerId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "concurrency": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "model": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "endpointEnv": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "modelEnv": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "keyEnv": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      },
+      "required": [
+        "provider",
+        "reviewerId"
+      ],
+      "additionalProperties": false
+    },
+    "expectedHttpStatuses": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "enum": [
+          "loaded",
+          "loading",
+          "skeleton",
+          "empty",
+          "zero-results",
+          "validation-error",
+          "server-error",
+          "offline",
+          "permission-denied",
+          "success",
+          "destructive-confirmation",
+          "modal-open",
+          "drawer-open",
+          "dropdown-open",
+          "filters-open",
+          "form-filled",
+          "saving",
+          "upload-progress",
+          "pagination",
+          "long-content",
+          "dense-data",
+          "minimal-data"
+        ]
+      },
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 400,
+          "maximum": 599
+        }
+      }
+    },
+    "spacingTokens": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "minimum": 0
+      }
+    },
+    "maxEvidenceAgeHours": {
+      "type": "number",
+      "minimum": 0.05,
+      "maximum": 72
+    },
+    "autoRunOnBoundary": {
+      "type": "boolean"
+    },
+    "retention": {
+      "type": "object",
+      "properties": {
+        "ciDays": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 90
+        },
+        "releaseDays": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3650
+        },
+        "commitImages": {
+          "type": "boolean",
+          "const": false
+        }
+      },
+      "required": [
+        "ciDays",
+        "releaseDays",
+        "commitImages"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "app",
+    "budgets",
+    "locales",
+    "themes",
+    "viewports",
+    "surfaces",
+    "capture",
+    "critic"
+  ],
+  "additionalProperties": false,
+  "title": "visual-config v2"
+}

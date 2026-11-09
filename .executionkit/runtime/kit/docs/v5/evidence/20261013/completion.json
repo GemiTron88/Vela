@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "executionkit-v5-source-completion/v1",
+  "status": "SOURCE_VERIFIED",
+  "version": "5.0.0-dev",
+  "publishedCodeCommit": "3ac5b9a775698538793bec534cbf124ed86e0cd8",
+  "testedLocalCommit": "edb93f94351136d79abc249a993bbf95cda622b7",
+  "testedTree": "dbbdefb2f44aafd62426b1097365a97f32e0eeca",
+  "sourceTreeParity": "EXACT",
+  "fullCheck": {
+    "command": "npm run check",
+    "total": 1146,
+    "passed": 1142,
+    "failed": 0,
+    "skipped": 4,
+    "durationMs": 97469.113747
+  },
+  "pythonGuards": {
+    "passed": 8,
+    "failed": 0
+  },
+  "focusedChecks": {
+    "passed": 66,
+    "failed": 0
+  },
+  "sourceReview": {
+    "systems": 11,
+    "invariants": 22,
+    "helpers": 285,
+    "helpSurfaces": 146,
+    "status": "PASS"
+  },
+  "cliAudit": {
+    "cases": 162,
+    "status": "PASS",
+    "maxStdoutBytes": 3675
+  },
+  "liveSkips": "Four Launch/Studio live tests require real credentials and keys",
+  "acceptance": {
+    "staging": "NOT_RUN",
+    "physical": "NOT_RUN",
+    "production": "NOT_RUN",
+    "stableV5": "BLOCKED"
+  },
+  "knowledge": {
+    "repository": "GemiTron88/KB",
+    "revision": 1,
+    "factCount": 140,
+    "ruleCount": 14,
+    "domains": [
+      "quality",
+      "visual",
+      "performance",
+      "architecture",
+      "security",
+      "operations",
+      "delivery"
+    ],
+    "sha256": "3d4dc63fe88a5e049851a65a2c5799e9886ef3083f77882d30bd41cc4621f0d2"
+  },
+  "remainingCanonicalTasks": [
+    "EK5-GEMITRON-LAUNCH-V2",
+    "EK5-PREP-CANONICAL-GATES",
+    "EK5-GEMITRON-PUBLISH"
+  ],
+  "verificationLogs": {
+    "fullCheck": {
+      "sha256": "46bf00c952698a2f492afad570c03e2bc957878142b82b69d5b1854e414a74ef",
+      "bytes": 13940
+    },
+    "python": {
+      "sha256": "52331573b2a982904f1b4b0415b060b263ba9e6cdf18d5add638358240f84137",
+      "bytes": 1718
+    },
+    "focused": {
+      "sha256": "f6e03722ed505ec72a7e8d46678ba462989abdf233c409f0f4835433fef28eea",
+      "bytes": 9861
+    }
+  },
+  "logArchive": {
+    "path": "docs/v5/evidence/20261013/continuation-logs.tar.gz",
+    "sha256": "d1f655f3dd9c5f976e996b170c48ad8864d02d3f82dbf2e084c450c8a276f8e6"
+  }
+}

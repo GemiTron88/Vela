@@ -1,0 +1,134 @@
+{
+  "schemaVersion": "executionkit-work-source-verification/v1",
+  "status": "PASS",
+  "scope": "SOURCE_RUNTIME_AND_ISOLATED_FIXTURES",
+  "upstreamCommit": "08baadf0e1bb4e0e8be59ff742ad9c16fcb4bb40",
+  "verifiedCodeCommit": "93a1932bc610f88ff5bffd513e9150ae58476663",
+  "verifiedTree": "9d3e6473fd6ae86670ccdd86fd1a93fe1ca68d4c",
+  "transport": "Authenticated GitHub API; exact blob/mode-verified local source snapshot",
+  "runtime": "v24.19.0",
+  "fullRegression": {
+    "command": "node bin/run-tests.mjs",
+    "exitCode": 0,
+    "durationMs": 97528,
+    "tap": {
+      "tests": 1210,
+      "pass": 1206,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 4,
+      "todo": 0,
+      "duration_ms": 96915.191832
+    }
+  },
+  "policyAndDistributionStages": [
+    {
+      "command": "npm run validate:self",
+      "exitCode": 0,
+      "durationMs": 1029
+    },
+    {
+      "command": "npm run validate:parallel-agent-os",
+      "exitCode": 0,
+      "durationMs": 317
+    },
+    {
+      "command": "npm run validate:operator-entry",
+      "exitCode": 0,
+      "durationMs": 322
+    },
+    {
+      "command": "npm run validate:v30",
+      "exitCode": 0,
+      "durationMs": 414
+    },
+    {
+      "command": "npm run validate:v30-docs",
+      "exitCode": 0,
+      "durationMs": 265
+    },
+    {
+      "command": "npm run validate:examples",
+      "exitCode": 0,
+      "durationMs": 2334
+    },
+    {
+      "command": "npm run validate:ci-policy",
+      "exitCode": 0,
+      "durationMs": 276
+    },
+    {
+      "command": "npm run validate:canonical-docs",
+      "exitCode": 0,
+      "durationMs": 319
+    },
+    {
+      "command": "npm run validate:local-bootstrap",
+      "exitCode": 0,
+      "durationMs": 369
+    },
+    {
+      "command": "npm run validate:distribution",
+      "exitCode": 0,
+      "durationMs": 1585
+    }
+  ],
+  "focusedChecks": [
+    {
+      "files": 4,
+      "pass": 59,
+      "durationMs": 9403.944506
+    },
+    {
+      "files": 6,
+      "pass": 63,
+      "durationMs": 2470.418227
+    },
+    {
+      "files": 8,
+      "pass": 77,
+      "durationMs": 8527.381384
+    },
+    {
+      "files": 4,
+      "pass": 56,
+      "durationMs": 29062.700919
+    },
+    {
+      "files": 1,
+      "pass": 23,
+      "durationMs": 8508.68866
+    }
+  ],
+  "additionalChecks": {
+    "pythonGuards": 8,
+    "cliAudit": 166,
+    "sourceReviewSystems": 11,
+    "sourceReviewInvariants": 22
+  },
+  "retirement": {
+    "DecisionOS": "DECISIONOS_DELETE_READY_FOR_KIT_DEPENDENCY_ONLY",
+    "APKrelease": "KIT_INDEPENDENT",
+    "allExternalConsumers": "BLOCKED"
+  },
+  "unavailable": [
+    "Authenticated direct-runtime KB network credential",
+    "Physical workstation/device acceptance",
+    "Operational VPS access",
+    "Actual host-native delegation acceptance",
+    "Stable release acceptance"
+  ],
+  "scopeCompliance": {
+    "FLOWAccessed": false,
+    "StudioModified": false,
+    "legacyRepoBackupsCreated": false,
+    "reposDeleted": false,
+    "nativeMobileWorkloadsExecuted": false,
+    "productionMutationsExecuted": false
+  },
+  "limitations": [
+    "Four live tests skipped; not counted as PASS",
+    "Six historical convergence warnings retained",
+    "Local Git snapshot metadata is not native remote-history acceptance"
+  ]
+}

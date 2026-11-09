@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "executionkit-task-verification/v1",
+  "taskId": "VELA-FORK-01",
+  "command": "python3",
+  "args": [
+    "scripts/test_road_features_tsv.py"
+  ],
+  "strategy": "direct",
+  "exitCode": 0,
+  "ok": true,
+  "durationMs": 325,
+  "stdoutTail": "",
+  "stderrTail": "..........\n----------------------------------------------------------------------\nRan 10 tests in 0.149s\n\nOK\n",
+  "error": null,
+  "observedAt": "2026-11-09T07:01:02.734Z",
+  "artifactPath": ".executionkit/evidence/raw/todo-complete-VELA-FORK-01.json"
+}

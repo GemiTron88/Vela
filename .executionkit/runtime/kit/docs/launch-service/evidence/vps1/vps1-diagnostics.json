@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "os": "Linux",
+  "architecture": "x86_64",
+  "cores": 16,
+  "ram_bytes": 66884292608,
+  "disk_free_bytes": 36394184704,
+  "tools": {
+    "flutter": "/home/antigravity/tools/mobile-runner/flutter-3.47.7/bin/flutter",
+    "dart": "/home/antigravity/tools/mobile-runner/flutter-3.47.7/bin/dart",
+    "java": "/home/antigravity/.gemini/antigravity-cli/bin/java",
+    "adb": "/home/antigravity/tools/mobile-runner/android-sdk/platform-tools/adb",
+    "emulator": null,
+    "sdkmanager": "/home/antigravity/tools/mobile-runner/android-sdk/cmdline-tools/latest/bin/sdkmanager",
+    "apksigner": "/home/antigravity/tools/mobile-runner/android-sdk/build-tools/35.0.0/apksigner",
+    "apkanalyzer": "/home/antigravity/tools/mobile-runner/android-sdk/cmdline-tools/latest/bin/apkanalyzer",
+    "shorebird": null,
+    "git": "/usr/bin/git",
+    "node": "/home/antigravity/.gemini/antigravity-cli/bin/node"
+  },
+  "kvm_accessible": false,
+  "cpu_virtualization_flags": false,
+  "nested_virtualization": "UNKNOWN_REQUIRES_HOST_CONFIRMATION",
+  "acceleration": {
+    "status": "NOT_AVAILABLE"
+  },
+  "java": {
+    "exit_code": 0,
+    "output": "openjdk version \"17.0.20.1\" 2026-08-18\nOpenJDK Runtime Environment Temurin-17.0.20.1+1 (build 17.0.20.1+1)\nOpenJDK 64-Bit Server VM Temurin-17.0.20.1+1 (build 17.0.20.1+1, mixed mode, sharing)\n"
+  },
+  "decision": "STATIC_TESTS_BUILD_AND_REMOTE_DEVICE_FALLBACK",
+  "emulator_test_status": "NOT_TESTED",
+  "production_services_inspected": false
+}

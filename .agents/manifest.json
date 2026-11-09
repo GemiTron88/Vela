@@ -1,0 +1,1257 @@
+{
+  "$schema": "../schemas/agent-manifest.schema.json",
+  "schemaVersion": "2.2.0",
+  "standardVersion": "5.2.3",
+  "taskAuthority": {
+    "path": "TODO.md",
+    "mutableStateOwner": "TODO.md",
+    "shadowBacklogsForbidden": true,
+    "mode": "single-file",
+    "shardRoot": "todo",
+    "archiveRoot": "todo/archive"
+  },
+  "resources": {
+    "roles": [
+      {
+        "id": "role.orchestrator",
+        "path": ".agents/agents/orchestrator.md",
+        "capabilities": [
+          "agent",
+          "execution",
+          "seo",
+          "audit",
+          "test",
+          "launch"
+        ],
+        "tags": [
+          "coordination",
+          "recovery",
+          "parallel-integration"
+        ]
+      },
+      {
+        "id": "role.implementer",
+        "path": ".agents/agents/implementer.md",
+        "capabilities": [
+          "execution"
+        ],
+        "tags": [
+          "implementation",
+          "correction"
+        ]
+      },
+      {
+        "id": "role.reviewer",
+        "path": ".agents/agents/reviewer.md",
+        "capabilities": [
+          "seo",
+          "audit",
+          "test",
+          "execution"
+        ],
+        "tags": [
+          "independent-review",
+          "acceptance"
+        ]
+      }
+    ],
+    "skills": [
+      {
+        "id": "skill.state-rehydration",
+        "path": ".agents/skills/state-rehydration/SKILL.md",
+        "requires": [],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.implementer",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.task-context",
+        "path": ".agents/skills/task-context/SKILL.md",
+        "requires": [
+          "skill.state-rehydration"
+        ],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.implementer",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.repository-knowledge",
+        "path": ".agents/skills/repository-knowledge/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.implementer",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.parallel-orchestration",
+        "path": ".agents/skills/parallel-orchestration/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.implementer",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.implementation",
+        "path": ".agents/skills/implementation/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ],
+        "allowedRoles": [
+          "role.implementer"
+        ]
+      },
+      {
+        "id": "skill.review-acceptance",
+        "path": ".agents/skills/review-acceptance/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ],
+        "allowedRoles": [
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.audit-boundary",
+        "path": ".agents/skills/audit-boundary/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.scope-reconciliation",
+        "path": ".agents/skills/scope-reconciliation/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.blocker-analysis",
+        "path": ".agents/skills/blocker-analysis/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ],
+        "allowedRoles": [
+          "role.orchestrator"
+        ]
+      },
+      {
+        "id": "skill.archive-terminal",
+        "path": ".agents/skills/archive-terminal/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ],
+        "allowedRoles": [
+          "role.orchestrator"
+        ]
+      },
+      {
+        "id": "skill.quality-evidence",
+        "path": ".agents/skills/quality-evidence/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.test-adequacy",
+        "path": ".agents/skills/test-adequacy/SKILL.md",
+        "requires": [
+          "skill.quality-evidence"
+        ]
+      },
+      {
+        "id": "skill.security-review",
+        "path": ".agents/skills/security-review/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.data-migration",
+        "path": ".agents/skills/data-migration/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.content-depth",
+        "path": ".agents/skills/content-depth/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.seo-gate",
+        "path": ".agents/skills/seo-gate/SKILL.md",
+        "requires": [
+          "skill.task-context",
+          "skill.quality-evidence"
+        ]
+      },
+      {
+        "id": "skill.seo-audit",
+        "path": ".agents/skills/seo-audit/SKILL.md",
+        "requires": [
+          "skill.seo-gate"
+        ],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.documentation-fabric",
+        "path": ".agents/skills/documentation-fabric/SKILL.md",
+        "requires": [
+          "skill.task-context",
+          "skill.repository-knowledge",
+          "skill.content-depth"
+        ],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.implementer",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.release-health",
+        "path": ".agents/skills/release-health/SKILL.md",
+        "requires": [
+          "skill.task-context",
+          "skill.quality-evidence"
+        ]
+      },
+      {
+        "id": "skill.production-deployment",
+        "path": ".agents/skills/production-deployment/SKILL.md",
+        "requires": [
+          "skill.release-health",
+          "skill.documentation-fabric"
+        ],
+        "allowedRoles": [
+          "role.orchestrator",
+          "role.implementer",
+          "role.reviewer"
+        ]
+      },
+      {
+        "id": "skill.premium-experience",
+        "path": ".agents/skills/premium-experience/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.component-system",
+        "path": ".agents/skills/component-system/SKILL.md",
+        "requires": [
+          "skill.premium-experience"
+        ]
+      },
+      {
+        "id": "skill.design-system",
+        "path": ".agents/skills/design-system/SKILL.md",
+        "requires": [
+          "skill.component-system"
+        ]
+      },
+      {
+        "id": "skill.design-refinement",
+        "path": ".agents/skills/design-refinement/SKILL.md",
+        "requires": [
+          "skill.design-system"
+        ]
+      },
+      {
+        "id": "skill.laravel",
+        "path": ".agents/skills/laravel/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.livewire-tailwind-alpine",
+        "path": ".agents/skills/livewire-tailwind-alpine/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.flutter",
+        "path": ".agents/skills/flutter/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      },
+      {
+        "id": "skill.web-components",
+        "path": ".agents/skills/web-components/SKILL.md",
+        "requires": [
+          "skill.task-context"
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "rule.todo-authority",
+        "path": ".agents/rules/todo-authority.md"
+      },
+      {
+        "id": "rule.closure",
+        "path": ".agents/rules/closure.md"
+      },
+      {
+        "id": "rule.evidence",
+        "path": ".agents/rules/evidence.md"
+      },
+      {
+        "id": "rule.delegation",
+        "path": ".agents/rules/delegation.md"
+      },
+      {
+        "id": "rule.seo-authority",
+        "path": ".agents/rules/seo-authority.md"
+      },
+      {
+        "id": "rule.repository-knowledge-authority",
+        "path": ".agents/rules/repository-knowledge-authority.md"
+      },
+      {
+        "id": "rule.documentation-freshness",
+        "path": ".agents/rules/documentation-freshness.md"
+      },
+      {
+        "id": "rule.production-deployment-authority",
+        "path": ".agents/rules/production-deployment-authority.md"
+      },
+      {
+        "id": "rule.antigravity-v4-entry",
+        "path": ".agents/rules/executionkit-v4.md"
+      }
+    ],
+    "workflows": [],
+    "contracts": [
+      {
+        "id": "contract.routing",
+        "path": ".agents/contracts/routing-contract.md"
+      },
+      {
+        "id": "contract.closure",
+        "path": ".agents/contracts/closure-contract.md"
+      },
+      {
+        "id": "contract.handoff",
+        "path": ".agents/contracts/handoff-contract.md"
+      },
+      {
+        "id": "contract.seo-surface",
+        "path": ".agents/contracts/seo-surface-contract.md"
+      },
+      {
+        "id": "contract.repository-intelligence",
+        "path": ".agents/contracts/repository-intelligence-contract.md"
+      },
+      {
+        "id": "contract.documentation-fabric",
+        "path": ".agents/contracts/documentation-fabric-contract.md"
+      },
+      {
+        "id": "contract.production-deployment",
+        "path": ".agents/contracts/production-deployment-contract.md"
+      }
+    ],
+    "templates": [
+      {
+        "id": "template.handoff",
+        "path": ".agents/templates/handoff.md"
+      }
+    ]
+  },
+  "routing": {
+    "strategy": "priority-first-match",
+    "routes": [
+      {
+        "id": "route.audit",
+        "priority": 5,
+        "when": {
+          "actions": [
+            "audit"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.reviewer"
+          ],
+          "skills": [
+            "skill.audit-boundary",
+            "skill.quality-evidence"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      },
+      {
+        "id": "route.review",
+        "priority": 10,
+        "when": {
+          "actions": [
+            "review",
+            "revalidate"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.reviewer"
+          ],
+          "skills": [
+            "skill.review-acceptance",
+            "skill.quality-evidence"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      },
+      {
+        "id": "route.documentation",
+        "priority": 15,
+        "when": {
+          "actions": [
+            "document"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.implementer"
+          ],
+          "skills": [
+            "skill.documentation-fabric"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.documentation-freshness",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff",
+            "contract.documentation-fabric"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      },
+      {
+        "id": "route.deployment",
+        "priority": 16,
+        "when": {
+          "actions": [
+            "deploy"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.orchestrator"
+          ],
+          "skills": [
+            "skill.production-deployment"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.production-deployment-authority",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff",
+            "contract.production-deployment"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      },
+      {
+        "id": "route.correction",
+        "priority": 20,
+        "when": {
+          "actions": [
+            "correct",
+            "resume"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.implementer"
+          ],
+          "skills": [
+            "skill.implementation"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.delegation",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      },
+      {
+        "id": "route.blocker",
+        "priority": 30,
+        "when": {
+          "actions": [
+            "inspect_blocker"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.orchestrator"
+          ],
+          "skills": [
+            "skill.blocker-analysis",
+            "skill.parallel-orchestration"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.delegation",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      },
+      {
+        "id": "route.implementation",
+        "priority": 40,
+        "when": {
+          "actions": [
+            "implement"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.implementer"
+          ],
+          "skills": [
+            "skill.implementation"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.delegation",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      },
+      {
+        "id": "route.archive",
+        "priority": 50,
+        "when": {
+          "actions": [
+            "archive"
+          ]
+        },
+        "use": {
+          "roles": [
+            "role.orchestrator"
+          ],
+          "skills": [
+            "skill.archive-terminal"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        }
+      }
+    ],
+    "fallback": {
+      "roles": [
+        "role.orchestrator"
+      ],
+      "skills": [
+        "skill.task-context",
+        "skill.parallel-orchestration"
+      ],
+      "rules": [
+        "rule.todo-authority",
+        "rule.closure",
+        "rule.delegation",
+        "rule.antigravity-v4-entry"
+      ],
+      "workflows": [],
+      "contracts": [
+        "contract.routing",
+        "contract.handoff"
+      ],
+      "templates": [
+        "template.handoff"
+      ]
+    },
+    "supplements": [
+      {
+        "id": "supplement.antigravity-v4-entry",
+        "priority": -1000,
+        "when": {},
+        "use": {
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.deployment",
+        "priority": 87,
+        "when": {
+          "tagsAny": [
+            "deployment",
+            "deploy",
+            "production",
+            "launch",
+            "release-artifact",
+            "rollback",
+            "runtime-health",
+            "vhost",
+            "cwp",
+            "document-root",
+            "hosting-drift"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.production-deployment"
+          ],
+          "rules": [
+            "rule.production-deployment-authority",
+            "rule.antigravity-v4-entry"
+          ],
+          "contracts": [
+            "contract.production-deployment"
+          ]
+        }
+      },
+      {
+        "id": "supplement.documentation",
+        "priority": 88,
+        "when": {
+          "tagsAny": [
+            "documentation",
+            "docs",
+            "knowledge-base",
+            "architecture-docs",
+            "runbook",
+            "glossary"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.documentation-fabric"
+          ],
+          "rules": [
+            "rule.documentation-freshness",
+            "rule.antigravity-v4-entry"
+          ],
+          "contracts": [
+            "contract.documentation-fabric"
+          ]
+        }
+      },
+      {
+        "id": "supplement.repository-intelligence",
+        "priority": 89,
+        "when": {
+          "tagsAny": [
+            "repository-intelligence",
+            "repository-knowledge",
+            "architecture",
+            "knowledge",
+            "source-pack",
+            "freshness",
+            "context-refresh"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.repository-knowledge"
+          ],
+          "rules": [
+            "rule.repository-knowledge-authority",
+            "rule.antigravity-v4-entry"
+          ],
+          "contracts": [
+            "contract.repository-intelligence"
+          ]
+        }
+      },
+      {
+        "id": "supplement.parallel",
+        "priority": 90,
+        "when": {
+          "tagsAny": [
+            "parallel",
+            "concurrency",
+            "boost",
+            "agent",
+            "execution",
+            "orchestration"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.parallel-orchestration"
+          ],
+          "rules": [
+            "rule.delegation",
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.laravel",
+        "priority": 100,
+        "when": {
+          "tagsAny": [
+            "laravel",
+            "backend",
+            "api",
+            "database",
+            "queues"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.laravel"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.web-ui",
+        "priority": 101,
+        "when": {
+          "tagsAny": [
+            "livewire",
+            "blade",
+            "tailwind",
+            "alpine",
+            "web-ui"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.livewire-tailwind-alpine",
+            "skill.design-system"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.flutter",
+        "priority": 102,
+        "when": {
+          "tagsAny": [
+            "flutter",
+            "mobile",
+            "dart"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.flutter",
+            "skill.design-system"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.web-components",
+        "priority": 103,
+        "when": {
+          "tagsAny": [
+            "web-components",
+            "custom-elements"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.web-components",
+            "skill.design-system"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.premium",
+        "priority": 104,
+        "when": {
+          "tagsAny": [
+            "ui",
+            "ux",
+            "design",
+            "premium",
+            "components",
+            "frontend",
+            "page",
+            "screen",
+            "responsive",
+            "accessibility",
+            "redesign",
+            "refinement",
+            "unslop",
+            "polish",
+            "visual-remediation"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.premium-experience",
+            "skill.component-system",
+            "skill.design-system",
+            "skill.design-refinement"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.seo",
+        "priority": 105,
+        "when": {
+          "tagsAny": [
+            "seo",
+            "public-web",
+            "search-architecture",
+            "search-intent",
+            "technical-seo",
+            "programmatic-seo",
+            "generated-pages",
+            "local-seo",
+            "location-pages",
+            "service-area",
+            "ecommerce-seo",
+            "marketplace-seo",
+            "product-seo",
+            "international-seo",
+            "hreflang",
+            "i18n-seo",
+            "seo-performance",
+            "lighthouse",
+            "public-web-performance"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.seo-gate"
+          ],
+          "rules": [
+            "rule.seo-authority",
+            "rule.antigravity-v4-entry"
+          ],
+          "contracts": [
+            "contract.seo-surface"
+          ]
+        }
+      },
+      {
+        "id": "supplement.seo-gate",
+        "priority": 111,
+        "when": {
+          "tagsAny": [
+            "seo-gate",
+            "seo-audit",
+            "seo-release",
+            "seo-launch",
+            "seo-production"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.seo-gate",
+            "skill.seo-audit",
+            "skill.quality-evidence"
+          ],
+          "rules": [
+            "rule.seo-authority",
+            "rule.evidence",
+            "rule.antigravity-v4-entry"
+          ],
+          "contracts": [
+            "contract.seo-surface"
+          ]
+        }
+      },
+      {
+        "id": "supplement.content",
+        "priority": 120,
+        "when": {
+          "tagsAny": [
+            "content",
+            "localization",
+            "editorial",
+            "media"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.content-depth"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.quality",
+        "priority": 121,
+        "when": {
+          "tagsAny": [
+            "quality",
+            "acceptance",
+            "release",
+            "audit",
+            "antifake",
+            "anti-fake",
+            "mockdata",
+            "data-authenticity"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.quality-evidence",
+            "skill.test-adequacy"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.discovery",
+        "priority": 122,
+        "when": {
+          "tagsAny": [
+            "discovery",
+            "coverage",
+            "inventory"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.scope-reconciliation"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.browser",
+        "priority": 123,
+        "when": {
+          "tagsAny": [
+            "browser",
+            "e2e",
+            "accessibility",
+            "visual"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.test-adequacy",
+            "skill.premium-experience"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.offline",
+        "priority": 124,
+        "when": {
+          "tagsAny": [
+            "offline",
+            "sync"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.flutter"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.money",
+        "priority": 125,
+        "when": {
+          "tagsAny": [
+            "money",
+            "payment",
+            "wallet",
+            "pricing",
+            "credit",
+            "tax",
+            "refund"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.data-migration"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.authz",
+        "priority": 126,
+        "when": {
+          "tagsAny": [
+            "authorization",
+            "permissions",
+            "tenant",
+            "multi-tenant"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.security-review"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.data",
+        "priority": 127,
+        "when": {
+          "tagsAny": [
+            "migration",
+            "schema",
+            "data"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.data-migration"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.ops",
+        "priority": 128,
+        "when": {
+          "tagsAny": [
+            "observability",
+            "health",
+            "production",
+            "operations"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.release-health"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.impact",
+        "priority": 129,
+        "when": {
+          "tagsAny": [
+            "impact",
+            "regression",
+            "flake"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.test-adequacy"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.runtime",
+        "priority": 130,
+        "when": {
+          "tagsAny": [
+            "runtime",
+            "orchestration"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.parallel-orchestration"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      },
+      {
+        "id": "supplement.boundary-audit",
+        "priority": 131,
+        "when": {
+          "tagsAny": [
+            "deep-audit",
+            "honest-audit",
+            "full-audit",
+            "wave-audit",
+            "phase-audit",
+            "release-audit",
+            "premium-audit"
+          ]
+        },
+        "use": {
+          "skills": [
+            "skill.audit-boundary"
+          ],
+          "rules": [
+            "rule.antigravity-v4-entry"
+          ]
+        }
+      }
+    ]
+  },
+  "resolution": {
+    "minimalContext": true,
+    "expandSkillDependencies": true,
+    "deterministicTieBreak": [
+      "routePriority",
+      "taskOrder",
+      "taskId"
+    ]
+  },
+  "delegation": {
+    "mode": "DEPENDENCY_SAFE_PARALLEL",
+    "coordinatorRole": "role.orchestrator",
+    "reviewSeparationRequired": true,
+    "allowBoundedHostDelegation": true,
+    "oneLifecycleActionAtATime": false,
+    "maxConcurrentTasks": 3,
+    "maxAgentsPerTask": 4,
+    "requireExplicitParallelSafe": true,
+    "requireOwnership": true,
+    "isolatedWorktrees": true,
+    "integrationOwner": "role.orchestrator",
+    "sequentialFallback": true,
+    "boostCommand": "/boost",
+    "boostMaxConcurrentTasks": 6,
+    "boostMaxAgentsPerTask": 6,
+    "qualityGatesPreserved": true
+  },
+  "compatibility": {
+    "preserveNativeResources": true,
+    "nativeResourcesRequireRegistration": true
+  }
+}

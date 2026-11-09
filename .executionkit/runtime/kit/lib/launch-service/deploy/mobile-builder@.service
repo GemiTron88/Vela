@@ -1,0 +1,27 @@
+[Unit]
+Description=Isolated mobile build worker for %i
+After=network.target
+
+[Service]
+Type=simple
+User=mobile-builder
+Group=mobile-builder
+WorkingDirectory=/opt/mobile-release
+EnvironmentFile=/etc/mobile-builder/%i.env
+Environment=CI=true
+ExecStart=/usr/bin/node /opt/mobile-release/src/worker.mjs /etc/mobile-builder/%i.worker.json
+Restart=on-failure
+RestartSec=15
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/var/lib/mobile-builder
+MemoryMax=4G
+CPUQuota=200%
+TasksMax=256
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

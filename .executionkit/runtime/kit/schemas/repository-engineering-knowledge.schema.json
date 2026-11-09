@@ -1,0 +1,33 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://elwazeery.github.io/ai-executionkit/repository-engineering-knowledge-v1.json",
+  "title":"AI ExecutionKit Engineering Knowledge v1",
+  "type":"object",
+  "required":["schemaVersion","artifactId","artifactType","ownershipClass","evidenceKind","repository","provider","generatedAt","sourceScopes","inputFingerprints","metrics","trust","portable","sections"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "artifactId":{"const":"repository-engineering-knowledge"},
+    "artifactType":{"const":"engineering-knowledge"},
+    "ownershipClass":{"const":"GENERATED_PORTABLE"},
+    "evidenceKind":{"const":"GENERATED_HUMAN_DOC"},
+    "repository":{"type":"object","required":["key","isGit","baselineSha","dirty"],"properties":{"key":{"type":"string","minLength":1},"isGit":{"type":"boolean"},"baselineSha":{"type":["string","null"]},"branch":{"type":["string","null"]},"dirty":{"type":"boolean"}},"additionalProperties":true},
+    "provider":{"type":"object","required":["id","version"],"properties":{"id":{"const":"native-engineering-knowledge"},"version":{"type":"string","minLength":1}},"additionalProperties":false},
+    "generatedAt":{"type":"string","format":"date-time"},
+    "sourceScopes":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "inputFingerprints":{"type":"array","minItems":1,"items":{"type":"object","required":["kind","value"],"properties":{"kind":{"type":"string","minLength":1},"value":{"type":"string","minLength":1}},"additionalProperties":false}},
+    "metrics":{"type":"object","required":["fileCount","sectionCount","sourceRefCount"],"properties":{"fileCount":{"type":"integer","minimum":0},"sectionCount":{"type":"integer","minimum":1},"sourceRefCount":{"type":"integer","minimum":0}},"additionalProperties":false},
+    "trust":{"type":"object","required":["state","measuredAt","reasons"],"properties":{"state":{"enum":["TRUSTED","VERIFY","DEGRADED","SOURCE_ONLY","UNAVAILABLE"]},"measuredAt":{"type":"string","format":"date-time"},"reasons":{"type":"array","items":{"type":"string"}}},"additionalProperties":true},
+    "portable":{"const":true},
+    "sections":{
+      "type":"object",
+      "required":["systemContext","containers","components","domains","workflows","interfaces","data","integrations","tests","deployment"],
+      "additionalProperties":{
+        "type":"object",
+        "required":["kind","title","items","sourceRefs","notes","fingerprint"],
+        "properties":{"kind":{"type":"string","minLength":1},"title":{"type":"string","minLength":1},"items":{"type":"array"},"sourceRefs":{"type":"array","uniqueItems":true,"items":{"type":"string","minLength":1}},"notes":{"type":"array","items":{"type":"string"}},"fingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"}},
+        "additionalProperties":false
+      }
+    }
+  },
+  "additionalProperties":true
+}

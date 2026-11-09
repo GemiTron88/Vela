@@ -1,0 +1,79 @@
+=== ExecutionKit npm run v4:test Sanitized Summary Receipt ===
+Tested SHA: 6359feeb86cf2efcb37a2342c5fcab838d682799
+Environment: Linux x86_64 (AlmaLinux 9.8), Node.js v22.14.0
+Raw Log Full SHA-256: d1cc32cd912389043c1a3a7533c7539b421ded75c1f0b304e5827a840ca8c9b2
+Raw Log Full Size: 90493 bytes
+Exit Code: 0
+Total Tests: 330 passed across 37 v4 test suites, 0 failed, 0 skipped
+Duration: 53.86s
+----------------------------------------------------------------------
+--- Initial Suite Execution ---
+
+> ai-executionkit@4.0.4 v4:test
+> node --test tests/v4-antigravity.test.mjs tests/v4-agent-runtime.test.mjs tests/v4-audit-evidence.test.mjs tests/v4-foundation.test.mjs tests/v4-installer.test.mjs tests/v4-fast-bootstrap.test.mjs tests/v4-knowledge-runtime.test.mjs tests/v4-packaged-runtime.test.mjs tests/v4-reconcile.test.mjs tests/v4-release-gates.test.mjs tests/v4-test-os.test.mjs tests/todo-shards.test.mjs tests/v4-product-closure.test.mjs tests/v4-content-seo.test.mjs tests/v4-systems-status.test.mjs tests/v4-boundary.test.mjs tests/v4-system-gap-tasking.test.mjs tests/v4-activation.test.mjs tests/v4-maturity.test.mjs tests/v4-source.test.mjs tests/v4-control-plane.test.mjs tests/v4-database-integrity.test.mjs tests/v4-route-integrity.test.mjs tests/v4-platform.test.mjs tests/v4-kernel-enforcement.test.mjs tests/v4-visual-evidence.test.mjs tests/v4-cli-surface.test.mjs tests/production-deployment.test.mjs tests/v4-cli-performance.test.mjs tests/v4-context-economy.test.mjs tests/v4-release-publication.test.mjs tests/v4-upgrade-revalidation.test.mjs tests/v4-portable-cli.test.mjs tests/v4-update-discovery.test.mjs tests/v4-review-regressions.test.mjs tests/visual-os-v2.test.mjs
+
+✔ production artifact is allowlist-built and excludes docs kit tests controls and secrets (504.388904ms)
+✔ built production artifact validates against exact current source and detects tampering/staleness (1304.594903ms)
+✔ deployment is explicitly authorized and activates staged release with shared production links (727.254313ms)
+✔ v4 deployment cannot bypass exact-candidate release orchestration readiness (789.254662ms)
+✔ second release can roll back atomically to recorded previous release (1117.311859ms)
+✔ failed first post-activation command removes failed current link (803.178046ms)
+✔ release readiness fails closed on unconfigured target, smoke or health (302.257291ms)
+✔ strong secret content or control-plane files cannot enter production artifacts even through explicit include (493.389647ms)
+✔ failed candidate reactivates and verifies the previous release after pointer rollback (1341.048983ms)
+✔ explicit rollback reactivates the previous release before smoke and health (1044.641866ms)
+✔ host isolation accepts a declared workspace and current pointer beside immutable releases (173.375842ms)
+✔ host isolation blocks source outside declared execution workspace (135.269828ms)
+✔ deployment readiness forbids sudo in normal release transactions (455.993344ms)
+✔ non-deployable distribution repository release returns RELEASE_READY_NON_DEPLOYABLE (714.964363ms)
+✔ non-deployable distribution rejects launch deploy --authorize (620.136761ms)
+✔ host-plan for non-deployable repository reports unconfigured target without error (122.616841ms)
+✔ host-check for non-deployable repository reports unconfigured target (247.445712ms)
+✔ deployment privilege model UNPRIVILEGED_AFTER_BOOTSTRAP is enforced (187.867053ms)
+✔ deployment target inside source repository is rejected (147.895324ms)
+✔ production deployment refuses without smoke commands (168.904346ms)
+✔ production deployment refuses without health URL (130.404968ms)
+✔ sharded TODO loads cross-shard dependencies as one canonical graph (28.303347ms)
+✔ sharded TODO rejects duplicate task IDs across files and phase mismatch (46.294626ms)
+✔ TODO maintenance migrates a monolith into phase shards and archives proven terminal tasks (38.907528ms)
+✔ TODO maintenance archives terminal tasks and splits oversized active phase shards (63.632799ms)
+✔ TODO maintenance merges terminal candidates from multiple shards of the same phase without overwrite (25.639426ms)
+
+... [330 passing test outputs omitted for brevity; see full raw log] ...
+
+--- Final Suite Completion Summary ---
+✔ docs plus content changes do not drag unrelated Test Visual or Database checks (19.990002ms)
+✔ project with no accepted or release history skips historical upgrade sweep entirely (35.233695ms)
+✔ launch invariant is revalidated only for projects with release history (23.53218ms)
+✔ upgrade revalidation hot-path status reads one small installation receipt only (4.64911ms)
+✔ every declared ten-system runtime enforcement file is mapped to at least one upgrade invariant (6.348584ms)
+✔ every invariant-declared check has an executable runner branch (1.018887ms)
+✔ v4 authoritative contracts and Agent resources cannot exist outside invariant mapping (15.194691ms)
+✔ Visual OS rejects declarative premium review evidence without an inspected rendered image (83.526673ms)
+✔ Visual OS phase gate fails closed when rendered evidence is missing (15.348909ms)
+✔ Visual OS phase gate fails stale rendered evidence after source changes (43.056324ms)
+✔ Visual OS phase gate keeps generic heuristic UI in REVIEW_REQUIRED without explicit anti-generic review evidence (16.116577ms)
+✔ Visual OS refuses to certify generic UI from an anti-generic declaration and text artifact (17.597817ms)
+✔ Visual OS reports actionable Flutter generic surface locations and reasons (15.902119ms)
+✔ Visual OS can exclude a deferred Flutter root from a server-only mixed-stack boundary (67.984344ms)
+✔ Visual discovery reports actionable Flutter framework-default risk locations (3.363395ms)
+✔ bounded risk-aware plans cover independent pairs, critical loaded cells and impact dependencies (295.638684ms)
+✔ canonical census keeps unresolved Laravel/Flutter surfaces and meaningful states in the denominator (122.284613ms)
+✔ pixel decoder rejects corrupt/blank evidence and computes independent visual differences (799.289823ms)
+✔ geometry detects actual overflow, nested spacing, whitespace, contrast and mobile focus defects (10.269638ms)
+✔ independent audit accepts bound unit evidence but rejects report-only certification and changed schemas (979.199916ms)
+✔ independent audit rejects missing/corrupt/duplicate images and missing discovered state coverage (995.054938ms)
+✔ audit rejects wrong viewport/Git SHA, stale provenance, 500 pages and console errors despite signed producer claims (1184.729188ms)
+✔ a review cannot certify a different image or omit actual image participation (731.93928ms)
+✔ identical after-to-before remediation is rejected while explicit nonvisual equality is distinguished (1383.998198ms)
+✔ distinct required states reject copied screenshot bytes and current-state recapture invalidates historical certification (2330.481107ms)
+✔ retained native traces discard network/DOM resources and redact secret action values without corrupting JSON (9.372817ms)
+✔ image-bound intentional geometry reviews resolve sparse composition but cannot dismiss or downgrade measured defects (1057.71809ms)
+ℹ tests 330
+ℹ suites 0
+ℹ pass 330
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 53866.038179

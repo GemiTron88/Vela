@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "executionkit-unslop-visual-critic-verification/v1",
+  "taskId": "EK5-V522-UNSLOP-VISUAL-CRITIC",
+  "version": "5.2.3",
+  "baseCommit": "36cde75213f04598596af9c6955da282e0576774",
+  "upstreamReference": {
+    "repository": "https://github.com/heydamir/unslop",
+    "commit": "a6f121eee5f29c2f74976b75456feae8b66afb3a",
+    "author": "Damir Sokolovsky (@heydamir)",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "reconciliationSummary": {
+    "adoptedAndAdapted": [
+      "5-Part Design Direction (Product, Character, World, Moments, Signature)",
+      "3 Intervention Levels (No Change, Light Polish, Full Refinement)",
+      "9 Conceptual Refinement Passes (Spacing, Color, Icons, Copy, Typography, Layout, Details, Visuals, Motion) executed in a single coherent pass",
+      "Concentric nested border radius formula: inner = max(4px, outer - padding)",
+      "Diagnostic slop taxonomy mapped onto Visual OS v2 21 dimensions and UX/Component Guards"
+    ],
+    "preservedExecutionKitAuthorities": [
+      "Eleven executable systems (no 12th OS created)",
+      "Approved brand identity, palettes, and intentional visual languages (Liquid Glass, Material 3, immersive media, pixel-art)",
+      "AntiFake production purity (upstream plausible fake/mock data guidance rejected in production paths)",
+      "Mandatory Visual OS v2 21-dimension independent review and certification (upstream 3-render cap rejected)",
+      "Arabic/RTL typography rules (letter-spacing: 0 on Arabic script, logical properties, approved Arabic fonts)",
+      "Mobile/Flutter touch accessibility (>= 44x44px / 48x48dp touch targets)"
+    ],
+    "rejectedUpstreamArtifacts": [
+      "skills/unslop/scripts/snapshot.mjs (static HTML cloner conflicts with Visual OS v2 live state/auth capture)",
+      "skills/unslop/scripts/story.mjs (FFmpeg marketing video generator out of scope for QA and violates zero-FFmpeg policy)"
+    ]
+  },
+  "visualCriticEndToEndAudit": {
+    "steps": [
+      { "step": 1, "name": "Real screenshot capture", "module": "lib/visual-capture.mjs", "status": "VERIFIED_SOURCE_AND_UNIT_HARNESS", "environmentNote": "Headless VPS has no local Chromium binary installed; live browser capture requires host with Playwright Chromium." },
+      { "step": 2, "name": "Image-bound review request creation", "module": "lib/visual-critic.mjs#buildNativeVisualRequest", "status": "VERIFIED", "detail": "Enriched executionkit-native-visual-request/v1 with full surface/state/locale/direction/theme/viewport context, pre-computed geometryFindings, geometrySeverityCounts, presentationObservation, appliedTypefaces, designRefinementFramework, responseShape, and submitCommand." },
+      { "step": 3, "name": "Actual Antigravity native vision execution", "module": "lib/visual-critic.mjs#inspectVisualRun", "status": "VERIFIED_FAIL_CLOSED", "detail": "Without a configured host executor or signed native response, inspectVisualRun writes enriched request and returns REVIEW_REQUIRED with submitCommand; never fabricates PASS." },
+      { "step": 4, "name": "Valid structured reviewer response", "module": "lib/visual-critic.mjs#submitNativeVisualReview", "status": "VERIFIED", "detail": "Validates nonce, runId, cellId, imageSha256, 21 required dimensions with >= 20-char observations, and image-bound findings via executionkit visual inspect --response." },
+      { "step": 5, "name": "Independent reviewer identity", "module": "lib/visual-critic.mjs#submitNativeVisualReview", "status": "VERIFIED", "detail": "Enforces reviewerId === cfg.critic.reviewerId and reviewerId !== manifest.producerId (VISUAL_REVIEWER_SEPARATION_VIOLATION)." },
+      { "step": 6, "name": "Current source/image hash verification", "module": "lib/visual-critic.mjs#submitNativeVisualReview", "status": "VERIFIED", "detail": "Verifies SHA-256 of on-disk PNG and geometry JSON, PNG dimensions >= viewport, and HMAC-SHA256 seal." },
+      { "step": 7, "name": "Finding creation and remediation", "module": "lib/visual-audit.mjs#auditVisualRun", "status": "VERIFIED", "detail": "P0/P1 findings fail auditVisualRun and block closure until source remediation." },
+      { "step": 8, "name": "Re-render and re-review", "module": "lib/visual-audit.mjs#compareVisualRemediation", "status": "VERIFIED", "detail": "Verifies git ancestry (beforeSha -> afterSha), distinct rendered PNG pixel delta, geometry improvement, and resolved finding across 21 dimensions." },
+      { "step": 9, "name": "Audit certification", "module": "lib/visual-audit.mjs#certifyVisualRun", "status": "VERIFIED", "detail": "Requires VALIDATED full-mode run plus live application nonce probe before sealing certification.json." },
+      { "step": 10, "name": "Decision OS and Launch OS enforcement", "module": "lib/decision/quality-signals.mjs", "status": "VERIFIED", "detail": "Unresolved P0/P1, REVIEW_REQUIRED, or uncertified visual evidence compiles to deterministic DENY across quality_gate, release_approval, release_publish, and deploy." }
+    ]
+  },
+  "beforeAfterPilot": {
+    "surface": "public.home (Active Dispatch Queue)",
+    "viewport": { "id": "mobile", "width": 375, "height": 812 },
+    "beforeState": {
+      "uxGuardFindings": [
+        "UX_COLOR_RAW_LITERAL",
+        "UX_SLOP_DECORATIVE_CHROME_EMOJI",
+        "UX_SLOP_HYPE_EXCLAMATION_COPY",
+        "UX_MOTION_TRANSITION_ALL_FORBIDDEN",
+        "UX_A11Y_FOCUS_REMOVED_WITHOUT_REPLACEMENT",
+        "UX_A11Y_ICON_BUTTON_LABEL_MISSING",
+        "UX_RTL_DIRECTIONAL_SPACING_DRIFT",
+        "UX_LAYOUT_FIXED_WIDTH_OVERFLOW",
+        "UX_MOTION_REDUCED_MOTION_MISSING"
+      ],
+      "componentModelSlopSignals": [
+        "emoji-in-ui-chrome",
+        "purple-blue-glow-slop",
+        "transition-all-layout-slop",
+        "ai-hype-copy-slop"
+      ],
+      "visualGeometryFindings": ["TINY_TOUCH_TARGET (24x28px < 44x44px)"],
+      "visualCriticFinding": "unslop-generic-hero-001 (P1 GENERIC_AI_SLOP_DIRECTION)",
+      "auditStatus": "FAIL"
+    },
+    "afterState": {
+      "uxGuardFindings": [],
+      "visualGeometryFindings": [],
+      "visualCriticDimensionsPass": 21,
+      "auditStatus": "VALIDATED",
+      "remediationStatus": "VERIFIED",
+      "remediationCode": "VISUAL_CHANGE_PROVEN"
+    }
+  }
+}

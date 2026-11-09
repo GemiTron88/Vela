@@ -1,0 +1,129 @@
+# EXECUTIONKIT_V4_MANAGED_WORKFLOW
+name: ExecutionKit v4 Control Plane
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Typed ExecutionKit operation
+        required: true
+        default: doctor
+        type: choice
+        options:
+          - doctor
+          - systems
+          - wave
+          - phase
+          - release
+          - visual-impact
+          - visual-certify
+      runner_os:
+        description: Self-hosted runner operating system label
+        required: true
+        default: Linux
+        type: choice
+        options:
+          - Linux
+          - Windows
+          - macOS
+      target_sha:
+        description: Exact 40-character Git commit SHA to execute
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  execute:
+    runs-on:
+      - self-hosted
+      - "project-vela"
+      - "${{ inputs.runner_os }}"
+    env:
+      EXECUTIONKIT_E2E_MODEL_URL: ${{ vars.EXECUTIONKIT_E2E_MODEL_URL }}
+      EXECUTIONKIT_E2E_MODEL: ${{ vars.EXECUTIONKIT_E2E_MODEL }}
+      EXECUTIONKIT_E2E_MODEL_KEY: ${{ secrets.EXECUTIONKIT_E2E_MODEL_KEY }}
+      EXECUTIONKIT_E2E_APP_URL: ${{ vars.EXECUTIONKIT_E2E_APP_URL }}
+      EXECUTIONKIT_E2E_BUNDLE_ID: ${{ vars.EXECUTIONKIT_E2E_BUNDLE_ID }}
+      EXECUTIONKIT_E2E_ENVIRONMENT_URL: ${{ vars.EXECUTIONKIT_E2E_ENVIRONMENT_URL }}
+      EXECUTIONKIT_E2E_ENVIRONMENT_TOKEN: ${{ secrets.EXECUTIONKIT_E2E_ENVIRONMENT_TOKEN }}
+      EXECUTIONKIT_VISUAL_MODEL: ${{ vars.EXECUTIONKIT_VISUAL_MODEL }}
+      EXECUTIONKIT_VISUAL_CAPTURE_KEY: ${{ secrets.EXECUTIONKIT_VISUAL_CAPTURE_KEY }}
+      EXECUTIONKIT_VISUAL_REVIEW_KEY: ${{ secrets.EXECUTIONKIT_VISUAL_REVIEW_KEY }}
+      EXECUTIONKIT_VISUAL_AUDIT_KEY: ${{ secrets.EXECUTIONKIT_VISUAL_AUDIT_KEY }}
+      E2E_TELEMETRY_DISABLED: 1
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.target_sha }}
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Verify exact HEAD
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs control-plane verify-head . --expected "${{ inputs.target_sha }}"
+      - name: Install managed runtime dependencies
+        run: npm install --prefix .executionkit/runtime/kit --ignore-scripts --no-package-lock --no-audit --no-fund
+      - name: Plan agentic boundary dependencies
+        id: journeys
+        if: ${{ inputs.operation == 'wave' || inputs.operation == 'phase' || inputs.operation == 'release' }}
+        run: node .executionkit/runtime/kit/bin/prepare-agentic-e2e.mjs .
+      - name: Restore scoped replay recordings
+        if: ${{ steps.journeys.outputs.applicable == 'true' }}
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.journeys.outputs.suite }}/.e2e/cache
+          key: agentic-v1-${{ runner.os }}-${{ runner.arch }}-${{ github.ref_name }}-${{ steps.journeys.outputs.cache-key }}-${{ github.run_id }}
+          restore-keys: agentic-v1-${{ runner.os }}-${{ runner.arch }}-${{ github.ref_name }}-${{ steps.journeys.outputs.cache-key }}-
+      - name: Install pinned journey producer and browser
+        if: ${{ steps.journeys.outputs.applicable == 'true' }}
+        run: node .executionkit/runtime/kit/bin/prepare-agentic-e2e.mjs . --install
+      - name: Doctor
+        if: ${{ inputs.operation == 'doctor' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs doctor .
+      - name: Ten-system status
+        if: ${{ inputs.operation == 'systems' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs systems status .
+      - name: Wave boundary
+        if: ${{ inputs.operation == 'wave' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs boundary wave .
+      - name: Phase boundary
+        if: ${{ inputs.operation == 'phase' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs boundary phase .
+      - name: Non-deploying release gate
+        if: ${{ inputs.operation == 'release' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs launch release .
+      - name: Capture impacted rendered states
+        if: ${{ inputs.operation == 'visual-impact' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs visual capture . --mode impact --base HEAD~1
+      - name: Capture full visual certification matrix
+        if: ${{ inputs.operation == 'visual-certify' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs visual capture . --mode full
+      - name: Inspect actual rendered artifacts
+        if: ${{ inputs.operation == 'visual-impact' || inputs.operation == 'visual-certify' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs visual inspect .
+      - name: Independently validate current impacted evidence
+        if: ${{ inputs.operation == 'visual-impact' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs visual validate .
+      - name: Independently certify current full evidence
+        if: ${{ inputs.operation == 'visual-certify' }}
+        run: node .executionkit/runtime/kit/bin/executionkit-cli.mjs visual certify .
+      - name: Preserve current visual evidence and diagnostic failures
+        if: ${{ always() && (inputs.operation == 'wave' || inputs.operation == 'phase' || inputs.operation == 'release' || inputs.operation == 'visual-impact' || inputs.operation == 'visual-certify') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-${{ inputs.target_sha }}-${{ inputs.operation }}-${{ runner.os }}
+          path: .executionkit/visual
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Preserve journey evidence including failures
+        if: ${{ always() && steps.journeys.outputs.applicable == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: agentic-${{ inputs.target_sha }}-${{ inputs.operation }}-${{ runner.os }}
+          path: |
+            .executionkit/gates/agentic-*.json
+            ${{ steps.journeys.outputs.suite }}/.e2e/runs
+          if-no-files-found: error
+          retention-days: 14

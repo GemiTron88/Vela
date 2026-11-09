@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elwazeery.github.io/ai-executionkit/seo-contract-v1.json",
+  "title": "AI ExecutionKit SEO OS contract",
+  "type": "object",
+  "required": ["schemaVersion", "applicability", "profile", "modes", "surfaceFamilies", "gates"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schemaVersion": {"const": "1.0.0"},
+    "applicability": {"enum": ["AUTO", "ENABLED", "DISABLED"]},
+    "applicabilityRationale": {"type": "string"},
+    "profile": {"enum": ["NONE", "LITE", "STANDARD", "FULL"]},
+    "modes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"enum": ["technical", "content", "local", "ecommerce", "marketplace", "directory", "editorial", "international", "media", "programmatic"]}
+    },
+    "publicWeb": {
+      "type": "object",
+      "properties": {
+        "baseUrls": {"type": "array", "items": {"type": "string", "format": "uri"}, "uniqueItems": true},
+        "rendering": {"enum": ["server", "static", "hybrid", "client", "unknown"]},
+        "defaultLocale": {"type": "string"},
+        "locales": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "surfaceFamilies": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/surfaceFamily"}
+    },
+    "structuredDataRegistry": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/structuredPolicy"}
+    },
+    "programmaticPolicy": {
+      "type": "object",
+      "properties": {
+        "defaultIndexEligibility": {"enum": ["PROVEN_ONLY", "ALLOW", "DENY"]},
+        "requireDistinctIntent": {"type": "boolean"},
+        "requireDistinctVisibleValue": {"type": "boolean"},
+        "requireCoverageThreshold": {"type": "boolean"},
+        "emptyPagesIndexable": {"const": false}
+      },
+      "additionalProperties": false
+    },
+    "gates": {
+      "type": "object",
+      "required": ["task", "wave", "phase", "release", "production", "operations"],
+      "properties": {
+        "task": {"$ref": "#/$defs/gate"},
+        "wave": {"$ref": "#/$defs/gate"},
+        "phase": {"$ref": "#/$defs/gate"},
+        "release": {"$ref": "#/$defs/gate"},
+        "production": {"$ref": "#/$defs/gate"},
+        "operations": {"$ref": "#/$defs/gate"}
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "maxAgeMinutes": {"type": "integer", "minimum": 1},
+        "requireCandidateBindingForRelease": {"type": "boolean"},
+        "requireContractHash": {"type": "boolean"},
+        "representativeSamplesPerFamily": {"type": "integer", "minimum": 1}
+      },
+      "additionalProperties": false
+    },
+    "monitoring": {
+      "type": "object",
+      "properties": {
+        "enabled": {"type": "boolean"},
+        "signals": {"type": "array", "items": {"enum": ["sitemap", "robots", "canonical", "noindex", "status", "soft404", "structured-data", "orphan", "index-coverage", "field-cwv"]}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"applicability": {"const": "DISABLED"}}, "required": ["applicability"]},
+      "then": {"required": ["applicabilityRationale"], "properties": {"profile": {"const": "NONE"}}}
+    },
+    {
+      "if": {"properties": {"profile": {"const": "NONE"}}, "required": ["profile"]},
+      "then": {"properties": {"surfaceFamilies": {"maxItems": 0}}}
+    }
+  ],
+  "$defs": {
+    "gate": {
+      "type": "object",
+      "required": ["required"],
+      "properties": {"required": {"type": "boolean"}, "checks": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}},
+      "additionalProperties": false
+    },
+    "structuredPolicy": {
+      "type": "object",
+      "properties": {
+        "required": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "conditional": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "allowed": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "forbidden": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    },
+    "surfaceFamily": {
+      "type": "object",
+      "required": ["id", "routePattern", "surfaceType", "primaryIntent", "indexPolicy", "canonicalPolicy", "requiredValue", "verificationSamples"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^SEO-SURFACE-[A-Z0-9][A-Z0-9_-]*$"},
+        "routePattern": {"type": "string", "minLength": 1},
+        "surfaceType": {"type": "string", "minLength": 1},
+        "primaryIntent": {"type": "string", "minLength": 1},
+        "secondaryIntents": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "entities": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "topics": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "indexPolicy": {"enum": ["INDEX", "NOINDEX", "CONDITIONAL"]},
+        "canonicalPolicy": {"enum": ["SELF", "PARENT", "PRIMARY_VARIANT", "CUSTOM"]},
+        "requiredValue": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "requiredInternalLinks": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "structuredDataPolicy": {"type": "string"},
+        "emptyPolicy": {"enum": ["NOINDEX", "404", "410", "INDEX_IF_USEFUL"]},
+        "paginationPolicy": {"type": "string"},
+        "facetPolicy": {"type": "string"},
+        "localePolicy": {"type": "string"},
+        "programmatic": {"type": "boolean"},
+        "coverageThreshold": {"type": "integer", "minimum": 0},
+        "verificationSamples": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

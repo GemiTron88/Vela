@@ -1,0 +1,147 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 check
+> npm test && npm run validate:examples && npm run validate:ci-policy && npm run validate:distribution
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 test
+> node --test
+
+✔ standalone adoption restores a missing Agent layer without changing TODO (200.244957ms)
+✔ standalone adoption rolls back when preserved native Agent resources violate task-state authority (182.815882ms)
+✔ release version is consistent across package, template and standard (1.5248ms)
+✔ universal adoption contract defines all four modes and least-destructive selection (0.439882ms)
+✔ normative standard and README route adoption through the universal protocol (0.525929ms)
+✔ greenfield bootstrap derives generated version from VERSION (98.048106ms)
+✔ fresh Agent layer validates and deterministically expands skill dependencies (121.931885ms)
+✔ validator rejects missing registered resources (99.886346ms)
+✔ validator rejects duplicate resource IDs and skill dependency cycles (212.379584ms)
+✔ validator rejects shadow task state inside .agents (96.031141ms)
+✔ specialist supplements compose across tags while preserving reviewer routing (109.560432ms)
+✔ resolver rejects selected skill conflict instead of silently ignoring it (94.199431ms)
+✔ resolver rejects selected skill role instead of silently ignoring it (80.563839ms)
+✔ resolver rejects selected skill missing-dependency instead of silently ignoring it (101.500795ms)
+✔ resolver rejects selected skill predicate instead of silently ignoring it (77.015968ms)
+✔ first-match follows declaration order and risks are matched explicitly (104.123482ms)
+✔ native skill references are supporting context, not unregistered extra skills (87.363538ms)
+✔ editor export preserves hooks and TODO, is repeatable and exposes no runtime claim (419.903882ms)
+✔ editor exports discovery wrappers for legacy files without rewriting source (225.544976ms)
+✔ editor refuses conflicting reserved files before mutation (189.516499ms)
+✔ hook injects once, ignores ambiguous workspaces, and never requests forced continuation (441.003203ms)
+✔ integration drift fails execution integrity (265.641456ms)
+✔ doctor rejects invalid task state instead of reporting a healthy project (423.484808ms)
+✔ archive command moves terminal accepted/cancelled tasks only and is idempotent (293.353161ms)
+✔ archive refuses accepted work without evidence (163.655223ms)
+✔ archive refuses task archive paths outside project root without touching the outside file (200.181303ms)
+✔ STANDARD bootstrap installs complete v2 Agent OS and stays BOOTSTRAP (285.626618ms)
+✔ CUSTOM bootstrap requires and records all six capability levels (94.347636ms)
+✔ CUSTOM bootstrap rejects omitted Agent capability (79.255273ms)
+✔ bootstrap refuses to overwrite an existing custom .agents layer (80.722073ms)
+✔ generated project uses manual project-isolated self-hosted CI (172.606337ms)
+✔ bootstrap supports explicit stable runner label override (96.195094ms)
+✔ CI policy rejects hosted runners and push autorun (81.255834ms)
+✔ non-push automatic trigger requires an explicit path-scoped exception (168.300629ms)
+✔ parses canonical task blocks and dependencies (2.65806ms)
+✔ closure scheduler reviews candidates before correction, actionable blockers and READY work (0.926353ms)
+✔ external blocked work remains visible but does not starve independent READY work (0.463977ms)
+✔ PLANNED is not executable until it becomes READY (0.258122ms)
+✔ legacy VERIFIED is a compatibility alias for ACCEPTED and satisfies dependencies (0.28997ms)
+✔ closure remains false for blocked/candidate work and true only for terminal work (0.175029ms)
+✔ detects dependency cycles and Markdown anchors (1.683075ms)
+✔ FULL profile now derives all six capability defaults (0.874316ms)
+✔ projection-json adapter rejects stale native projections (1.751447ms)
+✔ v1 migration preserves TODO, installs full v2 integration and repeated migration is a validated no-op (665.81059ms)
+✔ migration strips unsafe legacy non-terminal closure semantics without changing task state (350.302674ms)
+✔ migration preserves mature/partial native .agents and installs an overlay (311.058459ms)
+✔ migration refuses conflicting managed tooling unless explicit replacement is authorized and backed up (435.268056ms)
+✔ migration refuses unknown native TODO syntax without a projection adapter (71.105952ms)
+✔ migration refuses TODO paths outside target root without touching the external source (85.725624ms)
+✔ compatible v2 minor migration preserves active state and native routing identity (553.827043ms)
+✔ failed repeat migration restores this attempt, not a stale historical backup (405.564753ms)
+✔ opt-in quality validates coverage and current evidence without claiming product test execution (131.095635ms)
+✔ missing dimensions and unknown TODO links fail structural validation (96.892092ms)
+✔ premium cannot omit required visual dimensions or managed content capability (90.709623ms)
+✔ release quality rejects source evidence (98.891632ms)
+✔ release quality rejects artifact evidence (104.547511ms)
+✔ release quality rejects missing evidence (97.687061ms)
+✔ release quality rejects failed evidence (103.5654ms)
+✔ release quality rejects self-review evidence (85.039287ms)
+✔ release quality rejects wrong-command evidence (111.132336ms)
+✔ release quality rejects future evidence (98.772711ms)
+✔ execution validator includes structural quality gaps and configure preserves TODO (227.82435ms)
+✔ quality rejects external file paths and shadow state (81.590398ms)
+✔ release rejects every non-object JSON report, including falsy values (84.877171ms)
+✔ malformed contract shapes return structured errors without throwing (93.866099ms)
+✔ quality enforces declared schema types and rejects unknown fields (89.801157ms)
+✔ managed paths reject dangling symlinks before creating quality files (144.559559ms)
+✔ release readiness passes only when canonical work is terminal and branch is clean/synchronized (547.732043ms)
+✔ release readiness rejects a dirty working tree (556.58821ms)
+✔ release readiness rejects unpushed commits (477.768242ms)
+✔ release readiness rejects a local branch behind its upstream (453.918184ms)
+✔ release readiness rejects non-terminal canonical work even when git is clean and pushed (411.860273ms)
+✔ application version is independent of the installed kit version (439.426175ms)
+✔ terminal TODO and clean git cannot hide missing opted-in product evidence (673.705163ms)
+✔ integrated validator accepts structurally valid bootstrap with Agent OS (187.133016ms)
+✔ integrated validator fails when Agent manifest is missing (175.71139ms)
+✔ validator requires concrete blocker for BLOCKED task (197.280758ms)
+✔ validator prevents non-terminal tasks from TODO_ARCHIVE (177.595683ms)
+✔ validator rejects non-terminal states in closure/dependency sets (173.668757ms)
+✔ validator rejects canonical TODO paths outside project root before loading tasks (205.468492ms)
+✔ validator rejects archive path collisions with canonical TODO (154.279056ms)
+✔ unmapped executable checkbox outside TODO is an error by default (153.295103ms)
+ℹ tests 82
+ℹ suites 0
+ℹ pass 82
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4332.791282
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 validate:examples
+> npm run validate:small && npm run validate:medium && npm run validate:large
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 validate:small
+> node bin/validate-execution.mjs examples/small && node bin/validate-agents.mjs examples/small
+
+Execution integrity: PASS
+Tasks inspected: 3
+Agent integrity: PASS
+Manifest: .agents/manifest.json
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 validate:medium
+> node bin/validate-execution.mjs examples/medium && node bin/validate-agents.mjs examples/medium
+
+Execution integrity: PASS
+Tasks inspected: 5
+Agent integrity: PASS
+Manifest: .agents/manifest.json
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 validate:large
+> node bin/validate-execution.mjs examples/large && node bin/validate-agents.mjs examples/large
+
+Execution integrity: PASS
+Tasks inspected: 8
+Agent integrity: PASS
+Manifest: .agents/manifest.json
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 validate:ci-policy
+> node bin/validate-ci-policy.mjs .
+
+PASS CI_POLICY: checked 1 workflow file(s)
+
+CI runner policy: PASS (0 warning(s)).
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@2.1.1 validate:distribution
+> node bin/validate-distribution.mjs
+
+ExecutionKit distribution integrity: PASS
+Version: 2.1.1; required components: 44

@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "executionkit-visual-remediation/v2"
+    },
+    "findingId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "beforeRunId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "afterRunId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "cellId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "claim": {
+      "type": "string",
+      "enum": [
+        "VISUAL_CHANGE",
+        "NO_VISUAL_CHANGE_EXPECTED"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "acceptanceCriteria": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "minimumChangedPixelRatio": {
+      "default": 0.001,
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "findingId",
+    "beforeRunId",
+    "afterRunId",
+    "cellId",
+    "claim",
+    "rationale",
+    "acceptanceCriteria",
+    "minimumChangedPixelRatio"
+  ],
+  "additionalProperties": false,
+  "title": "visual-remediation v2"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "executionkit-v4-upgrade-revalidation-receipt/v1",
+  "required": false,
+  "status": "NOT_REQUIRED",
+  "reason": "NO_APPLICABLE_PROJECT_HISTORY",
+  "previousInvariantFingerprint": null,
+  "currentInvariantFingerprint": "ebe1178ee3d1bc23b77c85f024b1c5952c9e5eab0a6c2aed9bb42bf3213a01ab",
+  "invariantIds": [],
+  "requiredChecks": [],
+  "maxCost": "NONE",
+  "acceptedHistoryCount": 0,
+  "releaseHistory": false
+}

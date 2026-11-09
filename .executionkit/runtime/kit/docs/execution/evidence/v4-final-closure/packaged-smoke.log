@@ -1,0 +1,19 @@
+
+> ai-executionkit@4.0.4 v4:packaged:smoke
+> node --test tests/v4-packaged-runtime.test.mjs
+
+TAP version 13
+# Subtest: installed v4 runtime is executable and exposes no legacy MCP host/bootstrap entrypoints
+ok 1 - installed v4 runtime is executable and exposes no legacy MCP host/bootstrap entrypoints
+  ---
+  duration_ms: 3150.670199
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3391.240615

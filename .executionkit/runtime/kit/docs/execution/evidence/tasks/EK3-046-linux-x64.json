@@ -1,0 +1,106 @@
+{
+  "schemaVersion": "executionkit-v4-release-target/v1",
+  "status": "PASS",
+  "expectedSha": "d54a48e25758f3e4215b9c9e0b163541de2c35b5",
+  "expectedTarget": "linux-x64",
+  "workflowSha": null,
+  "workflowRef": null,
+  "host": "linux-x64",
+  "sourceSha": "d54a48e25758f3e4215b9c9e0b163541de2c35b5",
+  "checks": [
+    {
+      "name": "exact-sha-input",
+      "status": "PASS",
+      "detail": "A full lowercase Git SHA is required"
+    },
+    {
+      "name": "target-input",
+      "status": "PASS",
+      "detail": "A supported exact target is required"
+    },
+    {
+      "name": "git-head",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "name": "exact-source",
+      "status": "PASS",
+      "detail": "HEAD d54a48e25758f3e4215b9c9e0b163541de2c35b5 differs from d54a48e25758f3e4215b9c9e0b163541de2c35b5"
+    },
+    {
+      "name": "physical-target",
+      "status": "PASS",
+      "detail": "Runner is linux-x64; requested linux-x64"
+    },
+    {
+      "name": "clean-source",
+      "status": "PASS",
+      "detail": "Tracked source is modified: "
+    },
+    {
+      "name": "strategy",
+      "status": "PASS",
+      "detail": "STANDALONE_SEA"
+    },
+    {
+      "name": "build",
+      "status": "PASS",
+      "detail": "SUCCESS: "
+    },
+    {
+      "name": "artifact-identity",
+      "status": "PASS",
+      "detail": "{\"schemaVersion\":\"executionkit-v4-artifact-identity/v1\",\"targetId\":\"linux-x64\",\"platform\":\"linux\",\"arch\":\"x64\",\"strategy\":\"STANDALONE_SEA\",\"version\":\"4.0.0-dev\",\"sourceSha\":\"d54a48e25758f3e4215b9c9e0b163541de2c35b5\",\"runtimeIdentity\":\"node-22.14.0\",\"sha256\":\"688e66d92114ef2175c0c5e58bfcd8d6f3685aaf4a905704f36ec6f747947a4f\",\"signing\":{\"status\":\"UNSIGNED_DEVELOPER_BUILD\",\"tool\":null,\"authority\":null,\"notarized\":false,\"verified\":true},\"builtAt\":\"2026-09-25T15:20:54.292Z\"}"
+    },
+    {
+      "name": "artifact-hash",
+      "status": "PASS",
+      "detail": "Artifact digest differs from identity"
+    },
+    {
+      "name": "artifact-integrity",
+      "status": "PASS",
+      "detail": "Artifact integrity verification failed"
+    },
+    {
+      "name": "distribution-manifest",
+      "status": "PASS",
+      "detail": "Manifest differs from built binary"
+    },
+    {
+      "name": "help",
+      "status": "PASS",
+      "detail": "0: {\n  \"schemaVersion\": \"executionkit-v4-cli/v1\",\n  \"status\": \"OK\",\n  \"mcp\": \"DISABLED\",\n  \"systems\": 10,\n  \"version\": \"4.0.0-dev\",\n  \"commands\": [\n    \"activation\",\n    \"agents\",\n    \"audit\",\n    \"boundary\",\n    \"content\",\n    \"control-plane\",\n    \"db\",\n    \"docs\",\n    \"doctor\",\n    \"help\",\n    \"install\",\n    \"knowledge\",\n    \"launch\",\n    \"next\",\n    \"platform\",\n    \"product\",\n    \"proof\",\n    \"pro"
+    },
+    {
+      "name": "version",
+      "status": "PASS",
+      "detail": "0: {\n  \"schemaVersion\": \"executionkit-v4-cli/v1\",\n  \"status\": \"OK\",\n  \"version\": \"4.0.0-dev\"\n}\n"
+    },
+    {
+      "name": "family-help",
+      "status": "PASS",
+      "detail": "0: {\n  \"schemaVersion\": \"executionkit-v4-cli/v1\",\n  \"status\": \"OK\",\n  \"command\": \"db\",\n  \"version\": \"4.0.0-dev\",\n  \"usage\": [\n    \"executionkit db status|refresh|guard|table|column|model [project] [--all|--files file1;file2]\"\n  ]\n}\n"
+    },
+    {
+      "name": "unknown-command",
+      "status": "PASS",
+      "detail": "2: {\"schemaVersion\":\"executionkit-v4-cli/v1\",\"status\":\"CLI_ERROR\",\"code\":\"UNKNOWN_COMMAND\",\"error\":\"Unknown ExecutionKit v4 command: bogus-cmd\",\"command\":\"bogus-cmd\",\"usage\":[],\"availableCommands\":[\"activation\",\"agents\",\"audit\",\"boundary\",\"content\",\"control-plane\",\"db\",\"docs\",\"doctor\",\"help\",\"install\",\"knowledge\",\"launch\",\"next\",\"platform\",\"product\",\"proof\",\"providers\",\"reconcile\",\"repair\",\"rollback\""
+    }
+  ],
+  "error": null,
+  "strategy": "STANDALONE_SEA",
+  "version": "4.0.0-dev",
+  "releaseClassification": "DEVELOPMENT_TARGET",
+  "artifactSha256": "688e66d92114ef2175c0c5e58bfcd8d6f3685aaf4a905704f36ec6f747947a4f",
+  "runtimeIdentity": "node-22.14.0",
+  "signing": {
+    "status": "UNSIGNED_DEVELOPER_BUILD",
+    "tool": null,
+    "authority": null,
+    "notarized": false,
+    "verified": true
+  },
+  "phase": "ARTIFACT_VERIFIED"
+}

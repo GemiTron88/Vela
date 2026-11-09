@@ -1,0 +1,91 @@
+{
+  "$schema": "schemas/seo-contract.schema.json",
+  "schemaVersion": "1.0.0",
+  "applicability": "AUTO",
+  "profile": "STANDARD",
+  "modes": [
+    "technical"
+  ],
+  "publicWeb": {
+    "baseUrls": [],
+    "rendering": "unknown",
+    "defaultLocale": "",
+    "locales": []
+  },
+  "surfaceFamilies": [],
+  "structuredDataRegistry": {},
+  "programmaticPolicy": {
+    "defaultIndexEligibility": "PROVEN_ONLY",
+    "requireDistinctIntent": true,
+    "requireDistinctVisibleValue": true,
+    "requireCoverageThreshold": true,
+    "emptyPagesIndexable": false
+  },
+  "gates": {
+    "task": {
+      "required": false,
+      "checks": []
+    },
+    "wave": {
+      "required": true,
+      "checks": [
+        "affected-page-families",
+        "integration-seams",
+        "source-implementation"
+      ]
+    },
+    "phase": {
+      "required": true,
+      "checks": [
+        "phase-denominator",
+        "rendered-runtime",
+        "specialized-modes",
+        "source-implementation"
+      ]
+    },
+    "release": {
+      "required": true,
+      "checks": [
+        "exact-candidate",
+        "contract-conformance",
+        "current-evidence"
+      ]
+    },
+    "production": {
+      "required": true,
+      "checks": [
+        "robots",
+        "sitemap",
+        "status",
+        "redirect",
+        "canonical",
+        "rendered-html",
+        "structured-data"
+      ]
+    },
+    "operations": {
+      "required": false,
+      "checks": [
+        "declared-monitoring-signals"
+      ]
+    }
+  },
+  "evidence": {
+    "maxAgeMinutes": 1440,
+    "requireCandidateBindingForRelease": true,
+    "requireContractHash": true,
+    "representativeSamplesPerFamily": 1
+  },
+  "monitoring": {
+    "enabled": false,
+    "signals": [
+      "sitemap",
+      "robots",
+      "canonical",
+      "noindex",
+      "status",
+      "structured-data",
+      "orphan"
+    ]
+  }
+}

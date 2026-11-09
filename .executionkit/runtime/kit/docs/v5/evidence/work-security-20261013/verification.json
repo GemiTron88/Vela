@@ -1,0 +1,230 @@
+{
+  "schemaVersion": "executionkit-work-security-verification/v1",
+  "status": "PASS",
+  "scope": "SOURCE_RUNTIME_AND_ISOLATED_FIXTURES",
+  "initialMain": "08baadf0e1bb4e0e8be59ff742ad9c16fcb4bb40",
+  "initialTree": "5b4d61ae005d51a81348c89744e360bfc4675891",
+  "preservedConcurrentCommits": [
+    "5670ffeb6044cd03b441b1d635667fc60023cf06",
+    "93a1932bc610f88ff5bffd513e9150ae58476663",
+    "91cbf74037bd41d1d4b0e3700e7424dee37abd58"
+  ],
+  "verifiedCodeCommit": "393b5b9b0183aaab1fdd8b67a63f7379be35a62c",
+  "verifiedCodeTree": "6fd66a8367480a3b0a6118b384be08918f27d414",
+  "runtime": "v24.19.0",
+  "environment": {
+    "platform": "Linux",
+    "productionVpsAccess": "NOT_AVAILABLE"
+  },
+  "testedFileBlobIds": {
+    "lib/decision/policy.mjs": "70e8a4c1e37ad7e966a51d7d25f8d0ee66dabd16",
+    "lib/launch-service/src/service.mjs": "719f6dd0f5868a674d30cc7ef59e50931a3fbdbd",
+    "tests/v5-decision-os.test.mjs": "3833cafaaadea78a71f7a120919377c1e1dc23f3",
+    "tests/launch-service/agent-control.test.mjs": "1549e68b238d4ece6ef7df579ef1b315cdebb8a2",
+    "lib/impact-model.mjs": "26abaf9e310b85cd718b5ef7c2d9ad4d616456ee",
+    "lib/v4-test-os.mjs": "5aea4e1669ced229115515b7dfca55367a317016",
+    "bin/init-project.mjs": "0ff837adef74770c2c1647ca386c1d705790679e"
+  },
+  "runs": [
+    {
+      "name": "mandatory",
+      "command": "node bin/run-tests.mjs --target tests/v5-decision-os.test.mjs --target tests/launch-mobile.test.mjs --target tests/launch-service/consolidation-integrity.test.mjs --target tests/launch-service/security.test.mjs",
+      "exitCode": 0,
+      "tap": {
+        "tests": 60,
+        "pass": 60,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 9097.678635
+      },
+      "log": "docs/v5/evidence/work-security-20261013/mandatory.log",
+      "logSha256": "895481f0e2e6553d684a118620a1a59684a05ba2ebc6ccf3cd2572199678d565"
+    },
+    {
+      "name": "secondary",
+      "command": "node bin/run-tests.mjs --target tests/launch-service/control-plane.test.mjs --target tests/launch-service/agent-control.test.mjs --target tests/launch-service/workstation-inspection.test.mjs --target tests/launch-service/classifier.test.mjs --target tests/launch-service/provider-quality.test.mjs --target tests/launch-service/entrypoint-regression.test.mjs --target tests/v4-review-regressions.test.mjs",
+      "exitCode": 0,
+      "tap": {
+        "tests": 76,
+        "pass": 76,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 3037.983115
+      },
+      "log": "docs/v5/evidence/work-security-20261013/secondary.log",
+      "logSha256": "e2648f1e89c93f100e334d3243d10fa5fba940d99111d859ba2b90369986c383"
+    },
+    {
+      "name": "agent-guards",
+      "command": "node bin/run-tests.mjs --target tests/v4-agent-runtime.test.mjs --target tests/v4-test-os.test.mjs --target tests/impact-selection-economy.test.mjs --target tests/run-tests-targeted.test.mjs --target tests/quality.test.mjs --target tests/production-purity.test.mjs",
+      "exitCode": 0,
+      "tap": {
+        "tests": 88,
+        "pass": 88,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 19344.120839
+      },
+      "log": "docs/v5/evidence/work-security-20261013/agent-guards.log",
+      "logSha256": "a2e803c48cf60f4e17859ddbafae5048a606478c58fb29e574d6857323e57b22"
+    },
+    {
+      "name": "launch-revocation",
+      "command": "node bin/run-tests.mjs --target tests/launch-service/agent-control.test.mjs --target tests/launch-service/security.test.mjs --target tests/launch-service/control-plane.test.mjs --target tests/launch-service/consolidation-integrity.test.mjs --target tests/launch-service/workstation-inspection.test.mjs --target tests/launch-service/provider-quality.test.mjs",
+      "exitCode": 0,
+      "tap": {
+        "tests": 50,
+        "pass": 50,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 471.165148
+      },
+      "log": "docs/v5/evidence/work-security-20261013/launch-revocation.log",
+      "logSha256": "6c1eecd4d5749654ad0333c74d8d3d4fed8489298bcceac6f39621d905ff038b"
+    },
+    {
+      "name": "vhost",
+      "command": "node bin/run-tests.mjs --target tests/production-deployment.test.mjs",
+      "exitCode": 0,
+      "tap": {
+        "tests": 44,
+        "pass": 44,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 7282.165856
+      },
+      "log": "docs/v5/evidence/work-security-20261013/vhost.log",
+      "logSha256": "7f58ed136cc64923a4c6519c3fd7ae9efe56894ea38d99d7287845f2bbb65080"
+    },
+    {
+      "name": "concurrent-integration",
+      "command": "node bin/run-tests.mjs --target tests/v5-decision-os.test.mjs --target tests/v4-test-os.test.mjs --target tests/impact-selection-economy.test.mjs --target tests/v4-boundary.test.mjs --target tests/v4-reconcile.test.mjs --target tests/v4-cli-surface.test.mjs",
+      "exitCode": 0,
+      "tap": {
+        "tests": 83,
+        "pass": 83,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0,
+        "duration_ms": 9400.596477
+      },
+      "log": "docs/v5/evidence/work-security-20261013/concurrent-integration.log",
+      "logSha256": "7f1d457ae646523a6119a6efa2d1a9a3cd429bf8f7e2123ae0b02621b24d77aa"
+    }
+  ],
+  "reproducedBeforeFix": {
+    "performance": {
+      "exitCode": 1,
+      "pass": 0,
+      "fail": 1
+    },
+    "revocation": {
+      "exitCode": 1,
+      "pass": 0,
+      "fail": 2
+    }
+  },
+  "python": {
+    "command": "npm run test:launch-service:python",
+    "exitCode": 0,
+    "pass": 8,
+    "guardsDurationSeconds": 0.068,
+    "hostPolicyDurationSeconds": 0.327
+  },
+  "sourceReview": {
+    "status": "PASS",
+    "scope": "SOURCE_ONLY",
+    "version": "5.0.0-dev",
+    "systems": 11,
+    "invariants": 22,
+    "helpers": 290,
+    "cliSurfaces": 150,
+    "knowledge": {
+      "repository": "GemiTron88/KB",
+      "revision": 1,
+      "factCount": 140,
+      "ruleCount": 14,
+      "domains": [
+        "quality",
+        "visual",
+        "performance",
+        "architecture",
+        "security",
+        "operations",
+        "delivery"
+      ],
+      "sha256": "3d4dc63fe88a5e049851a65a2c5799e9886ef3083f77882d30bd41cc4621f0d2"
+    },
+    "errors": [],
+    "durationMs": 36302
+  },
+  "sourceReviewLimits": "Review preceded concurrent impact changes; changed helpers subsequently syntax-checked and impact/Test OS integration 83/83 passed. Source review is not runtime acceptance.",
+  "canonicalTodo": {
+    "exitCode": 0,
+    "tasks": 101,
+    "warnings": 6,
+    "v5Convergence": "PLANNED; required by publication",
+    "historicalConvergence": "BLOCKED_BY_PENDING_ACCEPTANCE"
+  },
+  "knowledge": {
+    "canonicalMain": "da6c5f35a6a3dbe79fe2c9b42ac35b326adbb7f3",
+    "revision": 1,
+    "facts": 140,
+    "rules": 14,
+    "domains": 7,
+    "digest": "3d4dc63fe88a5e049851a65a2c5799e9886ef3083f77882d30bd41cc4621f0d2",
+    "bundledMatchesCanonical": true,
+    "offlineFallback": "TESTED",
+    "ttlDigestRollbackAndSchema": "TESTED_WITH_INJECTED_TRANSPORT",
+    "actualHostRefresh": "NOT_AVAILABLE: KB_PRIVATE_READ_CREDENTIAL_REQUIRED, zero network calls"
+  },
+  "legacyParity": {
+    "APKreleaseMain": "37cc90b9dfacba529fe3d2b300bb92d3e05fcd40",
+    "serviceModules": 19,
+    "identicalModules": 15,
+    "modifiedModules": 4,
+    "oldMigrationsIdentical": 5,
+    "sdkFilesIdentical": 15,
+    "newKitMigration": 6
+  },
+  "retirement": {
+    "DecisionOS": "DECISIONOS_DELETE_READY_FOR_KIT_DEPENDENCY_ONLY",
+    "APKrelease": "KIT_INDEPENDENT",
+    "allConsumersIndependent": "BLOCKED"
+  },
+  "nativeDelegation": {
+    "tool": "collaboration.spawn_agent",
+    "returnedTaskName": "/root/launch_independent_review",
+    "completed": true,
+    "followupReviewCompleted": true,
+    "scope": "Read-only source review, actual host-native invocation",
+    "kitClaimsWorktreeIntegrationAcceptance": "NOT_RUN"
+  },
+  "fullSuite": "NOT_RERUN; concurrent published full-source evidence belongs to 93a1932, not this changed candidate",
+  "remainingUnavailable": [
+    "Physical workstation/device and installed external agents",
+    "Authenticated browser/product E2E and rendered Visual acceptance",
+    "Approved deployment host, operational backup/restore and live vhost",
+    "Complete current v5 phase convergence and six historical convergence gates",
+    "Owner stable publication and destructive repository deletion approval"
+  ],
+  "scopeCompliance": {
+    "FLOWAccessed": false,
+    "StudioModified": false,
+    "legacyRepoBackupsCreated": false,
+    "reposDeleted": false,
+    "nativeMobileWorkloadsExecuted": false,
+    "productionMutationsExecuted": false
+  }
+}

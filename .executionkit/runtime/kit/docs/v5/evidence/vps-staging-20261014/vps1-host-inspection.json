@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "1.0.0",
+  "category": "VPS_HOST_VERIFIED",
+  "capturedAt": "2026-10-14T05:58:00Z",
+  "canonicalHead": "aa0002b72d489ec3d7b573f66de12f770f5f75bb",
+  "hostIdentity": {
+    "hostname": "vmi3202930.contaboserver.net",
+    "role": "VPS1 (Active Control Plane, Web/API Host, Designated Primary Future GemiTron Host)",
+    "publicIpv4": "173.212.237.207",
+    "publicIpv6": "2a02:c207:2320:2930::1",
+    "os": "AlmaLinux 9.8 (Shamrock Pampas Cat)",
+    "kernel": "5.14.0-687.51.1.el9_8.x86_64",
+    "architecture": "x86_64",
+    "vcpuCount": 16,
+    "memoryTotalGiB": 62.0,
+    "memoryAvailableGiB": 41.0,
+    "diskRootTotalGB": 299,
+    "diskRootAvailableGB": 98,
+    "currentUser": "uid=1021(antigravity) gid=1021(antigravity)",
+    "passwordlessSudo": false,
+    "vps2ReachabilityFromSession": {
+      "ip": "109.205.183.253",
+      "reachable": false,
+      "reason": "Not in ~/.ssh/known_hosts; active workspace session is directly on VPS1 (173.212.237.207)"
+    }
+  },
+  "nativeWorkstationGuard": {
+    "pythonTestSuite": {
+      "command": "npm run test:launch-service:python",
+      "guardTestPy": {
+        "tests": 4,
+        "passed": 4,
+        "durationSeconds": 1.251
+      },
+      "hostPolicyTestPy": {
+        "tests": 4,
+        "passed": 4,
+        "durationSeconds": 1.571
+      }
+    },
+    "liveHostDetection": {
+      "code": "VPS_NATIVE_MOBILE_FORBIDDEN",
+      "Indicators": [
+        "cwp:/usr/local/cwpsrv",
+        "hosting:/usr/local/apache/conf.d/vhosts"
+      ],
+      "enforced": true
+    },
+    "jsLocalBuildAgentGuard": {
+      "code": "PRODUCTION_CWP_BUILDER_FORBIDDEN",
+      "file": "lib/launch-service/agent/agent.mjs:34",
+      "triggerPath": "/usr/local/cwpsrv",
+      "enforced": true
+    }
+  },
+  "listenerPortsAndServices": {
+    "port8088Collision": {
+      "port": "127.0.0.1:8088",
+      "occupyingService": "wazzai.service (WazzAI AI Platform Control Plane, /home/elwaz/wazzai/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8088)",
+      "impact": "Default Launch Service port 127.0.0.1:8088 in config/launch-service.json is occupied on VPS1 by wazzai.service. Ephemeral staging uses 127.0.0.1:18088; permanent systemd installation must bind a dedicated non-conflicting localhost port (e.g. 127.0.0.1:8089)."
+    },
+    "activeServices": [
+      { "unit": "nginx.service", "listen": ["0.0.0.0:80", "0.0.0.0:443"], "binary": "/usr/sbin/nginx (1.30.5)" },
+      { "unit": "httpd.service (CWP)", "listen": ["*:8181", "*:8443"], "binary": "/usr/local/apache/bin/httpd (2.4.66)" },
+      { "unit": "mariadb.service", "listen": ["*:3306"], "binary": "/usr/libexec/mariadbd (10.5.29-MariaDB)" },
+      { "unit": "postgresql-17.service", "listen": ["127.0.0.1:5432", "127.0.0.1:5433"], "binary": "/usr/pgsql-17/bin/postmaster" },
+      { "unit": "redis.service", "listen": ["127.0.0.1:6379"], "binary": "/usr/bin/redis-server" },
+      { "unit": "wazzai.service", "listen": ["127.0.0.1:8088", "127.0.0.1:8080", "127.0.0.1:8081", "127.0.0.1:8082", "127.0.0.1:8083"], "description": "WazzAI Control Plane + llama.cpp workers" },
+      { "unit": "waui-web.service", "listen": ["127.0.0.1:8000"], "description": "WAui FastAPI Web Panel" },
+      { "unit": "antlaqasahm-queue.service", "listen": [], "description": "AntlaqaSahm Laravel Queue Worker" },
+      { "unit": "antlaqasahm-reverb.service", "listen": ["0.0.0.0:6001"], "description": "AntlaqaSahm Laravel Reverb WebSocket Server" },
+      { "unit": "tayf-api.service", "listen": ["127.0.0.1:3100"], "description": "Tayf Connect API" },
+      { "unit": "waafi-backend.service", "listen": ["127.0.0.1:3310"], "description": "Waafi NestJS API" }
+    ],
+    "installedLaunchServiceSystemdUnit": null
+  },
+  "productionSitesAndFlowState": {
+    "flow": {
+      "currentDomain": "app.elwazeery.com",
+      "legacyDomain": "flow.elwazeery.com",
+      "appRoot": "/home/elwaz/app.elwazeery.com",
+      "gitHead": "fa9b775b8008ed41b7f71688a877d6998a1966f0",
+      "gitHeadSubject": "fix(apk-release): stream full package size for browser download",
+      "deploymentModel": "Direct Git working tree at /home/elwaz/app.elwazeery.com (not yet migrated to releases/<id> + current symlink)",
+      "apacheVhostDocumentRoot": "/home/elwaz/app.elwazeery.com/public",
+      "nginxVhostRoot": "/home/elwaz/app.elwazeery.com/public",
+      "modifiedDuringInspection": false
+    },
+    "otherCustomerVhosts": [
+      "ai.elwazeery.com",
+      "antlaqasahm.sa",
+      "elwazeery.com",
+      "fiberhubsa.com",
+      "pay.elwazeery.com",
+      "sabaghkw.com",
+      "tayfconnect.com",
+      "wa.elwazeery.com",
+      "waafi.app",
+      "watsorder.com"
+    ]
+  },
+  "sharedCwpVhostGuardFindings": {
+    "status": "BLOCKED_EXTERNAL_SHARED_ROOT_PERMISSIONS",
+    "posixAclsPresent": [
+      "/usr/local/apache/conf.d/vhosts (user:antigravity:rwx)",
+      "/etc/nginx/conf.d/vhosts (user:antigravity:rwx)",
+      "/home/antlaqa (user:antigravity:rwx)",
+      "/home/fiberhub (user:antigravity:rwx)",
+      "/home/sabagh (user:antigravity:rwx)",
+      "/home/elwaz (user:antigravity:r-x)"
+    ],
+    "rootOnlyPermissionBlockers": [
+      {
+        "path": "/usr/local/apache/conf.d/autoconfig.conf",
+        "mode": "0640 root:root",
+        "effect": "/usr/local/apache/bin/httpd -S and -t -D DUMP_INCLUDES fail with EACCES at /usr/local/apache/conf/httpd.conf:535 when invoked by non-root user antigravity"
+      },
+      {
+        "path": "/usr/local/apache/conf.d/rpaf.conf",
+        "mode": "0640 root:root",
+        "effect": "/usr/local/apache/bin/httpd -S fails with EACCES at /usr/local/apache/conf/httpd.conf:537 when invoked by non-root user antigravity"
+      },
+      {
+        "path": "/etc/nginx/cloudflare.inc & /etc/nginx/proxy.inc & /var/log/nginx/error.log",
+        "mode": "0640 root:root",
+        "effect": "/usr/sbin/nginx -T against default /etc/nginx/nginx.conf fails with EACCES on /etc/nginx/cloudflare.inc:39 when invoked by non-root user antigravity"
+      },
+      {
+        "path": "/usr/sbin/nginx -T privileged socket bind on ports 80/443",
+        "mode": "euid=1021(antigravity) without CAP_NET_BIND_SERVICE",
+        "effect": "Nginx ngx_test_config calls ngx_open_listening_sockets(); even after syntax is ok, unprivileged /usr/sbin/nginx -T against listen 80/443 fails with bind() to 0.0.0.0:80 failed (13: Permission denied) unless invoked via a narrow root-owned wrapper or CAP_NET_BIND_SERVICE"
+      },
+      {
+        "path": "/usr/local/cwpsrv/htdocs/resources",
+        "mode": "0750 root:root",
+        "effect": "Blocks non-root read access to /usr/local/cwpsrv/htdocs/resources/conf/web_servers/vhosts/ and /usr/local/cwpsrv/var/services/users/cwp_ListeningPorts.txt"
+      }
+    ],
+    "ownerRemediationCommands": [
+      "setfacl -m u:antigravity:r /usr/local/apache/conf.d/autoconfig.conf /usr/local/apache/conf.d/rpaf.conf /etc/nginx/cloudflare.inc /etc/nginx/proxy.inc",
+      "setfacl -m u:antigravity:rx /usr/local/cwpsrv /usr/local/cwpsrv/htdocs /usr/local/cwpsrv/htdocs/resources /usr/local/cwpsrv/htdocs/resources/conf /usr/local/cwpsrv/htdocs/resources/conf/web_servers /usr/local/cwpsrv/htdocs/resources/conf/web_servers/vhosts /usr/local/cwpsrv/htdocs/resources/conf/web_servers/vhosts/httpd /usr/local/cwpsrv/htdocs/resources/conf/web_servers/vhosts/httpd/php-fpm /usr/local/cwpsrv/htdocs/resources/conf/web_servers/vhosts/nginx /usr/local/cwpsrv/var /usr/local/cwpsrv/var/services /usr/local/cwpsrv/var/services/users"
+    ]
+  },
+  "isolatedStagingCapabilities": {
+    "status": "AVAILABLE_AND_SAFE",
+    "nodeBinary": "/home/antigravity/.gemini/antigravity-cli/bin/node (v24.21.0, node:sqlite DatabaseSync + backup)",
+    "phpBinary": "/home/antigravity/.gemini/antigravity-cli/bin/php (8.4.26)",
+    "composerBinary": "/usr/local/bin/composer (2.8.12)",
+    "nginxBinary": "/usr/sbin/nginx (1.30.5, user-space -e/-p/-c/-T supported)",
+    "httpdBinary": "/usr/sbin/httpd (2.4.62 AlmaLinux, user-space -d/-f/-S/-t -D DUMP_INCLUDES supported)",
+    "mariadbServerBinary": "/usr/sbin/mariadbd + /usr/bin/mariadb-install-db + /usr/bin/mysqldump (isolated user-space instance supported)"
+  }
+}

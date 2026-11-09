@@ -1,0 +1,117 @@
+{
+  "schemaVersion": "executionkit-source-review-evidence/v1",
+  "recordedAt": "2026-10-12T20:29:30.224061+00:00",
+  "repository": "Elwazeery/AI-ExcutionKit",
+  "testedCommit": "0caa305cad8a0798c97d3cd97eaffb337bb25f17",
+  "testedTree": "fc44fca8a971da6445389b3ad7882e363f38dd92",
+  "node": "v24.19.0",
+  "scope": "source and isolated fixtures; not physical, installed-consumer or production certification",
+  "npmCheck": {
+    "exitCode": 0,
+    "elapsedSeconds": 93.926,
+    "missingMarkers": [],
+    "status": "PASS",
+    "tests": 1097,
+    "pass": 1093,
+    "fail": 0,
+    "skipped": 4
+  },
+  "v4Check": {
+    "status": "PASS",
+    "exitCode": 0,
+    "fullRegression": {
+      "tests": 1097,
+      "pass": 1093,
+      "fail": 0,
+      "skipped": 4
+    },
+    "targetedTests": 369,
+    "packagedSmokeTests": 1
+  },
+  "syntax": {
+    "javascriptFiles": 265,
+    "pythonFiles": 11,
+    "errors": []
+  },
+  "cliDiscovery": {
+    "commands": 35,
+    "errors": []
+  },
+  "pythonPolicy": {
+    "status": "PASS",
+    "guardTests": 4,
+    "hostPolicyTests": 4
+  },
+  "branchCleanup": {
+    "historyRetained": 49,
+    "openPullRequests": 0,
+    "namedBranchesPendingDeletion": 49
+  },
+  "logs": [
+    {
+      "path": "baseline-tests.log",
+      "sha256": "a2bea52a4ffc06ffeb2612141dd0ed49f60108f4787a0a6b2be38b80fd2a15e6",
+      "bytes": 306598
+    },
+    {
+      "path": "bootstrap-recheck.log",
+      "sha256": "d453b472a6811db453b89f5225b0f595d1ba7c007e9b10bb99ddd468dbb9ffad",
+      "bytes": 1952
+    },
+    {
+      "path": "focused-review.log",
+      "sha256": "15f8ebe1ed0493daee9c41fb649220ff04186af4038961451d2585e0387b3711",
+      "bytes": 2879
+    },
+    {
+      "path": "source-syntax.json",
+      "sha256": "dd77fa84163bc99c853c929a99e8d6789d40a3d86ee0a42fc3f4596bd1461bef",
+      "bytes": 66
+    },
+    {
+      "path": "cli-discovery.json",
+      "sha256": "ea55a8e8538309cd7a7f62cd6d52a9126fe5f9f6f318dbfebc77469caf6da51d",
+      "bytes": 37
+    },
+    {
+      "path": "python-policy.log",
+      "sha256": "e67583cd553a1ea92595124db88ad66c1c54be414fce9fe64c214a4c2117e789",
+      "bytes": 1714
+    },
+    {
+      "path": "skipped-floor-probe.log",
+      "sha256": "e38a32601981aadab6ebb88adc93393cdce3ec81bbbd207acb5ab63769e61576",
+      "bytes": 293
+    },
+    {
+      "path": "full-check.log",
+      "sha256": "c97224f62df133b86b61ac48f1237e36a296248686318527a077a80b3663d669",
+      "bytes": 311946
+    },
+    {
+      "path": "cache-floor-recheck.log",
+      "sha256": "f8f480c53521356dafffd06fca117426b8f4e0b2822bdeae8d953f3ff475e70e",
+      "bytes": 678
+    },
+    {
+      "path": "v4-check-final.log",
+      "sha256": "d5df01c32df3c70e299c3ec86cbdecd9dc128cd9605737b14eea3847b48544b2",
+      "bytes": 399294
+    },
+    {
+      "path": "full-check-verified.log",
+      "sha256": "482c085273e0dc093cbbc7c8fe149b0ab816761af58d678b65c1f00b01e09e5e",
+      "bytes": 318909
+    },
+    {
+      "path": "full-check-receipt.json",
+      "sha256": "b62820ea56ae409e86417f0433121462fb032901449dc693c511f285597c0386",
+      "bytes": 92
+    },
+    {
+      "path": "system-contracts.json",
+      "sha256": "7036fb032191575c768250721da2f33a59dd776ac8000d13a11963877b9ada95",
+      "bytes": 9260
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+{
+  "schemaVersion": "1.0.0",
+  "category": "STAGING_VERIFIED",
+  "capturedAt": "2026-10-14T06:21:53.181Z",
+  "canonicalHead": "aa0002b72d489ec3d7b573f66de12f770f5f75bb",
+  "host": "vmi3202930.contaboserver.net (173.212.237.207)",
+  "isolatedInfrastructure": {
+    "stagingRoot": "/tmp/ek5-vps1-web-staging-NLocHO",
+    "mariadbServer": {
+      "binary": "/usr/sbin/mariadbd (10.5.29-MariaDB)",
+      "port": 13307,
+      "database": "ek5_staging_db",
+      "restoreDatabase": "ek5_staging_restore_db"
+    },
+    "phpRuntime": "/home/antigravity/.gemini/antigravity-cli/bin/php (8.4.26)",
+    "apacheBinary": "/usr/sbin/httpd (2.4.62)",
+    "nginxBinary": "/usr/sbin/nginx (1.30.5)",
+    "httpsAttestationOrigin": "https://localhost:45347",
+    "sharedProductionTouched": false
+  },
+  "positiveLifecycle": {
+    "hostPlanStatus": "PLANNED",
+    "hostCheckStatus": "PASS",
+    "vhostGuardStatus": "PASS",
+    "vhostChecks": [
+      {
+        "engine": "apache",
+        "domain": "localhost",
+        "port": 80,
+        "status": "PASS",
+        "mode": "DOCUMENT_ROOT",
+        "configHash": "0edc867e095a21b591f7544346b2ce2211554063df0a0cc49abfa550c32c3c08"
+      },
+      {
+        "engine": "apache",
+        "domain": "localhost",
+        "port": 443,
+        "status": "PASS",
+        "mode": "DOCUMENT_ROOT",
+        "configHash": "0edc867e095a21b591f7544346b2ce2211554063df0a0cc49abfa550c32c3c08"
+      },
+      {
+        "engine": "nginx",
+        "domain": "localhost",
+        "port": 18080,
+        "status": "PASS",
+        "mode": "DOCUMENT_ROOT",
+        "configHash": "09eaca2552d3296c1fe783f172078d8b4bc4ec307ece9e09311dc362167b4ded"
+      },
+      {
+        "engine": "nginx",
+        "domain": "localhost",
+        "port": 18443,
+        "status": "PASS",
+        "mode": "DOCUMENT_ROOT",
+        "configHash": "09eaca2552d3296c1fe783f172078d8b4bc4ec307ece9e09311dc362167b4ded"
+      },
+      {
+        "domain": "localhost",
+        "engine": "cwp",
+        "status": "PASS",
+        "selectionHash": "7c2b379a87d3de58ad1a4293fa611256612aa3f0982324a635073fe512823944"
+      }
+    ],
+    "artifactPurity": {
+      "mode": "ALLOWLIST",
+      "docsExcluded": true,
+      "executionKitExcluded": true,
+      "secretsExcluded": true,
+      "includedFilesCount": 12,
+      "totalBytes": 4888
+    },
+    "databaseBackupAndRuntimeVerification": {
+      "backupStatus": "PASS",
+      "gzipBytes": 888,
+      "sqlBytes": 2463,
+      "runtimeIdentity": {
+        "status": "PASS",
+        "database": "ek5_staging_db",
+        "environment": "production",
+        "debug": false
+      }
+    },
+    "deployments": {
+      "v1": {
+        "releaseId": "936a8fb878ec-40e9daa71b62",
+        "status": "DEPLOYED",
+        "attestation": {
+          "status": "PASS",
+          "releaseId": "936a8fb878ec-40e9daa71b62",
+          "head": "936a8fb878ecd0bd63b2125d285ec946189aded8"
+        },
+        "durationMs": 2350.27
+      },
+      "v2": {
+        "releaseId": "169d37756f4a-fc67d7d80992",
+        "status": "DEPLOYED",
+        "attestation": {
+          "status": "PASS",
+          "releaseId": "169d37756f4a-fc67d7d80992",
+          "head": "169d37756f4a2a0b118f4eca47e5e9798f5f89ae"
+        },
+        "durationMs": 2380.15
+      },
+      "v3": {
+        "releaseId": "488bb5d41590-47ed0b1f4056",
+        "status": "DEPLOYED",
+        "attestation": {
+          "status": "PASS",
+          "releaseId": "488bb5d41590-47ed0b1f4056",
+          "head": "488bb5d4159026493298208f98acf76740a32a2b"
+        },
+        "durationMs": 2370.46
+      }
+    },
+    "mariadbMigrationsVerified": {
+      "expectedVersions": [
+        "baseline-v0",
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "observedVersions": [
+        "baseline-v0",
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "allMatched": true
+    },
+    "offHostSqlRestoreVerified": {
+      "restoreDatabase": "ek5_staging_restore_db",
+      "restoreDurationMs": 93.81,
+      "restoredVersions": [
+        "baseline-v0",
+        "v1",
+        "v2",
+        "v3"
+      ],
+      "exactMatchWithPrimary": true
+    },
+    "retentionAndCleanup": {
+      "status": "PASS",
+      "keptReleasesCount": 2,
+      "removedReleasesCount": 0,
+      "v1Pruned": true,
+      "v2RetainedForRollback": true,
+      "v3RetainedAsCurrent": true,
+      "artifactCacheRetention": {
+        "status": "PASS",
+        "removed": [
+          "936a8fb878ec-40e9daa71b62"
+        ],
+        "kept": [
+          "488bb5d41590-47ed0b1f4056",
+          "169d37756f4a-fc67d7d80992"
+        ],
+        "skipped": []
+      }
+    },
+    "atomicRollback": {
+      "rolledBackToV2Status": "ROLLED_BACK",
+      "rolledBackToV2DurationMs": 693.26,
+      "restoredToV3Status": "ROLLED_BACK",
+      "productionVerifiedAfterLifecycle": true
+    }
+  },
+  "timingsMs": {
+    "hostPlanMs": 2.12,
+    "hostCheckMs": 462.71,
+    "artifactPlanMs": 88.81,
+    "artifactBuildMs": 129.09,
+    "databaseBackupMs": 175.12,
+    "deployV1Ms": 2350.27,
+    "deployV2Ms": 2380.15,
+    "deployV3Ms": 2370.46,
+    "rollbackMs": 693.26,
+    "offHostRestoreSqlMs": 93.81
+  },
+  "negativeScenarios": {
+    "incompleteAuthorization": {
+      "deployRejected": true,
+      "deployError": "Production deployment/rollback requires explicit authorized=true",
+      "rollbackRejected": true,
+      "rollbackError": "Production deployment/rollback requires explicit authorized=true",
+      "backupRejected": true,
+      "backupError": "Production backup requires explicit authorization"
+    },
+    "corruptArtifactPayload": {
+      "status": "FAIL",
+      "errorCodes": [
+        "ARTIFACT_HASH_MISMATCH",
+        "ARTIFACT_SIZE_MISMATCH"
+      ]
+    },
+    "concurrentReleaseLockConflict": {
+      "deployBlockedByLock": true,
+      "deployError": "EEXIST: file already exists, open '/tmp/ek5-vps1-web-staging-NLocHO/production-target/release-store/.executionkit-deployment.lock'",
+      "rollbackBlockedByLock": true,
+      "rollbackError": "EEXIST: file already exists, open '/tmp/ek5-vps1-web-staging-NLocHO/production-target/release-store/.executionkit-deployment.lock'",
+      "currentPointerPreserved": true
+    },
+    "databaseMigrationFailure": {
+      "failedBeforeActivation": true,
+      "error": "pre-activate command failed: php artisan migrate --force: SQLSTATE[42S02]: Simulated migration failure before activation\n",
+      "currentPointerRemainedOnV3": true
+    },
+    "wrongReleaseAttestationAutoRollback": {
+      "rejected": true,
+      "error": "Production health check failed: Production HTTP does not serve the activated exact candidate; automatic rollback activation/verification also failed: automatic rollback health verification failed: Production HTTP does not serve the activated exact candidate",
+      "autoRolledBackToV3": true
+    },
+    "interruptedDeploymentSmokeAutoRollback": {
+      "rejected": true,
+      "error": "production smoke command failed: /home/antigravity/.local/node24/bin/node -e const fs=require('fs');if(fs.readFileSync('public/index.php','utf8').includes('v6-fail-smoke'))process.exit(9);: 9",
+      "autoRolledBackToV3": true
+    },
+    "failedRollbackRecovery": {
+      "rollbackRejectedAndRecoveredNewerRelease": true,
+      "error": "rollback smoke command failed: /home/antigravity/.local/node24/bin/node -e const fs=require('fs');if(fs.readFileSync('public/index.php','utf8').includes('v2'))process.exit(11);: 11; restored newer release",
+      "currentPointerRestoredToV3": true
+    },
+    "backupAndRestoreVerificationFailures": {
+      "candidateMismatchRejected": true,
+      "candidateMismatchError": "Production backup receipt does not match the exact candidate/database",
+      "corruptBackupChecksumRejected": true,
+      "corruptBackupError": "Production backup checksum mismatch",
+      "staleBackupRejected": true,
+      "staleBackupError": "Production backup receipt must be fresh within one hour"
+    },
+    "vhostAndCwpTemplateDrift": {
+      "cwpTemplateDriftStatus": "BLOCKED",
+      "cwpTemplateDriftCodes": [
+        "VHOST_CWP_TEMPLATE_DRIFT"
+      ],
+      "docRootDriftStatus": "BLOCKED",
+      "docRootDriftCodes": [
+        "VHOST_DOCUMENT_ROOT_DRIFT",
+        "VHOST_DOCUMENT_ROOT_DRIFT"
+      ]
+    }
+  }
+}

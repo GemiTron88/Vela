@@ -1,0 +1,23 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ai-executionkit@5.0.0-dev test:launch-service:python
+> python3 -m unittest discover -s tests/launch-service -p guard_test.py -v && python3 -m unittest discover -s tests/launch-service -p host_policy_test.py -v
+
+test_busy_runner_rejects_guard_without_cleanup (guard_test.AgentGuardTests.test_busy_runner_rejects_guard_without_cleanup) ... ok
+test_only_owned_registered_worktree_is_reclaimed (guard_test.AgentGuardTests.test_only_owned_registered_worktree_is_reclaimed) ... ok
+test_unknown_cache_is_preserved_and_owned_oversize_cache_is_evicted (guard_test.CacheOwnershipTests.test_unknown_cache_is_preserved_and_owned_oversize_cache_is_evicted) ... ok
+test_hard_policy_never_falls_back_to_watchdog (guard_test.KernelEnforcementTests.test_hard_policy_never_falls_back_to_watchdog) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.068s
+
+OK
+test_every_native_entrypoint_refuses_before_inputs_downloads_or_mutations (host_policy_test.HostPolicyTests.test_every_native_entrypoint_refuses_before_inputs_downloads_or_mutations) ... ok
+test_physical_matching_owner_enrollment_allows_workstation (host_policy_test.HostPolicyTests.test_physical_matching_owner_enrollment_allows_workstation) ... ok
+test_unknown_or_unenrolled_hosts_fail_closed (host_policy_test.HostPolicyTests.test_unknown_or_unenrolled_hosts_fail_closed) ... ok
+test_vps_is_denied_even_with_matching_owner_enrollment (host_policy_test.HostPolicyTests.test_vps_is_denied_even_with_matching_owner_enrollment) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.327s
+
+OK

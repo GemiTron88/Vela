@@ -1,0 +1,50 @@
+name: Execution Integrity
+
+on:
+  workflow_dispatch:
+    inputs:
+      runner_os:
+        description: Self-hosted runner operating system label
+        required: true
+        default: macOS
+        type: choice
+        options:
+          - macOS
+          - windows
+
+permissions:
+  contents: read
+
+jobs:
+  execution-integrity:
+    runs-on:
+      - self-hosted
+      - [PROJECT_RUNNER_LABEL]
+      - "${{ inputs.runner_os }}"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate CI runner policy
+        run: node bin/validate-ci-policy.mjs .
+      - name: Validate Agent OS routing layer
+        run: node bin/validate-agents.mjs .
+      - name: Validate State OS continuity policy
+        run: node bin/validate-state.mjs .
+      - name: Validate ExecutionKit v2.2 runtime/discovery/evidence compatibility policy
+        run: node bin/validate-v22-policy.mjs .
+      - name: Validate ExecutionKit 3.x project integration
+        run: node bin/validate-v30-project.mjs .
+      - name: Validate SEO OS applicability and contract
+        run: node bin/validate-seo.mjs .
+      - name: Validate execution control plane
+        run: node bin/validate-execution.mjs .
+      - name: Validate critical journeys and integration convergence
+        run: node bin/validate-integration.mjs .
+      - name: Validate deep project integration guard
+        run: node bin/validate-deep-integration.mjs .
+      - name: Validate configured product quality contract
+        run: node bin/validate-quality.mjs .
+      - name: Smoke-test lifecycle scheduler
+        run: node bin/next-execution.mjs . --json

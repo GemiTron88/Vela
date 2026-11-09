@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elwazeery.github.io/ai-executionkit/repository-intelligence-config-v1.json",
+  "title": "AI ExecutionKit Repository Intelligence configuration v1",
+  "type": "object",
+  "required": [
+    "enabled",
+    "storage",
+    "privacy",
+    "thresholds",
+    "providers",
+    "context",
+    "refresh",
+    "ingestion"
+  ],
+  "properties": {
+    "enabled": {
+      "type": "boolean"
+    },
+    "storage": {
+      "type": "object",
+      "required": [
+        "portableRoot",
+        "localRoot",
+        "contextPath",
+        "engineeringPath",
+        "externalKnowledgePath"
+      ],
+      "properties": {
+        "portableRoot": {
+          "type": "string",
+          "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+        },
+        "localRoot": {
+          "type": "string",
+          "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+        },
+        "contextPath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.json$"
+        },
+        "engineeringPath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.json$"
+        },
+        "externalKnowledgePath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.json$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "privacy": {
+      "type": "object",
+      "required": [
+        "allowSourceEgress",
+        "includeSecretSensitivePaths",
+        "extraDenyPaths"
+      ],
+      "properties": {
+        "allowSourceEgress": {
+          "const": false
+        },
+        "includeSecretSensitivePaths": {
+          "const": false
+        },
+        "extraDenyPaths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "thresholds": {
+      "type": "object",
+      "required": [
+        "trustedMin",
+        "verifyMin",
+        "degradedMin"
+      ],
+      "properties": {
+        "trustedMin": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "verifyMin": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "degradedMin": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        }
+      },
+      "additionalProperties": false
+    },
+    "providers": {
+      "type": "object",
+      "required": [
+        "required",
+        "optional"
+      ],
+      "properties": {
+        "required": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          }
+        },
+        "optional": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "required": [
+        "maxBytes"
+      ],
+      "properties": {
+        "maxBytes": {
+          "type": "integer",
+          "minimum": 4096,
+          "maximum": 131072
+        }
+      },
+      "additionalProperties": false
+    },
+    "refresh": {
+      "type": "object",
+      "required": [
+        "maxChangedPaths",
+        "maxScopeRatio",
+        "maxChangedSections"
+      ],
+      "properties": {
+        "maxChangedPaths": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "maxScopeRatio": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "maxChangedSections": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        }
+      },
+      "additionalProperties": false
+    },
+    "ingestion": {
+      "type": "object",
+      "required": [
+        "paths",
+        "maxFileBytes",
+        "maxTotalBytes"
+      ],
+      "properties": {
+        "paths": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "maxFileBytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 2097152
+        },
+        "maxTotalBytes": {
+          "type": "integer",
+          "minimum": 1024,
+          "maximum": 16777216
+        }
+      },
+      "additionalProperties": false
+    },
+    "autoConsumption": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "preferred",
+        "fallback"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "preferred": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          }
+        },
+        "fallback": {
+          "const": "native"
+        },
+        "autoIndexCodeGraph": {
+          "type": "boolean"
+        },
+        "useRepomixForAgentContext": {
+          "type": "boolean"
+        },
+        "useRtkForReadonlyGit": {
+          "type": "boolean"
+        },
+        "useTerrainForMacroKnowledge": {
+          "type": "boolean"
+        },
+        "terrainProject": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "executionkit-task-proof/v1",
+  "taskId": "EK5-LAUNCH-RUNTIME-DOMAINS",
+  "stateAtSeal": "ACCEPTED",
+  "phase": "V5",
+  "sealedAt": "2026-10-16T12:47:01.936Z",
+  "taskSource": "TODO.md",
+  "verification": "node --test tests/production-purity.test.mjs tests/production-deployment.test.mjs tests/v4-update-discovery.test.mjs tests/v4-portable-cli.test.mjs; npm run v4:test; npm run validate:distribution; node bin/executionkit-cli.mjs reconcile task . --task EK5-LAUNCH-RUNTIME-DOMAINS --base HEAD~1",
+  "originalEvidence": "docs/v5/evidence/20261016/runtime-domain-policy.json. Full checkout distribution and v4/v5 test verification PASS (production-purity + production-deployment + v4-update-discovery 98/98 PASS; v4:test 444/444 PASS; validate:distribution PASS; validate:self PASS; v5:review PASS; cli:audit 166/166 PASS). Also closed Linux portable CLI activation targetVersion preservation for v5 self-update (`lib/v4-update-discovery.mjs`) and synthetic non-CWP vhost fixture isolation on CWP hosts (`lib/vhost-guard.mjs`, `tests/production-deployment.test.mjs`), and verified installed-consumer update, doctor, upgrade-revalidation and artifact planning on FLOW (Reports capability classes retained, non-runtime control and secret trees excluded).",
+  "code": null,
+  "artifacts": [
+    {
+      "sourcePath": "docs/v5/evidence/20261016/runtime-domain-policy.json",
+      "durablePath": "docs/execution/evidence/tasks/EK5-LAUNCH-RUNTIME-DOMAINS/artifacts/01-runtime-domain-policy.json",
+      "sha256": "24c16999324ffc04bb97d18bc0828fd3b953638ed6ddd1333d2c31a00c018062",
+      "bytes": 2474
+    },
+    {
+      "sourcePath": "lib/v4-update-discovery.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK5-LAUNCH-RUNTIME-DOMAINS/artifacts/02-v4-update-discovery.mjs",
+      "sha256": "45191b75e02b18432fe7abd9e059dcd986bfbdbd7f959aa720acde59eeb2cb17",
+      "bytes": 21523
+    },
+    {
+      "sourcePath": "lib/vhost-guard.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK5-LAUNCH-RUNTIME-DOMAINS/artifacts/03-vhost-guard.mjs",
+      "sha256": "5d8fce118da975bcd0436899457066fad79e1a4b733a1102c6f6f8a65a04d772",
+      "bytes": 14243
+    },
+    {
+      "sourcePath": "tests/production-deployment.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK5-LAUNCH-RUNTIME-DOMAINS/artifacts/04-production-deployment.test.mjs",
+      "sha256": "ead8513bf79b86188b05c33a3f8b21f18aa2a59fb82485239262c71f40de1218",
+      "bytes": 52960
+    }
+  ],
+  "extra": {}
+}

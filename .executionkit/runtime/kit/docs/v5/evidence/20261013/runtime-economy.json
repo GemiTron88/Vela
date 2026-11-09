@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "executionkit-source-verification/v1",
+  "testedCommit": "2ea58eb39ccf0f000f5e2c8d72cafe14ffb4d87f",
+  "testedTree": "371d806a9898193bf9e697ad9c76526aaa74fa8b",
+  "version": "4.1.0",
+  "command": "npm run v4:check",
+  "tests": 1122,
+  "pass": 1118,
+  "fail": 0,
+  "skipped": 4,
+  "requiredFiles": 118,
+  "minimumPassedTests": 600,
+  "durationMs": 86752.548283,
+  "logSha256": "f8af9440def4afade094cb54a55ac9afb9522eebbc098d830821ffc7f8b0241c",
+  "sourceChecks": [
+    {
+      "stage": "validate:self",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:parallel-agent-os",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:operator-entry",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:v30",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:v30-docs",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:examples",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:ci-policy",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:canonical-docs",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:local-bootstrap",
+      "exitCode": 0
+    },
+    {
+      "stage": "validate:distribution",
+      "exitCode": 0
+    }
+  ],
+  "measurements": [
+    {
+      "source": "baseline",
+      "entry": "executionkit-cli.mjs",
+      "median_ms": 183.5,
+      "output_bytes": 4601
+    },
+    {
+      "source": "baseline",
+      "entry": "executionkit.mjs",
+      "median_ms": 77.9,
+      "output_bytes": 5056
+    },
+    {
+      "source": "current",
+      "entry": "executionkit-cli.mjs",
+      "median_ms": 83.5,
+      "output_bytes": 3429
+    },
+    {
+      "source": "current",
+      "entry": "executionkit.mjs",
+      "median_ms": 92.2,
+      "output_bytes": 3429
+    }
+  ],
+  "measurementScope": "5 help invocations per entry during local regression load; not general latency certification",
+  "productionDeployed": false,
+  "v5Published": false,
+  "physicalTargetsCertified": false,
+  "publishedAcceptance": {
+    "mainCommit": "48745c85cd83b39b7af94055ca33a1ea781d6ca2",
+    "tree": "008d3401baabdc9ffa60bcf4605d7f6b5e5ede4e",
+    "testedRecoveryCommit": "cc92f974873e87a443cbd98b8a52e7092e7dcf5b",
+    "exactTreeMatch": true,
+    "command": "npm run v4:check",
+    "tests": 1122,
+    "pass": 1118,
+    "fail": 0,
+    "skipped": 4,
+    "durationMs": 93113.015367,
+    "logSha256": "1aede184429b5f32b36339f31f59f999852c00054b8b14386d18f74c4d4190a7",
+    "sourceValidationCommit": "48745c85cd83b39b7af94055ca33a1ea781d6ca2",
+    "sourceChecks": [
+      {
+        "stage": "validate:self",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:parallel-agent-os",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:operator-entry",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:v30",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:v30-docs",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:examples",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:ci-policy",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:canonical-docs",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:local-bootstrap",
+        "exitCode": 0
+      },
+      {
+        "stage": "validate:distribution",
+        "exitCode": 0
+      }
+    ]
+  }
+}

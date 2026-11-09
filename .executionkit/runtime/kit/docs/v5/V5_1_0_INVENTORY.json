@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "executionkit-reconciliation-inventory/v1",
+  "sourceCommit": "821407ca7173b98180b43195a341ea88e80adbda",
+  "sourceTree": "22d94e8d96c343eccc36090a051a9d22d223b0fd",
+  "trackedSourceFiles": 1159,
+  "families": {
+    "bin": {
+      "files": 135,
+      "bytes": 812175
+    },
+    "lib": {
+      "files": 192,
+      "bytes": 2414206
+    },
+    "contracts": {
+      "files": 13,
+      "bytes": 102073
+    },
+    "schemas": {
+      "files": 32,
+      "bytes": 225645
+    },
+    ".agents/skills": {
+      "files": 27,
+      "bytes": 55674
+    },
+    ".agents/rules": {
+      "files": 1,
+      "bytes": 3882
+    },
+    ".agents/workflows": {
+      "files": 0,
+      "bytes": 0
+    },
+    ".agents/contracts": {
+      "files": 7,
+      "bytes": 8532
+    },
+    "templates": {
+      "files": 87,
+      "bytes": 356000
+    },
+    "tests": {
+      "files": 147,
+      "bytes": 1460000
+    },
+    ".github/workflows": {
+      "files": 5,
+      "bytes": 17487
+    },
+    "docs": {
+      "files": 284,
+      "bytes": 5002000
+    }
+  },
+  "agentResources": {
+    "roles": 3,
+    "skills": 27,
+    "rules": 1,
+    "workflows": 0,
+    "contracts": 7,
+    "templates": 1
+  },
+  "routes": 8,
+  "supplements": 29,
+  "instructions": [
+    "AGENTS.md",
+    "examples/large/AGENTS.md",
+    "examples/medium/AGENTS.md",
+    "examples/small/AGENTS.md",
+    "templates/AGENTS.md"
+  ],
+  "scope": "Materialized original source inventory; enumeration is not manual semantic review or release acceptance."
+}

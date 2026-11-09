@@ -48,3 +48,9 @@ core/libs/*.jar
 # Python bytecode
 __pycache__/
 *.pyc
+
+# EXECUTIONKIT_V4_PROVIDER_DERIVED:START
+.codegraph/
+.terrain/
+.litho-agent/
+# EXECUTIONKIT_V4_PROVIDER_DERIVED:END

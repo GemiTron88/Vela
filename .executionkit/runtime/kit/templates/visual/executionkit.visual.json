@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "executionkit-visual-config/v2",
+  "app": {"identity": "[PROJECT_ID]", "environment": "test"},
+  "budgets": {"maxCells": 160, "maxCellsPerSurface": 40, "timeoutMs": 300000, "maxReviewCalls": 160},
+  "locales": [{"locale": "ar", "direction": "rtl"}, {"locale": "en", "direction": "ltr"}],
+  "themes": ["light", "dark"],
+  "viewports": [{"id": "compact-mobile", "width": 375, "height": 812}, {"id": "desktop", "width": 1440, "height": 900}],
+  "surfaces": [],
+  "capture": {"producerId": "project-renderer", "dataPolicy": "synthetic-fixtures", "baseUrl": "http://127.0.0.1:8000", "probeUrl": "http://127.0.0.1:8000/testing/visual-build", "playwrightPackage": "tests/agentic/package.json", "hook": "tests/visual/project-hooks.mjs", "redactionSelectors": [], "fullPage": true},
+  "critic": {"provider": "antigravity", "reviewerId": "antigravity-visual-inspector"},
+  "maxEvidenceAgeHours": 24,
+  "autoRunOnBoundary": true,
+  "retention": {"ciDays": 14, "releaseDays": 365, "commitImages": false}
+}

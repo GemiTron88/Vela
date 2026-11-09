@@ -1,0 +1,342 @@
+{
+  "schemaVersion": "executionkit-v4-reconciliation/v1",
+  "status": "PASS",
+  "boundary": "task",
+  "taskId": "VELA-FORK-01",
+  "base": "HEAD~1",
+  "identityMode": "FAST_TASK",
+  "beforeHead": "6050fb2823a8509323f72a9107e7036165d2dfd1",
+  "head": "6050fb2823a8509323f72a9107e7036165d2dfd1",
+  "candidateId": null,
+  "commit": null,
+  "preStatusHash": "eca18588be3969aac1eed5a85359a84995abfac862c0f87c74a1475da2d6ef87",
+  "worktreeFingerprint": "512da34819d1bf3dcdaacde1768e1a1e33d817626b2279c815e4fd96dcabf506",
+  "systems": {
+    "test": {
+      "status": "DEFERRED_TO_WAVE_OR_PHASE",
+      "boundary": "task",
+      "automatic": false
+    },
+    "content": {
+      "status": "DEFERRED_TO_WAVE_OR_PHASE",
+      "boundary": "task"
+    },
+    "seo": {
+      "status": "DEFERRED_TO_WAVE_OR_PHASE",
+      "boundary": "task"
+    },
+    "docs": {
+      "status": "DEFERRED_TO_WAVE_OR_PHASE",
+      "write": null,
+      "commit": {
+        "status": "NOT_APPLICABLE",
+        "commit": null
+      }
+    },
+    "visual": {
+      "status": "DEFERRED_TO_WAVE_OR_PHASE",
+      "boundary": "task"
+    },
+    "decision": {
+      "status": "PASS",
+      "advice": {
+        "schemaVersion": "executionkit-decision-os/v1",
+        "status": "AVAILABLE",
+        "advisoryOnly": true,
+        "engine": "BUNDLED_DETERMINISTIC",
+        "result": {
+          "schemaVersion": 2,
+          "requestId": "78579989-edd6-43f5-9f14-31a70608c9d3",
+          "decision": "REVIEW",
+          "advisoryOnly": true,
+          "policyClass": "ADVISORY_REVIEW",
+          "reasons": [
+            "KB_LARGE_CHANGE_TRIAGE",
+            "LARGE_SCOPE_REVIEW"
+          ],
+          "knowledgeVersion": "10beb3b5a6a630cf",
+          "appliedRuleIds": [
+            "architecture.broad-change",
+            "architecture.large-change"
+          ],
+          "factIds": [
+            "quality.practice.01",
+            "quality.practice.02",
+            "quality.practice.03",
+            "quality.practice.04"
+          ]
+        },
+        "providerReadiness": null,
+        "knowledge": {
+          "source": "BUNDLED",
+          "revision": 16,
+          "version": "10beb3b5a6a630cf"
+        },
+        "enforcement": {
+          "status": "NO_AUTHORITY_GRANT",
+          "mandatoryBlock": false,
+          "reasons": [],
+          "owner": "EXECUTIONKIT_LOCAL_POLICY"
+        },
+        "localOnly": true,
+        "hotPathCalls": false,
+        "plan": {
+          "schemaVersion": "executionkit-decision-plan/v1",
+          "status": "PASS",
+          "blocking": false,
+          "taskId": "VELA-FORK-01",
+          "goalDigest": "838498a3bccc720942c49236485a0e5a22d9252c16286f28adfafe36a83c08ee",
+          "reasons": [],
+          "outsideFiles": [],
+          "outsideFileCount": 0,
+          "semanticAlignment": "REQUIRES_HUMAN_REVIEW",
+          "requiresOwnerReview": false,
+          "nextCommand": null
+        }
+      }
+    }
+  },
+  "productClosure": {
+    "schemaVersion": "executionkit-v4-product-closure/v1",
+    "status": "DEFERRED_TO_WAVE_OR_PHASE"
+  },
+  "fabrics": {
+    "database": {
+      "schemaVersion": "executionkit-database-guard/v1",
+      "status": "NOT_APPLICABLE",
+      "ok": true,
+      "findings": [],
+      "performance": {
+        "filesScanned": 0,
+        "contentReads": 0,
+        "durationMs": 33.85,
+        "fastExit": true
+      }
+    },
+    "route": {
+      "schemaVersion": "executionkit-route-integrity/v1",
+      "status": "NOT_APPLICABLE",
+      "applicable": false,
+      "framework": null,
+      "cacheHit": false,
+      "ok": true,
+      "guardStatus": "NOT_APPLICABLE"
+    },
+    "surface": {
+      "schemaVersion": "executionkit-surface-guard/v1",
+      "status": "PASS",
+      "ok": true,
+      "scope": "SOURCE_ONLY",
+      "kind": "all",
+      "findings": [],
+      "reviewFindings": [],
+      "assetPlan": null,
+      "scannedFiles": [
+        ".github/workflows/executionkit-v4.yml"
+      ],
+      "locales": [],
+      "runtimeEvidenceRequired": [
+        "form-success-and-validation",
+        "no-unexpected-5xx",
+        "local-loaded-assets",
+        "translated-rendered-ui",
+        "real-business-data-and-failure-states",
+        "mobile-responsive",
+        "candidate-bound-lighthouse"
+      ],
+      "nextCommand": null
+    }
+  },
+  "systemGapTasking": {
+    "schemaVersion": "executionkit-v4-system-gap-groups/v1",
+    "status": "NOT_APPLICABLE",
+    "boundary": "task",
+    "results": {},
+    "createdOrReopened": 0,
+    "tracked": 0,
+    "blockingFindings": 0,
+    "commit": {
+      "status": "NOT_APPLICABLE",
+      "commit": null
+    }
+  },
+  "knowledge": {
+    "sourceContext": {
+      "status": "ON_DEMAND_NATIVE_ONLY"
+    },
+    "impact": {
+      "status": "DEFERRED_TO_WAVE_OR_PHASE"
+    },
+    "gitRead": {
+      "status": "SKIPPED_FAST_TASK"
+    },
+    "docsContext": {
+      "status": "DEFERRED_TO_WAVE_OR_PHASE"
+    }
+  },
+  "blockingSystems": [],
+  "reviewSystems": [],
+  "reconciledAt": "2026-11-09T07:01:03.577Z",
+  "gatePath": ".executionkit/gates/reconcile-task.json",
+  "state": {
+    "status": "CHECKPOINTED",
+    "snapshot": {
+      "schemaVersion": "1.0.0",
+      "authority": "DERIVED_NON_AUTHORITATIVE",
+      "identityMode": "FAST_TASK",
+      "capturedAt": "2026-11-09T07:01:03.611Z",
+      "reason": "v4-task-reconciliation",
+      "standardVersion": "5.2.3",
+      "canonical": {
+        "todo": {
+          "path": "TODO.md",
+          "exists": true,
+          "sha256": "d9aa3970ffe1454dcf5a625cc3d1077e01e945714c929185af661c44a85cef8c",
+          "sources": [
+            "TODO.md"
+          ],
+          "errors": []
+        },
+        "executionConfig": {
+          "path": "execution.config.json",
+          "exists": true,
+          "sha256": "90f60e152d25e94593a76b82aeafd1fa497aaa842e073d9d3245393ccd34afaa"
+        },
+        "agentManifest": {
+          "path": ".agents/manifest.json",
+          "exists": true,
+          "sha256": "28a9a77a3436fb2d12232f157f3611eeec386516e27e869febb386a70b790112"
+        }
+      },
+      "repository": {
+        "available": true,
+        "head": "6050fb2823a8509323f72a9107e7036165d2dfd1",
+        "branch": "main",
+        "dirty": null,
+        "dirtyPaths": [],
+        "workingTreeHash": null,
+        "upstream": "origin/main",
+        "ahead": 0,
+        "behind": 0,
+        "repositoryKey": "26bcea1b4a2844843ef6044f57fe563930129e925718db63215826299a1dc06c",
+        "error": null,
+        "identityMode": "FAST_TASK"
+      },
+      "lifecycle": {
+        "status": "READY",
+        "task": {
+          "id": "VELA-FORK-01",
+          "observedState": "READY",
+          "semanticState": "READY",
+          "title": "Fork Vela into GemiTron88 with preserved history and extract MapTron navigation foundation"
+        },
+        "action": "implement",
+        "routeId": "route.implementation",
+        "resourceIds": {
+          "roles": [
+            "role.implementer"
+          ],
+          "skills": [
+            "skill.state-rehydration",
+            "skill.task-context",
+            "skill.implementation"
+          ],
+          "rules": [
+            "rule.todo-authority",
+            "rule.closure",
+            "rule.evidence",
+            "rule.delegation",
+            "rule.antigravity-v4-entry"
+          ],
+          "workflows": [],
+          "contracts": [
+            "contract.routing",
+            "contract.closure",
+            "contract.handoff"
+          ],
+          "templates": [
+            "template.handoff"
+          ]
+        },
+        "dependencies": [],
+        "closure": {
+          "closed": false,
+          "active": 1,
+          "terminal": 0,
+          "nonTerminal": 1,
+          "blocked": 0,
+          "nonTerminalTaskIds": [
+            "VELA-FORK-01"
+          ],
+          "blockedTaskIds": [],
+          "integrationIssues": []
+        }
+      },
+      "repositoryIntelligence": {
+        "authority": "ADVISORY_SOURCE_GROUNDED",
+        "enabled": true,
+        "status": "MISSING",
+        "trustState": "UNAVAILABLE",
+        "artifactId": null,
+        "baselineSha": null,
+        "currentHead": null,
+        "generatedAt": null,
+        "provider": null
+      },
+      "productClosure": {
+        "status": "UNOBSERVED",
+        "current": false,
+        "repositoryHead": null,
+        "blockingCount": null,
+        "taskIds": []
+      },
+      "working": {
+        "files": [],
+        "contextHealth": "HEALTHY",
+        "nextSafeAction": "resolve-next-live-action",
+        "note": "Lightweight task reconciliation PASS for VELA-FORK-01"
+      },
+      "evidenceRefs": [
+        ".executionkit/gates/reconcile-task.json"
+      ],
+      "runtime": null,
+      "memoryPolicy": {
+        "mode": "auto",
+        "authority": "advisory",
+        "requireLiveRevalidation": true,
+        "allowTaskState": false
+      }
+    },
+    "identityMode": "FAST_TASK"
+  },
+  "performance": {
+    "durationMs": 359,
+    "stages": [
+      {
+        "stage": "changed-files",
+        "durationMs": 137
+      },
+      {
+        "stage": "database-integrity",
+        "durationMs": 35
+      },
+      {
+        "stage": "route-integrity",
+        "durationMs": 1
+      },
+      {
+        "stage": "surface-integrity",
+        "durationMs": 40
+      },
+      {
+        "stage": "decision-postflight",
+        "durationMs": 21
+      },
+      {
+        "stage": "state-checkpoint",
+        "durationMs": 121
+      }
+    ],
+    "slowestStage": "changed-files"
+  }
+}

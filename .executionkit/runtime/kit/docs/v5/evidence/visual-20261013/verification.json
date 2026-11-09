@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "executionkit-visual-remediation-evidence/v1",
+  "status": "PASS",
+  "scope": "SOURCE_AND_ISOLATED_INFRASTRUCTURE_FIXTURES",
+  "codeCommit": "4569a743af4299e23666f99780658595d2f53558",
+  "codeTree": "99afe5be03cd63517b2ae142028aa3697293d30c",
+  "parent": "5e288c90e82a317ce703fa2c76a0f6594e29f9e3",
+  "runtime": "v24.19.0",
+  "command": "node bin/run-tests.mjs --target tests/visual-os-v2.test.mjs --target tests/v4-audit-evidence.test.mjs --target tests/v4-visual-evidence.test.mjs --target tests/v5-decision-os.test.mjs --target tests/v4-reconcile.test.mjs --target tests/v4-boundary.test.mjs --target tests/v4-upgrade-revalidation.test.mjs",
+  "exitCode": 0,
+  "tap": {
+    "tests": 96,
+    "pass": 96,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "duration_ms": 9415.94068
+  },
+  "originalMatrix": "Six isolated combinations using original Git source returned PASS for pending visual review; see visual-original-matrix.json",
+  "redBefore": {
+    "negativeCases": 3,
+    "exitCode": 1,
+    "scope": "Infrastructure assertions, not product screenshots"
+  },
+  "domCollector": "DOM model fixture; CSS/font/occlusion/hidden-modal cases tested",
+  "pendingRuns": "Repeated pending boundaries and later certification retain a single current run",
+  "pixelBudget": "Refusal before screenshot allocation tested",
+  "sourceBlobIds": {
+    "bin/visual-boundary.mjs": "1a66692b0645be396b412e03989d45bf038c4d8e",
+    "lib/v4-audit-evidence.mjs": "bbb488edcbe638421a25da72e07bd515be5d1e64",
+    "lib/v4-invariant-registry.mjs": "a5616a801a7efd84733f244339727c6aa0756e0e",
+    "lib/v4-reconcile.mjs": "154435259c13ce3a04c61dd49af88a1e16b7cc42",
+    "lib/visual-audit.mjs": "40fcf32ed7c37495e5c2c6b3a40f0af9da93d2a8",
+    "lib/visual-boundary.mjs": "655e4dcb86835088e3614d6066aa289218fc5982",
+    "lib/visual-capture.mjs": "211b0265c27d67a2e4773fcd01bd4344e8970a0c",
+    "lib/visual-critic.mjs": "3e89986ab5b91c72567c3ff4eefc059f6c96e9f0",
+    "lib/visual-geometry.mjs": "c2af71f7b71a2636851ca9c89a83025d15c6b6f6",
+    "lib/visual-image.mjs": "26687e5849710d9ce6737d667571f03bc6ce93a9",
+    "lib/visual-os.mjs": "9496c29e81137c2e3a3ec4ed1aa145d867ffbfda",
+    "templates/AGENTS_V5.md": "74c490cbc3b66190124e165d98d9be9fc8f239ae",
+    "templates/visual/executionkit.visual.json": "42371b8761e2bbc941fe0a76c8b42ad717da2c45",
+    "tests/v4-audit-evidence.test.mjs": "ab68605f43944bfb0967794dd16fc5e48ca4091c",
+    "tests/visual-os-v2.test.mjs": "3b2cb9756fd32cbe78ebcb19e987dbe8352781e5"
+  },
+  "checks": {
+    "agents": "PASS",
+    "canonicalDocumentation": "PASS",
+    "todo": "PASS, 102 tasks, six historical warnings",
+    "syntax": "Affected helpers checked",
+    "fullSuite": "NOT_RERUN"
+  },
+  "nativeReview": {
+    "tool": "collaboration.spawn_agent",
+    "returnedTaskName": "/root/visual_gate_review",
+    "completed": true,
+    "followupCompleted": true,
+    "scope": "READ_ONLY_SOURCE_REVIEW; no reviewer tests or client access"
+  },
+  "visualInvariant": {
+    "before": 3,
+    "after": 4,
+    "oldPresentationEvidence": "Requires fresh capture/revalidation"
+  },
+  "unverified": [
+    "Actual Tayf installed source/version and run receipts",
+    "Actual Tayf screenshots/cell reviews/certification lifecycle",
+    "Real browser/device/product visual acceptance",
+    "Production asset delivery and approved client rollout",
+    "Complete current v5 phase convergence"
+  ],
+  "browserEnvironment": "Playwright available; terminal Chromium executable absent. No real browser execution claimed.",
+  "scopeCompliance": {
+    "TayfRepositoryAccessed": false,
+    "FLOWAccessed": false,
+    "ProductionMutated": false,
+    "NativeMobileWorkloadsExecuted": false,
+    "LegacyRepositoryBackupsCreated": false
+  },
+  "logSha256": {
+    "visual-final.log": "a98f8fa50a71643555cc4b20c093b4d7e38c9af5e775c07e9c5a4d6b2d12e009",
+    "visual-pending-confirmed.log": "1a6b4dde83b5b326038db582efc7eca620226504787ece3e05247b8c8dd1e962",
+    "visual-agents.log": "1a3189b89c9b2f836638cd254700cdfda3e77e44f7c45928a93face0fe18d6ff",
+    "visual-before.tap": "cb44dd2bbe570f5d53a85c49c28d7e193d1002008f719ccd7487b657c5e1a2f6",
+    "visual-original-matrix.json": "ccec5045e5a7dbb504f22d22549875f60b95fabf996584e9e35151570d09d4f9",
+    "visual-todo.log": "09c28cd383909f1f1bdd8f376fe37aab0e2a7316884c6e78ce3ff4118737617b",
+    "visual-docs.log": "920b591dfc446cc2f0c6cf7a299ee7edb6743f998ea4b50da5a0d93ab5eeca9d"
+  }
+}

@@ -1,0 +1,21 @@
+parity-kit-v4.log
+# tests 1007
+# pass 1007
+# fail 0
+ℹ tests 367
+ℹ pass 367
+ℹ fail 0
+ℹ tests 1
+ℹ pass 1
+ℹ fail 0
+parity-kit-focused.log
+ℹ tests 26
+ℹ pass 26
+ℹ fail 0
+parity-api-full.log
+ℹ tests 61
+ℹ pass 61
+ℹ fail 0
+parity-python.log
+Ran 10 tests in 2.398s
+OK

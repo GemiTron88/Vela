@@ -1,0 +1,7 @@
+{
+  "id": "flow", "package_id": "com.elwazeery.flow",
+  "repository": "https://github.com/Elwazeery/FLOW", "flutter_path": "flutter_app",
+  "flutter_version": "3.47.7", "signing_sha256": null,
+  "required_device_gates": ["install_launch", "package_replacement", "sms_recovery"],
+  "public_updates": true
+}

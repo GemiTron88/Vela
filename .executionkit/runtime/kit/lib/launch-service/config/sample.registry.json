@@ -1,0 +1,7 @@
+{
+  "id": "sample", "package_id": "org.example.release_sample",
+  "repository": "https://github.com/Elwazeery/APKrelease", "flutter_path": "examples/sample_app",
+  "flutter_version": "3.47.7", "signing_sha256": null,
+  "required_device_gates": ["install_launch", "package_replacement"],
+  "public_updates": true
+}

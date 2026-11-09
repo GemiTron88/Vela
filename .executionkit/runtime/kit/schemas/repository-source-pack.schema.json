@@ -1,0 +1,31 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://elwazeery.github.io/ai-executionkit/repository-source-pack-v1.json",
+  "title":"AI ExecutionKit Native Source Pack v1",
+  "type":"object",
+  "required":["schemaVersion","generatedAt","repository","provider","limits","metrics","files","skipped"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "generatedAt":{"type":"string","format":"date-time"},
+    "repository":{
+      "type":"object",
+      "required":["key","isGit","baselineSha","dirty","dirtyPaths","workingTreeFingerprint"],
+      "properties":{
+        "key":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+        "isGit":{"type":"boolean"},
+        "baselineSha":{"type":["string","null"],"pattern":"^[A-Fa-f0-9]{7,64}$"},
+        "branch":{"type":["string","null"]},
+        "dirty":{"type":"boolean"},
+        "dirtyPaths":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+        "workingTreeFingerprint":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+      },
+      "additionalProperties":true
+    },
+    "provider":{"type":"object","required":["id","version"],"properties":{"id":{"const":"native-source-pack"},"version":{"type":"string","minLength":1}},"additionalProperties":false},
+    "limits":{"type":"object","required":["maxFiles","maxFileBytes","maxTotalBytes","maxEstimatedTokens"],"properties":{"maxFiles":{"type":"integer","minimum":1},"maxFileBytes":{"type":"integer","minimum":1},"maxTotalBytes":{"type":"integer","minimum":1},"maxEstimatedTokens":{"type":"integer","minimum":1}},"additionalProperties":false},
+    "metrics":{"type":"object","required":["fileCount","totalBytes","totalEstimatedTokens","candidateCount","skippedCount"],"properties":{"fileCount":{"type":"integer","minimum":0},"totalBytes":{"type":"integer","minimum":0},"totalEstimatedTokens":{"type":"integer","minimum":0},"candidateCount":{"type":"integer","minimum":0},"skippedCount":{"type":"integer","minimum":0}},"additionalProperties":false},
+    "files":{"type":"array","items":{"type":"object","required":["path","bytes","estimatedTokens","sha256","lineCount","language","content"],"properties":{"path":{"type":"string","minLength":1},"bytes":{"type":"integer","minimum":0},"estimatedTokens":{"type":"integer","minimum":0},"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},"lineCount":{"type":"integer","minimum":0},"language":{"type":"string"},"content":{"type":"string"}},"additionalProperties":false}},
+    "skipped":{"type":"array","items":{"type":"object","required":["path","reason"],"properties":{"path":{"type":"string"},"reason":{"enum":["generated_or_internal","sensitive_path","configured_deny","unsafe_path","file_limit","path_escape","unreadable","symlink","file_too_large","binary","secret_detected","budget"]}},"additionalProperties":false}}
+  },
+  "additionalProperties":false
+}

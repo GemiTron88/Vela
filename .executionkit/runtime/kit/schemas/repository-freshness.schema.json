@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://elwazeery.github.io/ai-executionkit/repository-freshness-v1.json",
+  "title":"AI ExecutionKit Repository Knowledge Freshness v1",
+  "type":"object",
+  "required":["schemaVersion","artifactId","measuredAt","currentHead","baselineSha","scopes","drift","trust"],
+  "properties":{
+    "schemaVersion":{"const":"1.0.0"},
+    "artifactId":{"type":["string","null"]},
+    "measuredAt":{"type":"string","format":"date-time"},
+    "repositoryKey":{"type":["string","null"]},
+    "currentHead":{"type":["string","null"]},
+    "baselineSha":{"type":["string","null"]},
+    "scopes":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "drift":{"type":"object","required":["measurable","reason","baselineSha","currentHead","commitsSince","changedPaths","dirtyPaths","relevantChangedPaths","relevantTrackedFiles","changedRatio","scopes"],"properties":{"measurable":{"type":"boolean"},"reason":{"type":["string","null"]},"baselineSha":{"type":["string","null"]},"currentHead":{"type":["string","null"]},"commitsSince":{"type":["integer","null"],"minimum":0},"changedPaths":{"type":"array","items":{"type":"string"},"uniqueItems":true},"dirtyPaths":{"type":"array","items":{"type":"string"},"uniqueItems":true},"relevantChangedPaths":{"type":"array","items":{"type":"string"},"uniqueItems":true},"relevantTrackedFiles":{"type":"integer","minimum":0},"changedRatio":{"type":["number","null"],"minimum":0,"maximum":1},"scopes":{"type":"array","items":{"type":"string"},"uniqueItems":true}},"additionalProperties":false},
+    "trust":{"type":"object","required":["score","state","measured","intrinsicCap","factors","reasons","sourceValidationRequired"],"properties":{"score":{"type":"integer","minimum":0,"maximum":100},"state":{"enum":["TRUSTED","VERIFY","DEGRADED","SOURCE_ONLY","UNAVAILABLE"]},"measured":{"type":"boolean"},"intrinsicCap":{"type":"integer","minimum":0,"maximum":100},"factors":{"type":"object"},"reasons":{"type":"array","items":{"type":"string"},"uniqueItems":true},"sourceValidationRequired":{"type":"boolean"}},"additionalProperties":false}
+  },
+  "additionalProperties":false
+}

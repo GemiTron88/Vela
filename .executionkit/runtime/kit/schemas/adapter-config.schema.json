@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExecutionKit adapter config",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "adapters"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "adapters": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "enum": [
+              "discovery",
+              "evidence",
+              "quality",
+              "runtime",
+              "integration",
+              "security",
+              "data",
+              "health",
+              "audit"
+            ]
+          },
+          "command": {
+            "type": "string"
+          },
+          "args": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "timeoutMs": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "evidenceType": {
+            "type": "string"
+          },
+          "reportPath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minimumTests": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "allowSkipped": {
+            "type": "boolean"
+          },
+          "allowFlaky": {
+            "type": "boolean"
+          },
+          "requireAxe": {
+            "type": "boolean"
+          },
+          "axeEvidencePath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minimumScores": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "requireReports": {
+            "type": "boolean"
+          },
+          "integrationCommand": {
+            "type": "string"
+          },
+          "requireIntegration": {
+            "type": "boolean"
+          },
+          "goldenCommand": {
+            "type": "string"
+          },
+          "requireGolden": {
+            "type": "boolean"
+          },
+          "semanticsCommand": {
+            "type": "string"
+          },
+          "requireSemantics": {
+            "type": "boolean"
+          },
+          "profileBuildCommand": {
+            "type": "string"
+          },
+          "requireProfileBuild": {
+            "type": "boolean"
+          },
+          "deviceCommand": {
+            "type": "string"
+          },
+          "requireDevice": {
+            "type": "boolean"
+          },
+          "checks": {
+            "type": "array"
+          },
+          "requiredDomains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "observationBoundary": {
+            "enum": [
+              "external-black-box",
+              "browser-black-box",
+              "runtime-black-box",
+              "device-black-box",
+              "integration-fixture"
+            ]
+          },
+          "journeyCoverage": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "scenarioReportPath": {
+            "type": "string",
+            "minLength": 1
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "boundaries": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "ad-hoc",
+                "wave",
+                "phase",
+                "release"
+              ]
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "testFormat": {
+            "enum": [
+              "tap",
+              "junit",
+              "playwright",
+              "flutter-machine"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,12 @@
+import {readFile} from 'node:fs/promises';
+import {canonical, hash} from './contracts.mjs';
+const [command, project, argument] = process.argv.slice(2);
+const base = process.env.MOBILE_RELEASE_URL;
+if (!base || !(base.startsWith('https://') || /^http:\/\/127\.0\.0\.1:\d+$/.test(base))) throw Error('MOBILE_RELEASE_URL must use HTTPS or loopback');
+const token = process.env.MOBILE_RELEASE_TOKEN;
+const map = {provider: ['POST', `/v1/projects/${project}/provider/receipts`], signing: ['POST', `/v1/projects/${project}/signing/establish`], register: ['POST', '/v1/projects'], list: ['GET', '/v1/projects'], releases: ['GET', `/v1/projects/${project}/releases`], journal: ['GET', `/v1/projects/${project}/journal`], jobs: ['GET', `/v1/projects/${project}/jobs`], enqueue: ['POST', `/v1/projects/${project}/jobs`], receipt: ['POST', `/v1/projects/${project}/receipts`], release: ['POST', `/v1/projects/${project}/releases`], approve: ['POST', `/v1/projects/${project}/approvals`], promote: ['POST', `/v1/projects/${project}/promotions`], manifest: ['GET', `/v1/projects/${project}/manifest/${argument ?? 'stable'}`]};
+if (!map[command]) throw Error('Commands: register <config.json>, list, releases/journal/jobs <project>, enqueue/receipt/release/approve/promote <project> <json-file>, manifest <project> <channel>');
+const [method, route] = map[command];
+const payload = method === 'POST' ? JSON.parse(await readFile(command === 'register' ? project : argument, 'utf8')) : null;
+const response = await fetch(base + route, {method, redirect: 'error', signal: AbortSignal.timeout(30000), headers: {'Content-Type': 'application/json', ...(token ? {Authorization: `Bearer ${token}`} : {}), ...(payload ? {'Idempotency-Key': hash(canonical({command, payload})).slice(0,64)} : {})}, body: payload ? JSON.stringify(payload) : undefined});
+const data = await response.json(); console.log(JSON.stringify(data, null, 2)); if (!response.ok) process.exitCode = 1;

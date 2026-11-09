@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "executionkit-v5-patch-acceptance/v1",
+  "version": "5.0.1",
+  "previousReleaseTag": "v5.0.0",
+  "previousReleaseCommit": "fabcd563cd8d1b39b84ff2490525e25dd31c0d60",
+  "executedAt": "2026-10-15T00:39:25.714Z",
+  "workstation": {
+    "hostname": "DESKTOP-717CK7V",
+    "os": "Microsoft Windows 10 Pro (10.0.19045)",
+    "arch": "win32-x64",
+    "nodeVersion": "v24.12.0",
+    "toolchain": {
+      "flutter": "3.44.0",
+      "dart": "3.12.0",
+      "engine": "4c525dac5ebe5971c5708ef73558ed8edcf4a362",
+      "channel": "stable"
+    },
+    "androidSdkTools": {
+      "apksigner": "C:\\Users\\elwaz\\AppData\\Local\\Android\\Sdk\\build-tools\\36.1.0\\apksigner.bat",
+      "apkanalyzer": "C:\\Users\\elwaz\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.bat",
+      "javaHome": "C:\\Program Files\\Android\\Android Studio\\jbr"
+    },
+    "hostFingerprint": "e4e6f94e7f152495330a30da1c6a56e209f57c4f4913c34f16fb94e42db4d1c6"
+  },
+  "remediatedCriticalDefects": [
+    {
+      "id": "CRITICAL-DEFECT-01",
+      "title": "Eliminate false PASS mobile test gates when skipTests=true",
+      "files": [
+        "lib/launch-mobile.mjs",
+        "lib/launch-service/src/service.mjs",
+        "lib/decision/quality-signals.mjs",
+        "lib/decision/policy.mjs"
+      ],
+      "verifiedBehavior": {
+        "skipTestsFalse": {
+          "analyzeGate": {
+            "name": "analyze",
+            "status": "PASS",
+            "exit_code": 0,
+            "evidence_sha256": "e5c0c1c5222b57c294842d294e735246e53f07b76411012ab74f9e670cbf0589"
+          },
+          "unitGate": {
+            "name": "unit",
+            "status": "PASS",
+            "exit_code": 0,
+            "evidence_sha256": "83d7627a6e061bf6649cb8a230649edd27c7f540de155e3501b8e7f356e1920a"
+          },
+          "widgetGate": {
+            "name": "widget",
+            "status": "PASS",
+            "exit_code": 0,
+            "evidence_sha256": "83d7627a6e061bf6649cb8a230649edd27c7f540de155e3501b8e7f356e1920a"
+          },
+          "testsExecuted": true,
+          "testsPassed": true
+        },
+        "skipTestsTrue": {
+          "analyzeGate": {
+            "name": "analyze",
+            "status": "NOT_TESTED",
+            "exit_code": null,
+            "evidence_sha256": null
+          },
+          "unitGate": {
+            "name": "unit",
+            "status": "NOT_TESTED",
+            "exit_code": null,
+            "evidence_sha256": null
+          },
+          "widgetGate": {
+            "name": "widget",
+            "status": "NOT_TESTED",
+            "exit_code": null,
+            "evidence_sha256": null
+          },
+          "testsExecuted": false,
+          "testsPassed": false,
+          "releaseReady": false,
+          "launchServiceReleaseStatus": 409,
+          "launchServiceReleaseErrorCode": "QUALITY_GATE_FAILED",
+          "decisionOsVerdict": "DENY",
+          "decisionOsReasonCodes": [
+            "QUALITY_EVIDENCE_REQUIRED",
+            "INSUFFICIENT_EVIDENCE",
+            "EXTERNAL_RELEASE_AUTHORITY_REQUIRED",
+            "RELEASE_EVIDENCE_REQUIRED"
+          ]
+        }
+      }
+    },
+    {
+      "id": "CRITICAL-DEFECT-02",
+      "title": "Eliminate synthetic handoff test evidence and enforce provenance-verified test receipts",
+      "files": [
+        "lib/launch-mobile.mjs",
+        "bin/executionkit-cli.mjs",
+        "lib/v4-cli-contract.mjs"
+      ],
+      "verifiedBehavior": {
+        "lifecycleStates": [
+          "BUILT",
+          "INSPECTED",
+          "HANDOFF_READY",
+          "IMPORTED",
+          "RELEASE_READY",
+          "PUBLISHED"
+        ],
+        "standaloneHandoffWithoutEvidence": "MOBILE_TEST_EVIDENCE_MISSING",
+        "syntheticHashRejected": "MOBILE_TEST_EVIDENCE_SYNTHETIC",
+        "forgedSignatureOrLogHashRejected": "MOBILE_TEST_EVIDENCE_FORGED",
+        "wrongCommitRejected": "MOBILE_TEST_EVIDENCE_COMMIT_MISMATCH",
+        "wrongProjectRejected": "MOBILE_TEST_EVIDENCE_PROJECT_MISMATCH",
+        "wrongPackageRejected": "MOBILE_TEST_EVIDENCE_PACKAGE_MISMATCH",
+        "wrongArtifactShaRejected": "MOBILE_TEST_EVIDENCE_ARTIFACT_MISMATCH",
+        "staleEvidenceRejected": "MOBILE_TEST_EVIDENCE_STALE",
+        "verifiedHandoffStatus": "HANDOFF_READY",
+        "verifiedImportStatus": "IMPORTED",
+        "verifiedImportTestsPassed": true,
+        "verifiedImportReleaseReady": false
+      }
+    },
+    {
+      "id": "CRITICAL-DEFECT-03",
+      "title": "Eliminate hardcoded Flutter 3.41.4 version fallback and enforce live toolchain detection",
+      "files": [
+        "lib/launch-mobile.mjs"
+      ],
+      "verifiedBehavior": {
+        "detectedToolchain": {
+          "flutter": "3.44.0",
+          "dart": "3.12.0",
+          "engine": "4c525dac5ebe5971c5708ef73558ed8edcf4a362",
+          "channel": "stable"
+        },
+        "cliUnavailableRejected": "MOBILE_FLUTTER_CLI_UNAVAILABLE",
+        "malformedOutputRejected": "MOBILE_FLUTTER_VERSION_MALFORMED",
+        "versionMismatchRejected": "MOBILE_FLUTTER_VERSION_MISMATCH"
+      }
+    }
+  ],
+  "consumerCompatibilitySummary": {
+    "ownershipPolicy": "EXTERNAL_CONSUMER_OWNED_BY_FLOW_REPO",
+    "kitRepositoryContainsNoConsumerSourceOrBinaries": true,
+    "project": "FLOW",
+    "repository": "Elwazeery/FLOW",
+    "testedCommitSha": "b0c865eb73273c692d3b45abb5bceeaf68ede18d",
+    "testedUpgradeWorktreeCommitSha": "af75c45408c95173c1ef74c12e557c6b70d81645",
+    "packageId": "com.elwazeery.flow",
+    "testedArtifacts": [
+      {
+        "version": "0.1.0+21",
+        "sourceCommitSha": "b0c865eb73273c692d3b45abb5bceeaf68ede18d",
+        "artifactSha256": "5bd33cd9ec722fd020925f415d12745dc5247a315c1127766c78c186aa1fd8a4",
+        "signingCertSha256": "20f9e2c127b76ae46bed6be06cbebee33023a779a47625e489e40a92cfb25cd0",
+        "inspectionId": "0f9793fa-c6d6-4127-af72-b6ed84545184",
+        "handoffReceiptId": "edd8c7e1-ad6b-421c-bccb-db308b9600af"
+      },
+      {
+        "version": "0.1.1+22",
+        "sourceCommitSha": "af75c45408c95173c1ef74c12e557c6b70d81645",
+        "artifactSha256": "63db005c55164143c968471f771c8703063f98026ce3d5b288212a8147ca9c10",
+        "signingCertSha256": "20f9e2c127b76ae46bed6be06cbebee33023a779a47625e489e40a92cfb25cd0",
+        "inspectionId": "1e06d1c8-8d12-4c7f-bfd1-561efb83241f",
+        "handoffReceiptId": "e28a4893-6745-4fc2-b362-cbbaaa16503c"
+      }
+    ],
+    "gateStatuses": {
+      "platformSmokeMatrixTest": "PASS (19/19 tests in test/platform_smoke_matrix_test.dart)",
+      "fullConsumerTestSuiteDuringSkipTestsBuild": "NOT_TESTED",
+      "apkBuildAndSignatureVerification": "PASS",
+      "androidRuntimeLifecycle": "ANDROID_EMULATOR_VERIFIED"
+    },
+    "lifecycleResultSummary": "ANDROID_EMULATOR_VERIFIED (install, persistent state across restart, monotonic upgrade, mismatched-keystore rejection, downgrade rejection, and rollback verified on workstation Android 11; full consumer test suite is NOT_TESTED when built with --skip-tests; detailed consumer artifacts belong in Elwazeery/FLOW)"
+  }
+}

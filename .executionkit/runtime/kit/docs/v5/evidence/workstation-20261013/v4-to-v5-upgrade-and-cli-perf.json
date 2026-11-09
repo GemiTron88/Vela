@@ -1,0 +1,735 @@
+{
+  "freshV5Install": {
+    "status": "INSTALLED",
+    "targetVersion": "5.0.0-dev",
+    "durationMs": 6559.78,
+    "doctorStatus": "INSTALLED",
+    "doctorErrorCount": 0
+  },
+  "v4ToV5Upgrade": {
+    "v4InstallStatus": "INSTALLED",
+    "v4DoctorStatus": "INSTALLED",
+    "v4DoctorErrorCount": 0,
+    "v5UpgradeStatus": "INSTALLED",
+    "v5UpgradeDurationMs": 4523.35,
+    "v5StandardVersion": "5.0.0-dev",
+    "v5DecisionEnabled": true,
+    "v5DoctorStatus": "INSTALLED",
+    "v5DoctorErrorCount": 0,
+    "preservedCustomAgentsInvariant": true,
+    "preservedTodoManifest": true,
+    "upgradeRevalidationBeforeRun": "NOT_REQUIRED",
+    "upgradeRevalidationAfterRun": "NOT_REQUIRED",
+    "rollback": {
+      "status": "ROLLED_BACK",
+      "durationMs": 34.7,
+      "restoredStandardVersion": "4.1.0",
+      "doctorStatusAfterRollback": "INSTALLED",
+      "doctorErrorCountAfterRollback": 0
+    }
+  },
+  "cliPerformanceOnUpgradedV5Project": {
+    "help": {
+      "args": [
+        "help"
+      ],
+      "exitCode": 0,
+      "durationMs": 182.16,
+      "stdoutBytes": 3653,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-v4-cli/v1",
+        "status": "OK",
+        "mcp": "DISABLED",
+        "systems": 11,
+        "version": "5.0.0-dev",
+        "commands": [
+          "activation",
+          "agents",
+          "audit",
+          "boundary",
+          "content",
+          "control-plane",
+          "db",
+          "decision",
+          "docs",
+          "doctor",
+          "guard",
+          "help",
+          "install",
+          "knowledge",
+          "launch",
+          "next",
+          "platform",
+          "product",
+          "proof",
+          "providers",
+          "reconcile",
+          "repair",
+          "rollback",
+          "route",
+          "self-update",
+          "seo",
+          "start",
+          "state",
+          "status",
+          "systems",
+          "test",
+          "todo",
+          "update",
+          "upgrade",
+          "upgrade-revalidation",
+          "version",
+          "visual"
+        ],
+        "usage": [
+          "executionkit start [project]",
+          "executionkit status [project]",
+          "executionkit next [project]",
+          "executionkit systems status [project]",
+          "executionkit control-plane status|verify-head [project]",
+          "executionkit platform status [project]",
+          "executionkit platform provision [project]",
+          "executionkit activation status|apply [project]",
+          "executionkit boundary wave|phase [project]",
+          "executionkit product status|reconcile [project]",
+          "executionkit todo status|maintain|migrate [project]",
+          "executionkit proof status|seal [project]",
+          "executionkit upgrade-revalidation status|plan|run [project]",
+          "executionkit visual status|validate [project]",
+          "executionkit visual discover|plan|capture|inspect|compare|remediate|certify [project]",
+          "executionkit visual discover [project] --init",
+          "executionkit state status|rehydrate|checkpoint|amnesia [project]",
+          "executionkit knowledge status|refresh|search|impact|providers|context [project]",
+          "executionkit knowledge auto [project] --purpose agent-context|macro-context|docs-context|knowledge-search|relationship|impact|test-impact|git-read",
+          "executionkit knowledge usage [project]",
+          "executionkit guard all|assets|forms|lang|antifake|vhost [project]",
+          "executionkit decision status [project]",
+          "executionkit decision advise [project] --input <typed-request.json>",
+          "executionkit decision refresh [project]",
+          "executionkit decision align [project] --task <id>",
+          "executionkit db status|refresh|guard|table|column|model [project]",
+          "executionkit route status|refresh|guard [project]",
+          "executionkit route probe [project]",
+          "executionkit content status|discover|validate [project]",
+          "executionkit docs status|refresh|build|validate|search [project]",
+          "executionkit seo status|validate [project]",
+          "executionkit audit task|wave|phase|release [project]",
+          "executionkit test impact|portfolio|task|wave|phase|release [project]",
+          "executionkit test journeys [project]",
+          "executionkit launch status|plan|build|verify|host-plan|host-check|backup|release|deploy|rollback [project]",
+          "executionkit launch service start|status [project]",
+          "executionkit launch mobile [project] --mode status|plan|submit|agents|cancel|control|attest|release|approve|publish|rollback|provider|classify|history",
+          "executionkit agents status|plan|run|collect [project]",
+          "executionkit agents delegated [project] --claim <id> --spawn-tool <actual-tool> --worker-id <returned-worker-id>",
+          "executionkit agents decline [project]",
+          "executionkit agents integrate|reconcile|cleanup [project] --claim <id>",
+          "executionkit agents result --status COMPLETED|BLOCKED",
+          "executionkit reconcile status|task|wave|phase|release [project]",
+          "executionkit install [project]",
+          "executionkit self-update status [project]",
+          "executionkit self-update check [project]",
+          "executionkit self-update apply [project]",
+          "executionkit update [project]",
+          "executionkit upgrade [project]",
+          "executionkit repair [project]",
+          "executionkit doctor [project]",
+          "executionkit providers status|doctor [project] (native-only)",
+          "executionkit rollback [project] --transaction <id>",
+          "executionkit help",
+          "executionkit version"
+        ],
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd",
+        "output": {
+          "compact": true,
+          "fullBytes": 5245,
+          "fullOutputFlag": "--full-output"
+        }
+      }
+    },
+    "version": {
+      "args": [
+        "version"
+      ],
+      "exitCode": 0,
+      "durationMs": 158.88,
+      "stdoutBytes": 122,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-v4-cli/v1",
+        "status": "OK",
+        "version": "5.0.0-dev",
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd"
+      }
+    },
+    "start": {
+      "args": [
+        "start",
+        ".",
+        "--host",
+        "antigravity",
+        "--json"
+      ],
+      "exitCode": 0,
+      "durationMs": 4251.89,
+      "stdoutBytes": 2371,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-v5-envelope/v1",
+        "standardTarget": "5.0.0-dev",
+        "runtimeMode": "FAST_TASK",
+        "cliFirst": true,
+        "mcp": "DISABLED",
+        "host": "antigravity",
+        "hostIntegration": {
+          "status": "CLI_ENTRY"
+        },
+        "blocked": false,
+        "blockers": [],
+        "runtime": {
+          "schemaVersion": "1.1.0",
+          "mode": "DEPENDENCY_SAFE_PARALLEL",
+          "boost": false,
+          "status": "NO_ACTIONABLE_WORK",
+          "batch": [],
+          "resources": {},
+          "closure": {
+            "closed": false,
+            "implementationClosed": true
+          }
+        },
+        "agentRuntime": {
+          "activeCount": 0,
+          "hostAction": "NONE",
+          "hostCapability": "NO_ACTIVE_HOST_PROOF",
+          "active": []
+        },
+        "hostAction": "NONE",
+        "hostDirective": {
+          "required": false,
+          "action": "NONE"
+        },
+        "hostDelegations": [],
+        "state": {
+          "status": "NO_SNAPSHOT",
+          "safeToResume": false,
+          "drift": []
+        },
+        "knowledge": {
+          "status": "DEFERRED_FAST_PATH"
+        },
+        "systems": {
+          "execution": {
+            "required": true,
+            "status": "NO_ACTIONABLE_WORK"
+          },
+          "agent": {
+            "required": true,
+            "status": "IDLE"
+          },
+          "state": {
+            "required": true,
+            "status": "NO_SNAPSHOT"
+          },
+          "content": {
+            "required": true,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "seo": {
+            "required": true,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "docs": {
+            "required": true,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "audit": {
+            "required": false,
+            "status": "AVAILABLE"
+          },
+          "test": {
+            "required": false,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "launch": {
+            "required": false,
+            "status": "AVAILABLE"
+          },
+          "visual": {
+            "required": false,
+            "status": "NOT_APPLICABLE"
+          },
+          "decision": {
+            "required": true,
+            "status": "AVAILABLE"
+          }
+        },
+        "visualSummary": {
+          "status": "NOT_APPLICABLE"
+        },
+        "fabrics": {
+          "route": {
+            "required": false,
+            "status": "DEFERRED_FAST_NON_ROUTE_TASK"
+          },
+          "database": {
+            "required": false,
+            "status": "DEFERRED_FAST_NON_DB_TASK",
+            "cacheHit": true
+          },
+          "upgradeRevalidation": {
+            "status": "NOT_REQUIRED",
+            "blocking": false
+          },
+          "update": {
+            "status": "CURRENT"
+          }
+        },
+        "docs": {
+          "status": "DEFERRED_TO_WAVE_OR_PHASE",
+          "enabled": true
+        },
+        "nextCommand": ".\\.executionkit\\bin\\ek.cmd next .",
+        "hostAwaitingAction": false,
+        "autoDelegation": null,
+        "activation": {
+          "schemaVersion": "executionkit-v4-activation/v1",
+          "status": "DEFERRED_FAST_PATH"
+        },
+        "productClosure": {
+          "schemaVersion": "executionkit-v4-product-closure/v1",
+          "status": "DEFERRED_TO_BOUNDARY"
+        },
+        "envelopeValidation": {
+          "status": "PASS",
+          "errors": []
+        },
+        "contextPolicy": {
+          "mode": "COMPACT_HOT_PATH",
+          "reuseEnvelope": true,
+          "rerunAfterEveryEdit": false,
+          "resourceLoading": "LAZY_ON_DEMAND",
+          "taskLoading": "EXACT_BLOCK_ONLY",
+          "deepMode": "EXPLICIT_ONLY",
+          "budgetBytes": 12288,
+          "payloadBytes": 2038,
+          "estimatedTokens": 510,
+          "budgetStatus": "PASS"
+        },
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd"
+      }
+    },
+    "status": {
+      "args": [
+        "status",
+        ".",
+        "--json"
+      ],
+      "exitCode": 0,
+      "durationMs": 759.79,
+      "stdoutBytes": 2371,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-v5-envelope/v1",
+        "standardTarget": "5.0.0-dev",
+        "runtimeMode": "FAST_TASK",
+        "cliFirst": true,
+        "mcp": "DISABLED",
+        "host": "antigravity",
+        "hostIntegration": {
+          "status": "CLI_ENTRY"
+        },
+        "blocked": false,
+        "blockers": [],
+        "runtime": {
+          "schemaVersion": "1.1.0",
+          "mode": "DEPENDENCY_SAFE_PARALLEL",
+          "boost": false,
+          "status": "NO_ACTIONABLE_WORK",
+          "batch": [],
+          "resources": {},
+          "closure": {
+            "closed": false,
+            "implementationClosed": true
+          }
+        },
+        "agentRuntime": {
+          "activeCount": 0,
+          "hostAction": "NONE",
+          "hostCapability": "NO_ACTIVE_HOST_PROOF",
+          "active": []
+        },
+        "hostAction": "NONE",
+        "hostDirective": {
+          "required": false,
+          "action": "NONE"
+        },
+        "hostDelegations": [],
+        "state": {
+          "status": "NO_SNAPSHOT",
+          "safeToResume": false,
+          "drift": []
+        },
+        "knowledge": {
+          "status": "DEFERRED_FAST_PATH"
+        },
+        "systems": {
+          "execution": {
+            "required": true,
+            "status": "NO_ACTIONABLE_WORK"
+          },
+          "agent": {
+            "required": true,
+            "status": "IDLE"
+          },
+          "state": {
+            "required": true,
+            "status": "NO_SNAPSHOT"
+          },
+          "content": {
+            "required": true,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "seo": {
+            "required": true,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "docs": {
+            "required": true,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "audit": {
+            "required": false,
+            "status": "AVAILABLE"
+          },
+          "test": {
+            "required": false,
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "launch": {
+            "required": false,
+            "status": "AVAILABLE"
+          },
+          "visual": {
+            "required": false,
+            "status": "NOT_APPLICABLE"
+          },
+          "decision": {
+            "required": true,
+            "status": "AVAILABLE"
+          }
+        },
+        "visualSummary": {
+          "status": "NOT_APPLICABLE"
+        },
+        "fabrics": {
+          "route": {
+            "required": false,
+            "status": "DEFERRED_FAST_NON_ROUTE_TASK"
+          },
+          "database": {
+            "required": false,
+            "status": "DEFERRED_FAST_NON_DB_TASK",
+            "cacheHit": true
+          },
+          "upgradeRevalidation": {
+            "status": "NOT_REQUIRED",
+            "blocking": false
+          },
+          "update": {
+            "status": "CURRENT"
+          }
+        },
+        "docs": {
+          "status": "DEFERRED_TO_WAVE_OR_PHASE",
+          "enabled": true
+        },
+        "nextCommand": ".\\.executionkit\\bin\\ek.cmd next .",
+        "hostAwaitingAction": false,
+        "autoDelegation": null,
+        "activation": {
+          "schemaVersion": "executionkit-v4-activation/v1",
+          "status": "DEFERRED_FAST_PATH"
+        },
+        "productClosure": {
+          "schemaVersion": "executionkit-v4-product-closure/v1",
+          "status": "DEFERRED_TO_BOUNDARY"
+        },
+        "envelopeValidation": {
+          "status": "PASS",
+          "errors": []
+        },
+        "contextPolicy": {
+          "mode": "COMPACT_HOT_PATH",
+          "reuseEnvelope": true,
+          "rerunAfterEveryEdit": false,
+          "resourceLoading": "LAZY_ON_DEMAND",
+          "taskLoading": "EXACT_BLOCK_ONLY",
+          "deepMode": "EXPLICIT_ONLY",
+          "budgetBytes": 12288,
+          "payloadBytes": 2038,
+          "estimatedTokens": 510,
+          "budgetStatus": "PASS"
+        },
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd"
+      }
+    },
+    "reconcileTask": {
+      "args": [
+        "reconcile",
+        "task",
+        ".",
+        "--json"
+      ],
+      "exitCode": 1,
+      "durationMs": 1873.94,
+      "stdoutBytes": 3015,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-v4-reconciliation/v1",
+        "status": "FAIL",
+        "taskId": null,
+        "candidateId": null,
+        "commit": null,
+        "head": "e0e1c632512d2f53f1a1ba3b191164c9e0fa2859",
+        "boundary": "task",
+        "nextCommand": ".\\.executionkit\\bin\\ek.cmd reconcile status . --boundary task",
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd",
+        "gatePath": ".executionkit/gates/reconcile-task.json",
+        "errors": [
+          {
+            "code": "RECONCILE_WORKER_FAILED",
+            "message": "Reconciliation worker failed; inspect the last progress stage"
+          }
+        ],
+        "performance": {
+          "durationMs": 880,
+          "stages": [
+            {
+              "stage": "changed-files",
+              "durationMs": 512
+            },
+            {
+              "stage": "database-integrity",
+              "durationMs": 18
+            },
+            {
+              "stage": "route-integrity",
+              "durationMs": 0
+            }
+          ],
+          "slowestStage": "changed-files"
+        },
+        "systems": {
+          "test": {
+            "status": "DEFERRED_TO_WAVE_OR_PHASE",
+            "boundary": "task",
+            "automatic": false
+          },
+          "content": {
+            "status": "DEFERRED_TO_WAVE_OR_PHASE",
+            "boundary": "task"
+          },
+          "seo": {
+            "status": "DEFERRED_TO_WAVE_OR_PHASE",
+            "boundary": "task"
+          },
+          "docs": {
+            "status": "DEFERRED_TO_WAVE_OR_PHASE",
+            "commit": {
+              "count": 2
+            },
+            "write": null
+          },
+          "visual": {
+            "status": "DEFERRED_TO_WAVE_OR_PHASE",
+            "boundary": "task"
+          },
+          "decision": {
+            "status": "FAIL",
+            "advice": {
+              "count": 10
+            }
+          }
+        },
+        "fabrics": {
+          "database": {
+            "schemaVersion": "executionkit-database-guard/v1",
+            "status": "NOT_APPLICABLE",
+            "findings": {
+              "count": 0
+            },
+            "performance": {
+              "count": 4
+            }
+          },
+          "route": {
+            "schemaVersion": "executionkit-route-integrity/v1",
+            "status": "NOT_APPLICABLE",
+            "applicable": false,
+            "framework": null,
+            "cacheHit": false,
+            "guardStatus": "NOT_APPLICABLE"
+          },
+          "surface": {
+            "schemaVersion": "executionkit-surface-guard/v1",
+            "status": "PASS",
+            "nextCommand": null,
+            "findings": {
+              "count": 0
+            },
+            "scope": "SOURCE_ONLY",
+            "kind": "all"
+          }
+        },
+        "base": "HEAD~1",
+        "identityMode": "FAST_TASK",
+        "beforeHead": "e0e1c632512d2f53f1a1ba3b191164c9e0fa2859",
+        "preStatusHash": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "worktreeFingerprint": "b5cbaf1d6fb8c1da3f49af86d4fb48b55d0b90a7444069f569d25871dcfc3352",
+        "productClosure": {
+          "schemaVersion": "executionkit-v4-product-closure/v1",
+          "status": "DEFERRED_TO_WAVE_OR_PHASE"
+        },
+        "systemGapTasking": {
+          "schemaVersion": "executionkit-v4-system-gap-groups/v1",
+          "status": "NOT_APPLICABLE",
+          "commit": {
+            "status": "NOT_APPLICABLE",
+            "commit": null
+          },
+          "boundary": "task",
+          "results": {},
+          "createdOrReopened": 0,
+          "tracked": 0,
+          "blockingFindings": 0
+        },
+        "knowledge": {
+          "sourceContext": {
+            "status": "ON_DEMAND_NATIVE_ONLY"
+          },
+          "impact": {
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          },
+          "gitRead": {
+            "status": "SKIPPED_FAST_TASK"
+          },
+          "docsContext": {
+            "status": "DEFERRED_TO_WAVE_OR_PHASE"
+          }
+        },
+        "blockingSystems": [
+          "decision"
+        ],
+        "reviewSystems": [],
+        "reconciledAt": "2026-10-13T20:51:28.356Z",
+        "state": {
+          "status": "CHECKPOINTED",
+          "snapshot": {
+            "schemaVersion": "1.0.0",
+            "reason": "v4-task-reconciliation",
+            "runtime": null,
+            "authority": "DERIVED_NON_AUTHORITATIVE",
+            "identityMode": "FAST_TASK",
+            "capturedAt": "2026-10-13T20:51:28.271Z"
+          },
+          "identityMode": "FAST_TASK"
+        },
+        "timedOut": false,
+        "timeoutMs": 30000,
+        "durationMs": 1292,
+        "output": {
+          "compact": true,
+          "fullBytes": 5162,
+          "detailPath": ".executionkit/cli-output/reconcile-679d3c38-a446-44ce-99a5-de0ea48afca6.json",
+          "fullOutputFlag": "--full-output",
+          "omittedCount": 3,
+          "counts": {
+            "errors": 1
+          }
+        }
+      }
+    },
+    "decisionStatus": {
+      "args": [
+        "decision",
+        "status",
+        ".",
+        "--json"
+      ],
+      "exitCode": 0,
+      "durationMs": 386.85,
+      "stdoutBytes": 318,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-decision-os/v1",
+        "status": "AVAILABLE",
+        "officialSystem": true,
+        "engine": "BUNDLED_DETERMINISTIC",
+        "models": false,
+        "hotPathNetwork": false,
+        "knowledge": {
+          "source": "BUNDLED",
+          "revision": 1,
+          "version": "3d4dc63fe88a5e04",
+          "refreshDue": true,
+          "sourceCommit": null
+        },
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd"
+      }
+    },
+    "guardLang": {
+      "args": [
+        "guard",
+        "lang",
+        ".",
+        "--json"
+      ],
+      "exitCode": 0,
+      "durationMs": 731.88,
+      "stdoutBytes": 460,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-surface-guard/v1",
+        "status": "PASS",
+        "scope": "SOURCE_ONLY",
+        "kind": "lang",
+        "findings": [],
+        "reviewFindings": [],
+        "assetPlan": null,
+        "scannedFiles": [],
+        "locales": [],
+        "runtimeEvidenceRequired": [
+          "form-success-and-validation",
+          "no-unexpected-5xx",
+          "local-loaded-assets",
+          "translated-rendered-ui",
+          "real-business-data-and-failure-states",
+          "mobile-responsive",
+          "candidate-bound-lighthouse"
+        ],
+        "nextCommand": null,
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd"
+      }
+    },
+    "guardAssets": {
+      "args": [
+        "guard",
+        "assets",
+        ".",
+        "--json"
+      ],
+      "exitCode": 0,
+      "durationMs": 678.31,
+      "stdoutBytes": 151,
+      "stderrBytes": 0,
+      "parsed": {
+        "schemaVersion": "executionkit-surface-guard/v1",
+        "status": "NOT_APPLICABLE",
+        "findings": [],
+        "scannedFiles": [],
+        "cliEntry": ".\\.executionkit\\bin\\ek.cmd"
+      }
+    }
+  }
+}

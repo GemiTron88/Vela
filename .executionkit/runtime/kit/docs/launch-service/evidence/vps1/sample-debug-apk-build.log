@@ -1,0 +1,100 @@
+[        ] Caching disabled for task
+':shared_preferences_android:syncDebugLibJars' because:
+[        ]   Build cache is disabled
+[        ] Task ':shared_preferences_android:syncDebugLibJars' is not up-to-date
+because:
+[        ]   No history is available.
+[        ] Resolve mutations for :shared_preferences_android:bundleDebugAar
+(Thread[Execution worker Thread 6,5,main]) started.
+[        ] :shared_preferences_android:bundleDebugAar (Thread[Execution worker
+Thread 6,5,main]) started.
+[        ] > Task :shared_preferences_android:bundleDebugAar
+[        ] Caching disabled for task
+':shared_preferences_android:bundleDebugAar' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':shared_preferences_android:bundleDebugAar' is not up-to-date
+because:
+[        ]   No history is available.
+[        ] file or directory
+'/home/antigravity/projects/APKrelease/examples/sample_app/build/shared_preferen
+ces_android/intermediates/public_res/debug/packageDebugResources/public.txt',
+not found
+[        ] file or directory
+'/home/antigravity/projects/APKrelease/examples/sample_app/build/shared_preferen
+ces_android/intermediates/navigation_json_for_aar/debug/extractDeepLinksForAarDe
+bug/navigation.json', not found
+[        ] file or directory
+'/home/antigravity/projects/APKrelease/examples/sample_app/build/shared_preferen
+ces_android/intermediates/annotations_zip/debug/extractDebugAnnotations/annotati
+ons.zip', not found
+[        ] file or directory
+'/home/antigravity/projects/APKrelease/examples/sample_app/build/shared_preferen
+ces_android/intermediates/merged_consumer_proguard_file/debug/mergeDebugConsumer
+ProguardFiles/proguard.txt', not found
+[        ] file or directory
+'/home/antigravity/projects/APKrelease/examples/sample_app/build/shared_preferen
+ces_android/intermediates/lint_publish_jar/global/prepareLintJarForPublish/lint.
+jar', not found
+[        ] file or directory
+'/home/antigravity/projects/APKrelease/examples/sample_app/build/shared_preferen
+ces_android/intermediates/library_art_profile/debug/prepareDebugArtProfile/basel
+ine-prof.txt', not found
+[        ] Resolve mutations for :shared_preferences_android:assembleDebug
+(Thread[Execution worker Thread 6,5,main]) started.
+[        ] :shared_preferences_android:assembleDebug (Thread[Execution worker
+Thread 6,5,main]) started.
+[        ] > Task :shared_preferences_android:assembleDebug
+[        ] Skipping task ':shared_preferences_android:assembleDebug' as it has
+no actions.
+[+1597 ms] > Task :app:packageDebug
+[        ] Custom actions are attached to task ':app:packageDebug'.
+[        ] Caching disabled for task ':app:packageDebug' because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:packageDebug' is not up-to-date because:
+[        ]   No history is available.
+[        ] The input changes require a full rebuild for incremental task
+':app:packageDebug'.
+[        ] Resolve mutations for :app:createDebugApkListingFileRedirect
+(Thread[Execution worker Thread 10,5,main]) started.
+[        ] :app:createDebugApkListingFileRedirect (Thread[Execution worker
+Thread 10,5,main]) started.
+[        ] > Task :app:createDebugApkListingFileRedirect
+[        ] Caching disabled for task ':app:createDebugApkListingFileRedirect'
+because:
+[        ]   Build cache is disabled
+[        ]   Caching has been disabled for the task
+[        ] Task ':app:createDebugApkListingFileRedirect' is not up-to-date
+because:
+[        ]   No history is available.
+[        ] Resolve mutations for :app:assembleDebug (Thread[Execution worker
+Thread 10,5,main]) started.
+[        ] :app:assembleDebug (Thread[Execution worker Thread 10,5,main])
+started.
+[ +393 ms] > Task :app:assembleDebug
+[        ] Caching disabled for task ':app:assembleDebug' because:
+[        ]   Build cache is disabled
+[        ] Task ':app:assembleDebug' is not up-to-date because:
+[        ]   Task has not declared any outputs despite executing actions.
+[        ] [Incubating] Problems report is available at:
+file:///home/antigravity/projects/APKrelease/examples/sample_app/build/reports/p
+roblems/problems-report.html
+[        ] Deprecated Gradle features were used in this build, making it
+incompatible with Gradle 10.
+[        ] You can use '--warning-mode all' to show the individual deprecation
+warnings and determine if they come from your own scripts or plugins.
+[        ] For more on this, please refer to
+https://docs.gradle.org/9.3.1/userguide/command_line_interface.html#sec:command_
+line_warnings in the Gradle documentation.
+[        ] BUILD SUCCESSFUL in 49s
+[        ] 207 actionable tasks: 100 executed, 107 up-to-date
+[ +158 ms] Running Gradle task 'assembleDebug'... (completed in 49.8s)
+[  +65 ms] Calculate SHA1: LocalDirectory:
+'/home/antigravity/projects/APKrelease/examples/sample_app/build/app/outputs/flu
+tter-apk'/app-debug.apk
+[+1960 ms] ✓ Built build/app/outputs/flutter-apk/app-debug.apk
+[  +36 ms] "flutter apk" took 52,386ms.
+[  +92 ms] Running 1 shutdown hook
+[   +2 ms] Shutdown hooks complete
+[  +91 ms] exiting with code 0

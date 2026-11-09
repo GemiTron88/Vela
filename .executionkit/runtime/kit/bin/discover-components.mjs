@@ -1,0 +1,2 @@
+#!/usr/bin/env node
+import path from 'node:path';import { discoverProduct } from '../lib/discovery-model.mjs';const root=path.resolve(process.argv[2]??'.');try{const inv=discoverProduct(root),components=inv.items.filter(i=>['component','component-source'].includes(i.kind));console.log(JSON.stringify({schemaVersion:'1.0.0',count:components.length,components},null,2));}catch(e){console.error(`Component discovery failed: ${e.message}`);process.exit(1);}

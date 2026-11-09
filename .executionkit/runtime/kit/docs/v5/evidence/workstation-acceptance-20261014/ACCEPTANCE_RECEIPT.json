@@ -1,0 +1,223 @@
+{
+  "schemaVersion": "executionkit-v5-final-acceptance/v1",
+  "status": "RELEASED",
+  "version": "5.0.0",
+  "executedAt": "2026-10-14T22:55:00Z",
+  "workstation": {
+    "hostname": "DESKTOP-717CK7V",
+    "os": "Microsoft Windows 10 Pro (10.0.19045)",
+    "arch": "win32-x64",
+    "cpu": "Intel Core i5-4570 @ 3.20GHz (4 cores)",
+    "ramGiB": 16,
+    "nodeVersion": "v24.12.0",
+    "pythonVersion": "3.14.2",
+    "flutterVersion": "3.41.5",
+    "dartVersion": "3.11.3",
+    "javaVersion": "OpenJDK 21.0.8",
+    "adbDevice": "127.0.0.1:5555 (BlueStacks Android 11, SDK 30, x86_64)",
+    "hostPolicy": {
+      "status": "ALLOWED",
+      "role": "physical-workstation",
+      "fingerprint": "e4e6f94e7f152495330a30da1c6a56e209f57c4f4913c34f16fb94e42db4d1c6"
+    }
+  },
+  "remediatedSourceDefects": [
+    {
+      "id": "DEFECT-01",
+      "file": "lib/production-deployment.mjs",
+      "summary": "Updated artifactBase(root, cfg, { create = false }) to recursively create .executionkit/deployment/artifacts before fs.mkdtempSync(path.join(base, '.building-...')), resolving 38 ENOENT failures in buildProductionArtifact."
+    },
+    {
+      "id": "DEFECT-02",
+      "file": "bin/init-project.mjs",
+      "summary": "Un-nested ['lib/production-storage-report.mjs', 'lib/production-storage-report.mjs'] tuple and added ['bin/inspect-workspace-storage.mjs', 'bin/inspect-workspace-storage.mjs'] to the greenfield init copy manifest."
+    },
+    {
+      "id": "DEFECT-03",
+      "file": "bin/inspect-workspace-storage.mjs",
+      "summary": "Hardened allocated block calculation so filesystems reporting stat.blocks === 0 for non-empty files fall back to stat.size instead of reporting 0 allocatedBytes."
+    },
+    {
+      "id": "DEFECT-04",
+      "file": "bin/mcp-server.mjs",
+      "summary": "Added kitRoot fallback in loadMcp() so stdio MCP inspection of external projects resolves @modelcontextprotocol/server and zod/v4 from the Kit runtime, and exposed read-only executionkit_deployment_storage tool."
+    },
+    {
+      "id": "DEFECT-05",
+      "file": "AGENTS.md",
+      "summary": "Synchronized required test file floor documentation (125 required test files) with tests/test-baseline.json."
+    }
+  ],
+  "elevenSystemsAudit": {
+    "status": "PASS",
+    "systemsCount": 11,
+    "invariantsCount": 22,
+    "helpersCount": 297,
+    "cliSurfacesCount": 151,
+    "cliAuditCases": "167/167 PASS",
+    "fullTestSuite": {
+      "total": 1248,
+      "passed": 1225,
+      "failed": 0,
+      "skipped": 23,
+      "requiredFiles": 125,
+      "durationMs": 380634.59,
+      "pythonLaunchServiceGuards": "8/8 PASS"
+    },
+    "knowledgeCatalog": {
+      "repository": "GemiTron88/KB",
+      "revision": 1,
+      "factCount": 140,
+      "ruleCount": 14
+    }
+  },
+  "productionArtifactPurityAndRetention": {
+    "status": "PASS",
+    "beforeOptimization": {
+      "files": 123,
+      "bytes": 305835
+    },
+    "afterOptimization": {
+      "artifactPayload": {
+        "files": 13,
+        "bytes": 17457
+      },
+      "activatedReleaseWithVendor": {
+        "files": 16,
+        "bytes": 19650
+      }
+    },
+    "byteReductionPercent": 93.57,
+    "cacheReuseVerified": true,
+    "retentionAfter3Releases": {
+      "activeReleasePreserved": true,
+      "oneRollbackPreserved": true,
+      "oldestReleasePruned": true,
+      "producerCachePrunedToCurrentOnly": true,
+      "unknownHistoricalReleaseProtected": true,
+      "customerSharedUploadsPreserved": true,
+      "databaseBackupsPreserved": true
+    }
+  },
+  "projectOnlyStorageInventory": {
+    "status": "PASS",
+    "command": "node bin/inspect-workspace-storage.mjs . --max-entries=60000",
+    "scope": "PROJECT_ROOT_ONLY",
+    "readOnly": true,
+    "totals": {
+      "allocatedBytes": 291514096,
+      "logicalBytes": 266180832,
+      "files": 18176,
+      "dirs": 1786,
+      "symlinks": 0,
+      "scannedEntries": 19962,
+      "errors": 0
+    },
+    "rejectedExternalPathsVerified": [
+      "/home/antigravity",
+      "..",
+      "../sibling",
+      "unconfigured-temp-dir"
+    ]
+  },
+  "gemimcpInterimBridge": {
+    "status": "PASS",
+    "transport": "stdio (JSON-RPC 2.0)",
+    "contract": "docs/v5/GEMIMCP_INTERIM_CONTRACT_20261014.md",
+    "toolsRegistered": 13,
+    "executionModel": "LOCAL_WORKSTATION_DIRECT",
+    "mobileUpdateStrategy": "SIGNED_APK",
+    "buildAgentRequired": false,
+    "shorebirdRequired": false,
+    "remoteToLocalBuildDelegation": "DISABLED",
+    "protocolVerification": {
+      "initialize": "PASS",
+      "toolsList": "PASS (13 tools with JSON Schema including executionkit_mobile_doctor)",
+      "gemitronLinkStatus": "PASS (STANDALONE_READY, LOCAL_WORKSTATION_DIRECT, SIGNED_APK, secret redacted)",
+      "mobileDoctorReadOnly": "PASS (physical workstation & Android SDK apksigner/apkanalyzer verified)",
+      "shorebirdProviderApprovalGate": "PASS (GEMITRON_MCP_PROVIDER_APPROVAL_REQUIRED on unapproved invocation)",
+      "pathTraversalRejection": "PASS (GEMITRON_MCP_PATH_OUTSIDE_ROOT on ../outside)",
+      "deploymentStorageReadOnly": "PASS"
+    }
+  },
+  "androidReleaseAndAdbLifecycle": {
+    "status": "PASS",
+    "acceptanceClass": "ANDROID_EMULATOR_VERIFIED",
+    "executionModel": "LOCAL_WORKSTATION_DIRECT",
+    "mobileUpdateStrategy": "SIGNED_APK",
+    "buildAgentRequired": false,
+    "shorebirdRequired": false,
+    "device": {
+      "serial": "127.0.0.1:5555",
+      "model": "BlueStacks",
+      "androidRelease": "11",
+      "sdkInt": 30,
+      "abi": "x86_64"
+    },
+    "workstationDirectCliModesVerified": [
+      "doctor",
+      "build",
+      "inspect",
+      "handoff",
+      "import"
+    ],
+    "classifierVerification": {
+      "dartOnlyChange": "DART_PATCH_ELIGIBLE (compatible: true)",
+      "pubspecVersionBump": "MANUAL_REVIEW_REQUIRED (compatible: false)"
+    },
+    "artifacts": {
+      "v1": {
+        "version": "1.0.0+1",
+        "bytes": 16410075,
+        "sha256": "0b35a5ac3abbc5e6baed2bcb5884bb1dab289dd21f80a386772c0836bffea080",
+        "signerCertSha256": "70da9def4f1cade405d511fb8b07fd5c73404e985f101ea97eb64faa0b4e9490",
+        "apksignerVerified": true
+      },
+      "v2": {
+        "version": "1.0.1+2",
+        "bytes": 16410075,
+        "sha256": "0ec264a26d8a46629dc5c8e972e0751b6f6f03a5334305c66450f9dd7dccf14e",
+        "signerCertSha256": "70da9def4f1cade405d511fb8b07fd5c73404e985f101ea97eb64faa0b4e9490",
+        "apksignerVerified": true
+      },
+      "realConsumerExampleV21": {
+        "version": "0.1.0+21",
+        "bytes": 82071590,
+        "sha256": "5bd33cd9ec722fd020925f415d12745dc5247a315c1127766c78c186aa1fd8a4",
+        "signerCertSha256": "20f9e2c127b76ae46bed6be06cbebee33023a779a47625e489e40a92cfb25cd0",
+        "apksignerVerified": true,
+        "manualWorkstationInspectionReceipt": "0f9793fa-c6d6-4127-af72-b6ed84545184"
+      },
+      "realConsumerExampleV22": {
+        "version": "0.1.1+22",
+        "bytes": 82071590,
+        "sha256": "63db005c55164143c968471f771c8703063f98026ce3d5b288212a8147ca9c10",
+        "signerCertSha256": "20f9e2c127b76ae46bed6be06cbebee33023a779a47625e489e40a92cfb25cd0",
+        "apksignerVerified": true,
+        "manualWorkstationInspectionReceipt": "1e06d1c8-8d12-4c7f-bfd1-561efb83241f"
+      }
+    },
+    "lifecycle": {
+      "initialInstallV1": "PASS (clean install, startup, RTL rendering, zero fatal crash)",
+      "persistentStateAcrossRestart": "PASS (app state sha256 8031b6f49e89e83637298caddb5b8293c5a3020d768b9f693d4057ae2f08f3de preserved across force-stop and restart)",
+      "inPlaceUpgradeV2": "PASS (versionCode monotonic upgrade, persistent app state 100% preserved)",
+      "mismatchedKeystoreRejected": "PASS (INSTALL_FAILED_UPDATE_INCOMPATIBLE; existing install and data preserved)",
+      "unsafeVersionDowngradeRejected": "PASS (INSTALL_FAILED_VERSION_DOWNGRADE; existing install and data preserved)",
+      "controlledRollbackAndForwardRecovery": "PASS (clean rollback and forward upgrade recovery verified)",
+      "manualWorkstationHandoffImport": "PASS (workstation.manual_inspection.v1 + mode=manual_workstation receipt imported into Launch OS without Build Agent or Shorebird)"
+    },
+    "shorebirdCloudProvider": "NOT_APPLICABLE_BY_OWNER_POLICY (optional adapter retained for backward compatibility; default v5 mobileUpdateStrategy is SIGNED_APK)"
+  },
+  "cliPerformanceAndContextEconomy": {
+    "status": "PASS",
+    "contextBudgetBytes": 12288,
+    "startEnvelopeBytes": 2497,
+    "startEstimatedTokens": 625,
+    "statusDurationMs": 712.6,
+    "nextDurationMs": 700.81,
+    "decisionStatusDurationMs": 431.19,
+    "decisionStatusBytes": 318,
+    "guardAllDurationMs": 680.39,
+    "processRssBytes": 49070080
+  }
+}

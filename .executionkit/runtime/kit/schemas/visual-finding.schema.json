@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "surface": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "checkpoint": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "review"
+      ]
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "observedEvidence": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "recommendedRemediation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "acceptanceCriteria": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "evidenceRefs": {
+      "minItems": 1,
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    }
+  },
+  "required": [
+    "id",
+    "surface",
+    "checkpoint",
+    "severity",
+    "category",
+    "observedEvidence",
+    "reason",
+    "recommendedRemediation",
+    "acceptanceCriteria",
+    "evidenceRefs"
+  ],
+  "additionalProperties": false,
+  "title": "visual-finding v2"
+}

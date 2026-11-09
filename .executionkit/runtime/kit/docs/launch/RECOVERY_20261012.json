@@ -1,0 +1,126 @@
+{
+  "schema": "gemitron-launch-source-recovery/v1",
+  "date": "2026-10-12",
+  "scope": "SOURCE_IMPLEMENTATION_AND_DISTRIBUTION; NOT_PRODUCTION_ACCEPTANCE",
+  "repositories": {
+    "ExecutionKit_source": "bebc9434bc67ee7d1c26edce95f32ded4105ca99",
+    "APKrelease": "03feb5d17a799adfa75a6bbedb1587cafcb4ef49",
+    "Studio": "9e81195bfa27774c9350c4a2798e88c5c2b73397",
+    "FLOW": "d17dc234d547e417844f6878b6e0cb894d2bf42f"
+  },
+  "tested_source": {
+    "git_tree": "87019fe2037258d25f1a0238998939261842a91c",
+    "local_reconstructed_history_commit": "e53b924d5b27218ec37f9f3661c725687e30ee01",
+    "published_source_tree_identical": true,
+    "upstream_source_matches": true,
+    "snapshot_note": "24 fixture files had one added EOF newline in the recovered snapshot; restored by verifying original Git blob hashes before final complete gates. No test assertion or expected result weakened."
+  },
+  "checks": {
+    "npm_run_check": {
+      "status": "PASS",
+      "tests": 1005,
+      "failures": 0
+    },
+    "npm_run_v4_check": {
+      "status": "PASS",
+      "npm_tests": 1005,
+      "v4_tests": 367,
+      "packaged_runtime_tests": 1,
+      "failures": 0
+    },
+    "apkrelease_node": {
+      "status": "PASS",
+      "tests": 59
+    },
+    "apkrelease_python": {
+      "status": "PASS",
+      "tests": 10
+    },
+    "studio_source_ci": {
+      "status": "PASS",
+      "commit": "440023fd296e6654f12947dbcac97a1224d69693",
+      "tests": 64,
+      "assertions": 553,
+      "blade": "PASS",
+      "routes": 34,
+      "run_url": "https://github.com/GemiTron88/studio/actions/runs/38211112137"
+    },
+    "studio_documented_head_ci": {
+      "status": "PASS",
+      "commit": "9e81195bfa27774c9350c4a2798e88c5c2b73397",
+      "run_url": "https://github.com/GemiTron88/studio/actions/runs/38211408071",
+      "manifest_run_url": "https://github.com/GemiTron88/studio/actions/runs/38211408092"
+    },
+    "local_php_syntax_pint": "PASS",
+    "local_phpunit": "NOT_RUN: existing PHP 8.3.6 is below locked PHP >=8.4.1",
+    "local_manifest": "NOT_RUN: jsonschema unavailable; exact-head manifest CI passed"
+  },
+  "archive": {
+    "path": "docs/launch/recovery-logs-20261012.tar.gz",
+    "sha256": "835f5be6822e16012452dbc6f5a48e3441483c6059852fa2728a9632b8240dca",
+    "bytes": 151700,
+    "files": [
+      {
+        "name": "kit-exact-check.log",
+        "sha256": "470cd6c984adc217b4cf23eaae5a3a2b6b69326f69f5e4a3a37090d3f33171a9",
+        "bytes": 297817
+      },
+      {
+        "name": "kit-exact-v4-check.log",
+        "sha256": "711a16a25cfde853f8a8b6bbb83cf9a5572a43bc24108e81e3d47dc2c912d56d",
+        "bytes": 378413
+      },
+      {
+        "name": "kit-recovery-focused.log",
+        "sha256": "8d7e26f705eb74fbaa5377d8e90bf91afc5ce132f8c81c0ca57fea2d1b202b45",
+        "bytes": 5903
+      },
+      {
+        "name": "apkrelease-recovery.log",
+        "sha256": "1a25a9b1f7ba77aeb7f37203ef85d8389ffa9114bb0f2a458f37e92b89c8e81c",
+        "bytes": 5297
+      },
+      {
+        "name": "apkrelease-python-recovery.log",
+        "sha256": "ceb70bb31dffe205be090b7fbc195853f0514deb3de2e474c1dd59abeb56938d",
+        "bytes": 1680
+      },
+      {
+        "name": "studio-syntax.log",
+        "sha256": "004d552b1b8a5159c4618a05d2c4887e086049b181c9a9d8d4197fb48107a2e4",
+        "bytes": 776
+      },
+      {
+        "name": "tested-kit-tree.json",
+        "sha256": "a5b8576023067d6e0a3a8d25a61120d15d9f2666dd23274eac07c4c2b023b25d",
+        "bytes": 127984
+      }
+    ]
+  },
+  "constraints": {
+    "vps_apk_aab_gradle": "FORBIDDEN",
+    "vps_android_sdk_emulator_download_install_run": "FORBIDDEN",
+    "vps_flutter_dart_mobile_dependency_resolution_qa": "FORBIDDEN",
+    "vps_shorebird_native_workloads": "FORBIDDEN",
+    "host_policy_override": "NONE",
+    "queue_authority": "APKrelease retained under Launch OS",
+    "release_authority": "ExecutionKit Launch OS"
+  },
+  "acceptance": {
+    "physical_windows_job_objects": "NOT_VERIFIED",
+    "physical_cgroup_workload_quotas": "NOT_VERIFIED",
+    "vps_os_enforcement": "NOT_VERIFIED_ON_ACTUAL_HOST",
+    "studio_flow_installed_runtime_upgrade": "NOT_VERIFIED_ON_ACTUAL_HOST",
+    "real_android_build_signing_device": "NOT_PERFORMED",
+    "shorebird_account_billing_publication": "NOT_PERFORMED",
+    "production_deploy_or_cleanup": "NOT_PERFORMED"
+  },
+  "resume": "docs/launch/CONTINUE_20261012.md",
+  "canonical_tasks": [
+    "EK4-LAUNCH-REVALIDATE-005",
+    "EK4-LAUNCH-SAFETY-006",
+    "EK4-LAUNCH-CUTOVER-007",
+    "EK4-LAUNCH-PARITY-008",
+    "EK4-LAUNCH-ACCEPT-004"
+  ]
+}

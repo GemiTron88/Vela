@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "executionkit-task-proof/v1",
+  "taskId": "VELA-FORK-01",
+  "stateAtSeal": "ACCEPTED",
+  "phase": "VELA",
+  "sealedAt": "2026-11-09T07:01:03.884Z",
+  "taskSource": "TODO.md",
+  "verification": "python3 scripts/test_road_features_tsv.py",
+  "originalEvidence": "Verified canonical task VELA-FORK-01 via `python3 scripts/test_road_features_tsv.py` at 2026-11-09T07:01:03.740Z",
+  "code": null,
+  "artifacts": [
+    {
+      "sourcePath": "scripts/test_road_features_tsv.py",
+      "durablePath": "docs/execution/evidence/tasks/VELA-FORK-01/artifacts/01-test_road_features_tsv.py",
+      "sha256": "295c2f813d312d11ae6b17f3b46539b024f523974f7fa19483bc2625c7521d1b",
+      "bytes": 5023
+    },
+    {
+      "sourcePath": ".executionkit/evidence/raw/todo-complete-VELA-FORK-01.json",
+      "durablePath": "docs/execution/evidence/tasks/VELA-FORK-01/artifacts/02-todo-complete-VELA-FORK-01.json",
+      "sha256": "c8c67670620f7a1145556971938a94a2b845cd769edf1436d9aeb8ff96f3f3ed",
+      "bytes": 539
+    },
+    {
+      "sourcePath": ".executionkit/gates/reconcile-task.json",
+      "durablePath": "docs/execution/evidence/tasks/VELA-FORK-01/artifacts/03-reconcile-task.json",
+      "sha256": "c280e25f02c6520e0084390869ada54af225033d8b5cda2ae29b7abd2fc3c219",
+      "bytes": 9434
+    }
+  ],
+  "extra": {
+    "targetStatus": "ACCEPTED",
+    "evidenceSummary": "Verified canonical task VELA-FORK-01 via `python3 scripts/test_road_features_tsv.py` at 2026-11-09T07:01:03.740Z"
+  }
+}

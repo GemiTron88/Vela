@@ -1,0 +1,26 @@
+[Unit]
+Description=ExecutionKit Launch OS release control plane
+After=network.target
+
+[Service]
+Type=simple
+User=antigravity
+Group=antigravity
+WorkingDirectory=/home/antigravity/projects/launch-unification/ExecutionKit
+Environment=NODE_ENV=production
+Environment=LAUNCH_SERVICE_CONFIG=/home/antigravity/projects/launch-unification/ExecutionKit/config/launch-service.json
+ExecStart=/home/antigravity/.local/node/bin/node /home/antigravity/projects/launch-unification/ExecutionKit/bin/launch-service.mjs start --config /home/antigravity/projects/launch-unification/ExecutionKit/config/launch-service.json
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/antigravity/projects/launch-unification/ExecutionKit/var
+MemoryMax=512M
+CPUQuota=100%
+LimitNOFILE=1024
+
+[Install]
+WantedBy=multi-user.target

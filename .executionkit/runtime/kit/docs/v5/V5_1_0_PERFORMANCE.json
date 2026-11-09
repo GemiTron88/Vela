@@ -1,0 +1,16 @@
+{
+  "scope": "Local warm CLI version startup; no production/network/whole-platform speed claim",
+  "baselineCommit": "821407ca7173b98180b43195a341ea88e80adbda",
+  "results": {
+    "baseline": {
+      "versionMedianMs": 66.05,
+      "samples": 7,
+      "versionOutput": "{\"schemaVersion\":\"executionkit-v4-cli/v1\",\"status\":\"OK\",\"version\":\"5.0.1\"}"
+    },
+    "working": {
+      "versionMedianMs": 75.27,
+      "samples": 7,
+      "versionOutput": "{\"schemaVersion\":\"executionkit-v4-cli/v1\",\"status\":\"OK\",\"version\":\"5.1.0\"}"
+    }
+  }
+}

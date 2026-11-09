@@ -1,0 +1,510 @@
+{
+  "$schema": "./.executionkit/runtime/kit/schemas/execution-config-v5.schema.json",
+  "standardVersion": "5.2.3",
+  "projectState": "ACTIVE",
+  "profile": "STANDARD",
+  "capabilities": {
+    "execution": "STANDARD",
+    "agent": "STANDARD",
+    "content": "STANDARD",
+    "seo": "STANDARD",
+    "audit": "STANDARD",
+    "test": "STANDARD",
+    "launch": "STANDARD"
+  },
+  "ci": {
+    "provider": "github-actions",
+    "executionMode": "self-hosted-manual",
+    "githubHostedAllowed": false,
+    "automaticPushRuns": false,
+    "allowedAutomaticWorkflowPaths": [],
+    "projectRunnerLabel": "project-vela",
+    "maxProjectRunnersPerDevice": 1,
+    "allowedRunnerOS": [
+      "linux",
+      "windows",
+      "macos"
+    ]
+  },
+  "agent": {
+    "manifestPath": ".agents/manifest.json"
+  },
+  "operator": {
+    "entrypoint": "todo-first",
+    "additionalBootstrapPromptRequired": false,
+    "hostChecklistMode": "derived-mirror",
+    "syncHostChecklistAfterTask": true,
+    "fullCiCadence": "wave-or-phase-boundary",
+    "targetedTaskVerification": false,
+    "hostPersistenceAuthority": "none"
+  },
+  "runtime": {
+    "mode": "DEPENDENCY_SAFE_PARALLEL",
+    "oneLifecycleActionAtATime": false,
+    "allowBoundedHostDelegation": true,
+    "checkpointPath": ".executionkit/runtime/checkpoint.json",
+    "parallel": {
+      "enabled": true,
+      "maxConcurrentTasks": 3,
+      "maxAgentsPerTask": 4,
+      "requireExplicitParallelSafe": true,
+      "requireOwnership": true,
+      "isolatedWorktrees": true,
+      "integrationOwner": "orchestrator",
+      "sequentialFallback": true
+    },
+    "boost": {
+      "enabled": true,
+      "command": "/boost",
+      "maxConcurrentTasks": 6,
+      "maxAgentsPerTask": 6,
+      "qualityGatesPreserved": true
+    }
+  },
+  "state": {
+    "enabled": true,
+    "snapshotPath": ".executionkit/state/latest.json",
+    "journalPath": ".executionkit/state/journal.ndjson",
+    "checkpointOnRuntimeTransitions": true,
+    "requireRehydrateOnDrift": true,
+    "heartbeatMinutes": 20,
+    "memory": {
+      "mode": "auto",
+      "authority": "advisory",
+      "requireLiveRevalidation": true,
+      "allowTaskState": false
+    }
+  },
+  "discovery": {
+    "enabled": true,
+    "scopePath": "executionkit.scope.json",
+    "inventoryPath": ".executionkit/discovery/product-inventory.json",
+    "reconciliationPath": ".executionkit/discovery/reconciliation.json",
+    "requiredForRelease": false,
+    "failOnDeclaredMissing": true,
+    "allowEmptyScopeForRelease": false
+  },
+  "evidence": {
+    "releaseTruthMode": "STRICT",
+    "candidateRequiredForRelease": true,
+    "adapterConfigPath": "executionkit.adapters.json",
+    "maxAgeMinutes": 1440,
+    "requiredProducers": [],
+    "requireTestAdequacy": true,
+    "testReportPath": "",
+    "testFormat": "",
+    "minimumTests": 0,
+    "allowSkipped": false,
+    "allowFlaky": false,
+    "requireDurableTaskEvidence": true,
+    "taskProofRoot": "docs/execution/evidence/tasks"
+  },
+  "seo": {
+    "contractPath": "executionkit.seo.json",
+    "requiredForRelease": true
+  },
+  "premiumExperience": {
+    "applicability": "UNRESOLVED",
+    "qualityProfile": "UNRESOLVED",
+    "notApplicableReason": ""
+  },
+  "taskModel": {
+    "adapter": "canonical-blocks",
+    "projectionPath": "",
+    "projectionCommand": ""
+  },
+  "adoption": {
+    "deepIntegrationRequired": true,
+    "integrationPhase": "EK4",
+    "integrationGateTaskId": "EK4-AUDIT",
+    "integrationActivationTaskId": "EK4-ACTIVATE",
+    "productExecutionBlockedUntilGateAccepted": true,
+    "maturityProfile": "M0_PLANNING_ONLY",
+    "maturityRationale": [
+      "No material product implementation/runtime evidence was observed."
+    ],
+    "maturityEvidence": {
+      "classifier": "executionkit-v4-maturity/v1",
+      "rank": 0,
+      "stacks": [],
+      "productFileCount": 1017,
+      "productItemCount": 280,
+      "implementationItemCount": 0,
+      "implementationKinds": [],
+      "tasks": {
+        "source": "markdown-fallback",
+        "taskCount": 1,
+        "terminalTaskCount": 0,
+        "nonTerminalTaskCount": 1,
+        "historyPresent": false,
+        "releaseSignal": false,
+        "releaseTaskIds": []
+      },
+      "releaseSignals": [
+        "release-workflow:address-overlays.yml"
+      ],
+      "production": {
+        "verified": false,
+        "path": null,
+        "status": "UNOBSERVED",
+        "deployedAt": null,
+        "releaseId": null,
+        "smokeVerified": false,
+        "healthVerified": false
+      }
+    },
+    "bootstrapAuthority": "runtime-receipt",
+    "activatedAt": "2026-11-09T07:00:58.479Z",
+    "activationEvidencePath": ".executionkit/gates/activation.json"
+  },
+  "todoPath": "TODO.md",
+  "taskArchivePaths": [],
+  "validStates": [
+    "PLANNED",
+    "READY",
+    "BLOCKED",
+    "IN_PROGRESS",
+    "IMPLEMENTED",
+    "REVIEW_REQUIRED",
+    "CORRECTION_REQUIRED",
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED",
+    "CANCELLED"
+  ],
+  "stateAliases": {
+    "VERIFIED": "ACCEPTED"
+  },
+  "acceptedStates": [
+    "ACCEPTED",
+    "RELEASED"
+  ],
+  "verifiedStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED"
+  ],
+  "terminalStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED",
+    "CANCELLED"
+  ],
+  "archiveTerminalStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED",
+    "CANCELLED"
+  ],
+  "dependencySatisfiedStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED"
+  ],
+  "cancellationSatisfiesDependencies": false,
+  "referenceKeys": [
+    "Contract"
+  ],
+  "scanCompetingBacklogs": true,
+  "backlogScanRoots": [
+    "docs",
+    ".agents"
+  ],
+  "ignoreBacklogPaths": [
+    "docs/reference",
+    "docs/archive"
+  ],
+  "competingBacklogAsError": true,
+  "forbidManualProgressPercentages": true,
+  "requireEvidenceForVerified": true,
+  "requireContractForReady": false,
+  "requireVerificationField": true,
+  "requireBlockerForBlocked": true,
+  "requireCancellationReason": true,
+  "requireExecutorForInProgress": false,
+  "validateMarkdownAnchors": true,
+  "rejectPlaceholdersWhenActive": true,
+  "integration": {
+    "requirePhaseConvergenceForClosure": true,
+    "minTasksForPhaseGate": 2,
+    "journeyContractPath": "executionkit.integration.json",
+    "requireCriticalJourneysForRelease": true,
+    "allowNotApplicableForRelease": false,
+    "requireSystemReleaseGate": false,
+    "systemReleaseGateTaskId": "REL-AUDIT",
+    "requireJourneyDenominator": true,
+    "releaseGateAuthority": "runtime-exact-candidate"
+  },
+  "repositoryIntelligence": {
+    "enabled": true,
+    "storage": {
+      "portableRoot": ".executionkit/knowledge",
+      "localRoot": ".executionkit/repository-intelligence",
+      "contextPath": ".executionkit/knowledge/repository-context.json",
+      "engineeringPath": ".executionkit/knowledge/engineering-knowledge.json",
+      "externalKnowledgePath": ".executionkit/knowledge/external-knowledge.json"
+    },
+    "privacy": {
+      "allowSourceEgress": false,
+      "includeSecretSensitivePaths": false,
+      "extraDenyPaths": []
+    },
+    "thresholds": {
+      "trustedMin": 85,
+      "verifyMin": 65,
+      "degradedMin": 40
+    },
+    "providers": {
+      "required": [],
+      "optional": []
+    },
+    "context": {
+      "maxBytes": 16384
+    },
+    "refresh": {
+      "maxChangedPaths": 60,
+      "maxScopeRatio": 0.35,
+      "maxChangedSections": 5
+    },
+    "ingestion": {
+      "paths": [],
+      "maxFileBytes": 262144,
+      "maxTotalBytes": 2097152
+    },
+    "autoConsumption": {
+      "enabled": true,
+      "preferred": [],
+      "fallback": "native"
+    }
+  },
+  "documentation": {
+    "enabled": true,
+    "outputRoot": "docs/knowledge-base/generated",
+    "registryPath": ".executionkit/knowledge/documentation-registry.json",
+    "requiredForRelease": true,
+    "minimumCoveragePercent": 100
+  },
+  "deployment": {
+    "enabled": true,
+    "requiredForRelease": true,
+    "artifactRoot": ".executionkit/deployment",
+    "requireCleanGit": true,
+    "extraInclude": [],
+    "extraExclude": [],
+    "buildCommands": [],
+    "preActivateCommands": [],
+    "postActivateCommands": [],
+    "smokeCommands": [],
+    "sharedLinks": [],
+    "healthUrl": "",
+    "healthTimeoutMs": 10000,
+    "target": {
+      "type": "UNCONFIGURED",
+      "releaseRoot": "",
+      "currentLink": ""
+    },
+    "retention": {
+      "enabled": true,
+      "keepRollbacks": 0,
+      "minimumAgeMinutes": 0,
+      "cleanupLegacyReleases": true,
+      "workerUsers": []
+    },
+    "sourceRoot": ".",
+    "allowSourceMaps": false,
+    "verifyComposerDependencies": true,
+    "attestationUrl": "",
+    "requireBackupBeforeActivate": false,
+    "backupReceiptPath": "",
+    "backupDatabase": "",
+    "artifactBudget": {
+      "maxFiles": 50000,
+      "maxTotalBytes": 1073741824,
+      "maxFileBytes": 134217728
+    },
+    "workspace": {
+      "mode": "PROJECT_ROOT",
+      "allowedRoots": [],
+      "requireOutsideProduction": true
+    },
+    "privilege": {
+      "model": "UNPRIVILEGED_AFTER_BOOTSTRAP",
+      "sudoDuringDeploy": false,
+      "requireWritableTarget": true,
+      "deploymentUser": ""
+    }
+  },
+  "v4": {
+    "cliFirst": true,
+    "mcp": false,
+    "host": {
+      "primary": "antigravity",
+      "entryAuthority": "AGENTS.md"
+    },
+    "kernel": {
+      "failClosed": true,
+      "requireSystemEvidence": true,
+      "requireNegativeRegressions": true,
+      "automaticImpactRouting": true
+    },
+    "systems": {
+      "execution": {
+        "enabled": true,
+        "level": "STANDARD",
+        "always": true
+      },
+      "agent": {
+        "enabled": true,
+        "level": "STANDARD",
+        "always": true,
+        "parallelMode": "DEPENDENCY_SAFE_PARALLEL"
+      },
+      "state": {
+        "enabled": true,
+        "level": "STANDARD",
+        "always": true,
+        "rehydrateBeforeMutation": true,
+        "checkpointAfterLifecycle": true
+      },
+      "content": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "impact"
+      },
+      "seo": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "applicability-and-impact"
+      },
+      "docs": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "material-source-impact",
+        "requiredForRelease": true
+      },
+      "audit": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "wave-phase-release"
+      },
+      "test": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "wave-phase-release",
+        "runTaskVerification": false,
+        "runImpactedTests": false,
+        "requireExecutableTaskCheck": false,
+        "phaseFullSuite": true,
+        "commands": {
+          "task": [],
+          "wave": [],
+          "phase": []
+        },
+        "waveFullSuite": true,
+        "surfaceScope": {
+          "includeRoots": [],
+          "excludeRoots": []
+        }
+      },
+      "launch": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "release"
+      },
+      "visual": {
+        "enabled": true,
+        "level": "FULL",
+        "profile": "PREMIUM",
+        "trigger": "ui-surface-impact",
+        "requireResponsive": true,
+        "requireComponentSystem": true,
+        "requireDesignAuthority": true,
+        "requireRenderedReview": true,
+        "requireProductionShapedData": true,
+        "requireAccessibility": true,
+        "requireIndependentReview": true,
+        "surfaceScope": {
+          "includeRoots": [],
+          "excludeRoots": []
+        }
+      },
+      "decision": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "preflight-postflight-wave-phase-release",
+        "engine": "bundled-deterministic",
+        "models": false,
+        "hotPathNetwork": false
+      }
+    },
+    "boundary": {
+      "waveTimeoutMs": 1800000,
+      "phaseTimeoutMs": 2700000
+    }
+  },
+  "todoAuthority": {
+    "mode": "single-file",
+    "shardRoot": "todo",
+    "archiveRoot": "todo/archive",
+    "requirePhaseMatch": true,
+    "maxTasksPerShard": 60,
+    "maxShardBytes": 262144,
+    "maxRootBytes": 65536,
+    "archiveMaxTasksPerFile": 100,
+    "archiveMaxBytesPerFile": 524288,
+    "maintenanceRequired": true
+  },
+  "productClosure": {
+    "enabled": true,
+    "treatProjectAsSingleProduct": true,
+    "autoCreateGapTasks": true,
+    "blockingGapSeverity": "HIGH",
+    "runBeforeSelection": true,
+    "runAfterIntegration": true,
+    "closureRequiredBeforeNoActionableWork": true,
+    "autoCommitGapTasks": true,
+    "defaultGapPhase": "GAP",
+    "autoCreateSystemFindingTasks": true,
+    "systemFindingSeverity": "HIGH"
+  },
+  "controlPlane": {
+    "mode": "github-native",
+    "executionAgent": "disabled",
+    "repositoryAuthority": "github-origin",
+    "taskAuthority": "todo-shards",
+    "statusAuthority": "github-checks-workflows",
+    "fleetAuthority": "github-self-hosted-runners",
+    "dispatchAuthority": "github-workflow-dispatch",
+    "workflowDispatch": "repository-defined-manual",
+    "remoteCommand": "disabled",
+    "requiredForLocalExecution": false
+  },
+  "updatePolicy": {
+    "channel": "official-main",
+    "repository": "https://github.com/Elwazeery/AI-ExcutionKit.git",
+    "ref": "refs/heads/main",
+    "checkOnStart": true,
+    "ttlSeconds": 3600,
+    "timeoutMs": 5000,
+    "offlineRetryIntervalSeconds": 1800,
+    "autoApply": false,
+    "failOpenOffline": true,
+    "refuseDirtyWorktree": true,
+    "requireIncomingUpdater": true
+  },
+  "installation": {
+    "runtimePath": ".executionkit/runtime/kit",
+    "runtimePolicy": "IMMUTABLE"
+  },
+  "decisionOS": {
+    "enabled": true,
+    "level": "STANDARD",
+    "trigger": "preflight-postflight-wave-phase-release",
+    "engine": "bundled-deterministic",
+    "models": false,
+    "hotPathNetwork": false,
+    "knowledgeRepository": "GemiTron88/KB",
+    "refreshCadence": "boundary-ttl",
+    "cacheTtlHours": 6
+  }
+}

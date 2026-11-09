@@ -1,0 +1,36 @@
+{
+  "schema": "gemitron-source-review/v1",
+  "reviewed_source": "7e92dffa63b7c1357cf6f69b714865fb012eedfb",
+  "result": "SOURCE_FIX_VERIFIED_NOT_PHYSICAL_ACCEPTANCE",
+  "changes": [
+    "Release binds signed inspection for its exact job/worker/fence/commit, while immutable byte metadata remains unchanged",
+    "Current enrolled principal and runner HMAC trust rechecked",
+    "Metadata conflicts and disabled enrollment rejected",
+    "Server-safe Node/Python suites separated from workstation agent fixtures; no guard bypass"
+  ],
+  "checks": {
+    "baseline_node": {
+      "pass": 68,
+      "fail": 0
+    },
+    "full_node_after_source_fix": {
+      "pass": 69,
+      "fail": 0
+    },
+    "latest_server_safe_node": {
+      "pass": 55,
+      "fail": 0
+    },
+    "python_guard": {
+      "pass": 4
+    },
+    "python_host_policy": {
+      "pass": 4
+    }
+  },
+  "limits": [
+    "All artifact bytes are synthetic policy fixtures; no native SDK/build/device proof",
+    "Full agent fixture suite remains unsuitable on CWP VPS; use server-safe scripts there",
+    "Actual signed upload/readback and host/provider acceptance still pending"
+  ]
+}

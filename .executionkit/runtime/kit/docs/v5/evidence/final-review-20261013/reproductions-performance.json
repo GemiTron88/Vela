@@ -1,0 +1,49 @@
+{
+  "schemaVersion": "executionkit-v5-final-reproduction/v1",
+  "baseline": "708faecb203122af8e1014cb511e85271e5b1bca",
+  "source": "5da087ae75c6b80af30b3c834ebc9abbd72527cb",
+  "observations": [
+    {
+      "case": "single-stream output overflow",
+      "before": {
+        "status": 0,
+        "error": null,
+        "bytes": 1024
+      },
+      "after": {
+        "status": null,
+        "error": "MAXBUFFER",
+        "bytes": 1024
+      }
+    },
+    {
+      "case": "multiline objective drift",
+      "before": "PASS",
+      "after": "REVIEW_REQUIRED"
+    },
+    {
+      "case": "projected objective drift",
+      "before": "PASS",
+      "after": "REVIEW_REQUIRED"
+    }
+  ],
+  "benchmark": {
+    "operation": "ordinary local Decision advice",
+    "before": {
+      "samples": 50,
+      "medianMs": 11.375,
+      "p95Ms": 49.363
+    },
+    "after": {
+      "samples": 50,
+      "medianMs": 0.827,
+      "p95Ms": 2.792
+    },
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "node": "v24.19.0"
+    },
+    "limitation": "Synthetic repeated local advice under concurrent source validation; not a physical/production benchmark"
+  }
+}

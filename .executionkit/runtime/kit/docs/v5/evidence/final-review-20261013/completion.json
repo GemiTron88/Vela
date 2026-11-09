@@ -1,0 +1,98 @@
+{
+  "schemaVersion": "executionkit-v5-final-source-review/v1",
+  "status": "PASS",
+  "scope": "SOURCE_ONLY",
+  "date": "2026-10-13T11:12:45.752304+00:00",
+  "baseline": "708faecb203122af8e1014cb511e85271e5b1bca",
+  "testedLocalCommit": "7312fd2e5c980caa56f8f7844ce78be46e728764",
+  "publishedCodeCommit": "4c382650ac0a4fd7bd6de83ec4f3b6b22162bd42",
+  "testedAndPublishedTree": "6b6c9d80e1592e7d393831165bf1bbb0714c3c1d",
+  "treeEqualityVerified": true,
+  "version": "5.0.0-dev",
+  "verification": {
+    "npm run check": {
+      "exitCode": 0,
+      "tests": 1165,
+      "pass": 1161,
+      "fail": 0,
+      "skipped": 4,
+      "runtimeDurationMs": 135617.952667
+    },
+    "sourceReview": {
+      "status": "PASS",
+      "systemCount": 11,
+      "invariants": 22,
+      "helpers": 286,
+      "helpSurfaces": 146
+    },
+    "cliAudit": {
+      "status": "PASS",
+      "cases": 162,
+      "errors": []
+    },
+    "pythonGuards": {
+      "passed": 8,
+      "failed": 0
+    },
+    "focusedPriorIterations": {
+      "regressions": 146,
+      "pipeAndCli": 52
+    },
+    "legacyTooling": {
+      "command": "node bin/setup-repository-provider-tooling.mjs plan <disposable-v5-project>",
+      "source": "4c382650ac0a4fd7bd6de83ec4f3b6b22162bd42",
+      "exitCode": 2,
+      "status": "REMOVED",
+      "mode": "NATIVE_ONLY",
+      "projectMutated": false
+    }
+  },
+  "measurement": {
+    "operation": "ordinary local Decision advice",
+    "before": {
+      "samples": 50,
+      "medianMs": 11.375,
+      "p95Ms": 49.363
+    },
+    "after": {
+      "samples": 50,
+      "medianMs": 0.827,
+      "p95Ms": 2.792
+    },
+    "environment": {
+      "platform": "linux",
+      "arch": "x64",
+      "node": "v24.19.0"
+    },
+    "limitation": "Synthetic repeated local advice under concurrent source validation; not a physical/production benchmark"
+  },
+  "timeoutProof": {
+    "case": "upgrade revalidation with deliberately hung Test command",
+    "source": "4c382650ac0a4fd7bd6de83ec4f3b6b22162bd42",
+    "status": "FAIL",
+    "timedOut": true,
+    "elapsedMs": 1649,
+    "budgetMs": 1500,
+    "pendingChecks": [
+      "test-os"
+    ],
+    "gateStatus": "FAIL",
+    "scope": "DISPOSABLE_PROCESS_FIXTURE"
+  },
+  "limitations": {
+    "liveSkips": 4,
+    "reason": "Studio live credentials/keys not present",
+    "historicalSourcePhaseWarnings": 6,
+    "canonicalTask": "EK5-PREP-CANONICAL-GATES",
+    "physicalDeviceStagingConsumerRestoreProduction": "NOT_RUN",
+    "stableV5": "NOT_CERTIFIED"
+  },
+  "artifacts": {
+    "cli-audit.json": "6f3d79cf227717f6ec9964f4f504a510ebe0dfeb08d6a603916b668aa7140b72",
+    "reproductions-performance.json": "9535c51ab6afe6106c4791f4dddc6fe17ec043998d36fe247c2f6222d2e21c58",
+    "source-review.json": "30176e8434cdff544d8dd238d9936e6d7f2774f25676632724be3e73cf17b9d2",
+    "upgrade-timeout.json": "a8b860047dfef69115f1bd2617bb5ef42da8a75e985f631ed2bdf5ddbcc3c633",
+    "verification-logs.tar.gz": "a15336f7374ab822fb9df0117ab44d2539fd6f5d66bdf0230aa4e730bcbe42fb",
+    "legacy-tooling-refusal.json": "8e9948294d95cab3d98ccdc5d04436c12119563009bd6e6510b502332595e54d"
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "$schema": "./schemas/execution-config-v4.schema.json",
+  "standardVersion": "4.1.0",
+  "projectState": "BOOTSTRAP",
+  "profile": "STANDARD",
+  "v4": {
+    "cliFirst": true,
+    "mcp": false,
+    "host": {
+      "primary": "antigravity",
+      "entryAuthority": "AGENTS.md",
+      "requireLiveHookObservation": true
+    },
+    "kernel": {
+      "failClosed": true,
+      "requireSystemEvidence": true,
+      "requireNegativeRegressions": true,
+      "automaticImpactRouting": true
+    },
+    "systems": {
+      "execution": {
+        "enabled": true,
+        "level": "STANDARD",
+        "always": true
+      },
+      "agent": {
+        "enabled": true,
+        "level": "STANDARD",
+        "always": true,
+        "parallelMode": "DEPENDENCY_SAFE_PARALLEL"
+      },
+      "state": {
+        "enabled": true,
+        "level": "STANDARD",
+        "always": true,
+        "rehydrateBeforeMutation": true,
+        "checkpointAfterLifecycle": true
+      },
+      "content": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "impact"
+      },
+      "seo": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "applicability-and-impact"
+      },
+      "docs": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "material-source-impact",
+        "requiredForRelease": true
+      },
+      "audit": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "wave-phase-release"
+      },
+      "test": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "wave-phase-release",
+        "runTaskVerification": false,
+        "runImpactedTests": false,
+        "requireExecutableTaskCheck": false,
+        "phaseFullSuite": true,
+        "commands": {
+          "task": [],
+          "wave": [],
+          "phase": []
+        },
+        "waveFullSuite": true,
+        "surfaceScope": {
+          "includeRoots": [],
+          "excludeRoots": []
+        }
+      },
+      "launch": {
+        "enabled": true,
+        "level": "STANDARD",
+        "trigger": "release"
+      },
+      "visual": {
+        "enabled": true,
+        "level": "FULL",
+        "profile": "PREMIUM",
+        "trigger": "ui-surface-impact",
+        "requireResponsive": true,
+        "requireComponentSystem": true,
+        "requireDesignAuthority": true,
+        "requireRenderedReview": true,
+        "requireProductionShapedData": true,
+        "requireAccessibility": true,
+        "requireIndependentReview": true,
+        "surfaceScope": {
+          "includeRoots": [],
+          "excludeRoots": []
+        }
+      }
+    },
+    "boundary": {
+      "waveTimeoutMs": 1800000,
+      "phaseTimeoutMs": 2700000
+    }
+  },
+  "runtime": {
+    "mode": "DEPENDENCY_SAFE_PARALLEL",
+    "parallel": {
+      "enabled": true,
+      "maxConcurrentTasks": 3,
+      "maxAgentsPerTask": 4,
+      "requireExplicitParallelSafe": true,
+      "requireOwnership": true,
+      "isolatedWorktrees": true,
+      "integrationOwner": "orchestrator",
+      "sequentialFallback": true
+    },
+    "boost": {
+      "enabled": true,
+      "command": "/boost",
+      "maxConcurrentTasks": 6,
+      "maxAgentsPerTask": 6,
+      "qualityGatesPreserved": true
+    }
+  },
+  "repositoryIntelligence": {
+    "enabled": true,
+    "providers": {
+      "required": [],
+      "optional": []
+    },
+    "autoConsumption": {
+      "enabled": true,
+      "preferred": [],
+      "fallback": "native"
+    }
+  },
+  "documentation": {
+    "enabled": true,
+    "outputRoot": "docs/knowledge-base/generated",
+    "registryPath": ".executionkit/knowledge/documentation-registry.json",
+    "requiredForRelease": true,
+    "minimumCoveragePercent": 100
+  },
+  "operator": {
+    "entrypoint": "todo-first",
+    "hostChecklistMode": "derived-mirror",
+    "fullCiCadence": "wave-or-phase-boundary",
+    "targetedTaskVerification": false
+  },
+  "agent": {
+    "manifestPath": ".agents/manifest.json"
+  },
+  "todoPath": "TODO.md",
+  "taskArchivePaths": [],
+  "todoAuthority": {
+    "mode": "sharded",
+    "shardRoot": "todo",
+    "archiveRoot": "todo/archive",
+    "requirePhaseMatch": true,
+    "maxTasksPerShard": 60,
+    "maxShardBytes": 262144,
+    "maxRootBytes": 65536,
+    "archiveMaxTasksPerFile": 100,
+    "archiveMaxBytesPerFile": 524288,
+    "maintenanceRequired": true
+  },
+  "productClosure": {
+    "enabled": true,
+    "treatProjectAsSingleProduct": true,
+    "autoCreateGapTasks": true,
+    "blockingGapSeverity": "HIGH",
+    "runBeforeSelection": true,
+    "runAfterIntegration": true,
+    "closureRequiredBeforeNoActionableWork": true,
+    "autoCommitGapTasks": true,
+    "defaultGapPhase": "GAP",
+    "autoCreateSystemFindingTasks": true,
+    "systemFindingSeverity": "HIGH"
+  },
+  "adoption": {
+    "deepIntegrationRequired": true,
+    "integrationPhase": "EK4",
+    "integrationGateTaskId": "EK4-AUDIT",
+    "integrationActivationTaskId": "EK4-ACTIVATE",
+    "productExecutionBlockedUntilGateAccepted": true,
+    "maturityProfile": "M0_PLANNING_ONLY",
+    "maturityRationale": [
+      "Template default; installer replaces this from live repository evidence before writing."
+    ],
+    "maturityEvidence": {
+      "classifier": "executionkit-v4-maturity/v1"
+    },
+    "bootstrapAuthority": "runtime-receipt"
+  },
+  "integration": {
+    "requirePhaseConvergenceForClosure": true,
+    "minTasksForPhaseGate": 2,
+    "journeyContractPath": "executionkit.integration.json",
+    "requireCriticalJourneysForRelease": true,
+    "allowNotApplicableForRelease": false,
+    "requireSystemReleaseGate": false,
+    "systemReleaseGateTaskId": "REL-AUDIT",
+    "requireJourneyDenominator": true,
+    "releaseGateAuthority": "runtime-exact-candidate"
+  },
+  "capabilities": {
+    "execution": "STANDARD",
+    "agent": "STANDARD",
+    "content": "STANDARD",
+    "seo": "STANDARD",
+    "audit": "STANDARD",
+    "test": "STANDARD",
+    "launch": "STANDARD"
+  },
+  "controlPlane": {
+    "mode": "github-native",
+    "executionAgent": "disabled",
+    "repositoryAuthority": "github-origin",
+    "taskAuthority": "todo-shards",
+    "statusAuthority": "github-checks-workflows",
+    "fleetAuthority": "github-self-hosted-runners",
+    "dispatchAuthority": "github-workflow-dispatch",
+    "workflowDispatch": "repository-defined-manual",
+    "remoteCommand": "disabled",
+    "requiredForLocalExecution": false
+  },
+  "ci": {
+    "provider": "github-actions",
+    "executionMode": "self-hosted-manual",
+    "githubHostedAllowed": false,
+    "automaticPushRuns": false,
+    "allowedAutomaticWorkflowPaths": [],
+    "projectRunnerLabel": "project-default",
+    "maxProjectRunnersPerDevice": 1,
+    "allowedRunnerOS": [
+      "linux",
+      "windows",
+      "macos"
+    ]
+  },
+  "evidence": {
+    "requireDurableTaskEvidence": true,
+    "taskProofRoot": "docs/execution/evidence/tasks"
+  },
+  "updatePolicy": {
+    "channel": "official-main",
+    "repository": "https://github.com/Elwazeery/AI-ExcutionKit.git",
+    "ref": "refs/heads/main",
+    "checkOnStart": true,
+    "ttlSeconds": 3600,
+    "timeoutMs": 5000,
+    "offlineRetryIntervalSeconds": 1800,
+    "autoApply": false,
+    "failOpenOffline": true,
+    "refuseDirtyWorktree": true,
+    "requireIncomingUpdater": true
+  },
+  "deployment": {
+    "enabled": true,
+    "requiredForRelease": true,
+    "artifactRoot": ".executionkit/deployment",
+    "requireCleanGit": true,
+    "extraInclude": [],
+    "extraExclude": [],
+    "buildCommands": [],
+    "preActivateCommands": [],
+    "postActivateCommands": [],
+    "smokeCommands": [],
+    "sharedLinks": [],
+    "healthUrl": "",
+    "healthTimeoutMs": 10000,
+    "workspace": {
+      "mode": "PROJECT_ROOT",
+      "allowedRoots": [],
+      "requireOutsideProduction": true
+    },
+    "privilege": {
+      "model": "UNPRIVILEGED_AFTER_BOOTSTRAP",
+      "sudoDuringDeploy": false,
+      "requireWritableTarget": true,
+      "deploymentUser": ""
+    },
+    "target": {
+      "type": "UNCONFIGURED",
+      "releaseRoot": "",
+      "currentLink": ""
+    },
+    "retention": {
+      "enabled": true,
+      "keepRollbacks": 0,
+      "minimumAgeMinutes": 0,
+      "cleanupLegacyReleases": true,
+      "workerUsers": []
+    },
+    "sourceRoot": ".",
+    "allowSourceMaps": false,
+    "verifyComposerDependencies": true,
+    "attestationUrl": "",
+    "requireBackupBeforeActivate": false,
+    "backupReceiptPath": "",
+    "backupDatabase": "",
+    "artifactBudget": {
+      "maxFiles": 50000,
+      "maxTotalBytes": 1073741824,
+      "maxFileBytes": 134217728
+    }
+  },
+  "installation": {
+    "runtimePath": ".executionkit/runtime/kit",
+    "runtimePolicy": "IMMUTABLE"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "os": "Linux",
+  "architecture": "x86_64",
+  "cores": 9,
+  "ram_bytes": 10451460096,
+  "disk_free_bytes": 23491407872,
+  "tools": {
+    "flutter": null,
+    "dart": null,
+    "java": "/usr/bin/java",
+    "adb": null,
+    "emulator": null,
+    "sdkmanager": null,
+    "apksigner": null,
+    "apkanalyzer": null,
+    "shorebird": null,
+    "git": "/usr/local/bin/git",
+    "node": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node"
+  },
+  "kvm_accessible": false,
+  "cpu_virtualization_flags": false,
+  "nested_virtualization": "UNKNOWN_REQUIRES_HOST_CONFIRMATION",
+  "acceleration": {
+    "status": "NOT_AVAILABLE"
+  },
+  "java": {
+    "exit_code": 0,
+    "output": "openjdk version \"17.0.20\" 2026-07-21\nOpenJDK Runtime Environment (build 17.0.20+8-1-24.04-Ubuntu)\nOpenJDK 64-Bit Server VM (build 17.0.20+8-1-24.04-Ubuntu, mixed mode, sharing)\n"
+  },
+  "decision": "STATIC_TESTS_BUILD_AND_REMOTE_DEVICE_FALLBACK",
+  "emulator_test_status": "NOT_TESTED",
+  "production_services_inspected": false
+}

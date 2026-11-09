@@ -1,0 +1,1801 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elwazeery.github.io/ai-executionkit/execution-config-v3.json",
+  "title": "AI ExecutionKit v3 execution config",
+  "type": "object",
+  "required": [
+    "standardVersion",
+    "projectState",
+    "profile",
+    "capabilities",
+    "ci",
+    "agent",
+    "state",
+    "taskModel",
+    "todoPath",
+    "taskArchivePaths",
+    "validStates",
+    "documentation",
+    "deployment"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "standardVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "projectState": {
+      "enum": [
+        "BOOTSTRAP",
+        "ACTIVE"
+      ]
+    },
+    "profile": {
+      "enum": [
+        "LITE",
+        "STANDARD",
+        "FULL",
+        "CUSTOM"
+      ]
+    },
+    "customRationale": {
+      "type": "string"
+    },
+    "capabilities": {
+      "type": "object",
+      "required": [
+        "execution",
+        "agent",
+        "content",
+        "seo",
+        "audit",
+        "test",
+        "launch"
+      ],
+      "properties": {
+        "execution": {
+          "$ref": "#/$defs/level"
+        },
+        "agent": {
+          "$ref": "#/$defs/level"
+        },
+        "content": {
+          "$ref": "#/$defs/level"
+        },
+        "seo": {
+          "$ref": "#/$defs/level"
+        },
+        "audit": {
+          "$ref": "#/$defs/level"
+        },
+        "test": {
+          "$ref": "#/$defs/level"
+        },
+        "launch": {
+          "$ref": "#/$defs/level"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ci": {
+      "type": "object",
+      "required": [
+        "provider",
+        "executionMode",
+        "githubHostedAllowed",
+        "automaticPushRuns",
+        "projectRunnerLabel",
+        "maxProjectRunnersPerDevice",
+        "allowedRunnerOS"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string"
+        },
+        "executionMode": {
+          "const": "self-hosted-manual"
+        },
+        "githubHostedAllowed": {
+          "const": false
+        },
+        "automaticPushRuns": {
+          "const": false
+        },
+        "allowedAutomaticWorkflowPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "projectRunnerLabel": {
+          "type": "string",
+          "pattern": "^project-[A-Za-z0-9][A-Za-z0-9._-]*$"
+        },
+        "maxProjectRunnersPerDevice": {
+          "const": 1
+        },
+        "allowedRunnerOS": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "macOS",
+              "windows"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": true
+    },
+    "agent": {
+      "type": "object",
+      "required": [
+        "manifestPath"
+      ],
+      "properties": {
+        "manifestPath": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "operator": {
+      "type": "object",
+      "required": [
+        "entrypoint",
+        "additionalBootstrapPromptRequired",
+        "hostChecklistMode",
+        "syncHostChecklistAfterTask",
+        "fullCiCadence",
+        "targetedTaskVerification",
+        "hostPersistenceAuthority"
+      ],
+      "properties": {
+        "entrypoint": {
+          "const": "todo-first"
+        },
+        "additionalBootstrapPromptRequired": {
+          "const": false
+        },
+        "hostChecklistMode": {
+          "const": "derived-mirror"
+        },
+        "syncHostChecklistAfterTask": {
+          "const": true
+        },
+        "fullCiCadence": {
+          "const": "phase-boundary"
+        },
+        "targetedTaskVerification": {
+          "const": true
+        },
+        "hostPersistenceAuthority": {
+          "const": "none"
+        }
+      },
+      "additionalProperties": false
+    },
+    "runtime": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "enum": [
+            "SEQUENTIAL",
+            "DEPENDENCY_SAFE_PARALLEL"
+          ]
+        },
+        "oneLifecycleActionAtATime": {
+          "type": "boolean"
+        },
+        "allowBoundedHostDelegation": {
+          "type": "boolean"
+        },
+        "checkpointPath": {
+          "const": ".executionkit/runtime/checkpoint.json"
+        },
+        "parallel": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "maxConcurrentTasks": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 32
+            },
+            "maxAgentsPerTask": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 32
+            },
+            "requireExplicitParallelSafe": {
+              "type": "boolean"
+            },
+            "requireOwnership": {
+              "type": "boolean"
+            },
+            "isolatedWorktrees": {
+              "type": "boolean"
+            },
+            "integrationOwner": {
+              "type": "string",
+              "minLength": 1
+            },
+            "sequentialFallback": {
+              "const": true
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "maxConcurrentTasks",
+            "maxAgentsPerTask",
+            "requireExplicitParallelSafe",
+            "requireOwnership",
+            "isolatedWorktrees",
+            "integrationOwner",
+            "sequentialFallback"
+          ]
+        },
+        "boost": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "command": {
+              "const": "/boost"
+            },
+            "maxConcurrentTasks": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 64
+            },
+            "maxAgentsPerTask": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 64
+            },
+            "qualityGatesPreserved": {
+              "const": true
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "command",
+            "maxConcurrentTasks",
+            "maxAgentsPerTask",
+            "qualityGatesPreserved"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "SEQUENTIAL"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "oneLifecycleActionAtATime": {
+                "const": true
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mode": {
+                "const": "DEPENDENCY_SAFE_PARALLEL"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          },
+          "then": {
+            "properties": {
+              "oneLifecycleActionAtATime": {
+                "const": false
+              },
+              "parallel": {
+                "type": "object",
+                "required": [
+                  "enabled",
+                  "maxConcurrentTasks",
+                  "maxAgentsPerTask",
+                  "requireExplicitParallelSafe",
+                  "requireOwnership",
+                  "isolatedWorktrees",
+                  "integrationOwner",
+                  "sequentialFallback"
+                ],
+                "properties": {
+                  "enabled": {
+                    "const": true
+                  },
+                  "maxConcurrentTasks": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 32
+                  },
+                  "maxAgentsPerTask": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 32
+                  },
+                  "requireExplicitParallelSafe": {
+                    "const": true
+                  },
+                  "requireOwnership": {
+                    "const": true
+                  },
+                  "isolatedWorktrees": {
+                    "const": true
+                  },
+                  "integrationOwner": {
+                    "const": "orchestrator"
+                  },
+                  "sequentialFallback": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              },
+              "boost": {
+                "type": "object",
+                "required": [
+                  "enabled",
+                  "command",
+                  "maxConcurrentTasks",
+                  "maxAgentsPerTask",
+                  "qualityGatesPreserved"
+                ],
+                "properties": {
+                  "enabled": {
+                    "const": true
+                  },
+                  "command": {
+                    "const": "/boost"
+                  },
+                  "maxConcurrentTasks": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 64
+                  },
+                  "maxAgentsPerTask": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 64
+                  },
+                  "qualityGatesPreserved": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "parallel",
+              "boost"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "oneLifecycleActionAtATime",
+        "allowBoundedHostDelegation",
+        "checkpointPath"
+      ]
+    },
+    "state": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "snapshotPath",
+        "journalPath",
+        "checkpointOnRuntimeTransitions",
+        "requireRehydrateOnDrift",
+        "heartbeatMinutes",
+        "memory"
+      ],
+      "properties": {
+        "enabled": {
+          "const": true
+        },
+        "snapshotPath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/"
+        },
+        "journalPath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/"
+        },
+        "checkpointOnRuntimeTransitions": {
+          "type": "boolean"
+        },
+        "requireRehydrateOnDrift": {
+          "const": true
+        },
+        "heartbeatMinutes": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 240
+        },
+        "memory": {
+          "type": "object",
+          "required": [
+            "mode",
+            "authority",
+            "requireLiveRevalidation",
+            "allowTaskState"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "auto",
+                "disabled",
+                "required"
+              ]
+            },
+            "authority": {
+              "const": "advisory"
+            },
+            "requireLiveRevalidation": {
+              "const": true
+            },
+            "allowTaskState": {
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "fleet": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "agentMode": {
+          "enum": [
+            "per-device"
+          ]
+        },
+        "hostActivity": {
+          "enum": [
+            "local-pulse"
+          ]
+        },
+        "remoteControl": {
+          "enum": [
+            "disabled",
+            "typed"
+          ]
+        },
+        "telemetry": {
+          "type": "object",
+          "required": [
+            "transport",
+            "authority",
+            "uploadTodoContent",
+            "uploadSourceContent",
+            "shareLocalPaths"
+          ],
+          "properties": {
+            "transport": {
+              "enum": [
+                "local-agent"
+              ]
+            },
+            "authority": {
+              "const": "observational"
+            },
+            "uploadTodoContent": {
+              "const": false
+            },
+            "uploadSourceContent": {
+              "const": false
+            },
+            "shareLocalPaths": {
+              "type": "boolean"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "discovery": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "scopePath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventoryPath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/"
+        },
+        "reconciliationPath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/"
+        },
+        "requiredForRelease": {
+          "type": "boolean"
+        },
+        "failOnDeclaredMissing": {
+          "const": true
+        },
+        "allowEmptyScopeForRelease": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "candidateRequiredForRelease": {
+          "type": "boolean"
+        },
+        "adapterConfigPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "maxAgeMinutes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "requiredProducers": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "requireTestAdequacy": {
+          "type": "boolean"
+        },
+        "testReportPath": {
+          "type": "string"
+        },
+        "testFormat": {
+          "enum": [
+            "tap",
+            "junit",
+            "playwright-json",
+            ""
+          ]
+        },
+        "minimumTests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "allowSkipped": {
+          "type": "boolean"
+        },
+        "allowFlaky": {
+          "type": "boolean"
+        },
+        "requireDurableTaskEvidence": {
+          "type": "boolean"
+        },
+        "taskProofRoot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "releaseTruthMode": {
+          "const": "STRICT"
+        }
+      },
+      "additionalProperties": false
+    },
+    "seo": {
+      "type": "object",
+      "required": [
+        "contractPath",
+        "requiredForRelease"
+      ],
+      "properties": {
+        "contractPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requiredForRelease": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "premiumExperience": {
+      "type": "object",
+      "required": [
+        "applicability",
+        "qualityProfile",
+        "notApplicableReason"
+      ],
+      "properties": {
+        "applicability": {
+          "enum": [
+            "UNRESOLVED",
+            "REQUIRED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "qualityProfile": {
+          "enum": [
+            "UNRESOLVED",
+            "premium",
+            "standard"
+          ]
+        },
+        "notApplicableReason": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "applicability": {
+                "const": "UNRESOLVED"
+              }
+            },
+            "required": [
+              "applicability"
+            ]
+          },
+          "then": {
+            "properties": {
+              "qualityProfile": {
+                "const": "UNRESOLVED"
+              },
+              "notApplicableReason": {
+                "const": ""
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "applicability": {
+                "const": "REQUIRED"
+              }
+            },
+            "required": [
+              "applicability"
+            ]
+          },
+          "then": {
+            "properties": {
+              "qualityProfile": {
+                "const": "premium"
+              },
+              "notApplicableReason": {
+                "const": ""
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "applicability": {
+                "const": "NOT_APPLICABLE"
+              }
+            },
+            "required": [
+              "applicability"
+            ]
+          },
+          "then": {
+            "properties": {
+              "qualityProfile": {
+                "const": "standard"
+              },
+              "notApplicableReason": {
+                "type": "string",
+                "minLength": 8
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "installation": {
+      "type": "object",
+      "properties": {
+        "runtimePath": {
+          "enum": [
+            ".executionkit/runtime/kit",
+            ".executionkit/runtime/AI-ExecutionKit"
+          ]
+        }
+      },
+      "required": [
+        "runtimePath"
+      ],
+      "additionalProperties": false
+    },
+    "taskModel": {
+      "type": "object",
+      "required": [
+        "adapter"
+      ],
+      "properties": {
+        "adapter": {
+          "enum": [
+            "canonical-blocks",
+            "projection-json",
+            "native-markdown"
+          ]
+        },
+        "projectionPath": {
+          "type": "string"
+        },
+        "projectionCommand": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "adoption": {
+      "type": "object",
+      "properties": {
+        "deepIntegrationRequired": {
+          "type": "boolean"
+        },
+        "integrationPhase": {
+          "type": "string",
+          "minLength": 1
+        },
+        "integrationGateTaskId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "integrationActivationTaskId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "productExecutionBlockedUntilGateAccepted": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "deepIntegrationRequired": {
+                "const": true
+              }
+            },
+            "required": [
+              "deepIntegrationRequired"
+            ]
+          },
+          "then": {
+            "required": [
+              "integrationPhase",
+              "integrationGateTaskId",
+              "productExecutionBlockedUntilGateAccepted"
+            ],
+            "properties": {
+              "productExecutionBlockedUntilGateAccepted": {
+                "const": true
+              }
+            }
+          }
+        }
+      ],
+      "additionalProperties": true
+    },
+    "todoPath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "taskArchivePaths": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "validStates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "stateAliases": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "acceptedStates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "verifiedStates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "terminalStates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "archiveTerminalStates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "dependencySatisfiedStates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "cancellationSatisfiesDependencies": {
+      "type": "boolean"
+    },
+    "referenceKeys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "scanCompetingBacklogs": {
+      "type": "boolean"
+    },
+    "backlogScanRoots": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "ignoreBacklogPaths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "competingBacklogAsError": {
+      "type": "boolean"
+    },
+    "forbidManualProgressPercentages": {
+      "type": "boolean"
+    },
+    "requireEvidenceForVerified": {
+      "type": "boolean"
+    },
+    "requireContractForReady": {
+      "type": "boolean"
+    },
+    "requireVerificationField": {
+      "type": "boolean"
+    },
+    "requireBlockerForBlocked": {
+      "type": "boolean"
+    },
+    "requireCancellationReason": {
+      "type": "boolean"
+    },
+    "requireExecutorForInProgress": {
+      "type": "boolean"
+    },
+    "validateMarkdownAnchors": {
+      "type": "boolean"
+    },
+    "rejectPlaceholdersWhenActive": {
+      "type": "boolean"
+    },
+    "quality": {
+      "type": "object",
+      "required": [
+        "contractPath"
+      ],
+      "properties": {
+        "contractPath": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "editors": {
+      "type": "object",
+      "properties": {
+        "antigravity": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "distributionRepository": {
+      "type": "boolean"
+    },
+    "integration": {
+      "type": "object",
+      "required": [
+        "requirePhaseConvergenceForClosure",
+        "minTasksForPhaseGate",
+        "journeyContractPath",
+        "requireCriticalJourneysForRelease",
+        "allowNotApplicableForRelease",
+        "requireSystemReleaseGate",
+        "systemReleaseGateTaskId",
+        "requireJourneyDenominator"
+      ],
+      "properties": {
+        "requirePhaseConvergenceForClosure": {
+          "type": "boolean"
+        },
+        "minTasksForPhaseGate": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "journeyContractPath": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requireCriticalJourneysForRelease": {
+          "type": "boolean"
+        },
+        "allowNotApplicableForRelease": {
+          "type": "boolean"
+        },
+        "requireSystemReleaseGate": {
+          "type": "boolean"
+        },
+        "systemReleaseGateTaskId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requireJourneyDenominator": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "repositoryIntelligence": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "storage",
+        "privacy",
+        "thresholds",
+        "providers",
+        "context",
+        "refresh",
+        "ingestion"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "storage": {
+          "type": "object",
+          "required": [
+            "portableRoot",
+            "localRoot",
+            "contextPath",
+            "engineeringPath",
+            "externalKnowledgePath"
+          ],
+          "properties": {
+            "portableRoot": {
+              "type": "string",
+              "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+            },
+            "localRoot": {
+              "type": "string",
+              "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+            },
+            "contextPath": {
+              "type": "string",
+              "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.json$"
+            },
+            "engineeringPath": {
+              "type": "string",
+              "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.json$"
+            },
+            "externalKnowledgePath": {
+              "type": "string",
+              "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.json$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "privacy": {
+          "type": "object",
+          "required": [
+            "allowSourceEgress",
+            "includeSecretSensitivePaths",
+            "extraDenyPaths"
+          ],
+          "properties": {
+            "allowSourceEgress": {
+              "const": false
+            },
+            "includeSecretSensitivePaths": {
+              "const": false
+            },
+            "extraDenyPaths": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "thresholds": {
+          "type": "object",
+          "required": [
+            "trustedMin",
+            "verifyMin",
+            "degradedMin"
+          ],
+          "properties": {
+            "trustedMin": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "verifyMin": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            },
+            "degradedMin": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "additionalProperties": false
+        },
+        "providers": {
+          "type": "object",
+          "required": [
+            "required",
+            "optional"
+          ],
+          "properties": {
+            "required": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9._-]*$"
+              }
+            },
+            "optional": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9][a-z0-9._-]*$"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "context": {
+          "type": "object",
+          "required": [
+            "maxBytes"
+          ],
+          "properties": {
+            "maxBytes": {
+              "type": "integer",
+              "minimum": 4096,
+              "maximum": 131072
+            }
+          },
+          "additionalProperties": false
+        },
+        "refresh": {
+          "type": "object",
+          "required": [
+            "maxChangedPaths",
+            "maxScopeRatio",
+            "maxChangedSections"
+          ],
+          "properties": {
+            "maxChangedPaths": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "maxScopeRatio": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 1
+            },
+            "maxChangedSections": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          "additionalProperties": false
+        },
+        "ingestion": {
+          "type": "object",
+          "required": [
+            "paths",
+            "maxFileBytes",
+            "maxTotalBytes"
+          ],
+          "properties": {
+            "paths": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "maxFileBytes": {
+              "type": "integer",
+              "minimum": 1024,
+              "maximum": 2097152
+            },
+            "maxTotalBytes": {
+              "type": "integer",
+              "minimum": 1024,
+              "maximum": 16777216
+            }
+          },
+          "additionalProperties": false
+        },
+        "autoConsumption": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "preferred": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "fallback": {
+              "type": "string"
+            },
+            "onStart": {
+              "type": "boolean"
+            },
+            "onBoundary": {
+              "type": "boolean"
+            },
+            "onTestImpact": {
+              "type": "boolean"
+            },
+            "maxContextBytes": {
+              "type": "integer",
+              "minimum": 1024
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "documentation": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "outputRoot",
+        "registryPath",
+        "requiredForRelease",
+        "minimumCoveragePercent"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "outputRoot": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+        },
+        "registryPath": {
+          "type": "string",
+          "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+\\.json$"
+        },
+        "requiredForRelease": {
+          "type": "boolean"
+        },
+        "minimumCoveragePercent": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      },
+      "additionalProperties": false
+    },
+    "deployment": {
+      "type": "object",
+      "required": [
+        "enabled",
+        "requiredForRelease",
+        "artifactRoot",
+        "requireCleanGit",
+        "extraInclude",
+        "extraExclude",
+        "buildCommands",
+        "preActivateCommands",
+        "postActivateCommands",
+        "smokeCommands",
+        "sharedLinks",
+        "healthUrl",
+        "healthTimeoutMs",
+        "target"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "requiredForRelease": {
+          "type": "boolean"
+        },
+        "artifactRoot": {
+          "type": "string",
+          "pattern": "^\\.executionkit/(?!.*(?:^|/)\\.\\.(?:/|$)).+"
+        },
+        "requireCleanGit": {
+          "type": "boolean"
+        },
+        "extraInclude": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "extraExclude": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "buildCommands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "command",
+              "args"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "minLength": 1
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "enum": [
+                  "project",
+                  "release"
+                ]
+              },
+              "timeoutMs": {
+                "type": "integer",
+                "minimum": 1000,
+                "maximum": 3600000
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "preActivateCommands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "command",
+              "args"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "minLength": 1
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "enum": [
+                  "project",
+                  "release"
+                ]
+              },
+              "timeoutMs": {
+                "type": "integer",
+                "minimum": 1000,
+                "maximum": 3600000
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "postActivateCommands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "command",
+              "args"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "minLength": 1
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "enum": [
+                  "project",
+                  "release"
+                ]
+              },
+              "timeoutMs": {
+                "type": "integer",
+                "minimum": 1000,
+                "maximum": 3600000
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "smokeCommands": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "command",
+              "args"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "minLength": 1
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "enum": [
+                  "project",
+                  "release"
+                ]
+              },
+              "timeoutMs": {
+                "type": "integer",
+                "minimum": 1000,
+                "maximum": 3600000
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "sharedLinks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "releasePath",
+              "target"
+            ],
+            "properties": {
+              "releasePath": {
+                "type": "string",
+                "minLength": 1
+              },
+              "target": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "healthUrl": {
+          "type": "string"
+        },
+        "healthTimeoutMs": {
+          "type": "integer",
+          "minimum": 1000,
+          "maximum": 120000
+        },
+        "target": {
+          "type": "object",
+          "required": [
+            "type",
+            "releaseRoot",
+            "currentLink"
+          ],
+          "properties": {
+            "type": {
+              "enum": [
+                "UNCONFIGURED",
+                "local-release-root"
+              ]
+            },
+            "releaseRoot": {
+              "type": "string"
+            },
+            "currentLink": {
+              "type": "string"
+            },
+            "publicLink": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "retention": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean",
+              "default": true
+            },
+            "keepRollbacks": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100,
+              "default": 0
+            },
+            "minimumAgeMinutes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 525600,
+              "default": 0
+            },
+            "cleanupLegacyReleases": {
+              "type": "boolean",
+              "default": true
+            },
+            "workerUsers": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*\\$?$"
+              },
+              "default": []
+            }
+          },
+          "additionalProperties": false
+        },
+        "sourceRoot": {
+          "type": "string",
+          "minLength": 1,
+          "default": "."
+        },
+        "allowSourceMaps": {
+          "type": "boolean",
+          "default": false
+        },
+        "verifyComposerDependencies": {
+          "type": "boolean",
+          "default": true
+        },
+        "attestationUrl": {
+          "type": "string"
+        },
+        "requireBackupBeforeActivate": {
+          "type": "boolean",
+          "default": false
+        },
+        "backupReceiptPath": {
+          "type": "string"
+        },
+        "backupDatabase": {
+          "type": "string"
+        },
+        "artifactBudget": {
+          "type": "object",
+          "properties": {
+            "maxFiles": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 50000
+            },
+            "maxTotalBytes": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1073741824
+            },
+            "maxFileBytes": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 134217728
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "capabilities"
+        ],
+        "properties": {
+          "capabilities": {
+            "required": [
+              "seo"
+            ],
+            "properties": {
+              "seo": {
+                "enum": [
+                  "LITE",
+                  "STANDARD",
+                  "FULL"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "seo"
+        ],
+        "properties": {
+          "seo": {
+            "required": [
+              "contractPath",
+              "requiredForRelease"
+            ],
+            "properties": {
+              "requiredForRelease": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "standardVersion"
+        ],
+        "properties": {
+          "standardVersion": {
+            "type": "string",
+            "pattern": "^3\\."
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "operator",
+          "runtime",
+          "fleet",
+          "adoption",
+          "discovery",
+          "evidence",
+          "seo",
+          "integration"
+        ],
+        "properties": {
+          "runtime": {
+            "properties": {
+              "mode": {
+                "const": "DEPENDENCY_SAFE_PARALLEL"
+              },
+              "oneLifecycleActionAtATime": {
+                "const": false
+              }
+            },
+            "required": [
+              "mode",
+              "oneLifecycleActionAtATime",
+              "parallel",
+              "boost"
+            ]
+          },
+          "discovery": {
+            "required": [
+              "enabled",
+              "scopePath",
+              "inventoryPath",
+              "reconciliationPath",
+              "requiredForRelease",
+              "failOnDeclaredMissing",
+              "allowEmptyScopeForRelease"
+            ],
+            "properties": {
+              "failOnDeclaredMissing": {
+                "const": true
+              },
+              "enabled": {
+                "const": true
+              }
+            }
+          },
+          "evidence": {
+            "required": [
+              "releaseTruthMode",
+              "candidateRequiredForRelease",
+              "adapterConfigPath",
+              "maxAgeMinutes",
+              "requiredProducers",
+              "requireTestAdequacy",
+              "testReportPath",
+              "testFormat",
+              "minimumTests",
+              "allowSkipped",
+              "allowFlaky"
+            ],
+            "properties": {
+              "releaseTruthMode": {
+                "const": "STRICT"
+              },
+              "candidateRequiredForRelease": {
+                "const": true
+              },
+              "requireTestAdequacy": {
+                "const": true
+              }
+            }
+          },
+          "integration": {
+            "required": [
+              "requirePhaseConvergenceForClosure",
+              "minTasksForPhaseGate",
+              "journeyContractPath",
+              "requireCriticalJourneysForRelease",
+              "requireJourneyDenominator",
+              "requireSystemReleaseGate",
+              "systemReleaseGateTaskId",
+              "allowNotApplicableForRelease"
+            ],
+            "properties": {
+              "requirePhaseConvergenceForClosure": {
+                "const": true
+              },
+              "requireCriticalJourneysForRelease": {
+                "const": true
+              },
+              "requireJourneyDenominator": {
+                "const": true
+              },
+              "requireSystemReleaseGate": {
+                "const": true
+              }
+            }
+          },
+          "operator": {
+            "required": [
+              "entrypoint",
+              "additionalBootstrapPromptRequired",
+              "hostChecklistMode",
+              "syncHostChecklistAfterTask",
+              "fullCiCadence",
+              "targetedTaskVerification",
+              "hostPersistenceAuthority"
+            ]
+          },
+          "fleet": {
+            "required": [
+              "enabled",
+              "agentMode",
+              "hostActivity",
+              "remoteControl",
+              "telemetry"
+            ],
+            "properties": {
+              "enabled": {
+                "const": true
+              },
+              "agentMode": {
+                "const": "per-device"
+              },
+              "hostActivity": {
+                "const": "local-pulse"
+              },
+              "remoteControl": {
+                "const": "disabled"
+              }
+            }
+          },
+          "adoption": {
+            "required": [
+              "deepIntegrationRequired",
+              "integrationPhase",
+              "integrationGateTaskId",
+              "productExecutionBlockedUntilGateAccepted"
+            ]
+          },
+          "seo": {
+            "required": [
+              "contractPath",
+              "requiredForRelease"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "level": {
+      "enum": [
+        "NONE",
+        "LITE",
+        "STANDARD",
+        "FULL"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

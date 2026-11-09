@@ -1,0 +1,3779 @@
+{
+  "schemaVersion": "executionkit-agentic-pilot-archive/v1",
+  "reusableReleaseGate": false,
+  "scope": "Kit adapter verification; FLOW read-only public diagnostics",
+  "implementationCommit": "9c7ae96a26e9c4e921ebce29e5da855d0753b011",
+  "producerPins": {
+    "e2e": "0.18.0",
+    "web": "0.13.0",
+    "mobile": "0.10.0"
+  },
+  "tokenCostAccounting": "unavailable for interactive host; zero reported tokens is not zero cost",
+  "cases": [
+    {
+      "label": "cold instrumentation rejection",
+      "kitStatus": "FAIL",
+      "kitRunId": "23ce41da-035e-4cd2-84b2-0f7584fed300",
+      "candidate": "bd3a1a68539d096e2ffa22966e9a80f06d0e2a63",
+      "sourceDigest": "4c6c3b53761d0accac13381b307ca4deb682bbcac98bcb6cf70c848f0c879a05",
+      "reportSha256": "b23aecbcfbbf549741df93a1607b7b1144845ece7f723afdf7d28fff41eae78a",
+      "upstream": {
+        "id": "01a118b4-954b-7b6b-8aa3-b19f227986ec",
+        "runner": {
+          "name": "e2e",
+          "version": "0.18.0"
+        },
+        "status": "passed",
+        "exitCode": 0,
+        "startedAt": "2026-10-07T23:30:50.739Z",
+        "finishedAt": "2026-10-07T23:34:39.669Z",
+        "environment": {
+          "ci": true,
+          "trustNoticeShown": false,
+          "os": "linux 6.18.44",
+          "arch": "x64",
+          "runtime": "node v24.19.0"
+        },
+        "usage": {
+          "discoveredResults": 3,
+          "maxAgentContextBytes": 0,
+          "maxLedgerBytes": 337,
+          "maxObservationBytes": 273,
+          "artifactBytes": 1890786,
+          "downloads": 0,
+          "events": 36,
+          "modelTokens": 0,
+          "maxModelCallsInStep": 3,
+          "maxActionStepsInStep": 2
+        }
+      },
+      "usage": {
+        "modelCalls": 10,
+        "modelTokens": 0,
+        "replayed": 0,
+        "handedOff": 0,
+        "misses": 3
+      },
+      "errors": [
+        {
+          "code": "AGENTIC_ARTIFACT_INVALID",
+          "message": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "AGENTIC_EVIDENCE_REQUIRED",
+          "message": "Missing log evidence",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "AGENTIC_ARTIFACT_INVALID",
+          "message": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch",
+          "journey": "KIT-REPORT"
+        },
+        {
+          "code": "AGENTIC_ARTIFACT_INVALID",
+          "message": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch",
+          "journey": "KIT-REPORT"
+        },
+        {
+          "code": "AGENTIC_EVIDENCE_REQUIRED",
+          "message": "Missing log evidence",
+          "journey": "KIT-REPORT"
+        },
+        {
+          "code": "AGENTIC_ARTIFACT_INVALID",
+          "message": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "AGENTIC_EVIDENCE_REQUIRED",
+          "message": "Missing log evidence",
+          "journey": "KIT-RECOVER"
+        }
+      ],
+      "journeys": [
+        {
+          "title": [
+            "Save complete item"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Save the prefilled item with both its name Widget and country EG, using the visible form.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "missed",
+                    "reason": "no-entry",
+                    "replayedActions": 0,
+                    "totalActions": 0
+                  },
+                  "metrics": {
+                    "modelCalls": 2,
+                    "actionSteps": 1,
+                    "observationBytes": 245,
+                    "contextBytes": 0,
+                    "ledgerBytes": 23,
+                    "pixelBytes": 20705
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 2,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b8",
+                  "explanation": "The visible saved page confirms Widget with EG after submitting the form."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The page clearly confirms Widget with country EG was saved.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 141,
+                    "contextBytes": 0,
+                    "ledgerBytes": 296,
+                    "pixelBytes": 12352
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b10",
+                  "explanation": "The page clearly states Item saved and displays Widget and EG."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Stock links to movement report"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Open Stock using visible navigation, then open its Movement report.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "missed",
+                    "reason": "no-entry",
+                    "replayedActions": 0,
+                    "totalActions": 0
+                  },
+                  "metrics": {
+                    "modelCalls": 3,
+                    "actionSteps": 2,
+                    "observationBytes": 245,
+                    "contextBytes": 0,
+                    "ledgerBytes": 23,
+                    "pixelBytes": 20705
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 3,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b10",
+                  "explanation": "Visible Stock navigation led to the Movement report identifying Widget, EG, and availability."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The movement report identifies Widget, its country EG, and availability.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 129,
+                    "contextBytes": 0,
+                    "ledgerBytes": 299,
+                    "pixelBytes": 15245
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b12",
+                  "explanation": "Movement report identifies Widget, EG, and available status."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Expired link recovers without writes"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Recover from the expired link using the visible return action, without saving or changing any item.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "missed",
+                    "reason": "no-entry",
+                    "replayedActions": 0,
+                    "totalActions": 0
+                  },
+                  "metrics": {
+                    "modelCalls": 2,
+                    "actionSteps": 1,
+                    "observationBytes": 273,
+                    "contextBytes": 0,
+                    "ledgerBytes": 30,
+                    "pixelBytes": 20705
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 2,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b8",
+                  "explanation": "The return link recovered to the workspace without submitting the form or modifying an item."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The user has returned to an actionable workspace with clearly labelled name, country, Save and Stock controls.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 273,
+                    "contextBytes": 0,
+                    "ledgerBytes": 337,
+                    "pixelBytes": 20705
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b10",
+                  "explanation": "The recovered workspace exposes labelled name and country inputs plus Save item and Stock navigation."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "matrix": [
+        {
+          "id": "KIT-SAVE",
+          "class": "critical-happy-path",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_ARTIFACT_INVALID",
+              "message": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch"
+            },
+            {
+              "code": "AGENTIC_EVIDENCE_REQUIRED",
+              "message": "Missing log evidence"
+            }
+          ],
+          "artifacts": [
+            {
+              "id": "01a118b4-9955-7c6c-8427-7013580e837e:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b4-9955-7c6c-8427-7013580e837e:1"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation.png",
+              "size": 12352,
+              "sha256": "fe8ff44b101ca3b39d2aa8d944534f0e1626f868285f67a532fca2abaf54eeea"
+            },
+            {
+              "id": "01a118b4-9955-7c6c-8427-7013580e837e:artifact:2",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b4-9955-7c6c-8427-7013580e837e:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation.png",
+              "size": 12352,
+              "sha256": "fe8ff44b101ca3b39d2aa8d944534f0e1626f868285f67a532fca2abaf54eeea"
+            },
+            {
+              "id": "01a118b4-9955-7c6c-8427-7013580e837e:artifact:3",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b4-9955-7c6c-8427-7013580e837e:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/screenshots/001-assert.png",
+              "size": 11027,
+              "sha256": "976db37793fa2b18f4e393311e8943e44ec7e91dd36b350912c3629d4bf85d77"
+            },
+            {
+              "id": "01a118b4-9955-7c6c-8427-7013580e837e:artifact:4",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/trace/trace.zip",
+              "size": 478299,
+              "sha256": "838df612b28d78eebe9a27d3ec3755aa0c8f22eec45df5f697dcee90b08650d7"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-db-save.json",
+              "size": 447,
+              "sha256": "ba1e5ecf37453f85e4236e4917d40ce2fdbe7b68218a3ecd1ab6cdeb199b5855",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-ui-save.json",
+              "size": 437,
+              "sha256": "33f4991dfe18f5e11736e92b9cf1cf552d12665be561a2c850ebdf10ad444f0a",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-REPORT",
+          "class": "cross-feature-workflow",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_ARTIFACT_INVALID",
+              "message": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch"
+            },
+            {
+              "code": "AGENTIC_ARTIFACT_INVALID",
+              "message": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch"
+            },
+            {
+              "code": "AGENTIC_EVIDENCE_REQUIRED",
+              "message": "Missing log evidence"
+            }
+          ],
+          "artifacts": [
+            {
+              "id": "01a118b5-53d6-776c-9fe1-56e92182e966:artifact:2",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b5-53d6-776c-9fe1-56e92182e966:1"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation.png",
+              "size": 15245,
+              "sha256": "c7b41d9b7ac3cdb92f880aa84d6fc9038aabbe95a85bce02781076df747af80c"
+            },
+            {
+              "id": "01a118b5-53d6-776c-9fe1-56e92182e966:artifact:3",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b5-53d6-776c-9fe1-56e92182e966:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation.png",
+              "size": 15245,
+              "sha256": "c7b41d9b7ac3cdb92f880aa84d6fc9038aabbe95a85bce02781076df747af80c"
+            },
+            {
+              "id": "01a118b5-53d6-776c-9fe1-56e92182e966:artifact:4",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b5-53d6-776c-9fe1-56e92182e966:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/screenshots/001-assert.png",
+              "size": 12522,
+              "sha256": "0f228da9c3ff1b24183acddfb5ea700aa0e693838d66d349305e047f5148b4bf"
+            },
+            {
+              "id": "01a118b5-53d6-776c-9fe1-56e92182e966:artifact:5",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/trace/trace.zip",
+              "size": 579609,
+              "sha256": "95b1d3dafbab7c08df7e86d8fea8665c7a8bbb067602d29e16c4f00b8350f257"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-db-report.json",
+              "size": 451,
+              "sha256": "52c8ca1ad5049adc28a464182b0b3ff086b022a8c30be83d7fa5cbf4d1f1ebaf",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-ui-report.json",
+              "size": 441,
+              "sha256": "324bd6c32af4443629762c46f551f84450f337b7cffcd0b18364402ac4765529",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-RECOVER",
+          "class": "adversarial-recovery",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_ARTIFACT_INVALID",
+              "message": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/host-observation.png: Artifact hash, size or freshness mismatch"
+            },
+            {
+              "code": "AGENTIC_EVIDENCE_REQUIRED",
+              "message": "Missing log evidence"
+            }
+          ],
+          "artifacts": [
+            {
+              "id": "01a118b6-ec35-78b9-87c7-b1a7e5389733:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b6-ec35-78b9-87c7-b1a7e5389733:1"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/host-observation.png",
+              "size": 20705,
+              "sha256": "7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61"
+            },
+            {
+              "id": "01a118b6-ec35-78b9-87c7-b1a7e5389733:artifact:2",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b6-ec35-78b9-87c7-b1a7e5389733:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/host-observation.png",
+              "size": 20705,
+              "sha256": "7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61"
+            },
+            {
+              "id": "01a118b6-ec35-78b9-87c7-b1a7e5389733:artifact:3",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b6-ec35-78b9-87c7-b1a7e5389733:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/screenshots/001-assert.png",
+              "size": 18104,
+              "sha256": "3432414d7523a647ac42227f1283212db2ed9a8c91337a7ff163403f83ae06e7"
+            },
+            {
+              "id": "01a118b6-ec35-78b9-87c7-b1a7e5389733:artifact:4",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/trace/trace.zip",
+              "size": 624318,
+              "sha256": "ccb2a04ba77065eb0514e3941e5609dec4e6755ee3d08b5311245582fa83e70d"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-db-recover.json",
+              "size": 453,
+              "sha256": "7f9c7b9582feb016cbba55c98aaf3414ef2bf79b07fcc4fe6e5feeae1868c9d4",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-ui-recover.json",
+              "size": 443,
+              "sha256": "f57f8161c87ca32cac6a567287dbdd5bac89872e739be20ad34e4f4805d70834",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        }
+      ],
+      "postconditions": [
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "23ce41da-035e-4cd2-84b2-0f7584fed300",
+          "journeyId": "KIT-RECOVER",
+          "id": "db-recover",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:34:39.413Z",
+          "completedAt": "2026-10-07T23:34:39.416Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "23ce41da-035e-4cd2-84b2-0f7584fed300",
+          "journeyId": "KIT-RECOVER",
+          "id": "ui-recover",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:34:39.417Z",
+          "completedAt": "2026-10-07T23:34:39.478Z",
+          "status": "PASS",
+          "observedDigest": "02abefe8b4f4510e0c6df5223a488dd4fb5b540de39c1202c94dc6d50fd07192"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "23ce41da-035e-4cd2-84b2-0f7584fed300",
+          "journeyId": "KIT-REPORT",
+          "id": "db-report",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:33:23.425Z",
+          "completedAt": "2026-10-07T23:33:23.434Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "23ce41da-035e-4cd2-84b2-0f7584fed300",
+          "journeyId": "KIT-REPORT",
+          "id": "ui-report",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:33:23.435Z",
+          "completedAt": "2026-10-07T23:33:23.503Z",
+          "status": "PASS",
+          "observedDigest": "5e5bc3dc32076c0b0f2ba9a87beb4789615b6e98c8e0dd3c48cdbae81a4a4f6b"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "23ce41da-035e-4cd2-84b2-0f7584fed300",
+          "journeyId": "KIT-SAVE",
+          "id": "db-save",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:31:38.837Z",
+          "completedAt": "2026-10-07T23:31:38.853Z",
+          "status": "PASS",
+          "observedDigest": "11b96580041d60505949622aed66112d500772dbb983805a6798c9fa241e32e1"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "23ce41da-035e-4cd2-84b2-0f7584fed300",
+          "journeyId": "KIT-SAVE",
+          "id": "ui-save",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:31:38.853Z",
+          "completedAt": "2026-10-07T23:31:38.950Z",
+          "status": "PASS",
+          "observedDigest": "fcdbc979e6703f838d68f9317ed7aea4fe194e1929e5ac73b9b7bbdb4e8dbc35"
+        }
+      ]
+    },
+    {
+      "label": "warm replay",
+      "kitStatus": "PASS",
+      "kitRunId": "41a318b5-cee2-4786-87db-7306cdb64202",
+      "candidate": "bd3a1a68539d096e2ffa22966e9a80f06d0e2a63",
+      "sourceDigest": "4c6c3b53761d0accac13381b307ca4deb682bbcac98bcb6cf70c848f0c879a05",
+      "reportSha256": "2df13a8b8a0c040eb4a246944789dbd5d66ca21e8638c5191943fb7c9e545cbd",
+      "upstream": {
+        "id": "01a118b8-ae5e-78e5-b284-4a6051938f2f",
+        "runner": {
+          "name": "e2e",
+          "version": "0.18.0"
+        },
+        "status": "passed",
+        "exitCode": 0,
+        "startedAt": "2026-10-07T23:35:19.421Z",
+        "finishedAt": "2026-10-07T23:38:16.862Z",
+        "environment": {
+          "ci": true,
+          "trustNoticeShown": false,
+          "os": "linux 6.18.44",
+          "arch": "x64",
+          "runtime": "node v24.19.0"
+        },
+        "usage": {
+          "discoveredResults": 3,
+          "maxAgentContextBytes": 0,
+          "maxLedgerBytes": 337,
+          "maxObservationBytes": 266,
+          "artifactBytes": 1063532,
+          "downloads": 0,
+          "events": 20,
+          "modelTokens": 0,
+          "maxModelCallsInStep": 1,
+          "maxActionStepsInStep": 2
+        }
+      },
+      "usage": {
+        "modelCalls": 3,
+        "modelTokens": 0,
+        "replayed": 3,
+        "handedOff": 0,
+        "misses": 0
+      },
+      "errors": [],
+      "journeys": [
+        {
+          "title": [
+            "Save complete item"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Save the prefilled item with both its name Widget and country EG, using the visible form.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "self-finalized",
+                    "replayedActions": 1,
+                    "totalActions": 1
+                  },
+                  "metrics": {
+                    "modelCalls": 0,
+                    "actionSteps": 1,
+                    "observationBytes": 245,
+                    "contextBytes": 0,
+                    "ledgerBytes": 0
+                  },
+                  "model": null,
+                  "observationRevision": "b3",
+                  "explanation": "replayed 1 recorded action(s) zero-turn from the trace cache; recorded verdict: The visible saved page confirms Widget with EG after submitting the form."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The page clearly confirms Widget with country EG was saved.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 138,
+                    "contextBytes": 0,
+                    "ledgerBytes": 296,
+                    "pixelBytes": 12352
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b5",
+                  "explanation": "Fresh saved page confirms Widget and EG after replayed save."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Stock links to movement report"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Open Stock using visible navigation, then open its Movement report.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "self-finalized",
+                    "replayedActions": 2,
+                    "totalActions": 2
+                  },
+                  "metrics": {
+                    "modelCalls": 0,
+                    "actionSteps": 2,
+                    "observationBytes": 245,
+                    "contextBytes": 0,
+                    "ledgerBytes": 0
+                  },
+                  "model": null,
+                  "observationRevision": "b5",
+                  "explanation": "replayed 2 recorded action(s) zero-turn from the trace cache; recorded verdict: Visible Stock navigation led to the Movement report identifying Widget, EG, and availability."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The movement report identifies Widget, its country EG, and availability.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 129,
+                    "contextBytes": 0,
+                    "ledgerBytes": 299,
+                    "pixelBytes": 15245
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b7",
+                  "explanation": "The live report still identifies Widget, EG, and availability after replayed cross-feature navigation."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Expired link recovers without writes"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Recover from the expired link using the visible return action, without saving or changing any item.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "self-finalized",
+                    "replayedActions": 1,
+                    "totalActions": 1
+                  },
+                  "metrics": {
+                    "modelCalls": 0,
+                    "actionSteps": 1,
+                    "observationBytes": 266,
+                    "contextBytes": 0,
+                    "ledgerBytes": 0
+                  },
+                  "model": null,
+                  "observationRevision": "b3",
+                  "explanation": "replayed 1 recorded action(s) zero-turn from the trace cache; recorded verdict: The return link recovered to the workspace without submitting the form or modifying an item."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The user has returned to an actionable workspace with clearly labelled name, country, Save and Stock controls.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 266,
+                    "contextBytes": 0,
+                    "ledgerBytes": 337,
+                    "pixelBytes": 20705
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b5",
+                  "explanation": "The current recovered workspace remains actionable with labelled name/country inputs, Save item, and Stock navigation."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "matrix": [
+        {
+          "id": "KIT-SAVE",
+          "class": "critical-happy-path",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118b8-b4b0-7b7b-8986-0c809fac4604:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b8-b4b0-7b7b-8986-0c809fac4604:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation-75f0d3a0-6a5f-4df2-9acf-e6062fa4e1ad.png",
+              "size": 12352,
+              "sha256": "fe8ff44b101ca3b39d2aa8d944534f0e1626f868285f67a532fca2abaf54eeea"
+            },
+            {
+              "id": "01a118b8-b4b0-7b7b-8986-0c809fac4604:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b8-b4b0-7b7b-8986-0c809fac4604:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/screenshots/001-assert.png",
+              "size": 11027,
+              "sha256": "976db37793fa2b18f4e393311e8943e44ec7e91dd36b350912c3629d4bf85d77"
+            },
+            {
+              "id": "01a118b8-b4b0-7b7b-8986-0c809fac4604:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b8-b4b0-7b7b-8986-0c809fac4604:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/transcript-01a118b8-b4b0-7b7b-8986-0c809fac4604-3.txt",
+              "size": 570,
+              "sha256": "a364eb9a3159ab6c59a183d1e9ea5f7906dced2a6dca1d7ae3d3eb77e069d019"
+            },
+            {
+              "id": "01a118b8-b4b0-7b7b-8986-0c809fac4604:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/trace/trace.zip",
+              "size": 258026,
+              "sha256": "68c3fad82c48c25a29816545f0ff7190b5bc9437fe7ffb0813d8cd59b2913572"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-db-save.json",
+              "size": 447,
+              "sha256": "c07c9d49ad5e56354d79d01c4ed96feca14905bcb8aecbb208f54d86bec52f20",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-ui-save.json",
+              "size": 437,
+              "sha256": "08d68ffcfe4a35e1f9369da425a344b4cd9a9fabafa8bf4e0c2ecc8be6a5229b",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-REPORT",
+          "class": "cross-feature-workflow",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118b9-5e4e-776c-a0e3-dc823711dbcd:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b9-5e4e-776c-a0e3-dc823711dbcd:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation-d08191a7-a142-4496-9359-3486abd17fcf.png",
+              "size": 15245,
+              "sha256": "c7b41d9b7ac3cdb92f880aa84d6fc9038aabbe95a85bce02781076df747af80c"
+            },
+            {
+              "id": "01a118b9-5e4e-776c-a0e3-dc823711dbcd:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b9-5e4e-776c-a0e3-dc823711dbcd:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/screenshots/001-assert.png",
+              "size": 12522,
+              "sha256": "0f228da9c3ff1b24183acddfb5ea700aa0e693838d66d349305e047f5148b4bf"
+            },
+            {
+              "id": "01a118b9-5e4e-776c-a0e3-dc823711dbcd:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118b9-5e4e-776c-a0e3-dc823711dbcd:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/transcript-01a118b9-5e4e-776c-a0e3-dc823711dbcd-3.txt",
+              "size": 548,
+              "sha256": "bb67fe3b195668b1a342945ca996a851b26735520a3ffde1616500c8dd512af9"
+            },
+            {
+              "id": "01a118b9-5e4e-776c-a0e3-dc823711dbcd:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/trace/trace.zip",
+              "size": 333080,
+              "sha256": "36239a02de3024d8595de4b290a399ba83995d0854fcec7e286e4df9b4e290e8"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-db-report.json",
+              "size": 451,
+              "sha256": "f5ce8e35f379e90efdedebcf66dd1c94ed2d9f5903702d87b0817ea2cc260d62",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-ui-report.json",
+              "size": 441,
+              "sha256": "0a05a08e324af76e2cf205a472ba80f2060bdb8154f4dd323cfdcb97c332cd9e",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-RECOVER",
+          "class": "adversarial-recovery",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118ba-7ec1-723d-9fd5-b7b0326644f1:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ba-7ec1-723d-9fd5-b7b0326644f1:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/host-observation-c8622821-6dc1-43c4-b174-9d95fb8d1014.png",
+              "size": 20705,
+              "sha256": "7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61"
+            },
+            {
+              "id": "01a118ba-7ec1-723d-9fd5-b7b0326644f1:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ba-7ec1-723d-9fd5-b7b0326644f1:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/screenshots/001-assert.png",
+              "size": 18104,
+              "sha256": "3432414d7523a647ac42227f1283212db2ed9a8c91337a7ff163403f83ae06e7"
+            },
+            {
+              "id": "01a118ba-7ec1-723d-9fd5-b7b0326644f1:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ba-7ec1-723d-9fd5-b7b0326644f1:3"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/transcript-01a118ba-7ec1-723d-9fd5-b7b0326644f1-3.txt",
+              "size": 741,
+              "sha256": "f56e496ff6d6f53d34f0e38ab472d36412c2882b5394ebdf219b78ccc83eb40a"
+            },
+            {
+              "id": "01a118ba-7ec1-723d-9fd5-b7b0326644f1:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/trace/trace.zip",
+              "size": 380612,
+              "sha256": "6ef820dfe3c3f1e4020f689ca92c4eaf8969fa0eb793e51cef817f136bde008b"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-db-recover.json",
+              "size": 453,
+              "sha256": "e0751871595c22d51c7c4c244e4b6fc576e9629f0b74f65c99e3b892511d4999",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-ui-recover.json",
+              "size": 443,
+              "sha256": "fa0f769cadc27e5e36b910367bef6f62b5b85b6bf2e250baa27f0daa9fa434ac",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        }
+      ],
+      "postconditions": [
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "41a318b5-cee2-4786-87db-7306cdb64202",
+          "journeyId": "KIT-RECOVER",
+          "id": "db-recover",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:38:16.626Z",
+          "completedAt": "2026-10-07T23:38:16.631Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "41a318b5-cee2-4786-87db-7306cdb64202",
+          "journeyId": "KIT-RECOVER",
+          "id": "ui-recover",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:38:16.631Z",
+          "completedAt": "2026-10-07T23:38:16.693Z",
+          "status": "PASS",
+          "observedDigest": "02abefe8b4f4510e0c6df5223a488dd4fb5b540de39c1202c94dc6d50fd07192"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "41a318b5-cee2-4786-87db-7306cdb64202",
+          "journeyId": "KIT-REPORT",
+          "id": "db-report",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:37:17.611Z",
+          "completedAt": "2026-10-07T23:37:17.615Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "41a318b5-cee2-4786-87db-7306cdb64202",
+          "journeyId": "KIT-REPORT",
+          "id": "ui-report",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:37:17.615Z",
+          "completedAt": "2026-10-07T23:37:17.683Z",
+          "status": "PASS",
+          "observedDigest": "5e5bc3dc32076c0b0f2ba9a87beb4789615b6e98c8e0dd3c48cdbae81a4a4f6b"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "41a318b5-cee2-4786-87db-7306cdb64202",
+          "journeyId": "KIT-SAVE",
+          "id": "db-save",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:36:03.775Z",
+          "completedAt": "2026-10-07T23:36:03.782Z",
+          "status": "PASS",
+          "observedDigest": "11b96580041d60505949622aed66112d500772dbb983805a6798c9fa241e32e1"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "41a318b5-cee2-4786-87db-7306cdb64202",
+          "journeyId": "KIT-SAVE",
+          "id": "ui-save",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:36:03.783Z",
+          "completedAt": "2026-10-07T23:36:03.835Z",
+          "status": "PASS",
+          "observedDigest": "fcdbc979e6703f838d68f9317ed7aea4fe194e1929e5ac73b9b7bbdb4e8dbc35"
+        }
+      ]
+    },
+    {
+      "label": "renamed-control trace mutation rejection",
+      "kitStatus": "FAIL",
+      "kitRunId": "acf61287-7ddb-47c7-a0ff-1e9137172dcd",
+      "candidate": "bd3a1a68539d096e2ffa22966e9a80f06d0e2a63",
+      "sourceDigest": "4c6c3b53761d0accac13381b307ca4deb682bbcac98bcb6cf70c848f0c879a05",
+      "reportSha256": "5509743c27280d3ebb7a673450996d7a6fc005274467996569d4d3f47ff7c4b1",
+      "upstream": {
+        "id": "01a118bc-1def-7751-a389-abbce14e6256",
+        "runner": {
+          "name": "e2e",
+          "version": "0.18.0"
+        },
+        "status": "passed",
+        "exitCode": 0,
+        "startedAt": "2026-10-07T23:39:04.566Z",
+        "finishedAt": "2026-10-07T23:44:20.965Z",
+        "environment": {
+          "ci": true,
+          "trustNoticeShown": false,
+          "os": "linux 6.18.44",
+          "arch": "x64",
+          "runtime": "node v24.19.0"
+        },
+        "usage": {
+          "discoveredResults": 3,
+          "maxAgentContextBytes": 0,
+          "maxLedgerBytes": 359,
+          "maxObservationBytes": 269,
+          "artifactBytes": 2006218,
+          "downloads": 0,
+          "events": 54,
+          "modelTokens": 0,
+          "maxModelCallsInStep": 2,
+          "maxActionStepsInStep": 2
+        }
+      },
+      "usage": {
+        "modelCalls": 6,
+        "modelTokens": 0,
+        "replayed": 1,
+        "handedOff": 1,
+        "misses": 1
+      },
+      "errors": [
+        {
+          "code": "AGENTIC_ARTIFACT_INVALID",
+          "message": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/trace/trace.zip: Artifact hash, size or freshness mismatch",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "AGENTIC_EVIDENCE_REQUIRED",
+          "message": "Missing trace evidence",
+          "journey": "KIT-SAVE"
+        }
+      ],
+      "journeys": [
+        {
+          "title": [
+            "Save complete item"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Save the prefilled item with both its name Widget and country EG, using the visible form.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "missed",
+                    "reason": "target-not-found",
+                    "replayedActions": 0,
+                    "totalActions": 1
+                  },
+                  "metrics": {
+                    "modelCalls": 2,
+                    "actionSteps": 1,
+                    "observationBytes": 248,
+                    "contextBytes": 0,
+                    "ledgerBytes": 23,
+                    "pixelBytes": 20788
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 2,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b16",
+                  "explanation": "Using the renamed Persist item control saved Widget with EG and reached the confirmation page."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The page clearly confirms Widget with country EG was saved.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 141,
+                    "contextBytes": 0,
+                    "ledgerBytes": 317,
+                    "pixelBytes": 12352
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b18",
+                  "explanation": "Fresh confirmation page shows Widget and EG after adapting to the renamed submit control."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Stock links to movement report"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Open Stock using visible navigation, then open its Movement report.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "self-finalized",
+                    "replayedActions": 2,
+                    "totalActions": 2
+                  },
+                  "metrics": {
+                    "modelCalls": 0,
+                    "actionSteps": 2,
+                    "observationBytes": 248,
+                    "contextBytes": 0,
+                    "ledgerBytes": 0
+                  },
+                  "model": null,
+                  "observationRevision": "b5",
+                  "explanation": "replayed 2 recorded action(s) zero-turn from the trace cache; recorded verdict: Visible Stock navigation led to the Movement report identifying Widget, EG, and availability."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The movement report identifies Widget, its country EG, and availability.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 129,
+                    "contextBytes": 0,
+                    "ledgerBytes": 299,
+                    "pixelBytes": 15245
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b7",
+                  "explanation": "The report shows Widget, EG and available status in this fresh observation."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Expired link recovers without writes"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Recover from the expired link using the visible return action, without saving or changing any item.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "agent-concluded",
+                    "reason": "end-mismatch",
+                    "replayedActions": 1,
+                    "totalActions": 1
+                  },
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 1,
+                    "observationBytes": 269,
+                    "contextBytes": 0,
+                    "ledgerBytes": 30,
+                    "pixelBytes": 20788
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b24",
+                  "explanation": "Recovery already reached the workspace; the changed submit label requires no additional action. No item was saved."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The user has returned to an actionable workspace with clearly labelled name, country, Save and Stock controls.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 269,
+                    "contextBytes": 0,
+                    "ledgerBytes": 359,
+                    "pixelBytes": 20788
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b26",
+                  "explanation": "The recovered workspace has labelled item and country controls, a clearly named Persist item action, and Stock navigation."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "matrix": [
+        {
+          "id": "KIT-SAVE",
+          "class": "critical-happy-path",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_ARTIFACT_INVALID",
+              "message": "web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/trace/trace.zip: Artifact hash, size or freshness mismatch"
+            },
+            {
+              "code": "AGENTIC_EVIDENCE_REQUIRED",
+              "message": "Missing trace evidence"
+            }
+          ],
+          "artifacts": [
+            {
+              "id": "01a118bc-23f3-730e-98a8-01dd64f788c2:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bc-23f3-730e-98a8-01dd64f788c2:1"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation-52b25f13-431f-46cd-95dd-e33bf7c2a880.png",
+              "size": 20788,
+              "sha256": "08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175"
+            },
+            {
+              "id": "01a118bc-23f3-730e-98a8-01dd64f788c2:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bc-23f3-730e-98a8-01dd64f788c2:1"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation-ae502bf0-c546-4a64-a575-fcd324bd0025.png",
+              "size": 12352,
+              "sha256": "fe8ff44b101ca3b39d2aa8d944534f0e1626f868285f67a532fca2abaf54eeea"
+            },
+            {
+              "id": "01a118bc-23f3-730e-98a8-01dd64f788c2:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bc-23f3-730e-98a8-01dd64f788c2:1"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/transcript-01a118bc-23f3-730e-98a8-01dd64f788c2-1.txt",
+              "size": 1258,
+              "sha256": "cc9f5067595ce6b83f841d382cff5d9800ae41ecd3fbacc514ad8e32ce89d3ad"
+            },
+            {
+              "id": "01a118bc-23f3-730e-98a8-01dd64f788c2:artifact:3",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bc-23f3-730e-98a8-01dd64f788c2:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/host-observation-275224c5-fcc9-4524-94ad-b4f27581b9d4.png",
+              "size": 12352,
+              "sha256": "fe8ff44b101ca3b39d2aa8d944534f0e1626f868285f67a532fca2abaf54eeea"
+            },
+            {
+              "id": "01a118bc-23f3-730e-98a8-01dd64f788c2:artifact:4",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bc-23f3-730e-98a8-01dd64f788c2:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/screenshots/001-assert.png",
+              "size": 11027,
+              "sha256": "976db37793fa2b18f4e393311e8943e44ec7e91dd36b350912c3629d4bf85d77"
+            },
+            {
+              "id": "01a118bc-23f3-730e-98a8-01dd64f788c2:artifact:5",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bc-23f3-730e-98a8-01dd64f788c2:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Save_20complete_20item-c09bb3fb/default/attempt-0/transcript-01a118bc-23f3-730e-98a8-01dd64f788c2-3.txt",
+              "size": 593,
+              "sha256": "1e9a990102a99f0a27da59f20becffaf976683ae5d2c1bf1c5b3773cba5da1ed"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-db-save.json",
+              "size": 447,
+              "sha256": "63cef0412be2a1ae7cb25f2706a67cf2055274a5ac67b771660d5ee92387dda9",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-ui-save.json",
+              "size": 437,
+              "sha256": "5543d8d69a5b4d87289d3a9547728617711523a8493636668707c9a3c887d0a3",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-REPORT",
+          "class": "cross-feature-workflow",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118be-9985-7043-9b37-c11cdfa74199:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118be-9985-7043-9b37-c11cdfa74199:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/host-observation-08274cb1-a79e-4ebc-bcd8-d591f79430b4.png",
+              "size": 15245,
+              "sha256": "c7b41d9b7ac3cdb92f880aa84d6fc9038aabbe95a85bce02781076df747af80c"
+            },
+            {
+              "id": "01a118be-9985-7043-9b37-c11cdfa74199:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118be-9985-7043-9b37-c11cdfa74199:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/screenshots/001-assert.png",
+              "size": 12522,
+              "sha256": "0f228da9c3ff1b24183acddfb5ea700aa0e693838d66d349305e047f5148b4bf"
+            },
+            {
+              "id": "01a118be-9985-7043-9b37-c11cdfa74199:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118be-9985-7043-9b37-c11cdfa74199:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/transcript-01a118be-9985-7043-9b37-c11cdfa74199-3.txt",
+              "size": 516,
+              "sha256": "3efaf98f449384ac2e069422a3f6b155c38feadd26a4d9bd4580404bd2e2d2a7"
+            },
+            {
+              "id": "01a118be-9985-7043-9b37-c11cdfa74199:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Stock_20links_20to_20movement_20report-353f9ca7/default/attempt-0/trace/trace.zip",
+              "size": 334460,
+              "sha256": "bd52c4b11b7a4a455e25456bad550c3ad4d3aced4a360cc4d31fa8acf8843787"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-db-report.json",
+              "size": 451,
+              "sha256": "a4f1dca51efa87ca35a1634f3b4503207c8839aea8a1775d4e215162e0400888",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-ui-report.json",
+              "size": 441,
+              "sha256": "412ff3e299c222ebdded6bef92536eff886a864de60c5b1477953193a41b217c",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-RECOVER",
+          "class": "adversarial-recovery",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:1"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/host-observation-328937e4-c572-4679-a0ab-84c4849cbcf9.png",
+              "size": 20788,
+              "sha256": "08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175"
+            },
+            {
+              "id": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:artifact:1",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:1"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/transcript-01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47-1.txt",
+              "size": 813,
+              "sha256": "531e7f5f24f2aea860b618123c0a0446f9a44caf4a2a964ab716e8a46789806a"
+            },
+            {
+              "id": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:artifact:2",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/host-observation-57e31864-6857-401e-9a20-81406c256b69.png",
+              "size": 20788,
+              "sha256": "08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175"
+            },
+            {
+              "id": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:artifact:3",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/screenshots/001-assert.png",
+              "size": 18434,
+              "sha256": "7075e70544354d5fd853f47009ab4ab1fda0f5edd5528faa2d69dd76c50fb887"
+            },
+            {
+              "id": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:artifact:4",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:3"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/transcript-01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47-3.txt",
+              "size": 764,
+              "sha256": "b9907a2d347556f08d55b62b12679867f44d0fc9b8be2633b495acdc9bfe8782"
+            },
+            {
+              "id": "01a118bf-7cb9-7e6c-a76f-ceb0a7eb4d47:artifact:5",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "artifacts/web-fixture/workflows.e2e.ts__Expired_20link_20recovers_20without_20writes-c57e5a9e/default/attempt-0/trace/trace.zip",
+              "size": 883899,
+              "sha256": "2131be547275ab4581a6c20354627e160368252616e0ac4922aae6bd96290f29"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-db-recover.json",
+              "size": 453,
+              "sha256": "48ca1ae2597ec40dceefc2c7b67d5dd9c9fff4de7604e848b579e2f0ff530cdc",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-ui-recover.json",
+              "size": 443,
+              "sha256": "c7cdc0e82b1a53d6c803e8758cad2038756d3b74bf341a5d4762964e27c22997",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        }
+      ],
+      "postconditions": [
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "acf61287-7ddb-47c7-a0ff-1e9137172dcd",
+          "journeyId": "KIT-RECOVER",
+          "id": "db-recover",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:44:20.740Z",
+          "completedAt": "2026-10-07T23:44:20.745Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "acf61287-7ddb-47c7-a0ff-1e9137172dcd",
+          "journeyId": "KIT-RECOVER",
+          "id": "ui-recover",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:44:20.745Z",
+          "completedAt": "2026-10-07T23:44:20.790Z",
+          "status": "PASS",
+          "observedDigest": "02abefe8b4f4510e0c6df5223a488dd4fb5b540de39c1202c94dc6d50fd07192"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "acf61287-7ddb-47c7-a0ff-1e9137172dcd",
+          "journeyId": "KIT-REPORT",
+          "id": "db-report",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:42:44.656Z",
+          "completedAt": "2026-10-07T23:42:44.665Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "acf61287-7ddb-47c7-a0ff-1e9137172dcd",
+          "journeyId": "KIT-REPORT",
+          "id": "ui-report",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:42:44.665Z",
+          "completedAt": "2026-10-07T23:42:44.775Z",
+          "status": "PASS",
+          "observedDigest": "5e5bc3dc32076c0b0f2ba9a87beb4789615b6e98c8e0dd3c48cdbae81a4a4f6b"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "acf61287-7ddb-47c7-a0ff-1e9137172dcd",
+          "journeyId": "KIT-SAVE",
+          "id": "db-save",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:41:46.078Z",
+          "completedAt": "2026-10-07T23:41:46.110Z",
+          "status": "PASS",
+          "observedDigest": "11b96580041d60505949622aed66112d500772dbb983805a6798c9fa241e32e1"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "acf61287-7ddb-47c7-a0ff-1e9137172dcd",
+          "journeyId": "KIT-SAVE",
+          "id": "ui-save",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:41:46.110Z",
+          "completedAt": "2026-10-07T23:41:46.291Z",
+          "status": "PASS",
+          "observedDigest": "fcdbc979e6703f838d68f9317ed7aea4fe194e1929e5ac73b9b7bbdb4e8dbc35"
+        }
+      ]
+    },
+    {
+      "label": "immutable evidence repair",
+      "kitStatus": "PASS",
+      "kitRunId": "4ca3618e-a816-41f5-9da1-be1dbcc6e529",
+      "candidate": "42594a79764d91d369d25a59039d2c773f62dca0",
+      "sourceDigest": "0df16c452b007ce33d0374b2763b07dc48393e287985d4d494b62b7ea23f589d",
+      "reportSha256": "a11214b7bb4638725b7c5cbde18e1c703b4d773b1b2b2d4112d0c89a3add431b",
+      "upstream": {
+        "id": "01a118c7-dfc9-709f-a08c-67ff55f70f76",
+        "runner": {
+          "name": "e2e",
+          "version": "0.18.0"
+        },
+        "status": "passed",
+        "exitCode": 0,
+        "startedAt": "2026-10-07T23:51:55.444Z",
+        "finishedAt": "2026-10-07T23:54:10.960Z",
+        "environment": {
+          "ci": true,
+          "trustNoticeShown": false,
+          "os": "linux 6.18.44",
+          "arch": "x64",
+          "runtime": "node v24.19.0"
+        },
+        "usage": {
+          "discoveredResults": 3,
+          "maxAgentContextBytes": 0,
+          "maxLedgerBytes": 359,
+          "maxObservationBytes": 269,
+          "artifactBytes": 1767374,
+          "downloads": 0,
+          "events": 55,
+          "modelTokens": 0,
+          "maxModelCallsInStep": 1,
+          "maxActionStepsInStep": 2
+        }
+      },
+      "usage": {
+        "modelCalls": 4,
+        "modelTokens": 0,
+        "replayed": 2,
+        "handedOff": 1,
+        "misses": 0
+      },
+      "errors": [],
+      "journeys": [
+        {
+          "title": [
+            "Save complete item"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Save the prefilled item with both its name Widget and country EG, using the visible form.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "self-finalized",
+                    "replayedActions": 1,
+                    "totalActions": 1
+                  },
+                  "metrics": {
+                    "modelCalls": 0,
+                    "actionSteps": 1,
+                    "observationBytes": 248,
+                    "contextBytes": 0,
+                    "ledgerBytes": 0
+                  },
+                  "model": null,
+                  "observationRevision": "b3",
+                  "explanation": "replayed 1 recorded action(s) zero-turn from the trace cache; recorded verdict: The save action already completed and the current page confirms Widget and EG."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The page clearly confirms Widget with country EG was saved.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 133,
+                    "contextBytes": 0,
+                    "ledgerBytes": 301,
+                    "pixelBytes": 11629
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b5",
+                  "explanation": "Saved confirmation visibly contains Widget and EG."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Stock links to movement report"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Open Stock using visible navigation, then open its Movement report.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "agent-concluded",
+                    "reason": "end-mismatch",
+                    "replayedActions": 2,
+                    "totalActions": 2
+                  },
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 2,
+                    "observationBytes": 248,
+                    "contextBytes": 0,
+                    "ledgerBytes": 23,
+                    "pixelBytes": 13613
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b40",
+                  "explanation": "Visible Stock navigation and Movement report navigation reached the requested report."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The movement report identifies Widget, its country EG, and availability.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 119,
+                    "contextBytes": 0,
+                    "ledgerBytes": 291,
+                    "pixelBytes": 13613
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b42",
+                  "explanation": "Movement report identifies Widget, EG and available."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Expired link recovers without writes"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "passed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Recover from the expired link using the visible return action, without saving or changing any item.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "self-finalized",
+                    "replayedActions": 1,
+                    "totalActions": 1
+                  },
+                  "metrics": {
+                    "modelCalls": 0,
+                    "actionSteps": 1,
+                    "observationBytes": 269,
+                    "contextBytes": 0,
+                    "ledgerBytes": 0
+                  },
+                  "model": null,
+                  "observationRevision": "b3",
+                  "explanation": "replayed 1 recorded action(s) zero-turn from the trace cache; recorded verdict: Recovery already reached the workspace; the changed submit label requires no additional action. No item was saved."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The user has returned to an actionable workspace with clearly labelled name, country, Save and Stock controls.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 269,
+                    "contextBytes": 0,
+                    "ledgerBytes": 359,
+                    "pixelBytes": 20788
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b5",
+                  "explanation": "Recovery returned to an actionable workspace with labelled Item name and Country inputs, Persist item submission and Stock navigation."
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "matrix": [
+        {
+          "id": "KIT-SAVE",
+          "class": "critical-happy-path",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:3"
+              },
+              "path": "snapshots/6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "size": 11629,
+              "sha256": "6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8"
+            },
+            {
+              "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:3"
+              },
+              "path": "snapshots/1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "size": 10390,
+              "sha256": "1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408"
+            },
+            {
+              "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:3"
+              },
+              "path": "snapshots/bcb5f6ad20e4ba098ccdb7415bad9f42de1856c4d720802d1c024346467ccbfc",
+              "size": 462,
+              "sha256": "bcb5f6ad20e4ba098ccdb7415bad9f42de1856c4d720802d1c024346467ccbfc",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:bcb5f6ad20e4ba098ccdb7415bad9f42de1856c4d720802d1c024346467ccbfc"
+            },
+            {
+              "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/c9acdddb6933829cf668dc176d4d178ac5a0282b49fc841f5cde7f6a9b0c5b65",
+              "size": 256823,
+              "sha256": "c9acdddb6933829cf668dc176d4d178ac5a0282b49fc841f5cde7f6a9b0c5b65",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:c9acdddb6933829cf668dc176d4d178ac5a0282b49fc841f5cde7f6a9b0c5b65"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-db-save.json",
+              "size": 447,
+              "sha256": "b798fa9457717e994ff8b2c0f1e8b99894903d7704ead579edb686a11ac995de",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-ui-save.json",
+              "size": 437,
+              "sha256": "4ea687846ee894e2b524be2f833ccf64ca8aa99ed08a52aa822bd2051218efa7",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-REPORT",
+          "class": "cross-feature-workflow",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:1"
+              },
+              "path": "snapshots/e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+              "size": 13613,
+              "sha256": "e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38"
+            },
+            {
+              "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:1",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:1"
+              },
+              "path": "snapshots/e9922462365ffb77ba370eaafbd4fbba6fd38f49579a6e89a165d9337afb5802",
+              "size": 578,
+              "sha256": "e9922462365ffb77ba370eaafbd4fbba6fd38f49579a6e89a165d9337afb5802",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:e9922462365ffb77ba370eaafbd4fbba6fd38f49579a6e89a165d9337afb5802"
+            },
+            {
+              "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:2",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:3"
+              },
+              "path": "snapshots/e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+              "size": 13613,
+              "sha256": "e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38"
+            },
+            {
+              "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:3",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:3"
+              },
+              "path": "snapshots/8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b",
+              "size": 11471,
+              "sha256": "8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b"
+            },
+            {
+              "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:4",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:3"
+              },
+              "path": "snapshots/3ba4dff9fc9ca1835eefef2fc07b6e83f3b3b2c266179abe51c2f7fd69719940",
+              "size": 464,
+              "sha256": "3ba4dff9fc9ca1835eefef2fc07b6e83f3b3b2c266179abe51c2f7fd69719940",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:3ba4dff9fc9ca1835eefef2fc07b6e83f3b3b2c266179abe51c2f7fd69719940"
+            },
+            {
+              "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:5",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/2003ce84c479f25d08b351d6eac2b8428de30eb2c5d4d368096d673851b66ceb",
+              "size": 1005288,
+              "sha256": "2003ce84c479f25d08b351d6eac2b8428de30eb2c5d4d368096d673851b66ceb",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:2003ce84c479f25d08b351d6eac2b8428de30eb2c5d4d368096d673851b66ceb"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-db-report.json",
+              "size": 451,
+              "sha256": "6d98e7341ea264aa42d13c24f614d3931c0f6bfc1c3248ef7864be4b1923c35b",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-ui-report.json",
+              "size": 441,
+              "sha256": "37c622471bffb736e01d1175dd11b22e82431507639bea8227d5bf0730832144",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-RECOVER",
+          "class": "adversarial-recovery",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c9-986e-77c1-9318-81bd592164d5:3"
+              },
+              "path": "snapshots/08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175",
+              "size": 20788,
+              "sha256": "08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175"
+            },
+            {
+              "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c9-986e-77c1-9318-81bd592164d5:3"
+              },
+              "path": "snapshots/7075e70544354d5fd853f47009ab4ab1fda0f5edd5528faa2d69dd76c50fb887",
+              "size": 18434,
+              "sha256": "7075e70544354d5fd853f47009ab4ab1fda0f5edd5528faa2d69dd76c50fb887",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:7075e70544354d5fd853f47009ab4ab1fda0f5edd5528faa2d69dd76c50fb887"
+            },
+            {
+              "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c9-986e-77c1-9318-81bd592164d5:3"
+              },
+              "path": "snapshots/99efd8347e0d0984ceff97ff6f63e219dd2d5a08ac9739d9939e5d33175ba02d",
+              "size": 820,
+              "sha256": "99efd8347e0d0984ceff97ff6f63e219dd2d5a08ac9739d9939e5d33175ba02d",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:99efd8347e0d0984ceff97ff6f63e219dd2d5a08ac9739d9939e5d33175ba02d"
+            },
+            {
+              "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/7d33993064d059657fdb4ab00cc80e79a57bcba304138a68c649bab14bd7f55f",
+              "size": 403001,
+              "sha256": "7d33993064d059657fdb4ab00cc80e79a57bcba304138a68c649bab14bd7f55f",
+              "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:7d33993064d059657fdb4ab00cc80e79a57bcba304138a68c649bab14bd7f55f"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-db-recover.json",
+              "size": 453,
+              "sha256": "410b503bd525116c9b8987bdfc6d50a6929ead2feef4752b2493cfd8943a18e7",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-RECOVER/postcondition-ui-recover.json",
+              "size": 443,
+              "sha256": "80e7942a4d2537adae50459d932e421338f90bacf00a8be75ec3d6d38fbde931",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        }
+      ],
+      "postconditions": [
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "4ca3618e-a816-41f5-9da1-be1dbcc6e529",
+          "journeyId": "KIT-RECOVER",
+          "id": "db-recover",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:54:10.744Z",
+          "completedAt": "2026-10-07T23:54:10.750Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "4ca3618e-a816-41f5-9da1-be1dbcc6e529",
+          "journeyId": "KIT-RECOVER",
+          "id": "ui-recover",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:54:10.750Z",
+          "completedAt": "2026-10-07T23:54:10.817Z",
+          "status": "PASS",
+          "observedDigest": "02abefe8b4f4510e0c6df5223a488dd4fb5b540de39c1202c94dc6d50fd07192"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "4ca3618e-a816-41f5-9da1-be1dbcc6e529",
+          "journeyId": "KIT-REPORT",
+          "id": "db-report",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:53:47.094Z",
+          "completedAt": "2026-10-07T23:53:47.100Z",
+          "status": "PASS",
+          "observedDigest": "4abd2ecbb7bd979e5d3ec78b95020d802f933cdf18236c818fda83c36f79bd11"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "4ca3618e-a816-41f5-9da1-be1dbcc6e529",
+          "journeyId": "KIT-REPORT",
+          "id": "ui-report",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:53:47.101Z",
+          "completedAt": "2026-10-07T23:53:47.180Z",
+          "status": "PASS",
+          "observedDigest": "5e5bc3dc32076c0b0f2ba9a87beb4789615b6e98c8e0dd3c48cdbae81a4a4f6b"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "4ca3618e-a816-41f5-9da1-be1dbcc6e529",
+          "journeyId": "KIT-SAVE",
+          "id": "db-save",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:52:26.432Z",
+          "completedAt": "2026-10-07T23:52:26.441Z",
+          "status": "PASS",
+          "observedDigest": "11b96580041d60505949622aed66112d500772dbb983805a6798c9fa241e32e1"
+        },
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "4ca3618e-a816-41f5-9da1-be1dbcc6e529",
+          "journeyId": "KIT-SAVE",
+          "id": "ui-save",
+          "kind": "ui",
+          "assertion": "The expected view remains visible after reload",
+          "startedAt": "2026-10-07T23:52:26.441Z",
+          "completedAt": "2026-10-07T23:52:26.569Z",
+          "status": "PASS",
+          "observedDigest": "fcdbc979e6703f838d68f9317ed7aea4fe194e1929e5ac73b9b7bbdb4e8dbc35"
+        }
+      ]
+    },
+    {
+      "label": "partial-save rejection",
+      "kitStatus": "FAIL",
+      "kitRunId": "f97f60f7-af10-421e-b945-f856403b466c",
+      "candidate": "42594a79764d91d369d25a59039d2c773f62dca0",
+      "sourceDigest": "0df16c452b007ce33d0374b2763b07dc48393e287985d4d494b62b7ea23f589d",
+      "reportSha256": "390afe9bb9a5297bd478a8358d945dafe7d14c320dda8dcaf5570f6bbdb34a0a",
+      "upstream": {
+        "id": "01a118c7-600d-7cdf-acd0-81d7d6e5ed10",
+        "runner": {
+          "name": "e2e",
+          "version": "0.18.0"
+        },
+        "status": "failed",
+        "exitCode": 1,
+        "startedAt": "2026-10-07T23:51:22.457Z",
+        "finishedAt": "2026-10-07T23:51:38.437Z",
+        "environment": {
+          "ci": true,
+          "trustNoticeShown": false,
+          "os": "linux 6.18.44",
+          "arch": "x64",
+          "runtime": "node v24.19.0"
+        },
+        "usage": {
+          "discoveredResults": 3,
+          "maxAgentContextBytes": 0,
+          "maxLedgerBytes": 301,
+          "maxObservationBytes": 248,
+          "artifactBytes": 317283,
+          "downloads": 0,
+          "events": 6,
+          "modelTokens": 0,
+          "maxModelCallsInStep": 1,
+          "maxActionStepsInStep": 1
+        }
+      },
+      "usage": {
+        "modelCalls": 1,
+        "modelTokens": 0,
+        "replayed": 1,
+        "handedOff": 0,
+        "misses": 0
+      },
+      "errors": [
+        {
+          "code": "AGENTIC_RUN_NOT_PASS",
+          "message": "Nonzero exits, errors, carried results and serial groups cannot establish current isolated journey acceptance"
+        },
+        {
+          "code": "AGENTIC_JOURNEY_NOT_PASS",
+          "message": "failed; skipped, flaky, retries and failed cleanup block acceptance",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+          "message": "db-save: live deterministic postcondition is missing/invalid",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "AGENTIC_ORACLE_ARTIFACT_INVALID",
+          "message": "ui-save: Agentic E2E path missing: oracles/KIT-SAVE/postcondition-ui-save.json",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+          "message": "ui-save: live deterministic postcondition is missing/invalid",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "ERROR",
+          "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   country: null,\n-   country: 'EG',\n    name: 'Widget'\n  }\n",
+          "journey": "KIT-SAVE"
+        },
+        {
+          "code": "AGENTIC_JOURNEY_NOT_PASS",
+          "message": "skipped; skipped, flaky, retries and failed cleanup block acceptance",
+          "journey": "KIT-REPORT"
+        },
+        {
+          "code": "AGENTIC_JOURNEY_NOT_PASS",
+          "message": "skipped; skipped, flaky, retries and failed cleanup block acceptance",
+          "journey": "KIT-RECOVER"
+        }
+      ],
+      "journeys": [
+        {
+          "title": [
+            "Save complete item"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "failed",
+          "attempts": [
+            {
+              "cleanup": "complete",
+              "errors": null,
+              "semanticSteps": [
+                {
+                  "api": "agent.act",
+                  "label": "Save the prefilled item with both its name Widget and country EG, using the visible form.",
+                  "status": "passed",
+                  "cache": {
+                    "mode": "self-finalized",
+                    "replayedActions": 1,
+                    "totalActions": 1
+                  },
+                  "metrics": {
+                    "modelCalls": 0,
+                    "actionSteps": 1,
+                    "observationBytes": 248,
+                    "contextBytes": 0,
+                    "ledgerBytes": 0
+                  },
+                  "model": null,
+                  "observationRevision": "b3",
+                  "explanation": "replayed 1 recorded action(s) zero-turn from the trace cache; recorded verdict: The save action already completed and the current page confirms Widget and EG."
+                },
+                {
+                  "api": "agent.assert",
+                  "label": "The page clearly confirms Widget with country EG was saved.",
+                  "status": "passed",
+                  "cache": null,
+                  "metrics": {
+                    "modelCalls": 1,
+                    "actionSteps": 0,
+                    "observationBytes": 133,
+                    "contextBytes": 0,
+                    "ledgerBytes": 301,
+                    "pixelBytes": 11629
+                  },
+                  "model": {
+                    "provider": "chatgpt-work-host",
+                    "model": "current-conversation-model",
+                    "endpoint": "provider-default",
+                    "adapterVersion": "executor/chatgpt-work-host@1",
+                    "policyVersion": "chatgpt-work-host/1",
+                    "calls": 1,
+                    "tokenAccounting": "adapter-upper-bound",
+                    "inputTokens": 0,
+                    "outputTokens": 0,
+                    "peakTokensPerCall": 0
+                  },
+                  "observationRevision": "b5",
+                  "explanation": "Visible confirmation displays Widget and EG. Persisted completeness is checked independently by the backend oracle."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": [
+            "Stock links to movement report"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "skipped",
+          "attempts": []
+        },
+        {
+          "title": [
+            "Expired link recovers without writes"
+          ],
+          "source": "workflows.e2e.ts",
+          "targetId": "web-fixture",
+          "status": "skipped",
+          "attempts": []
+        }
+      ],
+      "matrix": [
+        {
+          "id": "KIT-SAVE",
+          "class": "critical-happy-path",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_JOURNEY_NOT_PASS",
+              "message": "failed; skipped, flaky, retries and failed cleanup block acceptance"
+            },
+            {
+              "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+              "message": "db-save: live deterministic postcondition is missing/invalid"
+            },
+            {
+              "code": "AGENTIC_ORACLE_ARTIFACT_INVALID",
+              "message": "ui-save: Agentic E2E path missing: oracles/KIT-SAVE/postcondition-ui-save.json"
+            },
+            {
+              "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+              "message": "ui-save: live deterministic postcondition is missing/invalid"
+            },
+            {
+              "code": "ERROR",
+              "message": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   country: null,\n-   country: 'EG',\n    name: 'Widget'\n  }\n"
+            }
+          ],
+          "artifacts": [
+            {
+              "id": "01a118c7-658f-736b-86a1-27567e485acc:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c7-658f-736b-86a1-27567e485acc:3"
+              },
+              "path": "snapshots/6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "size": 11629,
+              "sha256": "6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "ref": "executionkit-snapshot:f97f60f7-af10-421e-b945-f856403b466c:6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8"
+            },
+            {
+              "id": "01a118c7-658f-736b-86a1-27567e485acc:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c7-658f-736b-86a1-27567e485acc:3"
+              },
+              "path": "snapshots/1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "size": 10390,
+              "sha256": "1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "ref": "executionkit-snapshot:f97f60f7-af10-421e-b945-f856403b466c:1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408"
+            },
+            {
+              "id": "01a118c7-658f-736b-86a1-27567e485acc:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118c7-658f-736b-86a1-27567e485acc:3"
+              },
+              "path": "snapshots/92ad98270f2902cbf12260d633b1a482c8df1e4d20979f1249a59793dba51451",
+              "size": 538,
+              "sha256": "92ad98270f2902cbf12260d633b1a482c8df1e4d20979f1249a59793dba51451",
+              "ref": "executionkit-snapshot:f97f60f7-af10-421e-b945-f856403b466c:92ad98270f2902cbf12260d633b1a482c8df1e4d20979f1249a59793dba51451"
+            },
+            {
+              "id": "01a118c7-658f-736b-86a1-27567e485acc:artifact:3",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/153b7944662972b3b2947b9e59094f356c050acb9801f353f7887710f454d5b8",
+              "size": 231,
+              "sha256": "153b7944662972b3b2947b9e59094f356c050acb9801f353f7887710f454d5b8",
+              "ref": "executionkit-snapshot:f97f60f7-af10-421e-b945-f856403b466c:153b7944662972b3b2947b9e59094f356c050acb9801f353f7887710f454d5b8"
+            },
+            {
+              "id": "01a118c7-658f-736b-86a1-27567e485acc:artifact:4",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "size": 10390,
+              "sha256": "1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "ref": "executionkit-snapshot:f97f60f7-af10-421e-b945-f856403b466c:1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408"
+            },
+            {
+              "id": "01a118c7-658f-736b-86a1-27567e485acc:artifact:5",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/dcb054d21f981c12fe2496a39b43481f555ccd95bc9177a721bc9dca74d563e7",
+              "size": 284105,
+              "sha256": "dcb054d21f981c12fe2496a39b43481f555ccd95bc9177a721bc9dca74d563e7",
+              "ref": "executionkit-snapshot:f97f60f7-af10-421e-b945-f856403b466c:dcb054d21f981c12fe2496a39b43481f555ccd95bc9177a721bc9dca74d563e7"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-db-save.json",
+              "size": 447,
+              "sha256": "02ad38d792b6b79d5011018456b64f3fbd5a402c4badb40dc932385e5742c278",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-REPORT",
+          "class": "cross-feature-workflow",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_JOURNEY_NOT_PASS",
+              "message": "skipped; skipped, flaky, retries and failed cleanup block acceptance"
+            }
+          ],
+          "artifacts": []
+        },
+        {
+          "id": "KIT-RECOVER",
+          "class": "adversarial-recovery",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_JOURNEY_NOT_PASS",
+              "message": "skipped; skipped, flaky, retries and failed cleanup block acceptance"
+            }
+          ],
+          "artifacts": []
+        }
+      ],
+      "postconditions": [
+        {
+          "schemaVersion": "executionkit-agentic-postcondition/v1",
+          "runId": "f97f60f7-af10-421e-b945-f856403b466c",
+          "journeyId": "KIT-SAVE",
+          "id": "db-save",
+          "kind": "backend",
+          "assertion": "All persisted fields and mutation count are correct",
+          "startedAt": "2026-10-07T23:51:37.915Z",
+          "completedAt": "2026-10-07T23:51:37.972Z",
+          "status": "FAIL",
+          "observedDigest": "2d1a1fbd7353637f9a267b79c2933ddf453184e84207474475c2a0278a408b4e"
+        }
+      ]
+    },
+    {
+      "label": "follow-up host IPC failure (not application defect)",
+      "kitStatus": "FAIL",
+      "kitRunId": "1c1b2d99-6bbb-4092-af80-4a0d17625759",
+      "reportSha256": "2c2fbaf02ae0db84de6555ddc672133a99faa6b6a55a5fcab8c76fa087ab1d6f",
+      "upstream": {
+        "id": "01a118ca-2723-72c1-a8a6-90186ec09ba9",
+        "status": "failed",
+        "exitCode": 1,
+        "startedAt": "2026-10-07T23:54:25.078Z",
+        "finishedAt": "2026-10-07T23:57:56.356Z"
+      },
+      "usage": {
+        "modelCalls": 4,
+        "modelTokens": 0,
+        "replayed": 1,
+        "handedOff": 1,
+        "misses": 1
+      },
+      "errors": [
+        {
+          "code": "AGENTIC_RUN_NOT_PASS",
+          "message": "Nonzero exits, errors, carried results and serial groups cannot establish current isolated journey acceptance"
+        },
+        {
+          "code": "AGENTIC_JOURNEY_NOT_PASS",
+          "message": "failed; skipped, flaky, retries and failed cleanup block acceptance",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "AGENTIC_ACTION_REQUIRED",
+          "message": "Real agent.act/replayed actions are mandatory",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "AGENTIC_LIVE_SEMANTICS_REQUIRED",
+          "message": "A fresh observed semantic assertion with model provenance is mandatory; scripted verdicts cannot claim agentic acceptance",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "AGENTIC_ORACLE_ARTIFACT_INVALID",
+          "message": "db-recover: Agentic E2E path missing: oracles/KIT-RECOVER/postcondition-db-recover.json",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+          "message": "db-recover: live deterministic postcondition is missing/invalid",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "AGENTIC_ORACLE_ARTIFACT_INVALID",
+          "message": "ui-recover: Agentic E2E path missing: oracles/KIT-RECOVER/postcondition-ui-recover.json",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+          "message": "ui-recover: live deterministic postcondition is missing/invalid",
+          "journey": "KIT-RECOVER"
+        },
+        {
+          "code": "ACTION_FAILED",
+          "message": "Unexpected end of JSON input",
+          "journey": "KIT-RECOVER"
+        }
+      ],
+      "matrix": [
+        {
+          "id": "KIT-SAVE",
+          "class": "critical-happy-path",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118ca-3244-70b7-b838-b1f9303e0753:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ca-3244-70b7-b838-b1f9303e0753:1"
+              },
+              "path": "snapshots/7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61",
+              "size": 20705,
+              "sha256": "7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61"
+            },
+            {
+              "id": "01a118ca-3244-70b7-b838-b1f9303e0753:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ca-3244-70b7-b838-b1f9303e0753:1"
+              },
+              "path": "snapshots/6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "size": 11629,
+              "sha256": "6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8"
+            },
+            {
+              "id": "01a118ca-3244-70b7-b838-b1f9303e0753:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ca-3244-70b7-b838-b1f9303e0753:1"
+              },
+              "path": "snapshots/17110821f22a7f0968807fc0aedae2733e8a9266a5e926d9c39bb99ca68fa9ab",
+              "size": 1136,
+              "sha256": "17110821f22a7f0968807fc0aedae2733e8a9266a5e926d9c39bb99ca68fa9ab",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:17110821f22a7f0968807fc0aedae2733e8a9266a5e926d9c39bb99ca68fa9ab"
+            },
+            {
+              "id": "01a118ca-3244-70b7-b838-b1f9303e0753:artifact:3",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ca-3244-70b7-b838-b1f9303e0753:3"
+              },
+              "path": "snapshots/6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "size": 11629,
+              "sha256": "6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8"
+            },
+            {
+              "id": "01a118ca-3244-70b7-b838-b1f9303e0753:artifact:4",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ca-3244-70b7-b838-b1f9303e0753:3"
+              },
+              "path": "snapshots/1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "size": 10390,
+              "sha256": "1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408"
+            },
+            {
+              "id": "01a118ca-3244-70b7-b838-b1f9303e0753:artifact:5",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118ca-3244-70b7-b838-b1f9303e0753:3"
+              },
+              "path": "snapshots/ab89cb71923e9e2b109f8dd75881b00671f3a9e6ab071cd32e555557a8f4e0d1",
+              "size": 470,
+              "sha256": "ab89cb71923e9e2b109f8dd75881b00671f3a9e6ab071cd32e555557a8f4e0d1",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:ab89cb71923e9e2b109f8dd75881b00671f3a9e6ab071cd32e555557a8f4e0d1"
+            },
+            {
+              "id": "01a118ca-3244-70b7-b838-b1f9303e0753:artifact:6",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/b77bb71300ddbbba178745130994ac14a92e003a4451886edf52b64416853105",
+              "size": 632333,
+              "sha256": "b77bb71300ddbbba178745130994ac14a92e003a4451886edf52b64416853105",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:b77bb71300ddbbba178745130994ac14a92e003a4451886edf52b64416853105"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-db-save.json",
+              "size": 447,
+              "sha256": "8dd45ca2ecc83c5b73113de67c564eb10fdcd6d9fb90ef3ea0d6cdcc4b304ca7",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-SAVE/postcondition-ui-save.json",
+              "size": 437,
+              "sha256": "0ae8c58e1add71571ab16387b411e1f789e59fa1f134346a7a10e3a19861cba8",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-REPORT",
+          "class": "cross-feature-workflow",
+          "target": "web-fixture",
+          "status": "PASS",
+          "defects": [],
+          "artifacts": [
+            {
+              "id": "01a118cb-8cbb-7a96-8c72-158cea74262a:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118cb-8cbb-7a96-8c72-158cea74262a:3"
+              },
+              "path": "snapshots/e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+              "size": 13613,
+              "sha256": "e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38"
+            },
+            {
+              "id": "01a118cb-8cbb-7a96-8c72-158cea74262a:artifact:1",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118cb-8cbb-7a96-8c72-158cea74262a:3"
+              },
+              "path": "snapshots/8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b",
+              "size": 11471,
+              "sha256": "8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b"
+            },
+            {
+              "id": "01a118cb-8cbb-7a96-8c72-158cea74262a:artifact:2",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118cb-8cbb-7a96-8c72-158cea74262a:3"
+              },
+              "path": "snapshots/72d8a2ea75bff439cb858a5cc12184124ce99f152851f038a7e665299dae43f3",
+              "size": 453,
+              "sha256": "72d8a2ea75bff439cb858a5cc12184124ce99f152851f038a7e665299dae43f3",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:72d8a2ea75bff439cb858a5cc12184124ce99f152851f038a7e665299dae43f3"
+            },
+            {
+              "id": "01a118cb-8cbb-7a96-8c72-158cea74262a:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/cdb303e06526a80e866235f085f6dbfc0741a5c79299241fdfc42a67a72675a9",
+              "size": 327519,
+              "sha256": "cdb303e06526a80e866235f085f6dbfc0741a5c79299241fdfc42a67a72675a9",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:cdb303e06526a80e866235f085f6dbfc0741a5c79299241fdfc42a67a72675a9"
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-db-report.json",
+              "size": 451,
+              "sha256": "37dbc8fdbe92c11f154db77d2420ba9647a4a6c2245be3e427d6f73355595599",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            },
+            {
+              "kind": "log",
+              "path": "oracles/KIT-REPORT/postcondition-ui-report.json",
+              "size": 441,
+              "sha256": "7ec9bfe1a6612f6539027c6939df566601ba41b132be0ef1a5c27475d9cb5d9d",
+              "redaction": "complete",
+              "producer": {
+                "kind": "executionkit-postcondition"
+              }
+            }
+          ]
+        },
+        {
+          "id": "KIT-RECOVER",
+          "class": "adversarial-recovery",
+          "target": "web-fixture",
+          "status": "FAIL",
+          "defects": [
+            {
+              "code": "AGENTIC_JOURNEY_NOT_PASS",
+              "message": "failed; skipped, flaky, retries and failed cleanup block acceptance"
+            },
+            {
+              "code": "AGENTIC_ACTION_REQUIRED",
+              "message": "Real agent.act/replayed actions are mandatory"
+            },
+            {
+              "code": "AGENTIC_LIVE_SEMANTICS_REQUIRED",
+              "message": "A fresh observed semantic assertion with model provenance is mandatory; scripted verdicts cannot claim agentic acceptance"
+            },
+            {
+              "code": "AGENTIC_ORACLE_ARTIFACT_INVALID",
+              "message": "db-recover: Agentic E2E path missing: oracles/KIT-RECOVER/postcondition-db-recover.json"
+            },
+            {
+              "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+              "message": "db-recover: live deterministic postcondition is missing/invalid"
+            },
+            {
+              "code": "AGENTIC_ORACLE_ARTIFACT_INVALID",
+              "message": "ui-recover: Agentic E2E path missing: oracles/KIT-RECOVER/postcondition-ui-recover.json"
+            },
+            {
+              "code": "AGENTIC_POSTCONDITION_UNPROVEN",
+              "message": "ui-recover: live deterministic postcondition is missing/invalid"
+            },
+            {
+              "code": "ACTION_FAILED",
+              "message": "Unexpected end of JSON input"
+            }
+          ],
+          "artifacts": [
+            {
+              "id": "01a118cb-f767-7206-94f8-c3ca94406713:artifact:0",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "step",
+                "stepId": "01a118cb-f767-7206-94f8-c3ca94406713:1"
+              },
+              "path": "snapshots/7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61",
+              "size": 20705,
+              "sha256": "7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:7f6dabe22c5c4d6d8acf8dd9f1a2c3ee70ac2fe8ab31eaffaa8c37a6a45cbd61"
+            },
+            {
+              "id": "01a118cb-f767-7206-94f8-c3ca94406713:artifact:1",
+              "kind": "log",
+              "mediaType": "text/plain",
+              "redaction": "complete",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/f78fb306bbde0e5fa06590dcfa22b756421d74e35cca17d6f1a7ca195a45bbcf",
+              "size": 357,
+              "sha256": "f78fb306bbde0e5fa06590dcfa22b756421d74e35cca17d6f1a7ca195a45bbcf",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:f78fb306bbde0e5fa06590dcfa22b756421d74e35cca17d6f1a7ca195a45bbcf"
+            },
+            {
+              "id": "01a118cb-f767-7206-94f8-c3ca94406713:artifact:2",
+              "kind": "screenshot",
+              "mediaType": "image/png",
+              "redaction": "complete",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/3432414d7523a647ac42227f1283212db2ed9a8c91337a7ff163403f83ae06e7",
+              "size": 18104,
+              "sha256": "3432414d7523a647ac42227f1283212db2ed9a8c91337a7ff163403f83ae06e7",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:3432414d7523a647ac42227f1283212db2ed9a8c91337a7ff163403f83ae06e7"
+            },
+            {
+              "id": "01a118cb-f767-7206-94f8-c3ca94406713:artifact:3",
+              "kind": "trace",
+              "mediaType": "application/zip",
+              "redaction": "not-required",
+              "producer": {
+                "kind": "attempt"
+              },
+              "path": "snapshots/d257b3e90811f9514abd761601bed589c622b32088505cabefc103da3f3fdf12",
+              "size": 1370434,
+              "sha256": "d257b3e90811f9514abd761601bed589c622b32088505cabefc103da3f3fdf12",
+              "ref": "executionkit-snapshot:1c1b2d99-6bbb-4092-af80-4a0d17625759:d257b3e90811f9514abd761601bed589c622b32088505cabefc103da3f3fdf12"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "flow": [
+    {
+      "label": "initial-public-diagnostics",
+      "reportSha256": "141c35fe4d4b22c71954b3257ea4ae402d26d9fd6eeed98cbea60808ebe60021",
+      "runId": "01a118ac-ab62-72de-91c5-62e8ed6693a3",
+      "startedAt": "2026-10-07T23:22:12.137Z",
+      "finishedAt": "2026-10-07T23:25:42.359Z",
+      "targets": [
+        {
+          "id": "flow-public-web",
+          "index": 0,
+          "platform": "web",
+          "baseOrigin": "https://app.elwazeery.com",
+          "environment": "production",
+          "engine": {
+            "name": "web",
+            "version": "0.13.0",
+            "spiVersion": 1
+          },
+          "capabilities": [
+            "actions",
+            "artifacts",
+            "browser",
+            "keyboard",
+            "location",
+            "observation",
+            "pointer",
+            "state"
+          ],
+          "artifactCapabilities": [
+            "screenshot",
+            "trace",
+            "video"
+          ],
+          "stateCapability": true
+        }
+      ],
+      "revisionAttested": false,
+      "results": [
+        {
+          "title": [
+            "FLOW public sign-in entry is actionable"
+          ],
+          "status": "failed",
+          "steps": [
+            {
+              "api": "agent.act",
+              "label": "Inspect the sign-in screen and locate its visible phone number and password entry controls. Do not enter credentials or attempt account access.",
+              "status": "passed",
+              "explanation": "The visible phone number field and password field are clearly labelled, with an explicit sign-in and authorization button. No credentials were entered.",
+              "observationRevision": "b4",
+              "model": {
+                "provider": "chatgpt-work-host",
+                "model": "current-conversation-model",
+                "endpoint": "provider-default",
+                "adapterVersion": "executor/chatgpt-work-host@1",
+                "policyVersion": "chatgpt-work-host/1",
+                "calls": 1,
+                "tokenAccounting": "adapter-upper-bound",
+                "inputTokens": 0,
+                "outputTokens": 0,
+                "peakTokensPerCall": 0
+              }
+            },
+            {
+              "api": "agent.assert",
+              "label": "The sign-in entry offers an actionable way to authenticate or clearly explains the prerequisite and supplies a visible recovery action.",
+              "status": "passed",
+              "explanation": "Visible phone and password inputs and a clear submit action provide a usable authentication entry. Authentication success is not tested by this public diagnostic.",
+              "observationRevision": "b6",
+              "model": {
+                "provider": "chatgpt-work-host",
+                "model": "current-conversation-model",
+                "endpoint": "provider-default",
+                "adapterVersion": "executor/chatgpt-work-host@1",
+                "policyVersion": "chatgpt-work-host/1",
+                "calls": 1,
+                "tokenAccounting": "adapter-upper-bound",
+                "inputTokens": 0,
+                "outputTokens": 0,
+                "peakTokensPerCall": 0
+              }
+            }
+          ],
+          "errors": []
+        },
+        {
+          "title": [
+            "FLOW public portal link supports customer recovery"
+          ],
+          "status": "failed",
+          "steps": [
+            {
+              "api": "agent.act",
+              "label": "Inspect the invalid customer statement link. Find a visible action to request a fresh link or contact the company. Do not invent a URL or use browser back as an in-product recovery action.",
+              "status": "failed",
+              "explanation": "Customer recovery is a dead end: the invalid statement link shows only an English 404 Not Found, with no action to obtain a fresh link or contact the company.",
+              "observationRevision": "b4",
+              "model": {
+                "provider": "chatgpt-work-host",
+                "model": "current-conversation-model",
+                "endpoint": "provider-default",
+                "adapterVersion": "executor/chatgpt-work-host@1",
+                "policyVersion": "chatgpt-work-host/1",
+                "calls": 1,
+                "tokenAccounting": "adapter-upper-bound",
+                "inputTokens": 0,
+                "outputTokens": 0,
+                "peakTokensPerCall": 0
+              }
+            }
+          ],
+          "errors": []
+        },
+        {
+          "title": [
+            "FLOW protected internal route offers recoverable auth"
+          ],
+          "status": "passed",
+          "steps": [
+            {
+              "api": "agent.act",
+              "label": "Inspect the unauthenticated internal portal-link manager entry. Find the visible login or recovery action, without entering credentials or guessing any route.",
+              "status": "passed",
+              "explanation": "The protected entry redirects to a visible sign-in form with labelled phone and password inputs and submit action.",
+              "observationRevision": "b4",
+              "model": {
+                "provider": "chatgpt-work-host",
+                "model": "current-conversation-model",
+                "endpoint": "provider-default",
+                "adapterVersion": "executor/chatgpt-work-host@1",
+                "policyVersion": "chatgpt-work-host/1",
+                "calls": 1,
+                "tokenAccounting": "adapter-upper-bound",
+                "inputTokens": 0,
+                "outputTokens": 0,
+                "peakTokensPerCall": 0
+              }
+            },
+            {
+              "api": "agent.assert",
+              "label": "The denied internal route presents a usable authentication or recovery path, rather than leaving the user at a dead end.",
+              "status": "passed",
+              "explanation": "Unauthenticated access offers a clearly labelled sign-in form. Post-login role permissions and return-to-destination behavior remain untested.",
+              "observationRevision": "b6",
+              "model": {
+                "provider": "chatgpt-work-host",
+                "model": "current-conversation-model",
+                "endpoint": "provider-default",
+                "adapterVersion": "executor/chatgpt-work-host@1",
+                "policyVersion": "chatgpt-work-host/1",
+                "calls": 1,
+                "tokenAccounting": "adapter-upper-bound",
+                "inputTokens": 0,
+                "outputTokens": 0,
+                "peakTokensPerCall": 0
+              }
+            }
+          ],
+          "errors": []
+        }
+      ]
+    },
+    {
+      "label": "corrected-public-login",
+      "reportSha256": "a6adf92104f3376f899f3251c155ebd4f6a7fbf6ff884ad747300a6d45a69505",
+      "runId": "01a118b0-980f-730d-8eac-0f8956445ea6",
+      "startedAt": "2026-10-07T23:26:29.372Z",
+      "finishedAt": "2026-10-07T23:27:37.602Z",
+      "targets": [
+        {
+          "id": "flow-public-web",
+          "index": 0,
+          "platform": "web",
+          "baseOrigin": "https://app.elwazeery.com",
+          "environment": "production",
+          "engine": {
+            "name": "web",
+            "version": "0.13.0",
+            "spiVersion": 1
+          },
+          "capabilities": [
+            "actions",
+            "artifacts",
+            "browser",
+            "keyboard",
+            "location",
+            "observation",
+            "pointer",
+            "state"
+          ],
+          "artifactCapabilities": [
+            "screenshot",
+            "trace",
+            "video"
+          ],
+          "stateCapability": true
+        }
+      ],
+      "revisionAttested": false,
+      "results": [
+        {
+          "title": [
+            "FLOW public sign-in entry is actionable"
+          ],
+          "status": "passed",
+          "steps": [
+            {
+              "api": "agent.act",
+              "label": "Inspect the sign-in screen and locate its visible phone number and password entry controls. Do not enter credentials or attempt account access.",
+              "status": "passed",
+              "explanation": "The sign-in screen exposes labelled phone and secure password fields, and a clear submit action.",
+              "observationRevision": "b5",
+              "model": {
+                "provider": "chatgpt-work-host",
+                "model": "current-conversation-model",
+                "endpoint": "provider-default",
+                "adapterVersion": "executor/chatgpt-work-host@1",
+                "policyVersion": "chatgpt-work-host/1",
+                "calls": 1,
+                "tokenAccounting": "adapter-upper-bound",
+                "inputTokens": 0,
+                "outputTokens": 0,
+                "peakTokensPerCall": 0
+              }
+            },
+            {
+              "api": "agent.assert",
+              "label": "The sign-in entry offers an actionable way to authenticate or clearly explains the prerequisite and supplies a visible recovery action.",
+              "status": "passed",
+              "explanation": "The current sign-in entry is actionable with visible labelled inputs and submit button. Authentication outcome is outside this diagnostic.",
+              "observationRevision": "b7",
+              "model": {
+                "provider": "chatgpt-work-host",
+                "model": "current-conversation-model",
+                "endpoint": "provider-default",
+                "adapterVersion": "executor/chatgpt-work-host@1",
+                "policyVersion": "chatgpt-work-host/1",
+                "calls": 1,
+                "tokenAccounting": "adapter-upper-bound",
+                "inputTokens": 0,
+                "outputTokens": 0,
+                "peakTokensPerCall": 0
+              }
+            }
+          ],
+          "errors": []
+        },
+        {
+          "title": [
+            "FLOW public portal link supports customer recovery"
+          ],
+          "status": "skipped",
+          "steps": [],
+          "errors": []
+        },
+        {
+          "title": [
+            "FLOW protected internal route offers recoverable auth"
+          ],
+          "status": "skipped",
+          "steps": [],
+          "errors": []
+        }
+      ]
+    }
+  ],
+  "blocked": [
+    "authenticated FLOW fixtures/roles",
+    "immutable live FLOW revision",
+    "native Flutter device/build evidence",
+    "remote exact-SHA workflow dispatch"
+  ],
+  "hostExecutorSourceSha256": "846fa7ffdb9d3be974f29532d16c3fca6f0c42a5a443f3d99f9dd91605aa0c35",
+  "independentRevalidation": {
+    "status": "PASS",
+    "errors": [],
+    "matrix": [
+      {
+        "id": "KIT-SAVE",
+        "class": "critical-happy-path",
+        "target": "web-fixture",
+        "status": "PASS",
+        "defects": [],
+        "artifacts": [
+          {
+            "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:0",
+            "kind": "screenshot",
+            "mediaType": "image/png",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:3"
+            },
+            "path": "snapshots/6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+            "size": 11629,
+            "sha256": "6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:6cacc0419da4cdb00a01fea9a03d85023be33ce3406be843f164c6fe5ac208d8"
+          },
+          {
+            "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:1",
+            "kind": "screenshot",
+            "mediaType": "image/png",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:3"
+            },
+            "path": "snapshots/1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+            "size": 10390,
+            "sha256": "1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:1eba4c92402802bf318303b1065a5c3336eaf5543461e622466487ae6b2ee408"
+          },
+          {
+            "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:2",
+            "kind": "log",
+            "mediaType": "text/plain",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:3"
+            },
+            "path": "snapshots/bcb5f6ad20e4ba098ccdb7415bad9f42de1856c4d720802d1c024346467ccbfc",
+            "size": 462,
+            "sha256": "bcb5f6ad20e4ba098ccdb7415bad9f42de1856c4d720802d1c024346467ccbfc",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:bcb5f6ad20e4ba098ccdb7415bad9f42de1856c4d720802d1c024346467ccbfc"
+          },
+          {
+            "id": "01a118c7-e7ed-7998-b4c9-8d68fadb4945:artifact:3",
+            "kind": "trace",
+            "mediaType": "application/zip",
+            "redaction": "not-required",
+            "producer": {
+              "kind": "attempt"
+            },
+            "path": "snapshots/c9acdddb6933829cf668dc176d4d178ac5a0282b49fc841f5cde7f6a9b0c5b65",
+            "size": 256823,
+            "sha256": "c9acdddb6933829cf668dc176d4d178ac5a0282b49fc841f5cde7f6a9b0c5b65",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:c9acdddb6933829cf668dc176d4d178ac5a0282b49fc841f5cde7f6a9b0c5b65"
+          },
+          {
+            "kind": "log",
+            "path": "oracles/KIT-SAVE/postcondition-db-save.json",
+            "size": 447,
+            "sha256": "b798fa9457717e994ff8b2c0f1e8b99894903d7704ead579edb686a11ac995de",
+            "redaction": "complete",
+            "producer": {
+              "kind": "executionkit-postcondition"
+            }
+          },
+          {
+            "kind": "log",
+            "path": "oracles/KIT-SAVE/postcondition-ui-save.json",
+            "size": 437,
+            "sha256": "4ea687846ee894e2b524be2f833ccf64ca8aa99ed08a52aa822bd2051218efa7",
+            "redaction": "complete",
+            "producer": {
+              "kind": "executionkit-postcondition"
+            }
+          }
+        ]
+      },
+      {
+        "id": "KIT-REPORT",
+        "class": "cross-feature-workflow",
+        "target": "web-fixture",
+        "status": "PASS",
+        "defects": [],
+        "artifacts": [
+          {
+            "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:0",
+            "kind": "screenshot",
+            "mediaType": "image/png",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:1"
+            },
+            "path": "snapshots/e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+            "size": 13613,
+            "sha256": "e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38"
+          },
+          {
+            "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:1",
+            "kind": "log",
+            "mediaType": "text/plain",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:1"
+            },
+            "path": "snapshots/e9922462365ffb77ba370eaafbd4fbba6fd38f49579a6e89a165d9337afb5802",
+            "size": 578,
+            "sha256": "e9922462365ffb77ba370eaafbd4fbba6fd38f49579a6e89a165d9337afb5802",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:e9922462365ffb77ba370eaafbd4fbba6fd38f49579a6e89a165d9337afb5802"
+          },
+          {
+            "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:2",
+            "kind": "screenshot",
+            "mediaType": "image/png",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:3"
+            },
+            "path": "snapshots/e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+            "size": 13613,
+            "sha256": "e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:e5f83e979f33b0b48242cf0ba3f8adb6d648283d228122a8f15a4f29913d7a38"
+          },
+          {
+            "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:3",
+            "kind": "screenshot",
+            "mediaType": "image/png",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:3"
+            },
+            "path": "snapshots/8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b",
+            "size": 11471,
+            "sha256": "8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:8acd6e22d43d31ac6bc3b7c5ff730a86f7361bdc54e5b8e6fef8fecafe99ab5b"
+          },
+          {
+            "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:4",
+            "kind": "log",
+            "mediaType": "text/plain",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:3"
+            },
+            "path": "snapshots/3ba4dff9fc9ca1835eefef2fc07b6e83f3b3b2c266179abe51c2f7fd69719940",
+            "size": 464,
+            "sha256": "3ba4dff9fc9ca1835eefef2fc07b6e83f3b3b2c266179abe51c2f7fd69719940",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:3ba4dff9fc9ca1835eefef2fc07b6e83f3b3b2c266179abe51c2f7fd69719940"
+          },
+          {
+            "id": "01a118c8-5d49-72d0-8e5d-f0eab6e9287a:artifact:5",
+            "kind": "trace",
+            "mediaType": "application/zip",
+            "redaction": "not-required",
+            "producer": {
+              "kind": "attempt"
+            },
+            "path": "snapshots/2003ce84c479f25d08b351d6eac2b8428de30eb2c5d4d368096d673851b66ceb",
+            "size": 1005288,
+            "sha256": "2003ce84c479f25d08b351d6eac2b8428de30eb2c5d4d368096d673851b66ceb",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:2003ce84c479f25d08b351d6eac2b8428de30eb2c5d4d368096d673851b66ceb"
+          },
+          {
+            "kind": "log",
+            "path": "oracles/KIT-REPORT/postcondition-db-report.json",
+            "size": 451,
+            "sha256": "6d98e7341ea264aa42d13c24f614d3931c0f6bfc1c3248ef7864be4b1923c35b",
+            "redaction": "complete",
+            "producer": {
+              "kind": "executionkit-postcondition"
+            }
+          },
+          {
+            "kind": "log",
+            "path": "oracles/KIT-REPORT/postcondition-ui-report.json",
+            "size": 441,
+            "sha256": "37c622471bffb736e01d1175dd11b22e82431507639bea8227d5bf0730832144",
+            "redaction": "complete",
+            "producer": {
+              "kind": "executionkit-postcondition"
+            }
+          }
+        ]
+      },
+      {
+        "id": "KIT-RECOVER",
+        "class": "adversarial-recovery",
+        "target": "web-fixture",
+        "status": "PASS",
+        "defects": [],
+        "artifacts": [
+          {
+            "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:0",
+            "kind": "screenshot",
+            "mediaType": "image/png",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c9-986e-77c1-9318-81bd592164d5:3"
+            },
+            "path": "snapshots/08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175",
+            "size": 20788,
+            "sha256": "08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:08d285dedb3b48f8e231bc48b80bd14d9432e61763becd07eca7c3bead354175"
+          },
+          {
+            "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:1",
+            "kind": "screenshot",
+            "mediaType": "image/png",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c9-986e-77c1-9318-81bd592164d5:3"
+            },
+            "path": "snapshots/7075e70544354d5fd853f47009ab4ab1fda0f5edd5528faa2d69dd76c50fb887",
+            "size": 18434,
+            "sha256": "7075e70544354d5fd853f47009ab4ab1fda0f5edd5528faa2d69dd76c50fb887",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:7075e70544354d5fd853f47009ab4ab1fda0f5edd5528faa2d69dd76c50fb887"
+          },
+          {
+            "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:2",
+            "kind": "log",
+            "mediaType": "text/plain",
+            "redaction": "complete",
+            "producer": {
+              "kind": "step",
+              "stepId": "01a118c9-986e-77c1-9318-81bd592164d5:3"
+            },
+            "path": "snapshots/99efd8347e0d0984ceff97ff6f63e219dd2d5a08ac9739d9939e5d33175ba02d",
+            "size": 820,
+            "sha256": "99efd8347e0d0984ceff97ff6f63e219dd2d5a08ac9739d9939e5d33175ba02d",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:99efd8347e0d0984ceff97ff6f63e219dd2d5a08ac9739d9939e5d33175ba02d"
+          },
+          {
+            "id": "01a118c9-986e-77c1-9318-81bd592164d5:artifact:3",
+            "kind": "trace",
+            "mediaType": "application/zip",
+            "redaction": "not-required",
+            "producer": {
+              "kind": "attempt"
+            },
+            "path": "snapshots/7d33993064d059657fdb4ab00cc80e79a57bcba304138a68c649bab14bd7f55f",
+            "size": 403001,
+            "sha256": "7d33993064d059657fdb4ab00cc80e79a57bcba304138a68c649bab14bd7f55f",
+            "ref": "executionkit-snapshot:4ca3618e-a816-41f5-9da1-be1dbcc6e529:7d33993064d059657fdb4ab00cc80e79a57bcba304138a68c649bab14bd7f55f"
+          },
+          {
+            "kind": "log",
+            "path": "oracles/KIT-RECOVER/postcondition-db-recover.json",
+            "size": 453,
+            "sha256": "410b503bd525116c9b8987bdfc6d50a6929ead2feef4752b2493cfd8943a18e7",
+            "redaction": "complete",
+            "producer": {
+              "kind": "executionkit-postcondition"
+            }
+          },
+          {
+            "kind": "log",
+            "path": "oracles/KIT-RECOVER/postcondition-ui-recover.json",
+            "size": 443,
+            "sha256": "80e7942a4d2537adae50459d932e421338f90bacf00a8be75ec3d6d38fbde931",
+            "redaction": "complete",
+            "producer": {
+              "kind": "executionkit-postcondition"
+            }
+          }
+        ]
+      }
+    ],
+    "oracleDigests": {
+      "oracles/KIT-SAVE/postcondition-db-save.json": "b798fa9457717e994ff8b2c0f1e8b99894903d7704ead579edb686a11ac995de",
+      "oracles/KIT-SAVE/postcondition-ui-save.json": "4ea687846ee894e2b524be2f833ccf64ca8aa99ed08a52aa822bd2051218efa7",
+      "oracles/KIT-REPORT/postcondition-db-report.json": "6d98e7341ea264aa42d13c24f614d3931c0f6bfc1c3248ef7864be4b1923c35b",
+      "oracles/KIT-REPORT/postcondition-ui-report.json": "37c622471bffb736e01d1175dd11b22e82431507639bea8227d5bf0730832144",
+      "oracles/KIT-RECOVER/postcondition-db-recover.json": "410b503bd525116c9b8987bdfc6d50a6929ead2feef4752b2493cfd8943a18e7",
+      "oracles/KIT-RECOVER/postcondition-ui-recover.json": "80e7942a4d2537adae50459d932e421338f90bacf00a8be75ec3d6d38fbde931"
+    },
+    "usage": {
+      "modelCalls": 4,
+      "modelTokens": 0,
+      "replayed": 2,
+      "handedOff": 1,
+      "misses": 0
+    },
+    "current": true,
+    "gatePath": ".executionkit/gates/agentic-phase.json"
+  }
+}

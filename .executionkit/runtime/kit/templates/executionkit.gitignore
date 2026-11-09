@@ -1,0 +1,3 @@
+# AI ExecutionKit derived/runtime state. Keep the directory local and non-authoritative.
+*
+!.gitignore

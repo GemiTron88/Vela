@@ -1,0 +1,108 @@
+{
+  "schema": "gemitron-parity-checkpoint/v1",
+  "source_commits": {
+    "ExecutionKit": "11ed2f72bad77ddfd5966e0dee730541e262aca8",
+    "APKrelease": "325c53d75f4b03826af77d60f47480ebdaa47b83",
+    "Studio": "9e81195bfa27774c9350c4a2798e88c5c2b73397",
+    "FLOW": "d17dc234d547e417844f6878b6e0cb894d2bf42f"
+  },
+  "tests": {
+    "kit_v4_check": {
+      "status": "PASS",
+      "runtime": 1007,
+      "v4": 367,
+      "packaged": 1
+    },
+    "kit_focused": {
+      "status": "PASS",
+      "count": 26
+    },
+    "apkrelease_node": {
+      "status": "PASS",
+      "count": 61
+    },
+    "apkrelease_python": {
+      "status": "PASS",
+      "count": 10
+    }
+  },
+  "new_source": "Signed canonical Launch gates; additive schema v4; mandatory release/approve/promote proof; provider secret isolation; production server native inspection prohibited.",
+  "remaining_source": [
+    "Signed workstation artifact inspection bridge: production new uploads intentionally BLOCKED",
+    "Studio release/approval/promotion and provider readback management"
+  ],
+  "remaining_host": [
+    "Installed Kit cutover/doctor",
+    "VPS OS prohibition proof",
+    "CWP web vhost/worker/deploy acceptance",
+    "Physical workstation quotas and Android/device/Shorebird acceptance"
+  ],
+  "resume": "docs/launch/VPS_CONTINUE_20261012.md",
+  "production_acceptance": "NOT_CLAIMED",
+  "vps_checkpoint_20261012": {
+    "source_commits": {
+      "ExecutionKit_base": "a87de7a7e1ca2fd663419430c6eb683ab6712519",
+      "APKrelease": "7e92dffa63b7c1357cf6f69b714865fb012eedfb",
+      "Studio": "061e59ea31caa75b2648776e87803084742e254f",
+      "Studio_release_controls": "d344a08892d79f5bfe12a85a5c3c000002d309d0",
+      "FLOW": "d17dc234d547e417844f6878b6e0cb894d2bf42f"
+    },
+    "implemented": [
+      "APKrelease signed workstation artifact-inspection bridge (schema v5 append-only artifact_inspections; enrollment+lease+fence+HMAC bound; byte hash/size re-verified server-side; release creation bound to inspection job/worker/commit)",
+      "Studio scoped release create/approve/promote via authoritative API; separate publisher/approver tokens; gated on canonical_launch_gates_required+launch.gates.signed+operation capability; exact-digest approval; RESULT_UNKNOWN on mismatch/timeout",
+      "Studio official project-local Kit update to a87de7a"
+    ],
+    "tests": {
+      "apkrelease_node_vps": {
+        "status": "PARTIAL",
+        "pass": 54,
+        "fail": 14,
+        "fail_reason": "PRODUCTION_CWP_BUILDER_FORBIDDEN host guard (intended VPS prohibition); baseline 325c53d on this VPS 47/61 with the same 14"
+      },
+      "apkrelease_workstation_inspection": {
+        "status": "PASS",
+        "count": 7
+      },
+      "apkrelease_python_vps": {
+        "guard_test": "PASS",
+        "host_policy_test": "PASS",
+        "runner_test": "1 FAIL PRODUCTION_CWP_BUILDER_FORBIDDEN (intended)"
+      },
+      "studio_phpunit": {
+        "status": "PASS",
+        "count": 69,
+        "targeted_mobile": 28
+      },
+      "studio_doctor": {
+        "status": "BLOCKED",
+        "errors": 14,
+        "reason": "v4 control-plane workflow rules: automatic triggers, GitHub-hosted runners, missing project-studio label/dispatch inputs"
+      }
+    },
+    "host_discovery": {
+      "user": "antigravity uid 1032, no sudo",
+      "cwp": "flow.elwazeery.com vhost DocumentRoot /home/elwaz/flow.elwazeery.com (suexec elwaz, php-fpm83) unreadable",
+      "studio_vhost": "NOT_FOUND",
+      "apkrelease_live_instance": "NOT_RUNNING; no release.db to back up",
+      "live_probes": {
+        "https://flow.elwazeery.com/": 403,
+        "/api/health": "404/403",
+        "/api/v1/health": "404/403",
+        "/healthz": "404/403",
+        "/up": "404/403",
+        "/public/up": "404/403"
+      }
+    },
+    "blocked": [
+      "physical workstation signed upload/readback",
+      "Windows Job Object / physical cgroup quotas",
+      "Android install/signing/SMS continuity",
+      "Shorebird",
+      "CWP vhost/worker reload/rollback (no elwaz/sudo access)",
+      "installed Studio/FLOW runtime cutover",
+      "live SQLite backup (no instance)",
+      "Studio doctor control-plane workflow migration"
+    ],
+    "production_acceptance": "NOT_CLAIMED"
+  }
+}

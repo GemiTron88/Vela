@@ -1,0 +1,5 @@
+# Launch agent safety correction — EK4-LAUNCH-SAFETY-006
+
+Upstream source: 04d225d68ece643438d22ceaf77408811adc3b68. Native agent guard now acquires a host-wide kernel lock before recovery and runner lock during recovery. Reclamation requires a private ownership record, matching worker/root/path, trusted local repository mapping and actual registered Git worktree. Unknown paths and symlinks survive. Concurrent manual/autostart instances fail HOST_BUSY before cleanup. Tests use real native locks, Git worktrees and isolated filesystem fixtures; no real builds/data touched.
+
+58/58 Node tests PASS, 4/4 Python tests PASS at this checkpoint; additional strict-backend regression is included and rerun before publication. CWP builds are refused. Hard kernel controls are required by default; Windows controls and Linux scope limits are read back before source execution. Soft watchdog is an explicit development opt-in, not a native release guarantee. Native Windows/cgroup/Android signing/device acceptance remains NOT TESTED in this environment. No deployment/publication or keystore change occurs.

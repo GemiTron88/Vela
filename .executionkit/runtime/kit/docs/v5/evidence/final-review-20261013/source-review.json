@@ -1,0 +1,3523 @@
+{
+  "schemaVersion": "executionkit-v5-source-review/v1",
+  "status": "PASS",
+  "scope": "SOURCE_ONLY",
+  "version": "5.0.0-dev",
+  "systemCount": 11,
+  "systems": {
+    "schemaVersion": "executionkit-v4-system-runtime-surfaces/v1",
+    "status": "PASS",
+    "systems": {
+      "execution": {
+        "trigger": "always",
+        "command": "executionkit start .",
+        "kernelSlot": "execution",
+        "kernelIntegrated": true,
+        "files": [
+          "bin/executionkit-cli.mjs",
+          "lib/v4-kernel.mjs",
+          "lib/v4-product-closure.mjs",
+          "lib/v4-boundary.mjs",
+          "lib/v4-activation.mjs",
+          "lib/v4-maturity.mjs",
+          "lib/v4-gate-identity.mjs",
+          "lib/todo-maintenance.mjs",
+          "lib/v4-invariant-registry.mjs",
+          "lib/v4-upgrade-revalidation.mjs",
+          "lib/v4-upgrade-revalidation-status.mjs",
+          "lib/v4-update-discovery.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/discovery/product-closure.json",
+          ".executionkit/gates/activation.json",
+          ".executionkit/runtime/checkpoint.json"
+        ],
+        "negativeRegressions": [
+          "tests/v4-kernel-enforcement.test.mjs",
+          "tests/v4-product-closure.test.mjs",
+          "tests/v4-upgrade-revalidation.test.mjs",
+          "tests/v4-update-discovery.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "agent": {
+        "trigger": "always",
+        "command": "executionkit agents status .",
+        "kernelSlot": "agent",
+        "kernelIntegrated": true,
+        "files": [
+          "lib/v4-agent-runtime.mjs",
+          "lib/agent-model.mjs",
+          "lib/parallel-execution.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/agents/claims"
+        ],
+        "negativeRegressions": [
+          "tests/v4-agent-runtime.test.mjs",
+          "tests/v4-kernel-enforcement.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "state": {
+        "trigger": "always",
+        "command": "executionkit state status .",
+        "kernelSlot": "state",
+        "kernelIntegrated": true,
+        "files": [
+          "lib/state-model.mjs",
+          "bin/state-status.mjs",
+          "bin/state-rehydrate.mjs",
+          "bin/state-checkpoint.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/state/latest.json",
+          ".executionkit/state/journal.ndjson"
+        ],
+        "negativeRegressions": [
+          "tests/state-os.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "content": {
+        "trigger": "impact",
+        "command": "executionkit content status .",
+        "kernelSlot": "content",
+        "kernelIntegrated": true,
+        "files": [
+          "lib/v4-content-os.mjs",
+          "lib/content-model.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/evidence/raw/content-wave.json",
+          ".executionkit/evidence/raw/content-phase.json"
+        ],
+        "negativeRegressions": [
+          "tests/v4-content-seo.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "seo": {
+        "trigger": "applicability-and-impact",
+        "command": "executionkit seo status .",
+        "kernelSlot": "seo",
+        "kernelIntegrated": true,
+        "files": [
+          "bin/seo-os.mjs",
+          "lib/v4-seo-os.mjs",
+          "lib/seo-model.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/evidence/raw/seo-implementation-wave.json",
+          ".executionkit/evidence/raw/seo-release.json"
+        ],
+        "negativeRegressions": [
+          "tests/v4-content-seo.test.mjs",
+          "tests/seo-os.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "docs": {
+        "trigger": "material-source-impact",
+        "command": "executionkit docs status .",
+        "kernelSlot": "docs",
+        "kernelIntegrated": true,
+        "files": [
+          "bin/documentation-fabric.mjs",
+          "lib/documentation-fabric.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/knowledge/documentation-registry.json",
+          "docs/knowledge-base/generated"
+        ],
+        "negativeRegressions": [
+          "tests/documentation-fabric.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "audit": {
+        "trigger": "wave-phase-release",
+        "command": "executionkit audit wave .",
+        "kernelSlot": "audit",
+        "kernelIntegrated": true,
+        "files": [
+          "bin/audit-project.mjs",
+          "lib/v4-audit-evidence.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/gates/audit-wave.json",
+          ".executionkit/gates/audit-phase.json",
+          ".executionkit/gates/audit-release.json"
+        ],
+        "negativeRegressions": [
+          "tests/v4-audit-evidence.test.mjs",
+          "tests/audit-os.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "test": {
+        "trigger": "wave-phase-release",
+        "command": "executionkit test wave .",
+        "kernelSlot": "test",
+        "kernelIntegrated": true,
+        "files": [
+          "lib/v4-test-os.mjs",
+          "lib/agentic-e2e.mjs",
+          "lib/agentic-postconditions.mjs",
+          "bin/init-agentic-e2e.mjs",
+          "bin/test-project.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/gates/test-wave.json",
+          ".executionkit/gates/test-phase.json",
+          ".executionkit/gates/test-release.json"
+        ],
+        "negativeRegressions": [
+          "tests/v4-test-os.test.mjs",
+          "tests/agentic-e2e.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "launch": {
+        "trigger": "release",
+        "command": "executionkit launch status .",
+        "kernelSlot": "launch",
+        "kernelIntegrated": true,
+        "files": [
+          "bin/production-deployment.mjs",
+          "lib/production-deployment.mjs",
+          "lib/v4-release-gates.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/deployment/production-state.json",
+          ".executionkit/gates/reconcile-release.json"
+        ],
+        "negativeRegressions": [
+          "tests/v4-release-gates.test.mjs",
+          "tests/production-deployment.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "visual": {
+        "trigger": "ui-surface-impact",
+        "command": "executionkit visual status . --boundary wave",
+        "kernelSlot": "visual",
+        "kernelIntegrated": true,
+        "files": [
+          "lib/visual-os.mjs",
+          "lib/visual-capture.mjs",
+          "lib/visual-critic.mjs",
+          "lib/visual-audit.mjs",
+          "lib/visual-journeys.mjs",
+          "lib/component-model.mjs",
+          "lib/quality-model.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/gates/reconcile-wave.json",
+          ".executionkit/gates/reconcile-phase.json"
+        ],
+        "negativeRegressions": [
+          "tests/v4-visual-evidence.test.mjs",
+          "tests/visual-os-v2.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      },
+      "decision": {
+        "trigger": "preflight-postflight-wave-phase-release",
+        "command": "executionkit decision status .",
+        "kernelSlot": "decision",
+        "kernelIntegrated": true,
+        "files": [
+          "lib/decision-os.mjs",
+          "lib/decision/index.mjs",
+          "lib/decision/contract.mjs",
+          "lib/decision/policy.mjs",
+          "lib/decision/knowledge.mjs",
+          "lib/decision/kb-sync.mjs",
+          "lib/decision/plan-alignment.mjs",
+          "lib/decision/knowledge/catalog.json",
+          "lib/decision/knowledge/manifest.json",
+          "bin/decision-kb-refresh.mjs"
+        ],
+        "missing": [],
+        "evidence": [
+          ".executionkit/decision/latest.json",
+          ".executionkit/gates/reconcile-release.json"
+        ],
+        "negativeRegressions": [
+          "tests/v5-decision-os.test.mjs"
+        ],
+        "negativeRegressionSourceStatus": "VERIFIED_SOURCE_FILES",
+        "missingNegativeRegressions": [],
+        "status": "EXECUTABLE"
+      }
+    },
+    "errors": []
+  },
+  "contracts": {
+    "execution": {
+      "trigger": "always",
+      "command": "executionkit start .",
+      "kernelSlot": "execution",
+      "files": [
+        "bin/executionkit-cli.mjs",
+        "lib/v4-kernel.mjs",
+        "lib/v4-product-closure.mjs",
+        "lib/v4-boundary.mjs",
+        "lib/v4-activation.mjs",
+        "lib/v4-maturity.mjs",
+        "lib/v4-gate-identity.mjs",
+        "lib/todo-maintenance.mjs",
+        "lib/v4-invariant-registry.mjs",
+        "lib/v4-upgrade-revalidation.mjs",
+        "lib/v4-upgrade-revalidation-status.mjs",
+        "lib/v4-update-discovery.mjs"
+      ],
+      "evidence": [
+        ".executionkit/discovery/product-closure.json",
+        ".executionkit/gates/activation.json",
+        ".executionkit/runtime/checkpoint.json"
+      ],
+      "negativeRegressions": [
+        "tests/v4-kernel-enforcement.test.mjs",
+        "tests/v4-product-closure.test.mjs",
+        "tests/v4-upgrade-revalidation.test.mjs",
+        "tests/v4-update-discovery.test.mjs"
+      ]
+    },
+    "agent": {
+      "trigger": "always",
+      "command": "executionkit agents status .",
+      "kernelSlot": "agent",
+      "files": [
+        "lib/v4-agent-runtime.mjs",
+        "lib/agent-model.mjs",
+        "lib/parallel-execution.mjs"
+      ],
+      "evidence": [
+        ".executionkit/agents/claims"
+      ],
+      "negativeRegressions": [
+        "tests/v4-agent-runtime.test.mjs",
+        "tests/v4-kernel-enforcement.test.mjs"
+      ]
+    },
+    "state": {
+      "trigger": "always",
+      "command": "executionkit state status .",
+      "kernelSlot": "state",
+      "files": [
+        "lib/state-model.mjs",
+        "bin/state-status.mjs",
+        "bin/state-rehydrate.mjs",
+        "bin/state-checkpoint.mjs"
+      ],
+      "evidence": [
+        ".executionkit/state/latest.json",
+        ".executionkit/state/journal.ndjson"
+      ],
+      "negativeRegressions": [
+        "tests/state-os.test.mjs"
+      ]
+    },
+    "content": {
+      "trigger": "impact",
+      "command": "executionkit content status .",
+      "kernelSlot": "content",
+      "files": [
+        "lib/v4-content-os.mjs",
+        "lib/content-model.mjs"
+      ],
+      "evidence": [
+        ".executionkit/evidence/raw/content-wave.json",
+        ".executionkit/evidence/raw/content-phase.json"
+      ],
+      "negativeRegressions": [
+        "tests/v4-content-seo.test.mjs"
+      ]
+    },
+    "seo": {
+      "trigger": "applicability-and-impact",
+      "command": "executionkit seo status .",
+      "kernelSlot": "seo",
+      "files": [
+        "bin/seo-os.mjs",
+        "lib/v4-seo-os.mjs",
+        "lib/seo-model.mjs"
+      ],
+      "evidence": [
+        ".executionkit/evidence/raw/seo-implementation-wave.json",
+        ".executionkit/evidence/raw/seo-release.json"
+      ],
+      "negativeRegressions": [
+        "tests/v4-content-seo.test.mjs",
+        "tests/seo-os.test.mjs"
+      ]
+    },
+    "docs": {
+      "trigger": "material-source-impact",
+      "command": "executionkit docs status .",
+      "kernelSlot": "docs",
+      "files": [
+        "bin/documentation-fabric.mjs",
+        "lib/documentation-fabric.mjs"
+      ],
+      "evidence": [
+        ".executionkit/knowledge/documentation-registry.json",
+        "docs/knowledge-base/generated"
+      ],
+      "negativeRegressions": [
+        "tests/documentation-fabric.test.mjs"
+      ]
+    },
+    "audit": {
+      "trigger": "wave-phase-release",
+      "command": "executionkit audit wave .",
+      "kernelSlot": "audit",
+      "files": [
+        "bin/audit-project.mjs",
+        "lib/v4-audit-evidence.mjs"
+      ],
+      "evidence": [
+        ".executionkit/gates/audit-wave.json",
+        ".executionkit/gates/audit-phase.json",
+        ".executionkit/gates/audit-release.json"
+      ],
+      "negativeRegressions": [
+        "tests/v4-audit-evidence.test.mjs",
+        "tests/audit-os.test.mjs"
+      ]
+    },
+    "test": {
+      "trigger": "wave-phase-release",
+      "command": "executionkit test wave .",
+      "kernelSlot": "test",
+      "files": [
+        "lib/v4-test-os.mjs",
+        "lib/agentic-e2e.mjs",
+        "lib/agentic-postconditions.mjs",
+        "bin/init-agentic-e2e.mjs",
+        "bin/test-project.mjs"
+      ],
+      "evidence": [
+        ".executionkit/gates/test-wave.json",
+        ".executionkit/gates/test-phase.json",
+        ".executionkit/gates/test-release.json"
+      ],
+      "negativeRegressions": [
+        "tests/v4-test-os.test.mjs",
+        "tests/agentic-e2e.test.mjs"
+      ]
+    },
+    "launch": {
+      "trigger": "release",
+      "command": "executionkit launch status .",
+      "kernelSlot": "launch",
+      "files": [
+        "bin/production-deployment.mjs",
+        "lib/production-deployment.mjs",
+        "lib/v4-release-gates.mjs"
+      ],
+      "evidence": [
+        ".executionkit/deployment/production-state.json",
+        ".executionkit/gates/reconcile-release.json"
+      ],
+      "negativeRegressions": [
+        "tests/v4-release-gates.test.mjs",
+        "tests/production-deployment.test.mjs"
+      ]
+    },
+    "visual": {
+      "trigger": "ui-surface-impact",
+      "command": "executionkit visual status . --boundary wave",
+      "kernelSlot": "visual",
+      "files": [
+        "lib/visual-os.mjs",
+        "lib/visual-capture.mjs",
+        "lib/visual-critic.mjs",
+        "lib/visual-audit.mjs",
+        "lib/visual-journeys.mjs",
+        "lib/component-model.mjs",
+        "lib/quality-model.mjs"
+      ],
+      "evidence": [
+        ".executionkit/gates/reconcile-wave.json",
+        ".executionkit/gates/reconcile-phase.json"
+      ],
+      "negativeRegressions": [
+        "tests/v4-visual-evidence.test.mjs",
+        "tests/visual-os-v2.test.mjs"
+      ]
+    },
+    "decision": {
+      "trigger": "preflight-postflight-wave-phase-release",
+      "command": "executionkit decision status .",
+      "kernelSlot": "decision",
+      "files": [
+        "lib/decision-os.mjs",
+        "lib/decision/index.mjs",
+        "lib/decision/contract.mjs",
+        "lib/decision/policy.mjs",
+        "lib/decision/knowledge.mjs",
+        "lib/decision/kb-sync.mjs",
+        "lib/decision/plan-alignment.mjs",
+        "lib/decision/knowledge/catalog.json",
+        "lib/decision/knowledge/manifest.json",
+        "bin/decision-kb-refresh.mjs"
+      ],
+      "evidence": [
+        ".executionkit/decision/latest.json",
+        ".executionkit/gates/reconcile-release.json"
+      ],
+      "negativeRegressions": [
+        "tests/v5-decision-os.test.mjs"
+      ]
+    }
+  },
+  "invariantCount": 22,
+  "invariants": [
+    {
+      "id": "system.execution.closure",
+      "checks": [
+        "execution-structure",
+        "product-closure"
+      ],
+      "sources": [
+        {
+          "pattern": "STANDARD_V4.md",
+          "matches": 1
+        },
+        {
+          "pattern": "STANDARD_V5.md",
+          "matches": 1
+        },
+        {
+          "pattern": "AGENTS.md",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/execution-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/validate-execution.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/runtime-orchestrator.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-product-closure.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/discovery-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/todo-maintenance.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-boundary.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-reconcile.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/reconcile-budget.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/reconcile-runner.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/reconcile-worker.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-activation.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-maturity.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-gate-identity.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/task-contract.md",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/finding-contract.md",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/phase-contract.md",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.agent.routing",
+      "checks": [
+        "agent-layer"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/agent-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-agent-runtime.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/parallel-execution.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/.agents",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.state.rehydration",
+      "checks": [
+        "state-os"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/state-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/state-status.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/state-rehydrate.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/state-checkpoint.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.content.acceptance",
+      "checks": [
+        "content-os"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/v4-content-os.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/content-model.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.seo.acceptance",
+      "checks": [
+        "seo-os"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/v4-seo-os.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/seo-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/seo-os.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.docs.freshness",
+      "checks": [
+        "docs-os"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/documentation-fabric.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/documentation-fabric.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/document-authority-contract.md",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/documentation-fabric-contract.md",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.audit.boundary",
+      "checks": [
+        "audit-os"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/v4-audit-evidence.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/audit-project.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.test.boundary",
+      "checks": [
+        "test-os"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/v4-test-os.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/lighthouse-gate.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/validate-seo-performance.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/agentic-e2e.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/agentic-postconditions.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/init-agentic-e2e.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/test-project.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/run-tests.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/impact-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/test-evidence.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/agentic-e2e-contract.md",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.launch.release",
+      "checks": [
+        "launch-os"
+      ],
+      "sources": [
+        {
+          "pattern": "bin/launch-service.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/launch-mobile.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/launch-service",
+          "matches": 48
+        },
+        {
+          "pattern": "packages/global_mobile_updater",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/native-host-policy.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/production-deployment.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/production-retention.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/production-worker-retirement.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/production-artifact-policy.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/production-backup.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/production-artifact-retention.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/release-lifecycle.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-release-gates.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/production-deployment.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/release-project.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/release-readiness.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/production-deployment-contract.md",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/release-gate-contract.md",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "system.visual.premium",
+      "checks": [
+        "visual-os"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/visual-os.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-audit.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-boundary.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-capture.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-contract.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-critic.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-enums.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-geometry.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-image.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-journeys.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-schema.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-schema-compiled.cjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-schema-runtime/ucs2length.cjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-schema-runtime/formats.cjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-schema-runtime/provenance.json",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/visual-finding.schema.json",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-surface.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/visual-trace.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/visual-project.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/visual-boundary.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/visual-os-v2-contract.md",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/visual/executionkit.visual.json",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/visual/project-hooks.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/visual-config.schema.json",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/visual-artifact.schema.json",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/visual-review.schema.json",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/visual-run.schema.json",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/visual-remediation.schema.json",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/quality-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/component-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/quality.contract.json",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/executionkit.components.json",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/executionkit.design.json",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric.database.integrity",
+      "checks": [
+        "database-guard"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/database-integrity.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric.route.integrity",
+      "checks": [
+        "route-guard"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/route-integrity.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric.surface.integrity",
+      "checks": [
+        "surface-guard"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/surface-integrity.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric.decision.local-adapter",
+      "checks": [
+        "decision-adapter"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/decision-adapter.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/decision-adapter.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/decision-os.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/decision",
+          "matches": 10
+        },
+        {
+          "pattern": "lib/v5-config.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/execution.config.v5.json",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/execution-config-v5.schema.json",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric.evidence.durable-proof",
+      "checks": [
+        "task-proof"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/task-proof.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/evidence-contract.md",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric.integration.journeys",
+      "checks": [
+        "integration-contract"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/integration-model.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/revalidation-model.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "fabric.repository-intelligence",
+      "checks": [
+        "repository-intelligence"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/repository-intelligence-api.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-knowledge-runtime.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/repository-context.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/repository-freshness.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/repository-providers.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/setup-repository-provider-tooling.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "contracts/repository-intelligence-contract.md",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "host.antigravity.integration",
+      "checks": [
+        "antigravity"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/antigravity-v4.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/validate-deep-integration.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/integrate-antigravity-v4.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/AGENTS_V4.md",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/AGENTS_V5.md",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "kernel.policy-routing",
+      "checks": [
+        "v4-policy",
+        "kernel-routing"
+      ],
+      "sources": [
+        {
+          "pattern": "bin/executionkit-cli.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/executionkit.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-cli-contract.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-kernel.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-config.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-context-economy.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/execution.config.v4.json",
+          "matches": 1
+        },
+        {
+          "pattern": "schemas/execution-config-v4.schema.json",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "platform.portability",
+      "checks": [
+        "platform"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/v4-platform.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/cli-output.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-cli-entry.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/portable-process.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/bounded-process.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/bounded-process-runner.mjs",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "control-plane.github-native",
+      "checks": [
+        "control-plane"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/v4-control-plane.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "templates/github/executionkit-v4.yml",
+          "matches": 1
+        }
+      ]
+    },
+    {
+      "id": "installer.upgrade-transaction",
+      "checks": [
+        "installer"
+      ],
+      "sources": [
+        {
+          "pattern": "lib/v4-installer.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-upgrade-transform.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-source.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-update-discovery.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/derived-state.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-invariant-registry.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-upgrade-revalidation.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "lib/v4-upgrade-revalidation-status.mjs",
+          "matches": 1
+        },
+        {
+          "pattern": "bin/upgrade-revalidation-worker.mjs",
+          "matches": 1
+        }
+      ]
+    }
+  ],
+  "helpers": [
+    {
+      "path": "bin/activate-project.mjs",
+      "status": "PASS",
+      "sha256": "ebf88939e144cf5e05313e3bee6e70df10991b36e6758f08d1b0720600ffbf8f"
+    },
+    {
+      "path": "bin/adapter-dart-mcp.mjs",
+      "status": "PASS",
+      "sha256": "7430ad7eb176a6c0d6c270f95ebd6136991c511a8a6b3bab222a4cfbca9e5acf"
+    },
+    {
+      "path": "bin/adapter-laravel-boost.mjs",
+      "status": "PASS",
+      "sha256": "bc5e799753ec0ba463e62ee87312cc057b809c5562be8fc16d7a61232118857a"
+    },
+    {
+      "path": "bin/adopt-project.mjs",
+      "status": "PASS",
+      "sha256": "4171e28e288e053c61783cb8186bb89277584f6eb01eb4d52310c180c8bdcb66"
+    },
+    {
+      "path": "bin/agent-doctor.mjs",
+      "status": "PASS",
+      "sha256": "7096f344bea7e0b550c9100daa49ab520b30395ce25b86611cf89253eade0157"
+    },
+    {
+      "path": "bin/analyze-flakes.mjs",
+      "status": "PASS",
+      "sha256": "ff65d30811b41eff80e4336c88d940124308971412028b3fd32eeaa7f645fd70"
+    },
+    {
+      "path": "bin/analyze-impact.mjs",
+      "status": "PASS",
+      "sha256": "5d416d69df587a4ecf5d836afe90594a0de835c2e1f897799d37bf4898d6af18"
+    },
+    {
+      "path": "bin/analyze-revalidation.mjs",
+      "status": "PASS",
+      "sha256": "b79d7f3de3792f256b7e83da2da8abb9fb22a78f7e509a5787b150f6b36cb98b"
+    },
+    {
+      "path": "bin/antigravity-hook.mjs",
+      "status": "PASS",
+      "sha256": "bdb5d3553bb40d1ae74fd0ed2e2b6e1266cfdf3365bfc2b76e741dd62867efb8"
+    },
+    {
+      "path": "bin/archive-todo.mjs",
+      "status": "PASS",
+      "sha256": "1d02e902ba5da1e39cfca38f661b200f99c7838cf1e57b11dd90214f7671fc8a"
+    },
+    {
+      "path": "bin/audit-cli.mjs",
+      "status": "PASS",
+      "sha256": "663ed9a9a3d653ce96bdada45d055acc8174a2a678eabb7f2c9b3eb9c0faed92"
+    },
+    {
+      "path": "bin/audit-project.mjs",
+      "status": "PASS",
+      "sha256": "240270c4315ce0ea739828ccf9d2a3a1e15afdeb26f0ccc770adf2d459c6abcf"
+    },
+    {
+      "path": "bin/benchmark-repository-intelligence-scenarios.mjs",
+      "status": "PASS",
+      "sha256": "4d32e9d83b3898faccadb692a87ce671d7aa3b76a19aea794123e09b0560e58c"
+    },
+    {
+      "path": "bin/benchmark-repository-intelligence.mjs",
+      "status": "PASS",
+      "sha256": "2000c692aa75228a504363cb652db9017976df5ba9a8c5044148e823b20d8004"
+    },
+    {
+      "path": "bin/boost.mjs",
+      "status": "PASS",
+      "sha256": "b14d7451a291dd6751cb04259e5655d85038ebdbd848594833ee7b524fde4770"
+    },
+    {
+      "path": "bin/bootstrap-host.mjs",
+      "status": "PASS",
+      "sha256": "b78f53dcadcfb515df6a84d5ea3d0654931c8e5ba59fec554117e4e55e2cefe8"
+    },
+    {
+      "path": "bin/bounded-process-runner.mjs",
+      "status": "PASS",
+      "sha256": "88287aba1616545214bf5aaf00f92f424db411254abccb5f5d0151dd7cbc99c7"
+    },
+    {
+      "path": "bin/build-candidate.mjs",
+      "status": "PASS",
+      "sha256": "824c8015f1fb34d0c7b04668fa4fd91c8c0f60fcf871ee167e9b22f7610c4899"
+    },
+    {
+      "path": "bin/build-coverage-graph.mjs",
+      "status": "PASS",
+      "sha256": "be0c8ccb0f686cb5f0631bde3ea5c6a83dcc7d82bde4158e7f2e6373966da16b"
+    },
+    {
+      "path": "bin/build-evidence-graph.mjs",
+      "status": "PASS",
+      "sha256": "80c8f66b1c88e5f748c273140a75a27c9c4c3f50aa36e13c76823ead1e5f947a"
+    },
+    {
+      "path": "bin/collect-evidence.mjs",
+      "status": "PASS",
+      "sha256": "6ea64f78ff2c1dfa0315ce89665af57f4b64dacc25ce5888d16044a371fbf481"
+    },
+    {
+      "path": "bin/configure-quality.mjs",
+      "status": "PASS",
+      "sha256": "a73dd78ae3fa25349d500575eb86255ca04e0e4b10e5389f5585b4464ff6d817"
+    },
+    {
+      "path": "bin/coordinate-agents.mjs",
+      "status": "PASS",
+      "sha256": "95c70258a14406dd932763a9e107bf2fe7c7b8fef840a95e3d7899655addd021"
+    },
+    {
+      "path": "bin/decision-adapter.mjs",
+      "status": "PASS",
+      "sha256": "15c98de94e81ca63296ef3bfb1cd6c37a3a4ee4c86d3f1e3f8176601365a4a54"
+    },
+    {
+      "path": "bin/decision-kb-refresh.mjs",
+      "status": "PASS",
+      "sha256": "7c710c816865d9be95042ed189c0238ac3938be5d6d3a638f3436f2a8fff1a1c"
+    },
+    {
+      "path": "bin/discover-components.mjs",
+      "status": "PASS",
+      "sha256": "683e771a7bf54ba4ce7bade5f2c03cc78d4318d8aa5befb877a74d135d5fdfd9"
+    },
+    {
+      "path": "bin/discover-content.mjs",
+      "status": "PASS",
+      "sha256": "040c6ab0f3b3fb666ce08f4d02ba7f6c2d9b1c70bf2d9709e0f7795901c8f6d2"
+    },
+    {
+      "path": "bin/discover-product.mjs",
+      "status": "PASS",
+      "sha256": "d936b904158b09c355ccbd296f5c237cb5c6318c7d6f9ef4ffb2bc91526584bf"
+    },
+    {
+      "path": "bin/doctor.mjs",
+      "status": "PASS",
+      "sha256": "f008f3530e71abfff652e66bebf396aca2f6643edcd7e57f70420f9900a0cfe1"
+    },
+    {
+      "path": "bin/documentation-fabric.mjs",
+      "status": "PASS",
+      "sha256": "02ddd8a1a15049d8e89a43c167104de9504886ac828c684fd7d80a97c44df348"
+    },
+    {
+      "path": "bin/execute-loop.mjs",
+      "status": "PASS",
+      "sha256": "c36d9949b4fdb28a487c84f63e2bdccec592f964d50aa2bcc6be795730835876"
+    },
+    {
+      "path": "bin/executionkit-agent.mjs",
+      "status": "PASS",
+      "sha256": "5747da5ddf6f36af0bd93c33bd9c45400e3dbd03bdf2a0eec906a60b192a6cc8"
+    },
+    {
+      "path": "bin/executionkit-cli.mjs",
+      "status": "PASS",
+      "sha256": "d1e41587d62906be80557cef598761e8979ff7c55d59749d9158b473a5965b40"
+    },
+    {
+      "path": "bin/executionkit.mjs",
+      "status": "PASS",
+      "sha256": "9daf34bd97ee24b303e249a461d612a4d5582cc762416407d742d97e94a2c78a"
+    },
+    {
+      "path": "bin/export-bootstrap.mjs",
+      "status": "PASS",
+      "sha256": "f082822631fb5568a362ed0ac8a8c1da728a0a7a364e7e9f4a7cbdc5ec80824b"
+    },
+    {
+      "path": "bin/export-workflows-as-skills.mjs",
+      "status": "PASS",
+      "sha256": "b2a6ff56bb5d9d669d0ba1aee9cab02199767cbad0f6d381998cd2a0a53d9cf9"
+    },
+    {
+      "path": "bin/fleet-audit.mjs",
+      "status": "PASS",
+      "sha256": "362bd10712c2dd156784200c85c772741306ba80dde10a127c310116b1d49aa5"
+    },
+    {
+      "path": "bin/fleet-plan-upgrade.mjs",
+      "status": "PASS",
+      "sha256": "e09048f7fa21dbe5dd2f45354adc61087625b9a65efa1071b79fd492b4dd1121"
+    },
+    {
+      "path": "bin/fleet-report.mjs",
+      "status": "PASS",
+      "sha256": "b4f7b9e637c62ae1f44ffe99eba8c9c2df8f8746ad791c1e679fedc7ef7ee4f7"
+    },
+    {
+      "path": "bin/host-mcp-server.mjs",
+      "status": "PASS",
+      "sha256": "ac34ca524e854fde771fc2cb94b3d05febb8805b605fb396015d710e6cac561b"
+    },
+    {
+      "path": "bin/init-agentic-e2e.mjs",
+      "status": "PASS",
+      "sha256": "88efaa861bba50486b5c532a2dc9d321e65b90086deccf9f4654f38b62e348ae"
+    },
+    {
+      "path": "bin/init-project.mjs",
+      "status": "PASS",
+      "sha256": "8ab7042bcb452672f599a6db1e7081cf9cbebf1180ea9063cd3acac32d27efee"
+    },
+    {
+      "path": "bin/integrate-antigravity-v4.mjs",
+      "status": "PASS",
+      "sha256": "4885a2021b6ff276a0c3ed213b9fb8e9ca4d5312ca0e2068ee09f40387a101ce"
+    },
+    {
+      "path": "bin/integrate-antigravity.mjs",
+      "status": "PASS",
+      "sha256": "b61a3cd282b70a7c2c7168b1ce8b16a78c571072127bb6648792c065a25959e8"
+    },
+    {
+      "path": "bin/launch-service.mjs",
+      "status": "PASS",
+      "sha256": "d65629e41a0c4a93a4fba9fe620345b27cc15842d7fc1174cbce5ef9fc65f298"
+    },
+    {
+      "path": "bin/materialize-native-authority.mjs",
+      "status": "PASS",
+      "sha256": "54fb04fa8a776eda01ac9a50c90f364cafe7e8baa2318ee2982cbbb322b8fb55"
+    },
+    {
+      "path": "bin/mcp-server.mjs",
+      "status": "PASS",
+      "sha256": "fe7cc2d1a2f4c84771739c55934515134c4f71a999c42e5e4023922bd6717315"
+    },
+    {
+      "path": "bin/migrate-current.mjs",
+      "status": "PASS",
+      "sha256": "2e61202919948be57a2a0b3b61f85ad2a386f1e6bead3c09fb581fba95141967"
+    },
+    {
+      "path": "bin/migrate-documentation-deployment.mjs",
+      "status": "PASS",
+      "sha256": "5517c6c252ec9b30ed81541adc05dd86d3ee29ac314ff9ab9709e96078e3b9bd"
+    },
+    {
+      "path": "bin/migrate-premium-experience.mjs",
+      "status": "PASS",
+      "sha256": "27ee9de28d3853d39db27c1c48659c6124ce8741403ed0cf115e05fb3817cc2c"
+    },
+    {
+      "path": "bin/migrate-seo-os.mjs",
+      "status": "PASS",
+      "sha256": "6292225e9b73f47275c8f027b0c64c923585531f4ee0f01a5490cfe021becc51"
+    },
+    {
+      "path": "bin/migrate-state-os.mjs",
+      "status": "PASS",
+      "sha256": "f18493a1e89e0c71534d53c6fc25a2242ba4723c40fed49cb58661be88386244"
+    },
+    {
+      "path": "bin/migrate-v2-base.mjs",
+      "status": "PASS",
+      "sha256": "b765616ef62080efc7fe9ff9d6950ffd6303434f74bd1b7e78bd4ca873ece21e"
+    },
+    {
+      "path": "bin/migrate-v2.mjs",
+      "status": "PASS",
+      "sha256": "1854087d6a5b1b04f9233e7455827cb3b9b7988f0e43b135e332e9c8a383de25"
+    },
+    {
+      "path": "bin/migrate-v3.mjs",
+      "status": "PASS",
+      "sha256": "c90b57f959190379943784fa14398f520df32a9b037af9962bd90c347f74690b"
+    },
+    {
+      "path": "bin/next-execution.mjs",
+      "status": "PASS",
+      "sha256": "c8fe898bd357e76099005487afef5b8b50e09cb12a7dd30d031fe7a456424db6"
+    },
+    {
+      "path": "bin/next-readiness.mjs",
+      "status": "PASS",
+      "sha256": "17854ffbd273aee50a9ab5984cd107e50081c53340b81bbebd7c754fbae2aec4"
+    },
+    {
+      "path": "bin/pilot-agentic-runtime.mjs",
+      "status": "PASS",
+      "sha256": "e4d8a435c9251e9cc274a3c998c87f1684fe341b4ecc547423fb67ec01b8837c"
+    },
+    {
+      "path": "bin/pilot-visual-runtime.mjs",
+      "status": "PASS",
+      "sha256": "faa927c60ca01401934dd16f0701c22d4e75639086b18f4a572e15e669b71206"
+    },
+    {
+      "path": "bin/prepare-agentic-e2e.mjs",
+      "status": "PASS",
+      "sha256": "52ad463fa1551df70ebf082f7bc360f56aedf71e574eb785db2487e825868ec1"
+    },
+    {
+      "path": "bin/production-deployment.mjs",
+      "status": "PASS",
+      "sha256": "4e4021245fc59deaf1dc07672fe61b0784da1fa4fb286fd03b0b8dcce307e5c5"
+    },
+    {
+      "path": "bin/project-native-markdown.mjs",
+      "status": "PASS",
+      "sha256": "e377559b242489e2dff39458659566a7e830dccae8adb7d9ab75413865bfc179"
+    },
+    {
+      "path": "bin/reconcile-agent-contract.mjs",
+      "status": "PASS",
+      "sha256": "b50c37eb5864c6858b9fb5e76ee30fa7dfd3ce206f039dccfa9f417f2519d246"
+    },
+    {
+      "path": "bin/reconcile-product.mjs",
+      "status": "PASS",
+      "sha256": "ce0d52f826610e0993640fde76954e2a0286c274e10f50e94cb20f7c8c422e60"
+    },
+    {
+      "path": "bin/reconcile-worker.mjs",
+      "status": "PASS",
+      "sha256": "260c1343987c793c9032222bb396abe795eb6fd79072d105fed890c7dfdc1d4d"
+    },
+    {
+      "path": "bin/refresh-projection-with-integration.mjs",
+      "status": "PASS",
+      "sha256": "412b93209f57a67c75557363d12ee9330f00f5b657a90629abcafb64292d3ef4"
+    },
+    {
+      "path": "bin/release-project.mjs",
+      "status": "PASS",
+      "sha256": "95426611722a9c702a81193a4a4937addb2d4819e854f34cd3a75009f15e8830"
+    },
+    {
+      "path": "bin/release-readiness.mjs",
+      "status": "PASS",
+      "sha256": "8bf4011974baf493a57fbfcd36a680a717fff358a447434b4234767564122c1f"
+    },
+    {
+      "path": "bin/report-execution.mjs",
+      "status": "PASS",
+      "sha256": "a4ca9b257253688dd15a4cdcf564219a1c72c69b05665f3280682730545eb457"
+    },
+    {
+      "path": "bin/repository-intelligence.mjs",
+      "status": "PASS",
+      "sha256": "1229a17b876b976afa7664474d39cbfcd78933925ee409ff653ab5cdad667720"
+    },
+    {
+      "path": "bin/repository-providers.mjs",
+      "status": "PASS",
+      "sha256": "efab89811ff3e1decc4419d28296069d48e39474cdac542d77645added6274b0"
+    },
+    {
+      "path": "bin/resolve-task-context.mjs",
+      "status": "PASS",
+      "sha256": "3d3663367249d6180875c032dec9b13e22590ca81dd37b800922d48ad066dc5e"
+    },
+    {
+      "path": "bin/review-v5.mjs",
+      "status": "PASS",
+      "sha256": "3a81e54a916e1489c845d914c73fbeaa0a508a3cf7a637a76d7616d16785dd1f"
+    },
+    {
+      "path": "bin/run-installer-blackbox-evidence.mjs",
+      "status": "PASS",
+      "sha256": "136281ce03a4c1de92d1b3f161367555bd12109a33758f62a4d770a29e19f0e8"
+    },
+    {
+      "path": "bin/run-live-bootstrap-blackbox-evidence.mjs",
+      "status": "PASS",
+      "sha256": "eb7e121fc9c7985d9042eb71c452dc47c4796e051d9a3cf99cff8bdc196316c7"
+    },
+    {
+      "path": "bin/run-parallel-blackbox-evidence.mjs",
+      "status": "PASS",
+      "sha256": "d6d827de5614ebca747588dd4fe340900349ae7125795dcb63d444584c5b7f74"
+    },
+    {
+      "path": "bin/run-reality-blackbox-evidence.mjs",
+      "status": "PASS",
+      "sha256": "dab3cb6f0449ed4ac3fd334e620e7ef9cb5c6c06bbc1d84bc89acc4c14bae1bd"
+    },
+    {
+      "path": "bin/run-regression-evidence.mjs",
+      "status": "PASS",
+      "sha256": "ffffa4496a8b7d00c559b5c291455aa1b99bc1ae5de9b8c5cce492b30318edb0"
+    },
+    {
+      "path": "bin/run-tests.mjs",
+      "status": "PASS",
+      "sha256": "2494677c00d8e0f9b1cbedc266fa0a83cb8acda9468eeefcd47452050eb09c4b"
+    },
+    {
+      "path": "bin/runtime-cancel.mjs",
+      "status": "PASS",
+      "sha256": "3331ce2dee4d040f98b4a542a74e095d36cb20f28d2d5595e381a6d823786cf4"
+    },
+    {
+      "path": "bin/runtime-recover.mjs",
+      "status": "PASS",
+      "sha256": "4f322235182bfe2d88953964e7880c08fff9a93123473a05c69f1f692dfe66a2"
+    },
+    {
+      "path": "bin/runtime-status.mjs",
+      "status": "PASS",
+      "sha256": "d1f0016401163b0cd968173dbe7ef1462fb7a569487257f95f120126035aefe2"
+    },
+    {
+      "path": "bin/select-tests.mjs",
+      "status": "PASS",
+      "sha256": "9d946a79001f72aa8d3885e8c1c1e461e5b5285f7e52fbc682e31fde2a4581bd"
+    },
+    {
+      "path": "bin/seo-os.mjs",
+      "status": "PASS",
+      "sha256": "ab87324a3def30f6619a28a0c61ab544627e8b51534b9021fd8660a1f91ddcb1"
+    },
+    {
+      "path": "bin/setup-repository-provider-tooling.mjs",
+      "status": "PASS",
+      "sha256": "1534c0ee3582902bc8192edb3da9a74d0094ee078397e4a01319fae0ba804995"
+    },
+    {
+      "path": "bin/setup-tooling.mjs",
+      "status": "PASS",
+      "sha256": "efdae59009e6ad58154667691fa05a002ac30e407d770d693042db232a85cad8"
+    },
+    {
+      "path": "bin/state-amnesia-test.mjs",
+      "status": "PASS",
+      "sha256": "b5e38c5a42e8e7ae2509b236d49efd948b4dabdea7833de90b4a3dc7b27a4282"
+    },
+    {
+      "path": "bin/state-checkpoint.mjs",
+      "status": "PASS",
+      "sha256": "24a00ae3cad72fd3b360faaba5b52f93e7744b4a98c06d8490265cadd5b0d6db"
+    },
+    {
+      "path": "bin/state-memory-envelope.mjs",
+      "status": "PASS",
+      "sha256": "d6725b9c0923c2e90568989295d431702bf297952522f59ce88faf829412445c"
+    },
+    {
+      "path": "bin/state-rehydrate.mjs",
+      "status": "PASS",
+      "sha256": "ea2595b0c6b7c262ddf08485765a3260fb05053adc582715ebb6a6e47b32bbbe"
+    },
+    {
+      "path": "bin/state-status.mjs",
+      "status": "PASS",
+      "sha256": "aaf99c1db82242ad0a5a4eb32b43064a6cb28357629ee812873c2250b3ae1aed"
+    },
+    {
+      "path": "bin/test-project.mjs",
+      "status": "PASS",
+      "sha256": "22ec774a41f2b42267223fc7f6593aae1fc79e01ae4e05aec122800657241bee"
+    },
+    {
+      "path": "bin/upgrade-revalidation-worker.mjs",
+      "status": "PASS",
+      "sha256": "f2d332f059772eaaa23d09995b21ac4c73ce0bbfe58b83fb716c8f83175d39bc"
+    },
+    {
+      "path": "bin/v4-kernel.mjs",
+      "status": "PASS",
+      "sha256": "b09240ff747e9d10c03fdf6ea4f72d91645747582ccc0e9a425d94ca819b4891"
+    },
+    {
+      "path": "bin/validate-agents.mjs",
+      "status": "PASS",
+      "sha256": "ea54d35cb81c6f95d6e1c35c034ce43d376637a286fb555654584b3b1de3af07"
+    },
+    {
+      "path": "bin/validate-browser-quality.mjs",
+      "status": "PASS",
+      "sha256": "5e1fa6c2f69afde67c20cbe954e478aa235568524b99bffea46388e2640401ba"
+    },
+    {
+      "path": "bin/validate-candidate.mjs",
+      "status": "PASS",
+      "sha256": "10daa9fc532fe0fbb958cf7f8ed0e2ca73b449ce635621b44714bd5b56e1062e"
+    },
+    {
+      "path": "bin/validate-canonical-docs.mjs",
+      "status": "PASS",
+      "sha256": "f1eba1abdecc82f43054e56c3a884b8e70d5d7abb1fe3333422f23a36e5d99fd"
+    },
+    {
+      "path": "bin/validate-ci-policy.mjs",
+      "status": "PASS",
+      "sha256": "8115a1166fef096660d10c474850bcc42095fa54a8d3a99f8bb2eeeab15a58d6"
+    },
+    {
+      "path": "bin/validate-component-system.mjs",
+      "status": "PASS",
+      "sha256": "a1922fc706319f99babf2e3434fdb757f3f2aa1919bdf67083ee47ee4384cc9d"
+    },
+    {
+      "path": "bin/validate-content-depth.mjs",
+      "status": "PASS",
+      "sha256": "debad519d56b767f62f5c81dfb3cb63fb08664fa340375cc664d405ff31ff30f"
+    },
+    {
+      "path": "bin/validate-data-safety.mjs",
+      "status": "PASS",
+      "sha256": "9b8542f733600e3713fe9e553fe24db73d30ec4ea108eddbf6d27bd41869ab56"
+    },
+    {
+      "path": "bin/validate-deep-integration.mjs",
+      "status": "PASS",
+      "sha256": "3d8e626992f0718bc4b3c4375646640ccdb1939cfed3a44113ddbd07fb8d8b01"
+    },
+    {
+      "path": "bin/validate-design-drift.mjs",
+      "status": "PASS",
+      "sha256": "25ac61d466c79153152db9d7e6c5f9781e6e6995da3dd54d3f7b7268785a187c"
+    },
+    {
+      "path": "bin/validate-design-tokens.mjs",
+      "status": "PASS",
+      "sha256": "701803199714263fbf71e02304413852e0a9d72738bae4f8dd00434b09ee4359"
+    },
+    {
+      "path": "bin/validate-distribution.mjs",
+      "status": "PASS",
+      "sha256": "f370e6207eec134e5828337cfd18c135545dcfd206dfc4c02cd93e4442080758"
+    },
+    {
+      "path": "bin/validate-execution.mjs",
+      "status": "PASS",
+      "sha256": "dc7c37d5bf2b0fdb60eb09e1d33c249bd1544685bf89d860c04ee294afe1cf03"
+    },
+    {
+      "path": "bin/validate-flutter-quality.mjs",
+      "status": "PASS",
+      "sha256": "5b6ba5ff288aeb762dfc23d3842c8ad8d3caa682207595780632dd3cad41c08d"
+    },
+    {
+      "path": "bin/validate-integration.mjs",
+      "status": "PASS",
+      "sha256": "7422a054a631eed5d2d8b76a3f4110687791dc4f2367456d859818cce90f41d4"
+    },
+    {
+      "path": "bin/validate-local-bootstrap-docs.mjs",
+      "status": "PASS",
+      "sha256": "69c90fbb74c31fd32e1311be9079c7e70722ecf16f5837ef727d22f28492f7ca"
+    },
+    {
+      "path": "bin/validate-operator-entry.mjs",
+      "status": "PASS",
+      "sha256": "6a72e4e49caf450480905b8c0ff9b4bf76da9e0935cfe2127ce7dc4f5c50b968"
+    },
+    {
+      "path": "bin/validate-parallel-agent-os.mjs",
+      "status": "PASS",
+      "sha256": "1a30452570ef5041216fb639570563e4fd31859f53cebb45057a8b2f0076506a"
+    },
+    {
+      "path": "bin/validate-premium-experience-distribution.mjs",
+      "status": "PASS",
+      "sha256": "d44be0fec92019170a7f34556c4b30841ec6f00f69e387aad13ecf04ef1e166b"
+    },
+    {
+      "path": "bin/validate-premium-migration.mjs",
+      "status": "PASS",
+      "sha256": "7e88ae6c86c3f893290d2a92e9976769a74d1864944e9791dfcc1de7f7323593"
+    },
+    {
+      "path": "bin/validate-quality.mjs",
+      "status": "PASS",
+      "sha256": "eb22804b4d38e98dfda0fc6900e0e1dcd080e159200cdc4c202f1b0e9dc0885c"
+    },
+    {
+      "path": "bin/validate-repository-intelligence.mjs",
+      "status": "PASS",
+      "sha256": "c2b2190dd06b9f7fe71f71e95eadf5ba0301d73fd55e83e4cceffc366390db8d"
+    },
+    {
+      "path": "bin/validate-repository-provider-tooling-install.mjs",
+      "status": "PASS",
+      "sha256": "da131d9606bc08ef7b10a5ddc10f39d6948c085b8f03d80c99e09fdbbde4ebb3"
+    },
+    {
+      "path": "bin/validate-runtime-health.mjs",
+      "status": "PASS",
+      "sha256": "7fede199bb120c6023d428d5b6dc00d9398a4fc7f6a3be902038293c488f2ed3"
+    },
+    {
+      "path": "bin/validate-security.mjs",
+      "status": "PASS",
+      "sha256": "261615d8a2a65d2662c9739c4cbd78751b74ceb5ce1c0dbfdd371f9b9476069f"
+    },
+    {
+      "path": "bin/validate-seo-distribution.mjs",
+      "status": "PASS",
+      "sha256": "74a4be3c06c4e0e414703babbdf9edb806f33bbaf010a92dbc087510937edc57"
+    },
+    {
+      "path": "bin/validate-seo-performance.mjs",
+      "status": "PASS",
+      "sha256": "8f8605662706e47f9e3738a9ce864ce81f8ddb372c8b3b88475204fe19cbcb47"
+    },
+    {
+      "path": "bin/validate-seo.mjs",
+      "status": "PASS",
+      "sha256": "24ffe52bd2886cb78f0fd56d6590e3bc6cf8085e61c49a67ac081339fd647477"
+    },
+    {
+      "path": "bin/validate-state-distribution.mjs",
+      "status": "PASS",
+      "sha256": "544ac7c466e47afd445ad1cca307dd1b6d90bafa51a4d5d4d1915ddfbd08e1fd"
+    },
+    {
+      "path": "bin/validate-state.mjs",
+      "status": "PASS",
+      "sha256": "2d1256405f9b56d47e7006b6e3026116a9dcc53a5c7255a81501e0745d718dc9"
+    },
+    {
+      "path": "bin/validate-test-evidence.mjs",
+      "status": "PASS",
+      "sha256": "3a2b105b1bfb76e7cbd949ec8c9b713d10d0d0a2458d3c39136292d4122e3a29"
+    },
+    {
+      "path": "bin/validate-v22-policy.mjs",
+      "status": "PASS",
+      "sha256": "33c76c440806c86012583cc4926bf9c7abb563e42d6cf0ffbc281c5d058fc0a9"
+    },
+    {
+      "path": "bin/validate-v30-docs.mjs",
+      "status": "PASS",
+      "sha256": "63be1af3c081eb4b1436814b842402e4ac62f21c58444b46dd20c11ca1640dc4"
+    },
+    {
+      "path": "bin/validate-v30-policy.mjs",
+      "status": "PASS",
+      "sha256": "039d06b360eff3fa5eac009388ffc340f5d56334aa07c0b86201ad01a60ccb51"
+    },
+    {
+      "path": "bin/validate-v30-post-publication.mjs",
+      "status": "PASS",
+      "sha256": "f2658cea781cb1bd76fc795b343061b10677423a36e9530b174e01d275ebd056"
+    },
+    {
+      "path": "bin/validate-v30-project.mjs",
+      "status": "PASS",
+      "sha256": "328df463c84997a19fe3dd4cc8f549f01bf248c98df0f79814716c6e112242bb"
+    },
+    {
+      "path": "bin/visual-boundary.mjs",
+      "status": "PASS",
+      "sha256": "2a5c7acdd06964d12b80ac077b3d1a5a5627f86991c2113bd52217f594bfa3ab"
+    },
+    {
+      "path": "bin/visual-project.mjs",
+      "status": "PASS",
+      "sha256": "483d8e5ca29d7874848bce07d0c7c88023779c3cf8826210cc55667d760e1ea5"
+    },
+    {
+      "path": "bin/write-validation-evidence.mjs",
+      "status": "PASS",
+      "sha256": "011ac88dcfc2d365be4ecbdd88807a4fa32d1b121ba5199ea19111e4b68982f7"
+    },
+    {
+      "path": "lib/adapter-registry.mjs",
+      "status": "PASS",
+      "sha256": "301989fa84797daf4bcf6a4802a8870b1e8a5bd6396fdbbd16a592335c98a3a2"
+    },
+    {
+      "path": "lib/adoption-model.mjs",
+      "status": "PASS",
+      "sha256": "5529f75da76428c43d517322a70b3102814e9c7e8389a7ba1b8d4fe1b4a99ee8"
+    },
+    {
+      "path": "lib/agent-contract-compiler.mjs",
+      "status": "PASS",
+      "sha256": "ea1bb83a14bd7a1782a13030f6b292338ac719c4f04362ef9890f1a200e90dd3"
+    },
+    {
+      "path": "lib/agent-inspection.mjs",
+      "status": "PASS",
+      "sha256": "2f97c80258269e49032796fd127be9477350618320dbe3b8f0a470c027aad3c0"
+    },
+    {
+      "path": "lib/agent-model.mjs",
+      "status": "PASS",
+      "sha256": "360fd31a02e7e95cb0bf8c4ad44f9bde259511b354b7b0e6c2210b6000e2507d"
+    },
+    {
+      "path": "lib/agent-pulse.mjs",
+      "status": "PASS",
+      "sha256": "73718704a603c518426b6502b15ee26dc15bec99dd5f54a691dc0cf6053a9184"
+    },
+    {
+      "path": "lib/agentic-e2e.mjs",
+      "status": "PASS",
+      "sha256": "6c28adcfab5247cca4ce06db7a69501c1ecc24e410109b2a3b252681cba5271a"
+    },
+    {
+      "path": "lib/agentic-postconditions.mjs",
+      "status": "PASS",
+      "sha256": "e7799713177faf6cb899064cd4b141d1d8c4811103ee7707e26a3c48402a19e6"
+    },
+    {
+      "path": "lib/antigravity-v4.mjs",
+      "status": "PASS",
+      "sha256": "f326870f16321a529232a90b02f4fa8b51e5774271d3d539db0d9f18d6bf7fa1"
+    },
+    {
+      "path": "lib/antigravity.mjs",
+      "status": "PASS",
+      "sha256": "ae5e833263ff9174a8a215ca15ce65791ba4ffda0baf8fc6d275923a3a30dcf2"
+    },
+    {
+      "path": "lib/bounded-process.mjs",
+      "status": "PASS",
+      "sha256": "c862537cf228b536665cf0ae57033cbfd9e14c5240084977f634cdd98e1425e1"
+    },
+    {
+      "path": "lib/cli-output.mjs",
+      "status": "PASS",
+      "sha256": "2f18d83f5b7457e5194702190b8f494bcb7637a6cad3b32895a5bf14d103d368"
+    },
+    {
+      "path": "lib/component-model.mjs",
+      "status": "PASS",
+      "sha256": "147d247d3a2dafd0b2b1702ff46271be35adfa75ea29e5949b0ea4ba27b3ec6f"
+    },
+    {
+      "path": "lib/content-model.mjs",
+      "status": "PASS",
+      "sha256": "1396984f26f6504d7cda17f4a58b08f1986cc0b1827adb2deab0b754a0955ad9"
+    },
+    {
+      "path": "lib/database-integrity.mjs",
+      "status": "PASS",
+      "sha256": "be54c95841ff3f531975dd3ced5f5f46996aabe9e14dd881fd15b6af48e1680b"
+    },
+    {
+      "path": "lib/decision-adapter.mjs",
+      "status": "PASS",
+      "sha256": "ef6d5a35bc076a6bf697ae2ce8bf993021f75464814647c85174561f46c9c805"
+    },
+    {
+      "path": "lib/decision-os.mjs",
+      "status": "PASS",
+      "sha256": "e9cb9f2ff521b0c4c3fe029ef58d6246782ae99288bb6913b1a26713d1af274e"
+    },
+    {
+      "path": "lib/decision/contract.mjs",
+      "status": "PASS",
+      "sha256": "fb2cdc328e37502783becbf90291d5486628bb570dd2c54d8b5c52f54616f83f"
+    },
+    {
+      "path": "lib/decision/index.mjs",
+      "status": "PASS",
+      "sha256": "2c7ced0280f7a5a6f78615882c329795accf7736487c74be2d79656188125f8d"
+    },
+    {
+      "path": "lib/decision/kb-sync.mjs",
+      "status": "PASS",
+      "sha256": "fe37c368ad4ed57bf790841813f9a58d7f0076549da0f869eaa242e5fc0d71e7"
+    },
+    {
+      "path": "lib/decision/knowledge.mjs",
+      "status": "PASS",
+      "sha256": "ca7fc6f18883c5ec0518bbc26ae9066072834fd756298b2cfa3423b454f3e809"
+    },
+    {
+      "path": "lib/decision/plan-alignment.mjs",
+      "status": "PASS",
+      "sha256": "c529208f5cb921f538aee09c9cacc9c250c5cba03db7f6c6161f43e1b0bc12ec"
+    },
+    {
+      "path": "lib/decision/policy.mjs",
+      "status": "PASS",
+      "sha256": "016934db1bb51e889e553239b60a0ed8ce67a6c84fe7f45b56caa674ea7aec7c"
+    },
+    {
+      "path": "lib/derived-state.mjs",
+      "status": "PASS",
+      "sha256": "2ef8f3e39918296a464aa19a9c35b30c4ba425f69b2930334bb95a3c9d3e4911"
+    },
+    {
+      "path": "lib/discovery-model.mjs",
+      "status": "PASS",
+      "sha256": "44feac2ee1b52408c2156e1d2045b70cf9fe21e93f54564f2a72ebaf964f4464"
+    },
+    {
+      "path": "lib/documentation-fabric.mjs",
+      "status": "PASS",
+      "sha256": "0119bb7c44a405ca7f693de1befd513663ec55d228bd26f77e8058c5f3dbcd65"
+    },
+    {
+      "path": "lib/evidence-model.mjs",
+      "status": "PASS",
+      "sha256": "05e7ec96737a07e4f71ab4f9eaa6b244376028ac0833fd6be0dc078f34e1a8b8"
+    },
+    {
+      "path": "lib/execution-model.mjs",
+      "status": "PASS",
+      "sha256": "9016a182f95636836c195d2ae36a17bde3283c76fb49d93e3b05e0f4226a8909"
+    },
+    {
+      "path": "lib/executionkit-agent-v3.mjs",
+      "status": "PASS",
+      "sha256": "acd6134c437a3554f8237db18aad1eaafe82dc76c764806a7a68aca5861f6fc8"
+    },
+    {
+      "path": "lib/executionkit-agent.mjs",
+      "status": "PASS",
+      "sha256": "242b60277b0285229631147f61ce1b71441eb40a064b1743dd9725c1f240c6eb"
+    },
+    {
+      "path": "lib/external-adapters.mjs",
+      "status": "PASS",
+      "sha256": "6878b7ad870be6e7bf3a80ecf412e26053d85087bf27c82c22b23ef56a22079d"
+    },
+    {
+      "path": "lib/fleet-model.mjs",
+      "status": "PASS",
+      "sha256": "a9899482ee65347eec2b1c056aaf3d2df1455d1dafb2f80a5d8a52825141e459"
+    },
+    {
+      "path": "lib/host-bootstrap.mjs",
+      "status": "PASS",
+      "sha256": "5e928b89b9f0c5ed1a37b49f0e263b75c475274472c4db3c47345512c1bd950c"
+    },
+    {
+      "path": "lib/impact-model.mjs",
+      "status": "PASS",
+      "sha256": "a34aadb9acf364e6dc083de1e46f9f80add068e50713e70b0ac8521871f97814"
+    },
+    {
+      "path": "lib/installer.mjs",
+      "status": "PASS",
+      "sha256": "c7646378c17dc5d9d1609099f4c7506e088d2d238be4ddc5e4238b161d59e0c4"
+    },
+    {
+      "path": "lib/integration-model.mjs",
+      "status": "PASS",
+      "sha256": "9cfdbb06d92f78f6f3a28d0f77de5fa4c9dfc48d5ce6d27818e751a84be2fe96"
+    },
+    {
+      "path": "lib/launch-mobile.mjs",
+      "status": "PASS",
+      "sha256": "b4b63037f8d383f7de35f6f4181553733242ee379704c831d98512b389afc722"
+    },
+    {
+      "path": "lib/launch-service/agent/agent.mjs",
+      "status": "PASS",
+      "sha256": "5a6785eb75f4266bd1e32f3f8f7efe3eda7938579196fa46ac7ceb484e6d4f97"
+    },
+    {
+      "path": "lib/launch-service/agent/cli.mjs",
+      "status": "PASS",
+      "sha256": "cb464c0eef72ee4bf42a32b7eab82918bbb9a66185d6087708b9f5580e3e5220"
+    },
+    {
+      "path": "lib/launch-service/scripts/bootstrap.mjs",
+      "status": "PASS",
+      "sha256": "bb912c57beb419e4e578e32e78ea24d7062e4607eacdd7ccfce91cc983741558"
+    },
+    {
+      "path": "lib/launch-service/src/apk.mjs",
+      "status": "PASS",
+      "sha256": "a7f68161d3fdf6c64f2df7a84696b54f6f53df50b612093c1dd21ac262ff5f86"
+    },
+    {
+      "path": "lib/launch-service/src/approval-cli.mjs",
+      "status": "PASS",
+      "sha256": "78c1b8604ddf9497fda0a47c19ff31c27ab298931a9ee14068b02855554cdb9e"
+    },
+    {
+      "path": "lib/launch-service/src/backup-cli.mjs",
+      "status": "PASS",
+      "sha256": "f0419010cfdfc2e48fdcdf22fad8f6cf6d539b336a681eb430ecee3b13f9e5bf"
+    },
+    {
+      "path": "lib/launch-service/src/baseline-cli.mjs",
+      "status": "PASS",
+      "sha256": "35026b02108b7f9670afcd7e552d98869dd636e0cd3337d70eda75ebad7fc2a2"
+    },
+    {
+      "path": "lib/launch-service/src/bundle.mjs",
+      "status": "PASS",
+      "sha256": "1cd1a18cb003094f63426c645e8424bf8d666b8b2c958bd3b58a82913a472087"
+    },
+    {
+      "path": "lib/launch-service/src/ci-submit.mjs",
+      "status": "PASS",
+      "sha256": "8f10b069fed7cc5e64b07da3bae8cdda4708fc77f79226cbff5bd7989633afe3"
+    },
+    {
+      "path": "lib/launch-service/src/classifier.mjs",
+      "status": "PASS",
+      "sha256": "a7de550e79b905790c9e6ac0c6f3f636afd3fe8e85ff1cd8a14be6fb8ff2b84c"
+    },
+    {
+      "path": "lib/launch-service/src/classify-cli.mjs",
+      "status": "PASS",
+      "sha256": "4c6941e2a76a8296fa2d0265fb308ce630611ce1f7768af43f61365bb3ac9e06"
+    },
+    {
+      "path": "lib/launch-service/src/cli.mjs",
+      "status": "PASS",
+      "sha256": "28a56877562692cc69a5df607fcd73b853c69fb66155f2ec7d1c66e766f70b0c"
+    },
+    {
+      "path": "lib/launch-service/src/contracts.mjs",
+      "status": "PASS",
+      "sha256": "29a839f7374945cd94d39b9337028d2fc9403a2954e002a2b8f91cf45786c135"
+    },
+    {
+      "path": "lib/launch-service/src/inspect-cli.mjs",
+      "status": "PASS",
+      "sha256": "d048371794a654ea7bc892cb1256d491a2162e5c5c7e0ce7a9f1eb4661dc23c0"
+    },
+    {
+      "path": "lib/launch-service/src/inspect-installed-cli.mjs",
+      "status": "PASS",
+      "sha256": "7dc75b0deb6bd50ddb0a096d974aa9b3b2560d53438ad2b913a23a7155400051"
+    },
+    {
+      "path": "lib/launch-service/src/launch-gates.mjs",
+      "status": "PASS",
+      "sha256": "1cd90b8f72da805c4e6e357fb8321a661c38ac9f5b1ea51ea6df96c5b04ff834"
+    },
+    {
+      "path": "lib/launch-service/src/provider-cli.mjs",
+      "status": "PASS",
+      "sha256": "93d99d10e120db97f90644e892684ef1a213473e42834c9323ed199d6c7a94ff"
+    },
+    {
+      "path": "lib/launch-service/src/server.mjs",
+      "status": "PASS",
+      "sha256": "f7aaaa1a974dc51d0d271b093618d63bcc320df3775fc407653477862e912800"
+    },
+    {
+      "path": "lib/launch-service/src/service.mjs",
+      "status": "PASS",
+      "sha256": "6de9c18403182935e5a8f481ab60925799ee369c5646da675efa354f67423f3d"
+    },
+    {
+      "path": "lib/launch-service/src/shorebird.mjs",
+      "status": "PASS",
+      "sha256": "23253c1aec8df521ea973d577014be6ccd7fa9a7c50eee75453d1ac639b64607"
+    },
+    {
+      "path": "lib/launch-service/src/store.mjs",
+      "status": "PASS",
+      "sha256": "d7c897614b2480f6d638773703d464ad294511a0fcd74063995bc9fc39399295"
+    },
+    {
+      "path": "lib/launch-service/src/worker.mjs",
+      "status": "PASS",
+      "sha256": "b6b89fba886aff21267f2aadef02312488724fef45537f2b190c16d67f0ac963"
+    },
+    {
+      "path": "lib/legacy-distribution-version.mjs",
+      "status": "PASS",
+      "sha256": "846b98ed8451a8bb7d2051bc39f744b36372a4856db15ed42dc5d647e60cef03"
+    },
+    {
+      "path": "lib/lighthouse-gate.mjs",
+      "status": "PASS",
+      "sha256": "14babb05042286cf1094c0f3e4a1790531ad301ed4bf3756194369f345165f70"
+    },
+    {
+      "path": "lib/native-agent-adoption.mjs",
+      "status": "PASS",
+      "sha256": "5e5107c7fdf32334f138eddcd7840b50f350ae1c6f1c601bb57d1e21ed43e154"
+    },
+    {
+      "path": "lib/native-host-policy.mjs",
+      "status": "PASS",
+      "sha256": "dc6417d66380ebaa9ea80ee96bcad050057a3792dba3624711a35e0f7755245e"
+    },
+    {
+      "path": "lib/native-markdown-projector.mjs",
+      "status": "PASS",
+      "sha256": "9cd24ae940d186c00dadfb414f3197186dc5213714ca6c286fe89d417bb7a6e0"
+    },
+    {
+      "path": "lib/native-owner-adoption.mjs",
+      "status": "PASS",
+      "sha256": "fb914cd6f9006c178285df884ef4c3416e70518b87aeaaa951fc0ec7d8684705"
+    },
+    {
+      "path": "lib/parallel-execution.mjs",
+      "status": "PASS",
+      "sha256": "078970cdf563a4daf885563224867fe98425d79ed040456c0c3b032abf59227d"
+    },
+    {
+      "path": "lib/portable-process.mjs",
+      "status": "PASS",
+      "sha256": "66630de9aa46ec53ef47b271bafa5574c23caca2d307b17944d7651f74a4e828"
+    },
+    {
+      "path": "lib/production-artifact-policy.mjs",
+      "status": "PASS",
+      "sha256": "55f82b722be65a511b7f759860fc0cbf2a89ad886db3757540b1e34c46b5fd33"
+    },
+    {
+      "path": "lib/production-artifact-retention.mjs",
+      "status": "PASS",
+      "sha256": "a3837fab1d021407aa5895e63f5807ac6fb54f62b696019747f705071f374c5f"
+    },
+    {
+      "path": "lib/production-backup.mjs",
+      "status": "PASS",
+      "sha256": "7b90a560e20e10a0bb3da30f52a3275dbd65785226b125ab607c3a29a10da2c9"
+    },
+    {
+      "path": "lib/production-deployment.mjs",
+      "status": "PASS",
+      "sha256": "6be0565bde25d353988278f4ad78e0a6efe9a81e5d525c99e12cbaec8683025e"
+    },
+    {
+      "path": "lib/production-retention.mjs",
+      "status": "PASS",
+      "sha256": "4d093ba2a3de3ee0d0ce7915f41bfd808b4e1337d9ed75d78589d673813b59e2"
+    },
+    {
+      "path": "lib/production-worker-retirement.mjs",
+      "status": "PASS",
+      "sha256": "33fe778a5cd1243167bd7f77814c774958be114205fa51a66cfc54b47473adfc"
+    },
+    {
+      "path": "lib/quality-model.mjs",
+      "status": "PASS",
+      "sha256": "2764cb276a188466261a33d5fc1f2a1d2f4301b7a1281e6f90a5e56fff71e228"
+    },
+    {
+      "path": "lib/readiness-model.mjs",
+      "status": "PASS",
+      "sha256": "5d834e3cb4d0f7d5227187b979d46c5f82277885687eb5483bc8d830e94092f0"
+    },
+    {
+      "path": "lib/reconcile-budget.mjs",
+      "status": "PASS",
+      "sha256": "847aaf3ad1a29c7bd4f071014dc36ac45fb79659f2c7ffaa77bb19903ce5edfb"
+    },
+    {
+      "path": "lib/reconcile-runner.mjs",
+      "status": "PASS",
+      "sha256": "f20f28b5817f70d3d45543d5590f1caf2b78e6cd2533678cf2d50c5eadb87c23"
+    },
+    {
+      "path": "lib/release-lifecycle.mjs",
+      "status": "PASS",
+      "sha256": "5ca3d58737dca1ba02c48cf751c56d6bd9c3f400d32d58a9999ff603597df66e"
+    },
+    {
+      "path": "lib/repository-benchmark-scenarios.mjs",
+      "status": "PASS",
+      "sha256": "3bbca864794a05172719bf4e8c836d90f3a543b587b10b86c7653e10f9c40585"
+    },
+    {
+      "path": "lib/repository-context.mjs",
+      "status": "PASS",
+      "sha256": "547069e9eaaa52bbc62d6977264e7242ea2b86086cb9950e49d88fab7426bff4"
+    },
+    {
+      "path": "lib/repository-engineering-knowledge.mjs",
+      "status": "PASS",
+      "sha256": "27cfae9667893d81fca2746660e713dbd2e8e357282fec45fc2d24e664e8615c"
+    },
+    {
+      "path": "lib/repository-engineering-refresh.mjs",
+      "status": "PASS",
+      "sha256": "b99f86fad2cb9829313e37a45f286ba1c943101ea9e7fd40f02fe9fdfb10e3b7"
+    },
+    {
+      "path": "lib/repository-evaluation.mjs",
+      "status": "PASS",
+      "sha256": "9d86eef47da824690ba1e6d96d646a91831e80d9cbe945863809711560e8fb44"
+    },
+    {
+      "path": "lib/repository-external-knowledge.mjs",
+      "status": "PASS",
+      "sha256": "6f49c859bead1a02ab2cf90057e8870cf9a68d36bffc2b3132f8c6bddb940c96"
+    },
+    {
+      "path": "lib/repository-freshness.mjs",
+      "status": "PASS",
+      "sha256": "73dd4a6d566986fb6873968e7ed0e4e27a5df224163105d1b47f2103f749319e"
+    },
+    {
+      "path": "lib/repository-identity.mjs",
+      "status": "PASS",
+      "sha256": "753e582f0a0830b2e8e610d876545544bf3d05278b38505a64b6c6a4512e40a9"
+    },
+    {
+      "path": "lib/repository-intelligence-api.mjs",
+      "status": "PASS",
+      "sha256": "bef17361167abe79cb30064f59883da22765d2d0307a788923e9d92f8789c68f"
+    },
+    {
+      "path": "lib/repository-intelligence.mjs",
+      "status": "PASS",
+      "sha256": "d779091d88b763591c0291677955e47717baa06e0fa304ddb7f15b61989746b3"
+    },
+    {
+      "path": "lib/repository-knowledge-store.mjs",
+      "status": "PASS",
+      "sha256": "ace48c80b820834e21d553975469e10ba39b484119c14b27025cbcf0a14060ff"
+    },
+    {
+      "path": "lib/repository-provider-adapters.mjs",
+      "status": "PASS",
+      "sha256": "605bc6a66568d12b9a42e1bb0ee102be63728899d4f754de99d02ef6aad4cce7"
+    },
+    {
+      "path": "lib/repository-provider-deployment.mjs",
+      "status": "PASS",
+      "sha256": "642fec4bfc2b96c1eeb40c8594e0fcb701fc6696eb4271093dbe9451816faee3"
+    },
+    {
+      "path": "lib/repository-providers.mjs",
+      "status": "PASS",
+      "sha256": "ef003bee29582e55941722fd0da44756e82d55a9a2da25e4c31a48f7d0f4e914"
+    },
+    {
+      "path": "lib/repository-source.mjs",
+      "status": "PASS",
+      "sha256": "038597e25bb9a1915f2339ce5f301334e09a4c2efd4f4677afe68d06016c848d"
+    },
+    {
+      "path": "lib/revalidation-model.mjs",
+      "status": "PASS",
+      "sha256": "dc67dcd3b2cff155ddca9771f221d0201324afc9c4e1063a12d56e2321323ad6"
+    },
+    {
+      "path": "lib/route-integrity.mjs",
+      "status": "PASS",
+      "sha256": "afd0a006c8bc7f23d2476d813410cd85af33300b547fe18ad7acbd4450571dac"
+    },
+    {
+      "path": "lib/runtime-orchestrator.mjs",
+      "status": "PASS",
+      "sha256": "f51d9a849144a47750f0402886f00a33792356861176d8f950d0ae47e7c8be83"
+    },
+    {
+      "path": "lib/seo-model.mjs",
+      "status": "PASS",
+      "sha256": "f153dee6cfcd31244ea63592fac058a72208fdbaa81e875a0f4a92bdc2067c4e"
+    },
+    {
+      "path": "lib/state-model.mjs",
+      "status": "PASS",
+      "sha256": "094ff588e07d2c4a05c18734fd4783349dd5db753dfa87603feeac2f2bb7e64a"
+    },
+    {
+      "path": "lib/surface-integrity.mjs",
+      "status": "PASS",
+      "sha256": "da5f283f8003cacf96f4bc97356111d03ae90334188221b73538740aaf0d3c54"
+    },
+    {
+      "path": "lib/task-proof.mjs",
+      "status": "PASS",
+      "sha256": "ef749551426eb24e05f117b410446b328cacee3c02778b0ae9cd6fadf13db884"
+    },
+    {
+      "path": "lib/telemetry-events.mjs",
+      "status": "PASS",
+      "sha256": "0c4c888e5979eb2b00ebd966d8e7729330aaa2dc11eb43cbc106728cb80e7ff6"
+    },
+    {
+      "path": "lib/test-evidence.mjs",
+      "status": "PASS",
+      "sha256": "aa764ed5f8a89a126e90c2ee8aa6673a38ae8de02d5291082ef1eb1d932bed08"
+    },
+    {
+      "path": "lib/todo-maintenance.mjs",
+      "status": "PASS",
+      "sha256": "3417dc8377f5cffb12f548a3b85ba47d92610981e9c470832a77e95fc848f79d"
+    },
+    {
+      "path": "lib/todo-shards.mjs",
+      "status": "PASS",
+      "sha256": "0926871992853801d435cad4001816b6694ca5ee345d30dc5bfa43575031fafa"
+    },
+    {
+      "path": "lib/tooling-loader.mjs",
+      "status": "PASS",
+      "sha256": "7848fa205115a798d3cc39a1bb3713645dc7fe7b2b2c0ea1308441e3c666c6ee"
+    },
+    {
+      "path": "lib/v4-activation.mjs",
+      "status": "PASS",
+      "sha256": "c227810b59313dfb121cab26a9f875aaff2b2828a982e14b6a6363f6241eda4b"
+    },
+    {
+      "path": "lib/v4-agent-runtime.mjs",
+      "status": "PASS",
+      "sha256": "a89a1d87cfb43439171995f6d4c612c0e525722ecedae6ba0f4dac2378452d3c"
+    },
+    {
+      "path": "lib/v4-audit-evidence.mjs",
+      "status": "PASS",
+      "sha256": "1a4b16f7def6e5942a15f7a251b8b4dd0f4d783edfcc468a130472f3c02758d3"
+    },
+    {
+      "path": "lib/v4-boundary.mjs",
+      "status": "PASS",
+      "sha256": "d9a4768f942a3b80a17a7cb84ad36713609d43c6b4fb1a7325d4a470ae465618"
+    },
+    {
+      "path": "lib/v4-cli-contract.mjs",
+      "status": "PASS",
+      "sha256": "c39de91fba4a92869ae840ba40618b147f898692a8ba246e84116065a528d820"
+    },
+    {
+      "path": "lib/v4-cli-entry.mjs",
+      "status": "PASS",
+      "sha256": "6a76dd67e2c8a11f732b14ffbbf393b3b695b5e642987e5ad3898d927bee9bfb"
+    },
+    {
+      "path": "lib/v4-config.mjs",
+      "status": "PASS",
+      "sha256": "e4900e5835b9abcebd1f0a3ecc22759833954a32252d179e98f88f832231b546"
+    },
+    {
+      "path": "lib/v4-content-os.mjs",
+      "status": "PASS",
+      "sha256": "0ba11dcfeff5a383f90a9d35d19b4ae1078223272a6ebe354a7db587509479e2"
+    },
+    {
+      "path": "lib/v4-context-economy.mjs",
+      "status": "PASS",
+      "sha256": "78c071649f2dd5204bb9fb821815e2c97e38c1350cb23d86d7d0ff70ff28df36"
+    },
+    {
+      "path": "lib/v4-control-plane.mjs",
+      "status": "PASS",
+      "sha256": "fef3caa28563f5fa0ba2b18c4a3d2e6931f0582a4c0a192f1a89b4f6770e5cfb"
+    },
+    {
+      "path": "lib/v4-gate-identity.mjs",
+      "status": "PASS",
+      "sha256": "6e99cd796b4844bab55f40cb33dc61ad9dade38dbb5caa42458b876346335b2c"
+    },
+    {
+      "path": "lib/v4-installer.mjs",
+      "status": "PASS",
+      "sha256": "3a319c35e79c94db449efa6a1fe303413889b82a7785b1080fd2217ad617faa7"
+    },
+    {
+      "path": "lib/v4-invariant-registry.mjs",
+      "status": "PASS",
+      "sha256": "d9a4dc007211a09501700c69e7fa1eab4ce807914a33cb129318f1b934403f58"
+    },
+    {
+      "path": "lib/v4-kernel.mjs",
+      "status": "PASS",
+      "sha256": "776f57f59f461ce3e6c8adf804feee4522ab3294ec0f05093728c58bd9038397"
+    },
+    {
+      "path": "lib/v4-knowledge-runtime.mjs",
+      "status": "PASS",
+      "sha256": "52ea556c804d5edf042c6df4d553c9498791eae5ea9e51522ef84522d914eb4d"
+    },
+    {
+      "path": "lib/v4-maturity.mjs",
+      "status": "PASS",
+      "sha256": "72fd1006e1e3a39b99939576bf9e05b021633fab0a26c6af660b8d95fd164e48"
+    },
+    {
+      "path": "lib/v4-platform.mjs",
+      "status": "PASS",
+      "sha256": "f0af86f59ffacd644a212d62d82b66e3a500048e8078396275d6c406b451c6b9"
+    },
+    {
+      "path": "lib/v4-portable-install.mjs",
+      "status": "PASS",
+      "sha256": "dd1675df8318226f573c089c6b0a65bd4fc14148f49d881be8fd74b51e5ea544"
+    },
+    {
+      "path": "lib/v4-product-closure.mjs",
+      "status": "PASS",
+      "sha256": "3275697e55048f7bc041e3e812ea0f4dd853a2d10bd5d9dd5861f7a41693d5d7"
+    },
+    {
+      "path": "lib/v4-reconcile.mjs",
+      "status": "PASS",
+      "sha256": "2a4743b6a82f9134967f4f2aa7686270cb6150c985fe88d3ebe04da177ac16ab"
+    },
+    {
+      "path": "lib/v4-release-gates.mjs",
+      "status": "PASS",
+      "sha256": "b6542c505d86d1485b5280b07e74d663e08126e6e7217c90cf6c57e0cc503613"
+    },
+    {
+      "path": "lib/v4-seo-os.mjs",
+      "status": "PASS",
+      "sha256": "a53ef962cd2a1dde3f21bb8e9d8d6fe21cdd8b84820e7af2c277acb77cedb2a3"
+    },
+    {
+      "path": "lib/v4-source.mjs",
+      "status": "PASS",
+      "sha256": "339c2f3938a5705a11bf5dc4bae59d9ddb2ad757dfdc1157ab86dcbfab3cbb41"
+    },
+    {
+      "path": "lib/v4-systems-status.mjs",
+      "status": "PASS",
+      "sha256": "8a05b3fa29277053d232329d9486507b9132266318a2fe33e1387d5ce5e26c74"
+    },
+    {
+      "path": "lib/v4-test-os.mjs",
+      "status": "PASS",
+      "sha256": "16c51b1740141607eefead306ed7b5f07e62b6be234b640018c6914f243a76d8"
+    },
+    {
+      "path": "lib/v4-update-discovery.mjs",
+      "status": "PASS",
+      "sha256": "31de2dbb9d58ff330048ef7e91aba7a9107682e066e01e86601df547118a1808"
+    },
+    {
+      "path": "lib/v4-upgrade-revalidation-status.mjs",
+      "status": "PASS",
+      "sha256": "e128db843019e36ec4030d025a6f7b12346fc923a202b137d3e6e3c68eb35771"
+    },
+    {
+      "path": "lib/v4-upgrade-revalidation.mjs",
+      "status": "PASS",
+      "sha256": "89b7c997adbf1a0b396be939e3fc5969183fda5089a02b1ae5cfe441bad46473"
+    },
+    {
+      "path": "lib/v4-upgrade-transform.mjs",
+      "status": "PASS",
+      "sha256": "7581a3461cc053386f2b942b59126fcbc84cc4715319ed055ddb74e46ae364d5"
+    },
+    {
+      "path": "lib/v5-config.mjs",
+      "status": "PASS",
+      "sha256": "4ff49036eeb645d504f1e436afbe8adb10c5d6b3fc48cb73a91a2d19b8d1f378"
+    },
+    {
+      "path": "lib/visual-audit.mjs",
+      "status": "PASS",
+      "sha256": "27881630cbefa06a2f875f51d8a02fe796e04b6c7df3747415c793946d642597"
+    },
+    {
+      "path": "lib/visual-boundary.mjs",
+      "status": "PASS",
+      "sha256": "69f7f28fc8bf29fd74572c96467d65157f462248804fe576ca6878f94a9ef53e"
+    },
+    {
+      "path": "lib/visual-capture.mjs",
+      "status": "PASS",
+      "sha256": "665f88fb1362c26aecef43710d27f91cf4f1a3fb0c90a86c1cc488d6f7c4661b"
+    },
+    {
+      "path": "lib/visual-contract.mjs",
+      "status": "PASS",
+      "sha256": "270dc16f9ad19e85128e5e5493c0459164b1bb4d2ac7a62d2c27db13dc0d8f5d"
+    },
+    {
+      "path": "lib/visual-critic.mjs",
+      "status": "PASS",
+      "sha256": "48274d81faefa238b9682778fa7afe5cc6529260b801ed7fcbd03c892709bbcd"
+    },
+    {
+      "path": "lib/visual-enums.mjs",
+      "status": "PASS",
+      "sha256": "22cf76d0f744fc6f48a25795ba6fbbf158f7e6d682aa8649a89dd4ae8e34b3c7"
+    },
+    {
+      "path": "lib/visual-geometry.mjs",
+      "status": "PASS",
+      "sha256": "11f03fa6254b0908ba3e5fe2e8cb030d379cbed32f25c4a932dde933ecf8e037"
+    },
+    {
+      "path": "lib/visual-image.mjs",
+      "status": "PASS",
+      "sha256": "5ba024a3f5ec24d380435d7995ed74b5a01b7bb0925498aa2164159160a2c125"
+    },
+    {
+      "path": "lib/visual-journeys.mjs",
+      "status": "PASS",
+      "sha256": "a51778848f068183f901e83c6eec0e00714529619c813c04949d45c283b9429d"
+    },
+    {
+      "path": "lib/visual-os.mjs",
+      "status": "PASS",
+      "sha256": "1425e59af613d9168ed7aea44da347d980308ca1b1003d92b5024e80ee5cc335"
+    },
+    {
+      "path": "lib/visual-schema.mjs",
+      "status": "PASS",
+      "sha256": "9fdcb0aee8cd806cb3ab0cb3e305940f1f7a6545ff8cdb15e4aab90c2613dbf1"
+    },
+    {
+      "path": "lib/visual-surface.mjs",
+      "status": "PASS",
+      "sha256": "31f772b59bb1552271b609e3c244e16db14d98e1dc83ee5eae669b2368178eaa"
+    },
+    {
+      "path": "lib/visual-trace.mjs",
+      "status": "PASS",
+      "sha256": "69b2ea9189c2d66c7a67c9c5936f909205adc1988403089cecf74ccc8825cf50"
+    },
+    {
+      "path": "scripts/build-executionkit-binary.mjs",
+      "status": "PASS",
+      "sha256": "19df4382fdc06f315323853f1c52447dda2aa6eb001f7fb0d9ddfff911f52fad"
+    },
+    {
+      "path": "scripts/publish-v4-release.mjs",
+      "status": "PASS",
+      "sha256": "848237bda32e43e72f03a8aa3f6c30eef28c3331558116895803a517cd6e4533"
+    },
+    {
+      "path": "scripts/quality/build-visual-schemas.mjs",
+      "status": "PASS",
+      "sha256": "bcb181c700d18698d112bf7ec1eb78b3ed4564fa7b5ae8f035f580f7a1bbd22a"
+    },
+    {
+      "path": "scripts/quality/visual-schema-source.mjs",
+      "status": "PASS",
+      "sha256": "5cd84124d560c9034955a4cb95fa4aa6d86ced1beee60894f96fdd8655849c1f"
+    },
+    {
+      "path": "scripts/verify-v4-release-target.mjs",
+      "status": "PASS",
+      "sha256": "3e366a9672aa7eb060d3569aaa777a3238f0e032d6c8a6dea9ea076ab88897ae"
+    }
+  ],
+  "cli": [
+    {
+      "command": "start --help",
+      "status": "PASS",
+      "outputBytes": 178
+    },
+    {
+      "command": "status --help",
+      "status": "PASS",
+      "outputBytes": 180
+    },
+    {
+      "command": "next --help",
+      "status": "PASS",
+      "outputBytes": 176
+    },
+    {
+      "command": "systems --help",
+      "status": "PASS",
+      "outputBytes": 149
+    },
+    {
+      "command": "systems status --help",
+      "status": "PASS",
+      "outputBytes": 149
+    },
+    {
+      "command": "control-plane --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "control-plane status --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "control-plane verify-head --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "platform --help",
+      "status": "PASS",
+      "outputBytes": 224
+    },
+    {
+      "command": "platform status --help",
+      "status": "PASS",
+      "outputBytes": 224
+    },
+    {
+      "command": "platform provision --help",
+      "status": "PASS",
+      "outputBytes": 224
+    },
+    {
+      "command": "activation --help",
+      "status": "PASS",
+      "outputBytes": 175
+    },
+    {
+      "command": "activation status --help",
+      "status": "PASS",
+      "outputBytes": 175
+    },
+    {
+      "command": "activation apply --help",
+      "status": "PASS",
+      "outputBytes": 175
+    },
+    {
+      "command": "boundary --help",
+      "status": "PASS",
+      "outputBytes": 204
+    },
+    {
+      "command": "boundary wave --help",
+      "status": "PASS",
+      "outputBytes": 204
+    },
+    {
+      "command": "boundary phase --help",
+      "status": "PASS",
+      "outputBytes": 204
+    },
+    {
+      "command": "product --help",
+      "status": "PASS",
+      "outputBytes": 187
+    },
+    {
+      "command": "product status --help",
+      "status": "PASS",
+      "outputBytes": 187
+    },
+    {
+      "command": "product reconcile --help",
+      "status": "PASS",
+      "outputBytes": 187
+    },
+    {
+      "command": "todo --help",
+      "status": "PASS",
+      "outputBytes": 170
+    },
+    {
+      "command": "todo status --help",
+      "status": "PASS",
+      "outputBytes": 170
+    },
+    {
+      "command": "todo maintain --help",
+      "status": "PASS",
+      "outputBytes": 170
+    },
+    {
+      "command": "todo migrate --help",
+      "status": "PASS",
+      "outputBytes": 170
+    },
+    {
+      "command": "proof --help",
+      "status": "PASS",
+      "outputBytes": 190
+    },
+    {
+      "command": "proof status --help",
+      "status": "PASS",
+      "outputBytes": 190
+    },
+    {
+      "command": "proof seal --help",
+      "status": "PASS",
+      "outputBytes": 190
+    },
+    {
+      "command": "upgrade-revalidation --help",
+      "status": "PASS",
+      "outputBytes": 243
+    },
+    {
+      "command": "upgrade-revalidation status --help",
+      "status": "PASS",
+      "outputBytes": 243
+    },
+    {
+      "command": "upgrade-revalidation plan --help",
+      "status": "PASS",
+      "outputBytes": 243
+    },
+    {
+      "command": "upgrade-revalidation run --help",
+      "status": "PASS",
+      "outputBytes": 243
+    },
+    {
+      "command": "visual --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual status --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual validate --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual discover --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual plan --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual capture --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual inspect --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual compare --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual remediate --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "visual certify --help",
+      "status": "PASS",
+      "outputBytes": 347
+    },
+    {
+      "command": "state --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "state status --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "state rehydrate --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "state checkpoint --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "state amnesia --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "knowledge --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge status --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge refresh --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge search --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge impact --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge providers --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge context --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge auto --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "knowledge usage --help",
+      "status": "PASS",
+      "outputBytes": 383
+    },
+    {
+      "command": "guard --help",
+      "status": "PASS",
+      "outputBytes": 188
+    },
+    {
+      "command": "guard all --help",
+      "status": "PASS",
+      "outputBytes": 188
+    },
+    {
+      "command": "guard assets --help",
+      "status": "PASS",
+      "outputBytes": 188
+    },
+    {
+      "command": "guard forms --help",
+      "status": "PASS",
+      "outputBytes": 188
+    },
+    {
+      "command": "guard lang --help",
+      "status": "PASS",
+      "outputBytes": 188
+    },
+    {
+      "command": "decision --help",
+      "status": "PASS",
+      "outputBytes": 363
+    },
+    {
+      "command": "decision status --help",
+      "status": "PASS",
+      "outputBytes": 363
+    },
+    {
+      "command": "decision advise --help",
+      "status": "PASS",
+      "outputBytes": 363
+    },
+    {
+      "command": "decision refresh --help",
+      "status": "PASS",
+      "outputBytes": 363
+    },
+    {
+      "command": "decision align --help",
+      "status": "PASS",
+      "outputBytes": 363
+    },
+    {
+      "command": "db --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "db status --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "db refresh --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "db guard --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "db table --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "db column --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "db model --help",
+      "status": "PASS",
+      "outputBytes": 200
+    },
+    {
+      "command": "route --help",
+      "status": "PASS",
+      "outputBytes": 304
+    },
+    {
+      "command": "route status --help",
+      "status": "PASS",
+      "outputBytes": 304
+    },
+    {
+      "command": "route refresh --help",
+      "status": "PASS",
+      "outputBytes": 304
+    },
+    {
+      "command": "route guard --help",
+      "status": "PASS",
+      "outputBytes": 304
+    },
+    {
+      "command": "route probe --help",
+      "status": "PASS",
+      "outputBytes": 304
+    },
+    {
+      "command": "content --help",
+      "status": "PASS",
+      "outputBytes": 204
+    },
+    {
+      "command": "content status --help",
+      "status": "PASS",
+      "outputBytes": 204
+    },
+    {
+      "command": "content discover --help",
+      "status": "PASS",
+      "outputBytes": 204
+    },
+    {
+      "command": "content validate --help",
+      "status": "PASS",
+      "outputBytes": 204
+    },
+    {
+      "command": "docs --help",
+      "status": "PASS",
+      "outputBytes": 173
+    },
+    {
+      "command": "docs status --help",
+      "status": "PASS",
+      "outputBytes": 173
+    },
+    {
+      "command": "docs refresh --help",
+      "status": "PASS",
+      "outputBytes": 173
+    },
+    {
+      "command": "docs build --help",
+      "status": "PASS",
+      "outputBytes": 173
+    },
+    {
+      "command": "docs validate --help",
+      "status": "PASS",
+      "outputBytes": 173
+    },
+    {
+      "command": "docs search --help",
+      "status": "PASS",
+      "outputBytes": 173
+    },
+    {
+      "command": "seo --help",
+      "status": "PASS",
+      "outputBytes": 150
+    },
+    {
+      "command": "seo status --help",
+      "status": "PASS",
+      "outputBytes": 150
+    },
+    {
+      "command": "seo validate --help",
+      "status": "PASS",
+      "outputBytes": 150
+    },
+    {
+      "command": "audit --help",
+      "status": "PASS",
+      "outputBytes": 162
+    },
+    {
+      "command": "audit task --help",
+      "status": "PASS",
+      "outputBytes": 162
+    },
+    {
+      "command": "audit wave --help",
+      "status": "PASS",
+      "outputBytes": 162
+    },
+    {
+      "command": "audit phase --help",
+      "status": "PASS",
+      "outputBytes": 162
+    },
+    {
+      "command": "audit release --help",
+      "status": "PASS",
+      "outputBytes": 162
+    },
+    {
+      "command": "test --help",
+      "status": "PASS",
+      "outputBytes": 315
+    },
+    {
+      "command": "test impact --help",
+      "status": "PASS",
+      "outputBytes": 315
+    },
+    {
+      "command": "test task --help",
+      "status": "PASS",
+      "outputBytes": 315
+    },
+    {
+      "command": "test wave --help",
+      "status": "PASS",
+      "outputBytes": 315
+    },
+    {
+      "command": "test phase --help",
+      "status": "PASS",
+      "outputBytes": 315
+    },
+    {
+      "command": "test release --help",
+      "status": "PASS",
+      "outputBytes": 315
+    },
+    {
+      "command": "test journeys --help",
+      "status": "PASS",
+      "outputBytes": 315
+    },
+    {
+      "command": "launch --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch status --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch plan --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch build --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch verify --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch host-plan --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch host-check --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch backup --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch release --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch deploy --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch rollback --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch mobile --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "launch service --help",
+      "status": "PASS",
+      "outputBytes": 711
+    },
+    {
+      "command": "agents --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents status --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents plan --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents run --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents collect --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents delegated --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents integrate --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents reconcile --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents cleanup --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "agents result --help",
+      "status": "PASS",
+      "outputBytes": 442
+    },
+    {
+      "command": "reconcile --help",
+      "status": "PASS",
+      "outputBytes": 230
+    },
+    {
+      "command": "reconcile status --help",
+      "status": "PASS",
+      "outputBytes": 230
+    },
+    {
+      "command": "reconcile task --help",
+      "status": "PASS",
+      "outputBytes": 230
+    },
+    {
+      "command": "reconcile wave --help",
+      "status": "PASS",
+      "outputBytes": 230
+    },
+    {
+      "command": "reconcile phase --help",
+      "status": "PASS",
+      "outputBytes": 230
+    },
+    {
+      "command": "reconcile release --help",
+      "status": "PASS",
+      "outputBytes": 230
+    },
+    {
+      "command": "install --help",
+      "status": "PASS",
+      "outputBytes": 225
+    },
+    {
+      "command": "self-update --help",
+      "status": "PASS",
+      "outputBytes": 281
+    },
+    {
+      "command": "self-update status --help",
+      "status": "PASS",
+      "outputBytes": 281
+    },
+    {
+      "command": "self-update check --help",
+      "status": "PASS",
+      "outputBytes": 281
+    },
+    {
+      "command": "self-update apply --help",
+      "status": "PASS",
+      "outputBytes": 281
+    },
+    {
+      "command": "update --help",
+      "status": "PASS",
+      "outputBytes": 223
+    },
+    {
+      "command": "upgrade --help",
+      "status": "PASS",
+      "outputBytes": 225
+    },
+    {
+      "command": "repair --help",
+      "status": "PASS",
+      "outputBytes": 223
+    },
+    {
+      "command": "doctor --help",
+      "status": "PASS",
+      "outputBytes": 140
+    },
+    {
+      "command": "providers --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "providers status --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "providers doctor --help",
+      "status": "PASS",
+      "outputBytes": 174
+    },
+    {
+      "command": "rollback --help",
+      "status": "PASS",
+      "outputBytes": 163
+    },
+    {
+      "command": "help --help",
+      "status": "PASS",
+      "outputBytes": 3485
+    },
+    {
+      "command": "version --help",
+      "status": "PASS",
+      "outputBytes": 79
+    }
+  ],
+  "guards": [
+    {
+      "path": "lib/database-integrity.mjs",
+      "syntax": "PASS",
+      "scope": "SOURCE_CONTRACT; runtime coverage is in npm run v5:check"
+    },
+    {
+      "path": "lib/route-integrity.mjs",
+      "syntax": "PASS",
+      "scope": "SOURCE_CONTRACT; runtime coverage is in npm run v5:check"
+    },
+    {
+      "path": "lib/surface-integrity.mjs",
+      "syntax": "PASS",
+      "scope": "SOURCE_CONTRACT; runtime coverage is in npm run v5:check"
+    },
+    {
+      "path": "lib/lighthouse-gate.mjs",
+      "syntax": "PASS",
+      "scope": "SOURCE_CONTRACT; runtime coverage is in npm run v5:check"
+    },
+    {
+      "path": "lib/visual-os.mjs",
+      "syntax": "PASS",
+      "scope": "SOURCE_CONTRACT; runtime coverage is in npm run v5:check"
+    },
+    {
+      "path": "lib/agentic-e2e.mjs",
+      "syntax": "PASS",
+      "scope": "SOURCE_CONTRACT; runtime coverage is in npm run v5:check"
+    }
+  ],
+  "knowledge": {
+    "repository": "GemiTron88/KB",
+    "revision": 1,
+    "factCount": 140,
+    "ruleCount": 14,
+    "domains": [
+      "quality",
+      "visual",
+      "performance",
+      "architecture",
+      "security",
+      "operations",
+      "delivery"
+    ],
+    "sha256": "3d4dc63fe88a5e049851a65a2c5799e9886ef3083f77882d30bd41cc4621f0d2"
+  },
+  "documentation": [
+    "STANDARD_V5.md",
+    "README.md",
+    "PLAYBOOK.md",
+    "AGENTS.md",
+    "templates/AGENTS_V5.md"
+  ],
+  "errors": [],
+  "durationMs": 51059,
+  "acceptance": {
+    "liveConsumer": "NOT_RUN",
+    "staging": "NOT_RUN",
+    "physical": "NOT_RUN",
+    "production": "NOT_RUN"
+  }
+}

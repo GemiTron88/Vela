@@ -1,0 +1,15 @@
+PRAGMA foreign_keys = ON;
+CREATE TABLE IF NOT EXISTS schema_versions(version INTEGER PRIMARY KEY, applied_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS projects(id TEXT PRIMARY KEY, data TEXT NOT NULL, created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS artifacts(project TEXT NOT NULL REFERENCES projects(id), sha TEXT NOT NULL, data TEXT NOT NULL, PRIMARY KEY(project,sha));
+CREATE TABLE IF NOT EXISTS releases(id TEXT PRIMARY KEY, project TEXT NOT NULL REFERENCES projects(id), version_code INTEGER NOT NULL, data TEXT NOT NULL, UNIQUE(project,version_code));
+CREATE TABLE IF NOT EXISTS receipts(id TEXT PRIMARY KEY, project TEXT NOT NULL REFERENCES projects(id), data TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS approvals(release_id TEXT NOT NULL REFERENCES releases(id), channel TEXT NOT NULL, actor TEXT NOT NULL, data TEXT NOT NULL, PRIMARY KEY(release_id,channel));
+CREATE TABLE IF NOT EXISTS tracks(project TEXT NOT NULL REFERENCES projects(id), channel TEXT NOT NULL, generation INTEGER NOT NULL, data TEXT NOT NULL, PRIMARY KEY(project,channel));
+CREATE TABLE IF NOT EXISTS operations(actor TEXT NOT NULL, project TEXT NOT NULL, key TEXT NOT NULL, digest TEXT NOT NULL, result TEXT NOT NULL, PRIMARY KEY(actor,project,key));
+CREATE TABLE IF NOT EXISTS jobs(id TEXT PRIMARY KEY, project TEXT NOT NULL REFERENCES projects(id), state TEXT NOT NULL, lease_until INTEGER, owner TEXT, data TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS jobs_state_idx ON jobs(state,lease_until);
+CREATE TABLE IF NOT EXISTS journal(sequence INTEGER PRIMARY KEY AUTOINCREMENT, timestamp TEXT NOT NULL, actor TEXT NOT NULL, project TEXT NOT NULL, action TEXT NOT NULL, correlation_id TEXT NOT NULL, previous_hash TEXT NOT NULL, event_hash TEXT NOT NULL, data TEXT NOT NULL);
+CREATE TRIGGER IF NOT EXISTS journal_no_update BEFORE UPDATE ON journal BEGIN SELECT RAISE(ABORT,'append_only'); END;
+CREATE TRIGGER IF NOT EXISTS journal_no_delete BEFORE DELETE ON journal BEGIN SELECT RAISE(ABORT,'append_only'); END;
+INSERT OR IGNORE INTO schema_versions VALUES(1,strftime('%Y-%m-%dT%H:%M:%fZ','now'));

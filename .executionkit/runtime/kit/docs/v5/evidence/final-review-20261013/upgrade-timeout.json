@@ -1,0 +1,13 @@
+{
+  "case": "upgrade revalidation with deliberately hung Test command",
+  "source": "4c382650ac0a4fd7bd6de83ec4f3b6b22162bd42",
+  "status": "FAIL",
+  "timedOut": true,
+  "elapsedMs": 1649,
+  "budgetMs": 1500,
+  "pendingChecks": [
+    "test-os"
+  ],
+  "gateStatus": "FAIL",
+  "scope": "DISPOSABLE_PROCESS_FIXTURE"
+}

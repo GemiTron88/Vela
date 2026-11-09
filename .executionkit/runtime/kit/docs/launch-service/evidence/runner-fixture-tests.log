@@ -1,0 +1,7 @@
+test_failure_removes_only_owned_worktree_and_produces_no_success_receipt (runner_test.RunnerRecoveryTests.test_failure_removes_only_owned_worktree_and_produces_no_success_receipt) ... ok
+test_success_receipt_is_signed_and_secrets_are_not_in_build_environment (runner_test.RunnerRecoveryTests.test_success_receipt_is_signed_and_secrets_are_not_in_build_environment) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.517s
+
+OK

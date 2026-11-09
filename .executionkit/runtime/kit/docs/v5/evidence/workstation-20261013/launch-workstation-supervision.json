@@ -1,0 +1,83 @@
+{
+  "timestamp": "2026-10-13T20:33:30Z",
+  "host": {
+    "platform": "Windows-10-10.0.19045-SP0",
+    "machine": "AMD64",
+    "node": "DESKTOP-717CK7V",
+    "python": "3.14.2"
+  },
+  "hostPolicyObservations": {
+    "system": "Windows",
+    "physical": true,
+    "blocked": false,
+    "fingerprint": "e4e6f94e7f152495330a30da1c6a56e209f57c4f4913c34f16fb94e42db4d1c6"
+  },
+  "workstationAuthorization": {
+    "status": "ALLOWED",
+    "role": "physical-workstation",
+    "fingerprint": "e4e6f94e7f152495330a30da1c6a56e209f57c4f4913c34f16fb94e42db4d1c6"
+  },
+  "supervisorBackend": "windows-job-object",
+  "jobObjectExecution": {
+    "exitCode": 0,
+    "stdout": "Python 3.14.2",
+    "report": {
+      "enforcement": "windows-job-object",
+      "killed_reason": null,
+      "peak_rss_bytes": 12050432,
+      "limits": {
+        "cpu_cores": 2,
+        "memory_mb": 1024,
+        "max_processes": 16,
+        "timeout_seconds": 30
+      },
+      "applied": {
+        "memory_mb": 1024,
+        "max_processes": 16,
+        "cpu_rate_percent": 2.5,
+        "verified_readback": true
+      },
+      "wall_seconds": 0.105
+    }
+  },
+  "androidDiagnostics": {
+    "schema": 1,
+    "os": "Windows",
+    "architecture": "AMD64",
+    "cores": 80,
+    "ram_bytes": null,
+    "disk_free_bytes": 49059991552,
+    "tools": {
+      "flutter": "C:\\flutter\\bin\\flutter.BAT",
+      "dart": "C:\\flutter\\bin\\dart.BAT",
+      "java": "C:\\Program Files\\Android\\Android Studio\\jbr\\bin\\java.EXE",
+      "adb": "C:\\Users\\elwaz\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.EXE",
+      "emulator": "C:\\Users\\elwaz\\AppData\\Local\\Android\\Sdk\\emulator\\emulator.EXE",
+      "sdkmanager": "C:\\Users\\elwaz\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\sdkmanager.BAT",
+      "apksigner": null,
+      "apkanalyzer": "C:\\Users\\elwaz\\AppData\\Local\\Android\\Sdk\\cmdline-tools\\latest\\bin\\apkanalyzer.BAT",
+      "shorebird": null,
+      "git": "C:\\Program Files\\Git\\cmd\\git.EXE",
+      "node": "C:\\Program Files\\nodejs\\node.EXE"
+    },
+    "kvm_accessible": false,
+    "cpu_virtualization_flags": false,
+    "nested_virtualization": "UNKNOWN_REQUIRES_HOST_CONFIRMATION",
+    "acceleration": {
+      "status": "NOT_EXECUTED_HOST_POLICY"
+    },
+    "java": {
+      "exit_code": 0,
+      "output": "OpenJDK 64-Bit Server VM warning: The Windows job object has enabled multiple processor groups (2) but only 1 is supported on this Windows version. Some processors might not be used.\nopenjdk version \"21.0.8\" 2025-07-15\nOpenJDK Runtime Environment (build 21.0.8+-14196175-b1038.72)\nOpenJDK 64-Bit Server VM (build 21.0.8+-14196175-b1038.72, mixed mode)\n"
+    },
+    "host_policy": {
+      "system": "Windows",
+      "physical": true,
+      "blocked": false,
+      "fingerprint": "e4e6f94e7f152495330a30da1c6a56e209f57c4f4913c34f16fb94e42db4d1c6"
+    },
+    "decision": "PHYSICAL_WORKSTATION_REQUIRES_OWNER_ENROLLMENT",
+    "emulator_test_status": "NOT_TESTED",
+    "production_services_inspected": false
+  }
+}

@@ -1,0 +1,35 @@
+
+> global-mobile-release@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ Dart-only candidate (3.562735ms)
+✔ native code (0.604696ms)
+✔ new permission (3.036355ms)
+✔ bundled asset (0.58443ms)
+✔ Gradle change (0.252851ms)
+✔ lockfile uncertainty (0.591662ms)
+✔ unknown generated config (0.485525ms)
+✔ pubspec bundled fonts (0.512105ms)
+✔ snapshots enforce plugin/engine/signing compatibility beyond filenames (1.203812ms)
+✔ Shorebird commands always explicitly target baseline and never bypass safety (2.449783ms)
+✔ real HTTP release lifecycle: staging, independent approval, stable, signed manifest and Range (277.374162ms)
+✔ authentication, explicit scopes, project isolation and private update distribution (97.712554ms)
+✔ idempotency persists across database reopen and conflicting replay is denied (69.543339ms)
+✔ checksum, signing identity, package identity and artifact size fail closed (79.753114ms)
+✔ failed quality gates, forged receipt, wrong baseline, missing tests block release (96.996451ms)
+✔ versionCode regression, invalid approval, missing device verification block publication (96.979679ms)
+✔ concurrent claims across SQLite connections, expired lease recovery and stale owner rejection (63.366943ms)
+✔ metadata tampering, wrong key, server downtime and journal hash chain (115.880452ms)
+✔ provider observations import idempotently into project journal without claiming device acceptance (75.76699ms)
+✔ provider base release requires fresh signed exact-source quality, clean worktree and key/version baseline (230.074966ms)
+✔ online backup restores registry and immutable journal without losing committed operations (124.056281ms)
+✔ actual parallel worker threads contend for one lease across independent SQLite connections (222.08804ms)
+✔ observed installed signing identity requires scoped attestation and cannot rotate an existing key (72.120377ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1213.386951

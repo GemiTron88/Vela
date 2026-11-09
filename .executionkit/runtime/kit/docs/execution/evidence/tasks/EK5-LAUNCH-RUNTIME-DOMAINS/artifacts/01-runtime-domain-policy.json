@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "executionkit-runtime-domain-policy/v1",
+  "task": "EK5-LAUNCH-RUNTIME-DOMAINS",
+  "status": "VERIFIED",
+  "upstreamBaseline": "4d6ada3cd4cf3fd8cea4d4532f973b733452c1f7",
+  "environment": {
+    "node": "v22.22.2",
+    "platform": "linux",
+    "checkout": "Complete canonical git checkout of Elwazeery/AI-ExcutionKit on main with full distribution, v4/v5 test suites, and installed-consumer verification."
+  },
+  "regression": {
+    "command": "node --test tests/production-purity.test.mjs tests/production-deployment.test.mjs tests/v4-update-discovery.test.mjs",
+    "tests": 98,
+    "passed": 98,
+    "failed": 0,
+    "skipped": 0,
+    "newTests": 3,
+    "v4TestSuite": {
+      "command": "npm run v4:test",
+      "tests": 444,
+      "passed": 444,
+      "failed": 0
+    },
+    "distributionSuites": {
+      "validateSelf": "PASS",
+      "validateDistribution": "PASS",
+      "validateCiPolicy": "PASS",
+      "validateCanonicalDocs": "PASS",
+      "validateLocalBootstrap": "PASS",
+      "validateOperatorEntry": "PASS",
+      "validateV30": "PASS",
+      "validateV30Docs": "PASS",
+      "validateParallelAgentOs": "PASS",
+      "validateExamples": "PASS",
+      "v5Review": "PASS",
+      "cliAudit": "PASS (166/166)"
+    }
+  },
+  "remediations": [
+    "lib/production-artifact-policy.mjs: allow nested runtime domain directories (Reports, Docs, Todo, Artifacts) under app/resources/routes/config/src/server/dist/build while continuing to block repository-level dev trees, nested test/control trees, secrets, and traversal.",
+    "lib/v4-update-discovery.mjs: preserve resolvedTargetVersion (5.0.1 for v5 consumers) during Linux portable SEA activation in applyV4SelfUpdate so v5 installed-consumer updates do not fall back to 4.1.0.",
+    "lib/vhost-guard.mjs & tests/production-deployment.test.mjs: allow policy.panel===false in synthetic vhost fixtures so non-CWP Apache/Nginx unit tests do not auto-detect host /usr/local/cwp directories, and honor policy.enabled===false."
+  ],
+  "installedConsumerVerification": {
+    "consumer": "Elwazeery/FLOW",
+    "doctor": "PASS (0 errors)",
+    "upgradeRevalidation": "PASS",
+    "artifactPlanCheck": "PASS (app/Mcp/Capabilities/Reports/OverviewCapability.php and SalesSummaryCapability.php included; docs/, tests/, .agents/, .executionkit/, TODO.md, .env excluded)"
+  },
+  "remaining": [],
+  "production": {
+    "deploymentPerformed": false,
+    "dataMutated": false,
+    "nativeWorkloads": false
+  }
+}

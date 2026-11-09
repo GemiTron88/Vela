@@ -1,0 +1,4 @@
+00:00 +0: loading /workspace/scratch/f4914d7cbcce/APKrelease-/examples/sample_app/test/widget_test.dart
+00:00 +0: absent or malformed deployment configuration fails safely without creating a client
+00:00 +1: independent sample starts offline without deployment config
+00:00 +2: All tests passed!

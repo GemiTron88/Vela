@@ -1,0 +1,5 @@
+=== 1. SMS Checkpoint Tests (test/core/release/sms_checkpoint_test.dart) ===
+00:00 +0: loading /home/antigravity/projects/flow-test-isolated/flutter_app/test/core/release/sms_checkpoint_test.dart
+
+=== 2. Finance, Auth, Cutover & Shell Tests ===
+00:00 +0: loading /home/antigravity/projects/flow-test-isolated/flutter_app/test/features/finance/financial_sms_inbox_test.dart

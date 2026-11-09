@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "executionkit-task-proof/v1",
+  "taskId": "EK3-044",
+  "stateAtSeal": "ACCEPTED",
+  "phase": "V4-AUTO-UPDATE",
+  "sealedAt": "2026-09-23T03:01:07.554Z",
+  "taskSource": "TODO.md",
+  "verification": "add a project-local update-discovery policy and runtime that compares the installed exact ExecutionKit source SHA with official Elwazeery/AI-ExcutionKit main using a bounded lightweight remote-head lookup rather than fetching/cloning on every start; cache only derived update-discovery state under .executionkit with a configurable TTL and short network timeout; normal start/next must read cached update state in O(1) and must not repository-scan or fetch full Kit source; when the TTL expires, perform at most one bounded official-main remote-head check, fail open for network/offline discovery failure while recording UNKNOWN/OFFLINE and retry-after metadata, and never block existing local project execution solely because GitHub is unavailable; when a newer/different official main SHA is known, block ordinary project mutation and return an explicit self-update nextCommand; Antigravity must follow that command automatically without asking for a second human prompt; self-update must acquire and verify the exact official SHA into the same project-local source store, then execute the INCOMING source's installer/updater logic rather than trusting the older installed updater to migrate a newer format; refuse automatic mutation on unsafe/dirty/colliding project state and return a concrete blocker without stashing, discarding or overwriting owner work; update only managed Kit/runtime/Agent/AGENTS/config surfaces transactionally with rollback; preserve canonical TODO/history and project-owned bytes; after update, run doctor and mandatory invariant-aware upgrade revalidation before ordinary project execution resumes; no restart/reopen step; no shared mutable Kit cache; no global Node/runtime authority; no auto push/PR/CI dispatch; add CLI surfaces self-update status|check|apply plus stable machine-readable JSON; make executable and Node fallback parity mandatory; prove exact-SHA update/no-update/offline/timeout/dirty-worktree/tampered-source/rollback/incoming-updater/revalidation cases; benchmark cached start path and prove update discovery does not materially slow task execution.",
+  "originalEvidence": "tests/v4-update-discovery.test.mjs; tests/v4-cli-surface.test.mjs; tests/v4-cli-performance.test.mjs; lib/v4-update-discovery.mjs; lib/v4-source.mjs; lib/v4-installer.mjs; lib/v4-kernel.mjs; lib/v4-cli-contract.mjs",
+  "code": "lib/v4-update-discovery.mjs; lib/v4-source.mjs; lib/v4-installer.mjs; lib/v4-kernel.mjs; lib/v4-cli-contract.mjs; bin/executionkit-cli.mjs; templates/execution.config.v4.json; schemas/execution-config-v4.schema.json; templates/AGENTS_V4.md; .agents/rules/executionkit-v4.md; .agents/workflows/execute-task.md; tests/v4-update-discovery.test.mjs; tests/v4-cli-performance.test.mjs; tests/v4-cli-surface.test.mjs; tests/v4-installer.test.mjs; README.md; STANDARD_V4.md",
+  "artifacts": [
+    {
+      "sourcePath": "tests/v4-update-discovery.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/01-v4-update-discovery.test.mjs",
+      "sha256": "8d773a2ae8820069971f004cf157a6b64ecd8c2df03985a947f9faf0a174ddcb",
+      "bytes": 21729
+    },
+    {
+      "sourcePath": "tests/v4-cli-surface.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/02-v4-cli-surface.test.mjs",
+      "sha256": "9d465ac7a8ead67682692235ff65a47867b868a9a9495ad525411bbc65223c89",
+      "bytes": 5858
+    },
+    {
+      "sourcePath": "tests/v4-cli-performance.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/03-v4-cli-performance.test.mjs",
+      "sha256": "52d468472e8018ee82db878c152cd4048ef2f03612ded3b2d7ad516d2f72ada1",
+      "bytes": 12631
+    },
+    {
+      "sourcePath": "lib/v4-update-discovery.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/04-v4-update-discovery.mjs",
+      "sha256": "70d9725074b882e86a41ad27d97d2e5e1de027ef811e09a8b562f6c13ce8a14a",
+      "bytes": 17885
+    },
+    {
+      "sourcePath": "lib/v4-source.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/05-v4-source.mjs",
+      "sha256": "339c2f3938a5705a11bf5dc4bae59d9ddb2ad757dfdc1157ab86dcbfab3cbb41",
+      "bytes": 5981
+    },
+    {
+      "sourcePath": "lib/v4-installer.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/06-v4-installer.mjs",
+      "sha256": "1e07128ccabd5527129ca38cd154f6ee7ee494fc4d70b63e56159528d73076b9",
+      "bytes": 62040
+    },
+    {
+      "sourcePath": "lib/v4-kernel.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/07-v4-kernel.mjs",
+      "sha256": "eae3ae27af9dbc7724adfcea3e6136399337e8802541fa90cdfcc8af718bae80",
+      "bytes": 19205
+    },
+    {
+      "sourcePath": "lib/v4-cli-contract.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-044/artifacts/08-v4-cli-contract.mjs",
+      "sha256": "eae26ee9cf9f9c0c2f4357228949d059b262d3b0cb46fb2da4e1bd5739c1925b",
+      "bytes": 20391
+    }
+  ],
+  "extra": {}
+}

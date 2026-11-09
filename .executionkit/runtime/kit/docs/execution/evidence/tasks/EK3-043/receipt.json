@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "executionkit-task-proof/v1",
+  "taskId": "EK3-043",
+  "stateAtSeal": "ACCEPTED",
+  "phase": "V4-PORTABLE-CLI",
+  "sealedAt": "2026-09-23T02:35:48.643Z",
+  "taskSource": "TODO.md",
+  "verification": "keep the Node/JavaScript v4 engine as the single canonical implementation; introduce a lightweight executable distribution/launcher layer with command/argument/exit-code parity; support Windows x64/arm64 and supported Linux architectures with standalone Node SEA where upstream support is proven; support macOS arm64 SEA and preserve a project-local exact-pinned Node runtime fallback for macOS x64/Intel until upstream SEA x64 is a supported/tested target; produce platform/arch-qualified artifacts, SHA-256 manifest and exact source/runtime identity; add macOS codesign/notarization and Windows signing hooks without making unsigned developer builds impossible; make installer/doctor select and verify the correct platform artifact or pinned fallback deterministically; never download or trust a shared mutable user-global runtime as project authority; never create a second implementation of the ten systems; keep CLI help/version/discovery behavior identical in executable and Node modes; prove help, --help, -h, version, --version, -V, family help, unknown-command JSON/exit codes and normal commands behave identically; benchmark executable startup and prove no repository scan/heavy OS load is added to the ordinary start/next hot path; build/test each target on project-scoped self-hosted runners only and publish no binary without exact-candidate checksums and runtime smoke evidence.",
+  "originalEvidence": "tests/v4-portable-cli.test.mjs; tests/v4-cli-surface.test.mjs; tests/v4-cli-performance.test.mjs; lib/v4-cli-contract.mjs; lib/v4-platform.mjs; scripts/build-executionkit-binary.mjs; config/sea/sea-config.json; bin/executionkit.mjs; bin/executionkit-launcher.cjs",
+  "code": "bin/executionkit.mjs; bin/executionkit-cli.mjs; lib/v4-cli-contract.mjs; lib/v4-installer.mjs; lib/v4-platform.mjs; lib/v4-source.mjs; scripts/build-executionkit-binary.mjs; config/sea/**; .github/workflows/**; tests/v4-cli-surface.test.mjs; tests/v4-cli-performance.test.mjs; tests/v4-portable-cli.test.mjs; README.md; STANDARD_V4.md",
+  "artifacts": [
+    {
+      "sourcePath": "tests/v4-portable-cli.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/01-v4-portable-cli.test.mjs",
+      "sha256": "6cac00ab29344a0d8cc3f80f27462c68032fb50d87f04b6c611fd9437e41ac8f",
+      "bytes": 16228
+    },
+    {
+      "sourcePath": "tests/v4-cli-surface.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/02-v4-cli-surface.test.mjs",
+      "sha256": "9d465ac7a8ead67682692235ff65a47867b868a9a9495ad525411bbc65223c89",
+      "bytes": 5858
+    },
+    {
+      "sourcePath": "tests/v4-cli-performance.test.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/03-v4-cli-performance.test.mjs",
+      "sha256": "52d468472e8018ee82db878c152cd4048ef2f03612ded3b2d7ad516d2f72ada1",
+      "bytes": 12631
+    },
+    {
+      "sourcePath": "lib/v4-cli-contract.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/04-v4-cli-contract.mjs",
+      "sha256": "7be2285229765c597da9b57e6f1f0c67de68866f3b07ddac0f3b66814b270203",
+      "bytes": 19711
+    },
+    {
+      "sourcePath": "lib/v4-platform.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/05-v4-platform.mjs",
+      "sha256": "40aebd8464f3a0b0964d6c0959ebc36c380670ca3019163d761b52ea31c02be4",
+      "bytes": 15969
+    },
+    {
+      "sourcePath": "config/sea/sea-config.json",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/06-sea-config.json",
+      "sha256": "f4a9dc221bfdb6d19e579a16ccf0de2b51f1d650a37b29bcd88a5822d9ac1dab",
+      "bytes": 129
+    },
+    {
+      "sourcePath": "bin/executionkit.mjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/07-executionkit.mjs",
+      "sha256": "381685672e927cd8bcbfa4ba92d24af8a210012667d77cfffd304830cb477aa6",
+      "bytes": 1792
+    },
+    {
+      "sourcePath": "bin/executionkit-launcher.cjs",
+      "durablePath": "docs/execution/evidence/tasks/EK3-043/artifacts/08-executionkit-launcher.cjs",
+      "sha256": "b6036cf35807b6b6869ff19251bdd80703351d6141a314a341212ca5cb256f84",
+      "bytes": 1639
+    }
+  ],
+  "extra": {}
+}

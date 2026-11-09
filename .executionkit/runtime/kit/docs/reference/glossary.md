@@ -1,0 +1,22 @@
+# Glossary — v2.x
+
+- **Canonical TODO:** the sole mutable executable task authority.
+- **Agent OS:** orchestration authority for roles, skills, rules, workflows, contracts, routing, context, coordination and handoffs.
+- **Skills Engine:** composable Agent OS capability registry; not an independent OS.
+- **Semantic state:** normalized lifecycle meaning independent of project-native storage symbols.
+- **IMPLEMENTED:** implementation candidate exists; acceptance remains.
+- **REVIEW_REQUIRED:** explicit independent review/revalidation lane.
+- **CORRECTION_REQUIRED:** reviewer found focused corrections.
+- **ACCEPTED:** independent evidence-backed normal terminal execution state.
+- **VERIFIED:** legacy compatibility state that may normalize to ACCEPTED when explicitly configured; not the preferred fresh-v2 state name.
+- **RELEASED:** terminal release/deployment state stronger than ACCEPTED.
+- **BLOCKED:** non-terminal work with exact blocker/unblock condition.
+- **ACCEPTED_RISK:** finding disposition for an unresolved risk consciously accepted by authorized decision; distinct from task ACCEPTED.
+- **Task projection:** read-only normalized JSON derived from native task sources and protected by source hashes.
+- **Shadow backlog:** any independent executable queue/status ledger outside canonical task authority.
+- **BOOTSTRAP:** structurally installed/reconciling project; not release-conformant.
+- **ACTIVE:** project-specific authority validated and activated.
+- **S2 archive:** terminal historical task storage that remains identity/dependency/evidence-visible but not executable.
+- **Controlled parallelism:** coordinated multi-agent work with dependency, ownership, hotspot and integration safety; declaration alone is not runtime concurrency proof.
+- **Quality contract:** optional cross-capability declared product-acceptance coverage; not another OS or backlog.
+- **Evidence freshness:** the period/context in which a result remains valid for its candidate/environment; file hashes alone may be insufficient for live/runtime evidence.

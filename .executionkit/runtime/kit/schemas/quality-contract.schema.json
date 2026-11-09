@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExecutionKit declared product quality contract",
+  "type": "object",
+  "required": ["schemaVersion", "profile", "sourcePaths", "subjects", "requirements", "evidencePath"],
+  "properties": {
+    "schemaVersion": {"enum": ["1.0.0", "1.1.0"]},
+    "profile": {"enum": ["standard", "premium"]},
+    "sourcePaths": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+    "evidencePath": {"type": "string", "minLength": 1},
+    "premiumPolicy": {
+      "type": "object",
+      "required": [
+        "designAuthorityPaths",
+        "referencePaths",
+        "componentContractPath",
+        "designContractPath",
+        "singleTokenAuthority",
+        "extendBeforeCreate",
+        "rawPrimitiveBypass",
+        "legacyDebtPolicy",
+        "renderedReviewRequired",
+        "productionShapedDataRequired",
+        "antiGenericReviewRequired",
+        "requiredStates",
+        "requiredFormFactors",
+        "requiredDirections",
+        "requiredInputModes"
+      ],
+      "properties": {
+        "designAuthorityPaths": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "referencePaths": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "componentContractPath": {"type": "string", "minLength": 1},
+        "designContractPath": {"type": "string", "minLength": 1},
+        "singleTokenAuthority": {"const": true},
+        "extendBeforeCreate": {"const": true},
+        "rawPrimitiveBypass": {"enum": ["forbid-when-covered"]},
+        "legacyDebtPolicy": {"enum": ["shrink-only", "none"]},
+        "renderedReviewRequired": {"const": true},
+        "productionShapedDataRequired": {"const": true},
+        "antiGenericReviewRequired": {"const": true},
+        "requiredStates": {
+          "type": "array",
+          "items": {"enum": ["loading", "skeleton", "empty", "error", "success", "disabled", "permission", "degraded", "offline", "retry", "conflict"]},
+          "minItems": 5,
+          "uniqueItems": true
+        },
+        "requiredFormFactors": {
+          "type": "array",
+          "items": {"enum": ["narrow", "mobile", "tablet", "wide", "desktop"]},
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "requiredDirections": {
+          "type": "array",
+          "items": {"enum": ["rtl", "ltr"]},
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "requiredInputModes": {
+          "type": "array",
+          "items": {"enum": ["touch", "mouse", "keyboard", "screen-reader"]},
+          "minItems": 2,
+          "uniqueItems": true
+        },
+        "supportedThemes": {
+          "type": "array",
+          "items": {"enum": ["light", "dark", "system"]},
+          "uniqueItems": true
+        },
+        "platformNotes": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "subjects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "kind", "scope", "requiredDimensions"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {"enum": ["web", "flutter", "api", "content", "journey", "component", "desktop"]},
+          "scope": {"type": "string", "minLength": 1},
+          "surface": {"type": "string", "minLength": 1},
+          "role": {"type": "string", "minLength": 1},
+          "indexable": {"type": "boolean"},
+          "offline": {"type": "boolean"},
+          "requiredDimensions": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "functional",
+                "security",
+                "data",
+                "integration",
+                "visual",
+                "interaction",
+                "accessibility",
+                "responsive",
+                "content",
+                "performance",
+                "seo",
+                "offline",
+                "compatibility",
+                "operations",
+                "components",
+                "design-system",
+                "native-behavior"
+              ]
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "requirements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "subjectId", "dimension", "criterion", "verification", "method", "taskIds"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "subjectId": {"type": "string", "minLength": 1},
+          "dimension": {
+            "enum": [
+              "functional",
+              "security",
+              "data",
+              "integration",
+              "visual",
+              "interaction",
+              "accessibility",
+              "responsive",
+              "content",
+              "performance",
+              "seo",
+              "offline",
+              "compatibility",
+              "operations",
+              "components",
+              "design-system",
+              "native-behavior"
+            ]
+          },
+          "criterion": {"type": "string", "minLength": 1},
+          "verification": {"type": "string", "minLength": 1},
+          "method": {"enum": ["automated", "review"]},
+          "taskIds": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1, "uniqueItems": true}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"schemaVersion": {"const": "1.1.0"}, "profile": {"const": "premium"}}, "required": ["schemaVersion", "profile"]},
+      "then": {"required": ["premiumPolicy"]}
+    }
+  ],
+  "additionalProperties": false
+}

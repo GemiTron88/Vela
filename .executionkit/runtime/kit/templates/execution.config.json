@@ -1,0 +1,297 @@
+{
+  "$schema": "./schemas/execution-config.schema.json",
+  "standardVersion": "3.0.0",
+  "projectState": "BOOTSTRAP",
+  "profile": "STANDARD",
+  "capabilities": {
+    "execution": "STANDARD",
+    "agent": "STANDARD",
+    "content": "NONE",
+    "seo": "STANDARD",
+    "audit": "STANDARD",
+    "test": "STANDARD",
+    "launch": "STANDARD"
+  },
+  "ci": {
+    "provider": "github-actions",
+    "executionMode": "self-hosted-manual",
+    "githubHostedAllowed": false,
+    "automaticPushRuns": false,
+    "allowedAutomaticWorkflowPaths": [],
+    "projectRunnerLabel": "[PROJECT_RUNNER_LABEL]",
+    "maxProjectRunnersPerDevice": 1,
+    "allowedRunnerOS": [
+      "macOS",
+      "windows"
+    ]
+  },
+  "agent": {
+    "manifestPath": ".agents/manifest.json"
+  },
+  "operator": {
+    "entrypoint": "todo-first",
+    "additionalBootstrapPromptRequired": false,
+    "hostChecklistMode": "derived-mirror",
+    "syncHostChecklistAfterTask": true,
+    "fullCiCadence": "phase-boundary",
+    "targetedTaskVerification": true,
+    "hostPersistenceAuthority": "none"
+  },
+  "runtime": {
+    "mode": "DEPENDENCY_SAFE_PARALLEL",
+    "oneLifecycleActionAtATime": false,
+    "allowBoundedHostDelegation": true,
+    "checkpointPath": ".executionkit/runtime/checkpoint.json",
+    "parallel": {
+      "enabled": true,
+      "maxConcurrentTasks": 3,
+      "maxAgentsPerTask": 4,
+      "requireExplicitParallelSafe": true,
+      "requireOwnership": true,
+      "isolatedWorktrees": true,
+      "integrationOwner": "orchestrator",
+      "sequentialFallback": true
+    },
+    "boost": {
+      "enabled": true,
+      "command": "/boost",
+      "maxConcurrentTasks": 6,
+      "maxAgentsPerTask": 6,
+      "qualityGatesPreserved": true
+    }
+  },
+  "state": {
+    "enabled": true,
+    "snapshotPath": ".executionkit/state/latest.json",
+    "journalPath": ".executionkit/state/journal.ndjson",
+    "checkpointOnRuntimeTransitions": true,
+    "requireRehydrateOnDrift": true,
+    "heartbeatMinutes": 20,
+    "memory": {
+      "mode": "auto",
+      "authority": "advisory",
+      "requireLiveRevalidation": true,
+      "allowTaskState": false
+    }
+  },
+  "fleet": {
+    "enabled": true,
+    "agentMode": "per-device",
+    "hostActivity": "local-pulse",
+    "remoteControl": "disabled",
+    "telemetry": {
+      "transport": "local-agent",
+      "authority": "observational",
+      "uploadTodoContent": false,
+      "uploadSourceContent": false,
+      "shareLocalPaths": false
+    }
+  },
+  "discovery": {
+    "enabled": true,
+    "scopePath": "executionkit.scope.json",
+    "inventoryPath": ".executionkit/discovery/product-inventory.json",
+    "reconciliationPath": ".executionkit/discovery/reconciliation.json",
+    "requiredForRelease": false,
+    "failOnDeclaredMissing": true,
+    "allowEmptyScopeForRelease": false
+  },
+  "evidence": {
+    "releaseTruthMode": "STRICT",
+    "candidateRequiredForRelease": true,
+    "adapterConfigPath": "executionkit.adapters.json",
+    "maxAgeMinutes": 1440,
+    "requiredProducers": [],
+    "requireTestAdequacy": true,
+    "testReportPath": "",
+    "testFormat": "",
+    "minimumTests": 0,
+    "allowSkipped": false,
+    "allowFlaky": false,
+    "requireDurableTaskEvidence": false,
+    "taskProofRoot": "docs/execution/evidence/tasks"
+  },
+  "seo": {
+    "contractPath": "executionkit.seo.json",
+    "requiredForRelease": true
+  },
+  "premiumExperience": {
+    "applicability": "UNRESOLVED",
+    "qualityProfile": "UNRESOLVED",
+    "notApplicableReason": ""
+  },
+  "taskModel": {
+    "adapter": "canonical-blocks",
+    "projectionPath": "",
+    "projectionCommand": ""
+  },
+  "adoption": {
+    "deepIntegrationRequired": true,
+    "integrationPhase": "EK00",
+    "integrationGateTaskId": "EK00-AUDIT",
+    "integrationActivationTaskId": "EK00-ACTIVATE",
+    "productExecutionBlockedUntilGateAccepted": true
+  },
+  "todoPath": "TODO.md",
+  "taskArchivePaths": [
+    "TODO_ARCHIVE.md"
+  ],
+  "validStates": [
+    "PLANNED",
+    "READY",
+    "BLOCKED",
+    "IN_PROGRESS",
+    "IMPLEMENTED",
+    "REVIEW_REQUIRED",
+    "CORRECTION_REQUIRED",
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED",
+    "CANCELLED"
+  ],
+  "stateAliases": {
+    "VERIFIED": "ACCEPTED"
+  },
+  "acceptedStates": [
+    "ACCEPTED",
+    "RELEASED"
+  ],
+  "verifiedStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED"
+  ],
+  "terminalStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED",
+    "CANCELLED"
+  ],
+  "archiveTerminalStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED",
+    "CANCELLED"
+  ],
+  "dependencySatisfiedStates": [
+    "ACCEPTED",
+    "VERIFIED",
+    "RELEASED"
+  ],
+  "cancellationSatisfiesDependencies": false,
+  "referenceKeys": [
+    "Contract"
+  ],
+  "scanCompetingBacklogs": true,
+  "backlogScanRoots": [
+    "docs",
+    ".agents"
+  ],
+  "ignoreBacklogPaths": [
+    "docs/reference",
+    "docs/archive"
+  ],
+  "competingBacklogAsError": true,
+  "forbidManualProgressPercentages": true,
+  "requireEvidenceForVerified": true,
+  "requireContractForReady": false,
+  "requireVerificationField": true,
+  "requireBlockerForBlocked": true,
+  "requireCancellationReason": true,
+  "requireExecutorForInProgress": false,
+  "validateMarkdownAnchors": true,
+  "rejectPlaceholdersWhenActive": true,
+  "integration": {
+    "requirePhaseConvergenceForClosure": true,
+    "minTasksForPhaseGate": 2,
+    "journeyContractPath": "executionkit.integration.json",
+    "requireCriticalJourneysForRelease": true,
+    "allowNotApplicableForRelease": false,
+    "requireSystemReleaseGate": true,
+    "systemReleaseGateTaskId": "REL-AUDIT",
+    "requireJourneyDenominator": true
+  },
+  "repositoryIntelligence": {
+    "enabled": true,
+    "storage": {
+      "portableRoot": ".executionkit/knowledge",
+      "localRoot": ".executionkit/repository-intelligence",
+      "contextPath": ".executionkit/knowledge/repository-context.json",
+      "engineeringPath": ".executionkit/knowledge/engineering-knowledge.json",
+      "externalKnowledgePath": ".executionkit/knowledge/external-knowledge.json"
+    },
+    "privacy": {
+      "allowSourceEgress": false,
+      "includeSecretSensitivePaths": false,
+      "extraDenyPaths": []
+    },
+    "thresholds": {
+      "trustedMin": 85,
+      "verifyMin": 65,
+      "degradedMin": 40
+    },
+    "providers": {
+      "required": [],
+      "optional": []
+    },
+    "context": {
+      "maxBytes": 16384
+    },
+    "refresh": {
+      "maxChangedPaths": 60,
+      "maxScopeRatio": 0.35,
+      "maxChangedSections": 5
+    },
+    "ingestion": {
+      "paths": [],
+      "maxFileBytes": 262144,
+      "maxTotalBytes": 2097152
+    }
+  },
+  "documentation": {
+    "enabled": true,
+    "outputRoot": "docs/knowledge-base/generated",
+    "registryPath": ".executionkit/knowledge/documentation-registry.json",
+    "requiredForRelease": true,
+    "minimumCoveragePercent": 100
+  },
+  "deployment": {
+    "enabled": true,
+    "requiredForRelease": true,
+    "artifactRoot": ".executionkit/deployment",
+    "requireCleanGit": true,
+    "extraInclude": [],
+    "extraExclude": [],
+    "buildCommands": [],
+    "preActivateCommands": [],
+    "postActivateCommands": [],
+    "smokeCommands": [],
+    "sharedLinks": [],
+    "healthUrl": "",
+    "healthTimeoutMs": 10000,
+    "target": {
+      "type": "UNCONFIGURED",
+      "releaseRoot": "",
+      "currentLink": ""
+    },
+    "retention": {
+      "enabled": true,
+      "keepRollbacks": 0,
+      "minimumAgeMinutes": 0,
+      "cleanupLegacyReleases": true,
+      "workerUsers": []
+    },
+    "sourceRoot": ".",
+    "allowSourceMaps": false,
+    "verifyComposerDependencies": true,
+    "attestationUrl": "",
+    "requireBackupBeforeActivate": false,
+    "backupReceiptPath": "",
+    "backupDatabase": "",
+    "artifactBudget": {
+      "maxFiles": 50000,
+      "maxTotalBytes": 1073741824,
+      "maxFileBytes": 134217728
+    }
+  }
+}

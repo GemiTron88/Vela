@@ -1,0 +1,18 @@
+00:00 +0: loading /workspace/scratch/f4914d7cbcce/FLOW/flutter_app/test/features/orders/order_workspace_test.dart
+00:00 +0: workspace loads header, badges, money strip and items
+00:02 +1: complete action confirms and posts with idempotency key
+00:02 +2: cancel action confirms and posts
+00:03 +3: duplicate action confirms and posts
+00:04 +4: renders typed Ads order workspace with campaign metrics and progress
+00:04 +5: renders typed Subscription order workspace with billing frequency and hosting credentials
+00:05 +6: renders typed Product order workspace with costs and estimated profit margin
+00:05 +7: customer card links to customer detail and invoice card links to invoice
+00:06 +8: operational settings dialog allows editing operational parameters and calls PUT /operational
+00:07 +9: ads card has sync ads button that posts to /orders/:id/sync-ads
+00:07 +10: pending order shows start execution action and updates status to in_progress
+00:08 +11: posted-edit lock banner renders when order has paid amount or is completed
+00:08 +12: cancel dialog records cancellation reason and posts to cancel endpoint
+00:09 +13: completed order hides complete/cancel actions and shows completed badge
+00:09 +14: cancelled order hides mutation actions and shows cancelled badge
+00:09 +15: complete dialog shows unpaid balance warning when amount_due is greater than zero
+00:09 +16: All tests passed!

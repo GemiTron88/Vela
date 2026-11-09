@@ -1,0 +1,277 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "const": "executionkit-visual-review/v2"
+    },
+    "runId": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "cellId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "imageSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "nonce": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "reviewerId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "producerId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000
+    },
+    "reviewedAt": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+    },
+    "requestDigest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "dimensions": {
+      "minItems": 21,
+      "maxItems": 21,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "dimension": {
+            "type": "string",
+            "enum": [
+              "hierarchy",
+              "information-architecture",
+              "composition",
+              "alignment",
+              "spacing",
+              "typography",
+              "readability",
+              "contrast",
+              "theme",
+              "direction",
+              "cta",
+              "navigation",
+              "density",
+              "forms",
+              "mobile",
+              "responsive",
+              "accessibility",
+              "identity",
+              "generic-risk",
+              "media",
+              "empty-loading-error-success"
+            ]
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "PASS",
+              "FINDING",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "observation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          }
+        },
+        "required": [
+          "dimension",
+          "verdict",
+          "observation"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "findings": {
+      "maxItems": 80,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "surface": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "checkpoint": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "P0",
+              "P1",
+              "P2",
+              "review"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "observedEvidence": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "recommendedRemediation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "acceptanceCriteria": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "evidenceRefs": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "surface",
+          "checkpoint",
+          "severity",
+          "category",
+          "observedEvidence",
+          "reason",
+          "recommendedRemediation",
+          "acceptanceCriteria",
+          "evidenceRefs"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "geometryDispositions": {
+      "maxItems": 200,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "findingId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "category": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "verdict": {
+            "type": "string",
+            "enum": [
+              "INTENTIONAL",
+              "CONFIRMED"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 20,
+            "maxLength": 4000
+          },
+          "imageSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "findingId",
+          "category",
+          "verdict",
+          "reason",
+          "imageSha256"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "signature": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "runId",
+    "cellId",
+    "imageSha256",
+    "nonce",
+    "reviewerId",
+    "producerId",
+    "provider",
+    "model",
+    "reviewedAt",
+    "requestDigest",
+    "response",
+    "dimensions",
+    "findings",
+    "signature"
+  ],
+  "additionalProperties": false,
+  "title": "visual-review v2"
+}

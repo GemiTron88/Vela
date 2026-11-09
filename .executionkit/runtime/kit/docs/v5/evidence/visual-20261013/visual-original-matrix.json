@@ -1,0 +1,66 @@
+{
+  "originalHead": "5e288c90e82a317ce703fa2c76a0f6594e29f9e3",
+  "scope": "PURE_MATRIX_FIXTURE_USING_ORIGINAL_GIT_SOURCE",
+  "results": [
+    {
+      "v5": false,
+      "boundary": "wave",
+      "visual": "REVIEW_REQUIRED",
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "systemCount": 10
+      }
+    },
+    {
+      "v5": false,
+      "boundary": "phase",
+      "visual": "REVIEW_REQUIRED",
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "systemCount": 10
+      }
+    },
+    {
+      "v5": false,
+      "boundary": "release",
+      "visual": "REVIEW_REQUIRED",
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "systemCount": 10
+      }
+    },
+    {
+      "v5": true,
+      "boundary": "wave",
+      "visual": "REVIEW_REQUIRED",
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "systemCount": 11
+      }
+    },
+    {
+      "v5": true,
+      "boundary": "phase",
+      "visual": "REVIEW_REQUIRED",
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "systemCount": 11
+      }
+    },
+    {
+      "v5": true,
+      "boundary": "release",
+      "visual": "REVIEW_REQUIRED",
+      "result": {
+        "status": "PASS",
+        "findings": [],
+        "systemCount": 11
+      }
+    }
+  ]
+}

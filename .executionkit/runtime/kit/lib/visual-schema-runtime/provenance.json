@@ -1,0 +1,28 @@
+{
+  "generator": "Ajv standalone",
+  "ajv": "8.20.0",
+  "formats": "3.0.1",
+  "sourceSha256": "5cd84124d560c9034955a4cb95fa4aa6d86ced1beee60894f96fdd8655849c1f",
+  "schemas": {
+    "schemas/visual-config.schema.json": "22d47559455ef5aef0afc73c09c7bdbac1200a08b00542fef9b47c780065337a",
+    "schemas/visual-artifact.schema.json": "fe0c7667abc443672d5a3176f657fe9df2039f04877f08d05756cbc7f17f8ba4",
+    "schemas/visual-review.schema.json": "df5213c56cb78fc6ba3dcd86906d6e6da642aafc43d090228a93b96b599564f8",
+    "schemas/visual-run.schema.json": "6a3f79200639633bb513bbaf50737949f7757e0902774ae42de99dc4b0d0faaa",
+    "schemas/visual-remediation.schema.json": "6152578b62843fc1f789ae68b98fd6f864628d36e64c12117bfef9820be41d0d",
+    "schemas/visual-finding.schema.json": "e0ed638fd57479c8ea48d053222ef062636bd79cd87ccff5a454e60f5491e268"
+  },
+  "upstream": [
+    {
+      "specifier": "ajv/dist/runtime/ucs2length",
+      "upstreamSha256": "1df012dd3d23fced07255a7204798004509687cb1f431ae0ab976db436bbd890",
+      "sha256": "9e2547ae6aca78812836313e4fec2c0315943c24be4b686d98d521ce21ec23ca",
+      "transform": "remove compiler-only code string and missing source-map reference"
+    },
+    {
+      "specifier": "ajv-formats/dist/formats",
+      "upstreamSha256": "b61693a26869970a92cc1fe832c931ccd3afe8b6d66802b19c48306349e84880",
+      "sha256": "0b9727de56ab266e6eb088c884bad75952cf91358ee1e381543df861af8f7f40",
+      "transform": "remove compiler-only code string and missing source-map reference"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "worker_id": "runner", "service_url": "http://127.0.0.1:8088",
+  "work_root": "/var/lib/mobile-builder/work", "evidence_root": "/var/lib/mobile-builder/evidence",
+  "projects": {
+    "sample": {"repository": "/var/lib/mobile-builder/repos/APKrelease", "runner_config": "/etc/mobile-builder/sample.json", "signing_approval_dir": "/etc/mobile-builder/approvals/sample"}
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExecutionKit candidate-bound evidence report",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "kind",
+    "producer",
+    "trustedProducer",
+    "candidateId",
+    "commit",
+    "tree",
+    "environment",
+    "buildId",
+    "platform",
+    "arch",
+    "node",
+    "command",
+    "startedAt",
+    "completedAt",
+    "exitCode",
+    "result"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "string"
+    },
+    "trustedProducer": {
+      "const": "executionkit.collect-evidence"
+    },
+    "candidateId": {
+      "type": "string"
+    },
+    "commit": {
+      "type": "string"
+    },
+    "tree": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "buildId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "platform": {
+      "type": "string",
+      "minLength": 1
+    },
+    "arch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "node": {
+      "type": "string",
+      "minLength": 1
+    },
+    "command": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "exitCode": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "result": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "additionalProperties": false
+    },
+    "reportPath": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "signal": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "error": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scenarioReportPath": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scenarioArtifact": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "result": {
+            "const": "PASS"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "then": {
+        "properties": {
+          "exitCode": {
+            "const": 0
+          },
+          "signal": {
+            "type": "null"
+          },
+          "error": {
+            "type": "null"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "reportPath": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "reportPath"
+              ]
+            },
+            "then": {
+              "required": [
+                "artifact"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

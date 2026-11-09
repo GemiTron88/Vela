@@ -1,0 +1,220 @@
+{
+  "schemaVersion": "executionkit-v5-preparation-evidence/v1",
+  "recordedAt": "2026-10-13T03:04:53.743104+00:00",
+  "testedCommit": "429278a4fe602bd07748a90065571ff5c0e27f26",
+  "testedTree": "7367aad87b1b85f69ef9f661b45fb8a2838630fc",
+  "scope": "source and isolated fixtures, not live provider/device/production certification",
+  "regression": {
+    "exitCode": 0,
+    "seconds": 84.541,
+    "hasFloorPass": true,
+    "tests": 1102,
+    "pass": 1098,
+    "fail": 0,
+    "skipped": 4
+  },
+  "check": {
+    "status": "PASS_EXPANDED_STAGES",
+    "stageCount": 11,
+    "stages": [
+      {
+        "script": "validate:self",
+        "exitCode": 0,
+        "seconds": 0.62,
+        "log": "v5-stage-validate-self.log"
+      },
+      {
+        "script": "validate:parallel-agent-os",
+        "exitCode": 0,
+        "seconds": 0.167,
+        "log": "v5-stage-validate-parallel-agent-os.log"
+      },
+      {
+        "script": "validate:operator-entry",
+        "exitCode": 0,
+        "seconds": 0.174,
+        "log": "v5-stage-validate-operator-entry.log"
+      },
+      {
+        "script": "validate:v30",
+        "exitCode": 0,
+        "seconds": 0.224,
+        "log": "v5-stage-validate-v30.log"
+      },
+      {
+        "script": "validate:v30-docs",
+        "exitCode": 0,
+        "seconds": 0.17,
+        "log": "v5-stage-validate-v30-docs.log"
+      },
+      {
+        "script": "validate:examples",
+        "exitCode": 0,
+        "seconds": 1.422,
+        "log": "v5-stage-validate-examples.log"
+      },
+      {
+        "script": "validate:ci-policy",
+        "exitCode": 0,
+        "seconds": 0.172,
+        "log": "v5-stage-validate-ci-policy.log"
+      },
+      {
+        "script": "validate:canonical-docs",
+        "exitCode": 0,
+        "seconds": 0.218,
+        "log": "v5-stage-validate-canonical-docs.log"
+      },
+      {
+        "script": "validate:local-bootstrap",
+        "exitCode": 0,
+        "seconds": 0.221,
+        "log": "v5-stage-validate-local-bootstrap.log"
+      },
+      {
+        "script": "validate:distribution",
+        "exitCode": 0,
+        "seconds": 0.878,
+        "log": "v5-stage-validate-distribution.log"
+      }
+    ],
+    "incompleteAggregateAttempt": {
+      "exitCode": 0,
+      "elapsedSeconds": 93.346,
+      "missingMarkers": [
+        "Regression floor PASS",
+        "> ai-executionkit@4.1.0 validate:operator-entry",
+        "> ai-executionkit@4.1.0 validate:v30",
+        "> ai-executionkit@4.1.0 validate:examples",
+        "> ai-executionkit@4.1.0 validate:ci-policy",
+        "> ai-executionkit@4.1.0 validate:canonical-docs",
+        "> ai-executionkit@4.1.0 validate:local-bootstrap",
+        "> ai-executionkit@4.1.0 validate:distribution",
+        "ExecutionKit distribution integrity: PASS"
+      ],
+      "status": "FAIL"
+    },
+    "note": "Aggregate stdout was incomplete; acceptance uses the separately executed ten validation scripts plus the complete direct test runner."
+  },
+  "v4Check": {
+    "exitCode": 0,
+    "elapsedSeconds": 111.985,
+    "floorPass": true,
+    "targetedSummaries": 2,
+    "status": "PASS",
+    "fullRegression": {
+      "tests": 1102,
+      "pass": 1098,
+      "fail": 0,
+      "skipped": 4
+    },
+    "targetedTests": 369,
+    "packagedSmokeTests": 1
+  },
+  "focusedMobileAdapter": {
+    "tests": 22,
+    "pass": 22,
+    "fail": 0,
+    "actualGitClassification": true,
+    "liveProviderPublication": false
+  },
+  "branchCleanup": {
+    "branches": [
+      "main"
+    ],
+    "deletedBranches": 49,
+    "openPullRequests": 0
+  },
+  "logs": [
+    {
+      "path": "v5-adapter-focused.log",
+      "bytes": 2669,
+      "sha256": "63de5b1324bbf0d55927afc216519eb40ce4b9622e18bacb748cf8c573b8f711"
+    },
+    {
+      "path": "v5-full-check.log",
+      "bytes": 6149,
+      "sha256": "147b30c1d1424e6cb94418c807cb08b4de087c4f5642e5a16e9adc65afe57ebc"
+    },
+    {
+      "path": "v5-full-check-receipt.json",
+      "bytes": 534,
+      "sha256": "04b2eb81bf8c2d3e236b95f73fdd82ef2d4ca681af47f10f419656a3a50e473d"
+    },
+    {
+      "path": "v5-test.log",
+      "bytes": 306647,
+      "sha256": "f3894c94520852ce94c6abd13e9e748e778dfd21ebf0f816db400854ce05589e"
+    },
+    {
+      "path": "v5-test-receipt.json",
+      "bytes": 57,
+      "sha256": "f1c42ed07451655783d635c5c1943407fc827bff5f693986e42ab5e9de75f9e0"
+    },
+    {
+      "path": "v5-v4-check.log",
+      "bytes": 401112,
+      "sha256": "b3d63c1c87b8525344841fb2583163f2cf09262caaa3d849a2273364a3fbcafd"
+    },
+    {
+      "path": "v5-v4-check-receipt.json",
+      "bytes": 116,
+      "sha256": "980d58970803f10283690aaaa01063451565563cb7e19e2c328b913add5e7f4e"
+    },
+    {
+      "path": "v5-check-stages.json",
+      "bytes": 1339,
+      "sha256": "45cf6de12ade8f5dc3fb3e0eb0f3167a223cae586022e2590f699310386fecc7"
+    },
+    {
+      "path": "v5-stage-validate-self.log",
+      "bytes": 5497,
+      "sha256": "936955e24de31a3f3db9feaaca901de7679f9ee4ccc7685b5931ca75d7d84a7e"
+    },
+    {
+      "path": "v5-stage-validate-parallel-agent-os.log",
+      "bytes": 291,
+      "sha256": "86309118a7c71f0ba5ac33876e541a71911a8124ad50270c78cb9d88b3d5d47f"
+    },
+    {
+      "path": "v5-stage-validate-operator-entry.log",
+      "bytes": 405,
+      "sha256": "3edda40114d6dcffc1243eb53d91e3ee7ab152d722ff901d48431bb549edf819"
+    },
+    {
+      "path": "v5-stage-validate-v30.log",
+      "bytes": 409,
+      "sha256": "84ee00c63068bddadd6b8a489c57ebc87c518768693a0c10945697438ec941e8"
+    },
+    {
+      "path": "v5-stage-validate-v30-docs.log",
+      "bytes": 286,
+      "sha256": "388b37c0fc5672db4a9faafd940dee0a09af7b2537f69fb98510563b0e52ea6b"
+    },
+    {
+      "path": "v5-stage-validate-examples.log",
+      "bytes": 2610,
+      "sha256": "f2e3cc4f1365e887e69b7f5beb8012545596159c0be9efbd4a2b4830f421eed9"
+    },
+    {
+      "path": "v5-stage-validate-ci-policy.log",
+      "bytes": 263,
+      "sha256": "5d847ea84a1e44cd7aee74d293f4390e1324e137d369d3cf44d1e23623d09c8e"
+    },
+    {
+      "path": "v5-stage-validate-canonical-docs.log",
+      "bytes": 413,
+      "sha256": "774bcef7dda7549597e689e0d7d0675b0fd59f7b28ef78783c189d402825aa4b"
+    },
+    {
+      "path": "v5-stage-validate-local-bootstrap.log",
+      "bytes": 1256,
+      "sha256": "d483da5168966553a8029deb8253328af0f749be28d7a0087a64896bb13e7fea"
+    },
+    {
+      "path": "v5-stage-validate-distribution.log",
+      "bytes": 1621,
+      "sha256": "3999721f802d82ab0869b5eab98905be4d96f97ed42e36c149aaab6005711804"
+    }
+  ]
+}

@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://elwazeery.github.io/ai-executionkit/integration-contract-v1.json",
+  "title": "AI ExecutionKit critical journey and integration contract",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "applicability",
+    "notApplicableReason",
+    "journeys",
+    "releaseGateTask"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "applicability": {
+      "enum": [
+        "UNRESOLVED",
+        "REQUIRED",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "notApplicableReason": {
+      "type": "string"
+    },
+    "journeys": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "tasks",
+          "gateTask",
+          "requiredForRelease",
+          "verification"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9._-]*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 3
+          },
+          "tasks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "gateTask": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredForRelease": {
+            "type": "boolean"
+          },
+          "verification": {
+            "type": "object",
+            "required": [
+              "modes",
+              "producers",
+              "requiredScenarios"
+            ],
+            "properties": {
+              "modes": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "black-box",
+                    "runtime",
+                    "browser",
+                    "device",
+                    "integration"
+                  ]
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              },
+              "producers": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9][a-z0-9._-]*$"
+                },
+                "uniqueItems": true
+              },
+              "requiredScenarios": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+                },
+                "minItems": 1,
+                "uniqueItems": true
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "releaseGateTask": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "applicability": {
+            "const": "NOT_APPLICABLE"
+          }
+        },
+        "required": [
+          "applicability"
+        ]
+      },
+      "then": {
+        "properties": {
+          "notApplicableReason": {
+            "type": "string",
+            "minLength": 8
+          },
+          "journeys": {
+            "maxItems": 0
+          },
+          "releaseGateTask": {
+            "const": ""
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "applicability": {
+            "const": "REQUIRED"
+          }
+        },
+        "required": [
+          "applicability"
+        ]
+      },
+      "then": {
+        "properties": {
+          "journeys": {
+            "minItems": 1
+          },
+          "releaseGateTask": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

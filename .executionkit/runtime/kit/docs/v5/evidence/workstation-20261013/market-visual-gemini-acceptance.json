@@ -1,0 +1,148 @@
+{
+  "geminiHeroAsset": {
+    "sourceJpgBytes": 949175,
+    "sourceJpgSha256": "ad5749be6861ac3fe11b70ce51c7530fa221e84bee67e17b3fbaf42be44073a5",
+    "pngBytes": 392187,
+    "pngSha256": "28cca4647cca48af4fda91e6ed092d6f6bc540b7e61cab0fa552375b2c37a8fd",
+    "width": 640,
+    "height": 360,
+    "savedEvidencePng": "docs/v5/evidence/workstation-20261013/screenshots/saudi-fiber-hero-gemini.png"
+  },
+  "negativeDialectCheck": {
+    "status": "FAIL",
+    "findings": [
+      {
+        "code": "LANG_MARKET_DIALECT_MISMATCH",
+        "severity": "HIGH",
+        "path": null,
+        "key": "messages.headline"
+      },
+      {
+        "code": "LANG_MARKET_DIALECT_MISMATCH",
+        "severity": "HIGH",
+        "path": null,
+        "key": "messages.subhead"
+      },
+      {
+        "code": "LANG_MARKET_DIALECT_MISMATCH",
+        "severity": "HIGH",
+        "path": "resources/views/home.blade.php",
+        "key": null
+      },
+      {
+        "code": "LANG_MARKET_DIALECT_MISMATCH",
+        "severity": "HIGH",
+        "path": "resources/views/home.blade.php",
+        "key": null
+      },
+      {
+        "code": "LANG_MARKET_DIALECT_MISMATCH",
+        "severity": "HIGH",
+        "path": "resources/views/home.blade.php",
+        "key": null
+      }
+    ],
+    "decisionGateOutcome": "DENY",
+    "decisionReasons": [
+      "APPROVED_MARKET_VOICE_REQUIRED"
+    ]
+  },
+  "remediatedSurfaceGuards": {
+    "langGuardStatus": "PASS",
+    "langFindingCount": 0,
+    "assetsGuardStatus": "PASS",
+    "assetsFindingCount": 0,
+    "assetsReviewFindingCount": 0
+  },
+  "defectiveVisualRun": {
+    "runId": "0c79e215-9caf-4039-8ca4-6d671692ef06",
+    "status": "CAPTURED",
+    "geometryByViewport": [
+      {
+        "cellId": "85350b42cb500172e6c9ede5",
+        "viewport": {
+          "id": "mobile",
+          "width": 375,
+          "height": 812
+        },
+        "p1Findings": [
+          {
+            "id": "geometry-1",
+            "category": "FIXED_CTA_DETACHED_FROM_VIEWPORT",
+            "severity": "P1",
+            "reason": "Contact action bar is unexpectedly far above the bottom safe area, leaving a dead strip."
+          }
+        ]
+      },
+      {
+        "cellId": "ddc734ebe88f544096950036",
+        "viewport": {
+          "id": "desktop",
+          "width": 1440,
+          "height": 900
+        },
+        "p1Findings": []
+      }
+    ]
+  },
+  "remediatedVisualRun": {
+    "runId": "1f820f17-1a32-455b-b5f5-f4486a113eda",
+    "captureStatus": "CAPTURED",
+    "captureDurationMs": 3589.61,
+    "initialInspectStatus": "REVIEW_REQUIRED",
+    "completedInspectStatus": "INSPECTED",
+    "certificationStatus": "PASS",
+    "coverage": {
+      "discovered": 1,
+      "expectedSurfaces": 1,
+      "captured": 1,
+      "missing": [],
+      "expectedCells": 2,
+      "inspectedCells": 2,
+      "missingCells": []
+    },
+    "unresolvedCount": 0,
+    "cells": [
+      {
+        "cellId": "85350b42cb500172e6c9ede5",
+        "viewport": {
+          "id": "mobile",
+          "width": 375,
+          "height": 812
+        },
+        "imageSha256": "fee0d4b42932eeb1726a14b2872d8e3ddb72d972b6f35a32a2640676a4b8b4ae",
+        "imageDimensions": {
+          "width": 375,
+          "height": 812
+        },
+        "savedScreenshot": "docs/v5/evidence/workstation-20261013/screenshots/after-fix-mobile.png",
+        "mechanicalFindingsCount": 0,
+        "blockingMechanicalFindingsCount": 0
+      },
+      {
+        "cellId": "ddc734ebe88f544096950036",
+        "viewport": {
+          "id": "desktop",
+          "width": 1440,
+          "height": 900
+        },
+        "imageSha256": "1b00c16121eb7d18a3f5e4e569efb8e8ebed6a3ed7fe4ba4fb59b67ae905f1ba",
+        "imageDimensions": {
+          "width": 1440,
+          "height": 900
+        },
+        "savedScreenshot": "docs/v5/evidence/workstation-20261013/screenshots/after-fix-desktop.png",
+        "mechanicalFindingsCount": 0,
+        "blockingMechanicalFindingsCount": 0
+      }
+    ],
+    "decisionWaveGateOutcome": "ALLOW",
+    "decisionWaveReasons": [
+      "NO_KNOWN_POLICY_FINDINGS"
+    ],
+    "decisionGateOutcome": "REVIEW",
+    "decisionReasons": [
+      "RELEASE_EVIDENCE_REQUIRED"
+    ]
+  }
+}

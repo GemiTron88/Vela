@@ -1,0 +1,10 @@
+00:00 +0: loading /workspace/scratch/f4914d7cbcce/APKrelease-/packages/global_mobile_updater/test/updater_test.dart
+00:00 +0: valid signature, wrong signature, cross-project manifest, expiry and replay
+00:00 +1: mandatory native update takes priority over any Shorebird patch
+00:00 +2: optional native does not prevent compatible patch; stage requires safe app state
+00:00 +3: offline startup and unknown native policy never stages patches
+00:00 +4: installed signing mismatch blocks both update mechanisms
+00:00 +5: resume interrupted HTTPS download and reject corrupted artifact
+00:00 +6: protected operation survives failure and duplicate release without clearing domain state
+00:00 +7: optional UI uses application theme and Arabic without blocking navigation
+00:01 +8: All tests passed!

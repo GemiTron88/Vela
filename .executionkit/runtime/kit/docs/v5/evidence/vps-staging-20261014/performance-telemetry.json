@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "1.0.0",
+  "category": "VPS_HOST_AND_STAGING_VERIFIED",
+  "capturedAt": "2026-10-14T06:24:37.952Z",
+  "canonicalHead": "aa0002b72d489ec3d7b573f66de12f770f5f75bb",
+  "host": "vmi3202930.contaboserver.net (173.212.237.207)",
+  "cliResponseTimings": [
+    {
+      "label": "version",
+      "command": "node bin/executionkit-cli.mjs version --json",
+      "exitCode": 0,
+      "durationMs": 112.3,
+      "outputBytes": 79
+    },
+    {
+      "label": "help",
+      "command": "node bin/executionkit-cli.mjs help --json",
+      "exitCode": 0,
+      "durationMs": 98.3,
+      "outputBytes": 3610
+    },
+    {
+      "label": "status",
+      "command": "node bin/executionkit-cli.mjs status . --json",
+      "exitCode": 2,
+      "durationMs": 537.37,
+      "outputBytes": 3901
+    },
+    {
+      "label": "launch_status",
+      "command": "node bin/executionkit-cli.mjs launch status . --json",
+      "exitCode": 0,
+      "durationMs": 739.17,
+      "outputBytes": 826
+    },
+    {
+      "label": "launch_host_plan",
+      "command": "node bin/executionkit-cli.mjs launch host-plan . --json",
+      "exitCode": 0,
+      "durationMs": 547.32,
+      "outputBytes": 853
+    },
+    {
+      "label": "launch_host_check",
+      "command": "node bin/executionkit-cli.mjs launch host-check . --json",
+      "exitCode": 1,
+      "durationMs": 523.36,
+      "outputBytes": 765
+    },
+    {
+      "label": "decision_status",
+      "command": "node bin/executionkit-cli.mjs decision status . --json",
+      "exitCode": 0,
+      "durationMs": 246.1,
+      "outputBytes": 131
+    },
+    {
+      "label": "launch_service_help",
+      "command": "node bin/launch-service.mjs help",
+      "exitCode": 0,
+      "durationMs": 60.91,
+      "outputBytes": 269
+    }
+  ],
+  "webReleaseAndDeploymentTimingsMs": {
+    "hostPlanMs": 2.12,
+    "hostCheckMs": 462.71,
+    "artifactPlanMs": 88.81,
+    "artifactBuildMs": 129.09,
+    "databaseBackupMs": 175.12,
+    "deployV1Ms": 2350.27,
+    "deployV2Ms": 2380.15,
+    "deployV3Ms": 2370.46,
+    "rollbackMs": 693.26,
+    "offHostRestoreSqlMs": 93.81
+  },
+  "launchServiceTelemetry": {
+    "startupRssKiB": 67668,
+    "postLoadRssKiB": 68852,
+    "sqliteDbBytes": 4096,
+    "sqliteWalBytes": 1227792,
+    "manifestEndpointLatencyMs": {
+      "samples": 25,
+      "min": 2.62,
+      "p50": 4.343,
+      "p95": 5.861,
+      "max": 8.172,
+      "avg": 4.293
+    }
+  },
+  "targetedLaunchAndWebTestSuites": {
+    "files": [
+      "tests/production-purity.test.mjs",
+      "tests/launch-mobile.test.mjs",
+      "tests/launch-service/control-plane.test.mjs",
+      "tests/launch-service/workstation-inspection.test.mjs",
+      "tests/launch-service/agent-control.test.mjs",
+      "tests/launch-service/security.test.mjs"
+    ],
+    "exitCode": 0,
+    "durationMs": 12137.45,
+    "summaryLines": [
+      "ℹ tests 89",
+      "ℹ suites 0",
+      "ℹ pass 89",
+      "ℹ fail 0",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0",
+      "ℹ duration_ms 12057.384535"
+    ],
+    "cwpHostHardGuardsObservedOnVps1": {
+      "localBuildAgentGuard": {
+        "file": "lib/launch-service/agent/agent.mjs:34",
+        "triggerPath": "/usr/local/cwpsrv",
+        "errorCode": "PRODUCTION_CWP_BUILDER_FORBIDDEN",
+        "verified": true,
+        "explanation": "loadAgentConfig() on VPS1 detects /usr/local/cwpsrv and immediately blocks starting the local mobile build agent on a CWP server."
+      },
+      "vhostGuardCwpAutoDetection": {
+        "file": "lib/vhost-guard.mjs:141",
+        "triggerPath": "/usr/local/cwpsrv",
+        "errorCode": "VHOST_CWP_BINDINGS_REQUIRED",
+        "verified": true,
+        "explanation": "inspectVhostGuard() on VPS1 detects /usr/local/cwpsrv even when policy.panel is omitted, preventing any project on a CWP host from bypassing custom .tpl/.stpl template verification."
+      }
+    }
+  }
+}

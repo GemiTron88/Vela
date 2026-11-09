@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "1.1.0",
+  "profile": "premium",
+  "sourcePaths": [],
+  "premiumPolicy": {
+    "designAuthorityPaths": [],
+    "referencePaths": [],
+    "componentContractPath": "executionkit.components.json",
+    "designContractPath": "executionkit.design.json",
+    "singleTokenAuthority": true,
+    "extendBeforeCreate": true,
+    "rawPrimitiveBypass": "forbid-when-covered",
+    "legacyDebtPolicy": "shrink-only",
+    "renderedReviewRequired": true,
+    "productionShapedDataRequired": true,
+    "antiGenericReviewRequired": true,
+    "requiredStates": [
+      "loading",
+      "skeleton",
+      "empty",
+      "error",
+      "success",
+      "disabled",
+      "permission",
+      "degraded",
+      "offline",
+      "retry",
+      "conflict"
+    ],
+    "requiredFormFactors": ["mobile", "tablet", "desktop"],
+    "requiredDirections": ["rtl", "ltr"],
+    "requiredInputModes": ["touch", "mouse", "keyboard", "screen-reader"],
+    "supportedThemes": ["light", "dark", "system"],
+    "platformNotes": "Reconcile this starter against the real product. Remove inapplicable directions/themes/states only when repository truth supports that decision; populate canonical designAuthorityPaths and real subjects/requirements before acceptance."
+  },
+  "subjects": [],
+  "requirements": [],
+  "evidencePath": "docs/quality/evidence.json"
+}

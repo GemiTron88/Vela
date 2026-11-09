@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "executionkit-vhost-fail-closed/v1",
+  "task": "EK5-VHOST-FAIL-CLOSED",
+  "status": "SOURCE_VERIFIED",
+  "upstreamBaseline": "fa000a5a23c3f95449b58f10c3fda8493a93180d",
+  "environment": {
+    "node": "v24.19.0",
+    "platform": "linux",
+    "checkout": "Selected current canonical source reconstructed through the GitHub connector; transitive test dependencies and all 88 current .agents templates were materialized. No full distribution or actual hosting verification claimed."
+  },
+  "reproduction": {
+    "newGuardAndActivationTests": 3,
+    "baselineFailed": 3,
+    "failures": [
+      "Disabled mandatory Laravel policy returned NOT_APPLICABLE instead of BLOCKED.",
+      "Disabled policy passed production host-check.",
+      "Project panel flags suppressed detected CWP bindings."
+    ]
+  },
+  "regression": {
+    "command": "node --test tests/production-deployment.test.mjs tests/production-purity.test.mjs tests/v4-upgrade-revalidation.test.mjs",
+    "tests": 94,
+    "passed": 94,
+    "failed": 0,
+    "skipped": 0,
+    "newTests": 4
+  },
+  "changes": [
+    "Mandatory v4/v5 Laravel vhost enforcement restored.",
+    "Invalid panel flags rejected; detected CWP always requires observed bindings.",
+    "Non-CWP synthetic host isolation moved into test mocks.",
+    "Launch invariant revision increased from 6 to 7."
+  ],
+  "reconciliation": {
+    "status": "PASS",
+    "command": "node bin/executionkit-cli.mjs reconcile task . --task EK5-VHOST-FAIL-CLOSED --base HEAD --json",
+    "base": "1f170b84d3bfb88e6cfc635ed167ee7a3abf3db3",
+    "scope": "Changed-file source guards in the reconstructed checkout; phase/release checks deferred, not passed."
+  },
+  "consumerSourceCheck": {
+    "project": "Elwazeery/FLOW",
+    "change": "Removed deployment.vhost.enabled:false without inventing hosting bindings.",
+    "repairedGuard": "BLOCKED / VHOST_POLICY_REQUIRED",
+    "previouslyInstalledGuard": "BLOCKED / VHOST_POLICY_REQUIRED"
+  },
+  "remaining": [
+    "Full distribution/candidate verification in the complete canonical checkout.",
+    "Supported installed-consumer update, doctor and Launch invariant revalidation.",
+    "Observe and configure actual Apache/Nginx/CWP hosting bindings on the authorized host."
+  ],
+  "production": {
+    "deployed": false,
+    "dataMutated": false,
+    "hostFilesChanged": false,
+    "nativeWorkloads": false
+  }
+}

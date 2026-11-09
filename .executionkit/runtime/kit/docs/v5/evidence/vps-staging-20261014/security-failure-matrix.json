@@ -1,0 +1,174 @@
+{
+  "schemaVersion": "1.0.0",
+  "category": "STAGING_VERIFIED",
+  "capturedAt": "2026-10-14T06:21:53.183Z",
+  "canonicalHead": "aa0002b72d489ec3d7b573f66de12f770f5f75bb",
+  "host": "vmi3202930.contaboserver.net (173.212.237.207)",
+  "allScenariosReturnedTruthfulFailureStatus": true,
+  "scenarios": {
+    "1_invalidSigningEvidence": {
+      "verified": true,
+      "launchServiceWorkstationMissingInspection": {
+        "status": 409,
+        "errorCode": "WORKSTATION_ARTIFACT_INSPECTION_REQUIRED"
+      },
+      "launchServiceForgedInspectionHmac": {
+        "status": 401,
+        "errorCode": "INSPECTION_SIGNATURE_INVALID"
+      },
+      "launchServiceWrongSigningCert": {
+        "status": 409,
+        "errorCode": "APK_IDENTITY_MISMATCH"
+      }
+    },
+    "2_revokedAgents": {
+      "verified": true,
+      "launchServiceRevocationAndFenceAdvance": {
+        "revokeStatus": 201,
+        "interruptedJobs": 1,
+        "revokedJobUpdateStatus": 403,
+        "revokedJobUpdateError": "AGENT_NOT_ENROLLED",
+        "reenrollWithoutRotationStatus": 409,
+        "reenrollWithoutRotationError": "AGENT_CREDENTIAL_ROTATION_REQUIRED"
+      }
+    },
+    "3_expiredApprovalAndGate": {
+      "verified": true,
+      "launchServiceExpiredLaunchGate": {
+        "status": 409,
+        "errorCode": "LAUNCH_GATE_EXPIRED"
+      },
+      "launchServicePromoteWithoutApproval": {
+        "status": 409,
+        "errorCode": "APPROVAL_REQUIRED"
+      }
+    },
+    "4_wrongReleaseSha": {
+      "verified": true,
+      "launchServiceBaselineMismatch": {
+        "status": 409,
+        "errorCode": "BASELINE_MISMATCH"
+      },
+      "webHttpsAttestationWrongShaAutoRollback": {
+        "rejected": true,
+        "error": "Production health check failed: Production HTTP does not serve the activated exact candidate; automatic rollback activation/verification also failed: automatic rollback health verification failed: Production HTTP does not serve the activated exact candidate",
+        "autoRolledBackToV3": true
+      }
+    },
+    "5_corruptArtifact": {
+      "verified": true,
+      "launchServiceChecksumMismatch": {
+        "status": 409,
+        "errorCode": "CHECKSUM_MISMATCH"
+      },
+      "webArtifactTamperedHashMismatch": {
+        "status": "FAIL",
+        "errorCodes": [
+          "ARTIFACT_HASH_MISMATCH",
+          "ARTIFACT_SIZE_MISMATCH"
+        ]
+      }
+    },
+    "6_concurrentReleaseConflicts": {
+      "verified": true,
+      "launchServiceStaleLeaseGenerationFenced": {
+        "status": 409,
+        "errorCode": "LEASE_FENCED"
+      },
+      "webDeploymentLockConflict": {
+        "deployBlockedByLock": true,
+        "deployError": "EEXIST: file already exists, open '/tmp/ek5-vps1-web-staging-NLocHO/production-target/release-store/.executionkit-deployment.lock'",
+        "rollbackBlockedByLock": true,
+        "rollbackError": "EEXIST: file already exists, open '/tmp/ek5-vps1-web-staging-NLocHO/production-target/release-store/.executionkit-deployment.lock'",
+        "currentPointerPreserved": true
+      }
+    },
+    "7_interruptedDeployment": {
+      "verified": true,
+      "webSmokeFailureAutoRollback": {
+        "rejected": true,
+        "error": "production smoke command failed: /home/antigravity/.local/node24/bin/node -e const fs=require('fs');if(fs.readFileSync('public/index.php','utf8').includes('v6-fail-smoke'))process.exit(9);: 9",
+        "autoRolledBackToV3": true
+      }
+    },
+    "8_databaseMigrationFailure": {
+      "verified": true,
+      "webPreActivateMigrationFailureAbortsBeforeSwitch": {
+        "failedBeforeActivation": true,
+        "error": "pre-activate command failed: php artisan migrate --force: SQLSTATE[42S02]: Simulated migration failure before activation\n",
+        "currentPointerRemainedOnV3": true
+      }
+    },
+    "9_failedRollback": {
+      "verified": true,
+      "webRollbackFailureRestoresNewerRelease": {
+        "rollbackRejectedAndRecoveredNewerRelease": true,
+        "error": "rollback smoke command failed: /home/antigravity/.local/node24/bin/node -e const fs=require('fs');if(fs.readFileSync('public/index.php','utf8').includes('v2'))process.exit(11);: 11; restored newer release",
+        "currentPointerRestoredToV3": true
+      }
+    },
+    "10_serviceInterruption": {
+      "verified": true,
+      "launchServiceSigkillCrashRestartAndLeaseRecovery": {
+        "crashRestartMs": 232.22,
+        "reclaimStatus": 201,
+        "recoveredFlag": true,
+        "recoveredJobIdMatches": true,
+        "fenceGenerationIncrementedTo": 4
+      }
+    },
+    "11_restoreVerification": {
+      "verified": true,
+      "launchServiceOnlineSqliteBackupAndSecondDaemonRestore": {
+        "backupDurationMs": 16.1,
+        "restoreStartupMs": 230.39,
+        "journalEventsVerified": 26,
+        "journalHashChainIntact": true,
+        "restoredManifestStatus": 200,
+        "restoredReleaseIdMatches": true,
+        "restoredArtifactShaMatches": true
+      },
+      "webMariadbGzipDumpAndSecondDatabaseRestore": {
+        "restoreDatabase": "ek5_staging_restore_db",
+        "restoreDurationMs": 93.81,
+        "restoredVersions": [
+          "baseline-v0",
+          "v1",
+          "v2",
+          "v3"
+        ],
+        "exactMatchWithPrimary": true
+      },
+      "webCorruptAndStaleBackupRejected": {
+        "candidateMismatchRejected": true,
+        "candidateMismatchError": "Production backup receipt does not match the exact candidate/database",
+        "corruptBackupChecksumRejected": true,
+        "corruptBackupError": "Production backup checksum mismatch",
+        "staleBackupRejected": true,
+        "staleBackupError": "Production backup receipt must be fresh within one hour"
+      }
+    },
+    "12_incompleteAuthorization": {
+      "verified": true,
+      "webMissingAuthorizedFlagRejected": {
+        "deployRejected": true,
+        "deployError": "Production deployment/rollback requires explicit authorized=true",
+        "rollbackRejected": true,
+        "rollbackError": "Production deployment/rollback requires explicit authorized=true",
+        "backupRejected": true,
+        "backupError": "Production backup requires explicit authorization"
+      },
+      "vhostAndCwpTemplateDriftBlocked": {
+        "cwpTemplateDriftStatus": "BLOCKED",
+        "cwpTemplateDriftCodes": [
+          "VHOST_CWP_TEMPLATE_DRIFT"
+        ],
+        "docRootDriftStatus": "BLOCKED",
+        "docRootDriftCodes": [
+          "VHOST_DOCUMENT_ROOT_DRIFT",
+          "VHOST_DOCUMENT_ROOT_DRIFT"
+        ]
+      }
+    }
+  }
+}

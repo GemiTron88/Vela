@@ -1,0 +1,36 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> global-mobile-release@0.1.0 test
+> node --test tests/*.test.mjs
+
+✔ Dart-only candidate (2.196298ms)
+✔ native code (0.432021ms)
+✔ new permission (0.342888ms)
+✔ bundled asset (0.342291ms)
+✔ Gradle change (0.195878ms)
+✔ lockfile uncertainty (0.223233ms)
+✔ unknown generated config (0.245935ms)
+✔ pubspec bundled fonts (0.269758ms)
+✔ snapshots enforce plugin/engine/signing compatibility beyond filenames (0.367675ms)
+✔ Shorebird commands always explicitly target baseline and never bypass safety (1.069091ms)
+✔ real HTTP release lifecycle: staging, independent approval, stable, signed manifest and Range (102.484928ms)
+✔ authentication, explicit scopes, project isolation and private update distribution (21.327401ms)
+✔ idempotency persists across database reopen and conflicting replay is denied (17.738034ms)
+✔ checksum, signing identity, package identity and artifact size fail closed (16.910489ms)
+✔ failed quality gates, forged receipt, wrong baseline, missing tests block release (29.860436ms)
+✔ versionCode regression, invalid approval, missing device verification block publication (32.458347ms)
+✔ concurrent claims across SQLite connections, expired lease recovery and stale owner rejection (9.125265ms)
+✔ metadata tampering, wrong key, server downtime and journal hash chain (22.393012ms)
+✔ provider observations import idempotently into project journal without claiming device acceptance (19.47533ms)
+✔ provider base release requires fresh signed exact-source quality, clean worktree and key/version baseline (231.175833ms)
+✔ online backup restores registry and immutable journal without losing committed operations (82.527567ms)
+✔ actual parallel worker threads contend for one lease across independent SQLite connections (148.906496ms)
+✔ observed installed signing identity requires scoped attestation and cannot rotate an existing key (32.47421ms)
+ℹ tests 23
+ℹ suites 0
+ℹ pass 23
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 956.497101

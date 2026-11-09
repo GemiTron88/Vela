@@ -1,0 +1,84 @@
+=== ExecutionKit npm run check Sanitized Summary Receipt ===
+Tested SHA: 6359feeb86cf2efcb37a2342c5fcab838d682799
+Environment: Linux x86_64 (AlmaLinux 9.8), Node.js v22.14.0
+Raw Log Full SHA-256: 99d44c7478956163ae5b7dae51b8ef21f26a1c1ee0d18dcf382d7d69d4d120f8
+Raw Log Full Size: 275811 bytes
+Exit Code: 0
+Total Tests: 953 passed across 106 test files, 0 failed, 0 skipped
+Total Validators: 10 passed
+----------------------------------------------------------------------
+--- Initial Validator Invocations ---
+
+> ai-executionkit@4.0.4 check
+> npm run validate:self && npm run validate:parallel-agent-os && npm test && npm run validate:operator-entry && npm run validate:v30 && npm run validate:v30-docs && npm run validate:examples && npm run validate:ci-policy && npm run validate:canonical-docs && npm run validate:local-bootstrap && npm run validate:distribution
+
+
+> ai-executionkit@4.0.4 validate:self
+> node bin/validate-execution.mjs . && node bin/validate-integration.mjs . && node bin/validate-agents.mjs . && node bin/validate-state.mjs . && node bin/validate-seo.mjs . && node bin/validate-repository-intelligence.mjs .
+
+Execution integrity: PASS
+Tasks inspected: 74
+Warnings: 6
+  WARN [PHASE_GATE_MISSING] Phase V4.0.4 has 2 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_MISSING] Phase V4.0.3 has 6 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_INCOMPLETE_CONVERGENCE] Phase V4.0.2 gate does not transitively converge the complete phase denominator; missing: EK4-402-006
+  WARN [PHASE_GATE_MISSING] Phase V4.0.1 has 6 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_MISSING] Phase V30-RC has 2 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_MISSING] Phase V30-LAUNCH has 2 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+Integration reality gate: PASS
+Agent integrity: PASS
+Manifest: .agents/manifest.json
+State OS integrity: PASS
+{
+  "schemaVersion": "executionkit-seo-validation/v1",
+  "status": "NOT_APPLICABLE",
+  "capability": "NONE",
+  "release": false,
+  "contractPath": "executionkit.seo.json",
+  "contractHash": "1db6eaf677733a9e284542048dda76518a4e8075963cb470e32ab5d9a6280378",
+  "candidateId": null,
+  "candidateCommit": null,
+  "candidateEnvironment": null,
+  "inferredApplicability": {
+    "applicable": false,
+    "resolution": "NOT_APPLICABLE",
+    "rationale": "No public-web-capable surface was detected; native/backend-only repository is SEO-not-applicable until that changes.",
+
+... [953 passing test outputs omitted for brevity; see full raw log] ...
+
+--- Final Validator Completions & Summary ---
+    "LIVE_VERIFICATION_REQUIRED_WHEN_CHANGED",
+    "FRESH_BOUNDARY_HOOK_OBSERVATION",
+    "CURRENT_MCP_SESSION",
+    "MCP_HOST_ACCEPTANCE",
+    "HOST_VERIFIED",
+    "INTEGRATION_GATE_BEFORE_PRODUCT"
+  ],
+  "forbiddenMatches": [],
+  "errors": []
+}
+
+> ai-executionkit@4.0.4 validate:distribution
+> node bin/validate-distribution.mjs && node bin/validate-state-distribution.mjs && npm run validate:seo-distribution && npm run validate:premium-experience
+
+ExecutionKit distribution integrity: PASS (4.0.4; 34/34 historical v2.2 additions preserved; State OS + V3 fleet + deep-integration coherent; regression floor >= 600 across 106 test files)
+State OS distribution integrity: PASS (4.0.4; State runtime/MCP/Agent/bootstrap/migration/repair/tests/docs coherent).
+
+> ai-executionkit@4.0.4 validate:seo-distribution
+> node bin/validate-seo-distribution.mjs .
+
+{
+  "schemaVersion": "executionkit-seo-distribution/v1",
+  "status": "PASS",
+  "capabilityAuthorities": 7,
+  "stateSystem": 8,
+  "minimumRuntimeTests": 600,
+  "requiredTestFiles": 106,
+  "errors": []
+}
+
+> ai-executionkit@4.0.4 validate:premium-experience
+> node bin/validate-premium-experience-distribution.mjs . && node bin/validate-premium-migration.mjs .
+
+Premium Experience distribution: PASS (static/distribution coherence only; no rendered UI, browser/device suite, independent visual acceptance or release certification was executed).
+Premium migration distribution: PASS (static migration/preservation coherence only; no migrated project suite, rendered UI acceptance or release certification was executed).

@@ -1,0 +1,16 @@
+{
+  "artifact": "examples/sample_app/build/app/outputs/flutter-apk/app-debug.apk",
+  "application_id": "org.example.release_sample",
+  "version_code": 1,
+  "version_name": "1.0.0",
+  "sha256": "64d23a0d7bba6509371ed15154f4df2b6260075cb05fa63b3c9304c709f6f450",
+  "size_bytes": 159383552,
+  "signing_scheme_v2": true,
+  "certificate_dn": "C=US, O=Android, CN=Android Debug",
+  "certificate_sha256": "3cbaa465327499c07ffb3447a8d93acbae5fb3f0026c6cdc6ac9f522a204a7da",
+  "classification": "DEBUG / NOT FOR PRODUCTION",
+  "verified_by": [
+    "apksigner",
+    "apkanalyzer"
+  ]
+}

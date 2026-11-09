@@ -1,0 +1,47 @@
+{
+  "name": "ai-executionkit",
+  "version": "5.2.3",
+  "private": true,
+  "type": "module",
+  "description": "ExecutionKit v5 eleven-system deterministic runtime",
+  "scripts": {
+    "antigravity:v4": "node bin/integrate-antigravity-v4.mjs . --apply",
+    "v4:start": "node ../../bin/ek.cjs start .",
+    "v4:status": "node ../../bin/ek.cjs status .",
+    "v4:doctor": "node ../../bin/ek.cjs doctor .",
+    "v4:systems": "node ../../bin/ek.cjs systems status .",
+    "v4:product": "node ../../bin/ek.cjs product status .",
+    "v4:visual": "node ../../bin/ek.cjs visual validate .",
+    "v4:reconcile": "node ../../bin/ek.cjs reconcile task .",
+    "v4:wave": "node ../../bin/ek.cjs boundary wave .",
+    "v4:phase": "node ../../bin/ek.cjs boundary phase .",
+    "v4:activation": "node ../../bin/ek.cjs activation status .",
+    "v4:control-plane": "node ../../bin/ek.cjs control-plane status .",
+    "v4:platform": "node ../../bin/ek.cjs platform status .",
+    "db:status": "node ../../bin/ek.cjs db status .",
+    "db:refresh": "node ../../bin/ek.cjs db refresh .",
+    "db:guard": "node ../../bin/ek.cjs db guard . --all",
+    "route:status": "node ../../bin/ek.cjs route status .",
+    "route:refresh": "node ../../bin/ek.cjs route refresh .",
+    "route:guard": "node ../../bin/ek.cjs route guard . --all",
+    "todo:status": "node ../../bin/ek.cjs todo status .",
+    "todo:maintain": "node ../../bin/ek.cjs todo maintain . --apply",
+    "upgrade-revalidation:status": "node ../../bin/ek.cjs upgrade-revalidation status .",
+    "upgrade-revalidation:run": "node ../../bin/ek.cjs upgrade-revalidation run .",
+    "release:run": "node ../../bin/ek.cjs launch release .",
+    "release:deploy": "node ../../bin/ek.cjs launch deploy . --authorize",
+    "deploy:apply": "node ../../bin/ek.cjs launch deploy . --authorize",
+    "deploy:rollback": "node ../../bin/ek.cjs launch rollback . --authorize"
+  },
+  "optionalDependencies": {
+    "@playwright/test": "1.63.0",
+    "@axe-core/playwright": "4.13.0",
+    "@lhci/cli": "0.15.1"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "executionkit": "bin/executionkit-cli.mjs"
+  }
+}

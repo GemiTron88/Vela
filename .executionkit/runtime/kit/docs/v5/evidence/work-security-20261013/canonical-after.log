@@ -1,0 +1,9 @@
+Execution integrity: PASS
+Tasks inspected: 101
+Warnings: 6
+  WARN [PHASE_GATE_MISSING] Phase V4.0.4 has 2 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_MISSING] Phase V4.0.3 has 6 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_INCOMPLETE_CONVERGENCE] Phase V4.0.2 gate does not transitively converge the complete phase denominator; missing: EK4-402-006
+  WARN [PHASE_GATE_MISSING] Phase V4.0.1 has 6 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_MISSING] Phase V30-RC has 2 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate
+  WARN [PHASE_GATE_MISSING] Phase V30-LAUNCH has 2 canonical tasks but no canonical Action:audit / Audit Boundary:phase convergence gate

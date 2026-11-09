@@ -1,0 +1,131 @@
+✖ doctor rejects invalid task state instead of reporting a healthy project (161.737611ms)
+✖ release rejects every non-object JSON report, including falsy values (87.420135ms)
+✖ malformed contract shapes return structured errors without throwing (73.379252ms)
+✖ quality enforces declared schema types and rejects unknown fields (75.913175ms)
+✖ managed paths reject dangling symlinks before creating quality files (72.483875ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 0
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 402.085422
+
+✖ failing tests:
+
+test at tests/antigravity.test.mjs:74:1
+✖ doctor rejects invalid task state instead of reporting a healthy project (161.737611ms)
+  AssertionError [ERR_ASSERTION]: {
+    "ok": true,
+    "projectState": "BOOTSTRAP",
+    "git": {
+      "head": null,
+      "branch": null,
+      "status": null,
+      "upstream": null,
+      "remoteFreshness": "NOT_FETCHED"
+    },
+    "declaredToolchains": [],
+    "next": null,
+    "closure": {
+      "closed": false,
+      "active": 2,
+      "terminal": 0,
+      "nonTerminal": 2,
+      "blocked": 0,
+      "nonTerminalTaskIds": [
+        "EX-0001",
+        "EX-0002"
+      ],
+      "blockedTaskIds": []
+    },
+    "quality": {
+      "configured": false,
+      "requirements": 0,
+      "evidenceExecuted": false
+    },
+    "antigravity": {
+      "configured": false,
+      "runtimeVerified": false
+    },
+    "errors": [],
+    "limits": "Read-only local diagnosis. No builds, product tests, remote fetch, MCP calls, editor smoke tests or physical runner checks were executed."
+  }
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/e2361c54d5a2/AI-ExcutionKit/tests/antigravity.test.mjs:80:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 0,
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/quality.test.mjs:89:1
+✖ release rejects every non-object JSON report, including falsy values (87.420135ms)
+  AssertionError [ERR_ASSERTION]: null
+      at TestContext.<anonymous> (file:///workspace/scratch/e2361c54d5a2/AI-ExcutionKit/tests/quality.test.mjs:94:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/quality.test.mjs:98:1
+✖ malformed contract shapes return structured errors without throwing (73.379252ms)
+  TypeError: Cannot read properties of null (reading 'schemaVersion')
+      at validateQuality (file:///workspace/scratch/e2361c54d5a2/AI-ExcutionKit/lib/quality-model.mjs:44:16)
+      at TestContext.<anonymous> (file:///workspace/scratch/e2361c54d5a2/AI-ExcutionKit/tests/quality.test.mjs:102:15)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at tests/quality.test.mjs:106:1
+✖ quality enforces declared schema types and rejects unknown fields (75.913175ms)
+  AssertionError [ERR_ASSERTION]: {"schemaVersion":"1.0.0","profile":"premium","sourcePaths":["src/page.html"],"evidencePath":"evidence/report.json","subjects":[{"id":"checkout","kind":"web","scope":"/checkout","indexable":1,"requiredDimensions":["functional","visual","interaction","accessibility","responsive","content","performance","seo"]}],"requirements":[{"id":"Q-functional","subjectId":"checkout","dimension":"functional","criterion":"Declared functional acceptance for the test fixture","method":"automated","verification":"fixture-check-functional","taskIds":["EX-1"]},{"id":"Q-visual","subjectId":"checkout","dimension":"visual","criterion":"Declared visual acceptance for the test fixture","method":"review","verification":"fixture-check-visual","taskIds":["EX-1"]},{"id":"Q-interaction","subjectId":"checkout","dimension":"interaction","criterion":"Declared interaction acceptance for the test fixture","method":"automated","verification":"fixture-check-interaction","taskIds":["EX-1"]},{"id":"Q-accessibility","subjectId":"checkout","dimension":"accessibility","criterion":"Declared accessibility acceptance for the test fixture","method":"automated","verification":"fixture-check-accessibility","taskIds":["EX-1"]},{"id":"Q-responsive","subjectId":"checkout","dimension":"responsive","criterion":"Declared responsive acceptance for the test fixture","method":"automated","verification":"fixture-check-responsive","taskIds":["EX-1"]},{"id":"Q-content","subjectId":"checkout","dimension":"content","criterion":"Declared content acceptance for the test fixture","method":"automated","verification":"fixture-check-content","taskIds":["EX-1"]},{"id":"Q-performance","subjectId":"checkout","dimension":"performance","criterion":"Declared performance acceptance for the test fixture","method":"automated","verification":"fixture-check-performance","taskIds":["EX-1"]},{"id":"Q-seo","subjectId":"checkout","dimension":"seo","criterion":"Declared seo acceptance for the test fixture","method":"automated","verification":"fixture-check-seo","taskIds":["EX-1"]}]}
+      at TestContext.<anonymous> (file:///workspace/scratch/e2361c54d5a2/AI-ExcutionKit/tests/quality.test.mjs:116:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/quality.test.mjs:134:1
+✖ managed paths reject dangling symlinks before creating quality files (72.483875ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/e2361c54d5a2/AI-ExcutionKit/tests/quality.test.mjs:144:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /Symlink/,
+    operator: 'throws',
+    diff: 'simple'
+  }

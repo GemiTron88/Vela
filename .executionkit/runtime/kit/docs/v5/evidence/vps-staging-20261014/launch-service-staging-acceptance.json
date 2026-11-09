@@ -1,0 +1,184 @@
+{
+  "schemaVersion": "1.0.0",
+  "category": "STAGING_VERIFIED",
+  "capturedAt": "2026-10-14T06:10:34.115Z",
+  "canonicalHead": "aa0002b72d489ec3d7b573f66de12f770f5f75bb",
+  "host": "vmi3202930.contaboserver.net (173.212.237.207)",
+  "isolatedEnvironment": {
+    "stagingRoot": "/tmp/ek5-vps1-launch-staging-xcx8bs",
+    "restoreRoot": "/tmp/ek5-vps1-launch-restore-zetdOW",
+    "primaryPort": 18088,
+    "restorePort": 18089,
+    "sharedProductionTouched": false
+  },
+  "cliStatusCheck": {
+    "schemaVersion": "executionkit-launch-service-cli/v1",
+    "status": "RUNNING",
+    "service_status": "ready",
+    "schema": 6,
+    "http_status": 200,
+    "url": "http://127.0.0.1:18088/readyz"
+  },
+  "studioLiveIntegrationSuite": {
+    "command": "STUDIO_CREDENTIALS_FILE=<ephemeral> RUN_LIVE_DESTRUCTIVE_TESTS=true node --test tests/launch-service/studio-live-integration.test.mjs",
+    "exitCode": 0,
+    "durationMs": 645.97,
+    "passedAll4SuitesZeroSkipped": true,
+    "summaryLines": [
+      "✔ live Launch OS: health, readiness, and capabilities endpoints (115.231562ms)",
+      "✔ live Launch OS: scoped authentication and project isolation (69.097341ms)",
+      "✔ live Launch OS: project registration, agent enrollment, presence, and job lifecycle (146.215524ms)",
+      "✔ live Launch OS: release controls, independent approval separation, and Launch gate enforcement (68.562206ms)",
+      "ℹ tests 4",
+      "ℹ suites 0",
+      "ℹ pass 4",
+      "ℹ fail 0",
+      "ℹ cancelled 0",
+      "ℹ skipped 0",
+      "ℹ todo 0",
+      "ℹ duration_ms 556.984299"
+    ]
+  },
+  "positiveCapabilities": {
+    "healthz": {
+      "status": "alive"
+    },
+    "readyz": {
+      "status": "ready",
+      "schema": 6
+    },
+    "capabilitiesSummary": {
+      "apiVersion": "v1",
+      "agentEnrollmentEnforced": true,
+      "canonicalLaunchGatesRequired": true,
+      "artifactVerificationMode": "WORKSTATION_ATTESTATION_REQUIRED",
+      "productionRequiresIndependentApproval": true,
+      "capabilitiesCount": 27
+    },
+    "projectRegistrationAndIdempotency": {
+      "firstStatus": 201,
+      "replayStatus": 201,
+      "conflictStatus": 409,
+      "conflictError": "IDEMPOTENCY_CONFLICT"
+    },
+    "agentEnrollmentAndPresence": {
+      "enrollW1Status": 201,
+      "enrollW2Status": 201,
+      "heartbeatStatus": 200,
+      "directive": "ACTIVE"
+    },
+    "signingEstablishment": {
+      "status": 201,
+      "signingSha256": "b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1b1",
+      "installedBaselineVersionCode": 100,
+      "approvedBy": "studio-approver"
+    },
+    "workstationSignedArtifactUploadAndDownload": {
+      "uploadStatus": 201,
+      "verificationSource": "workstation_signed_inspection",
+      "inspectedBy": "w1",
+      "fullDownloadStatus": 200,
+      "fullDownloadBytes": 201,
+      "rangeDownloadStatus": 206,
+      "rangeDownloadBytes": 32,
+      "contentRangeHeader": "bytes 0-31/201",
+      "invalidRangeStatus": 416
+    },
+    "executionReceiptAndJobCompletion": {
+      "receiptStatus": 201,
+      "completeJobStatus": 200,
+      "jobState": "SUCCEEDED"
+    },
+    "canonicalLaunchGate": {
+      "status": 201,
+      "gateStatus": "PASS"
+    },
+    "releaseApprovalAndPromotion": {
+      "createReleaseStatus": 201,
+      "releaseId": "4c6d143c-192e-4296-b1d3-9c6b70571079",
+      "promoteStagingStatus": 201,
+      "approveStableStatus": 201,
+      "approverActor": "studio-approver",
+      "promoteStableStatus": 201,
+      "stableManifestStatus": 200,
+      "manifestSignatureVerified": true,
+      "manifestVersionCode": 101
+    },
+    "onlineBackupAndOffHostRestore": {
+      "backupDurationMs": 16.1,
+      "restoreStartupMs": 230.39,
+      "journalEventsVerified": 26,
+      "journalHashChainIntact": true,
+      "restoredManifestStatus": 200,
+      "restoredReleaseIdMatches": true,
+      "restoredArtifactShaMatches": true
+    },
+    "serviceCrashAndLeaseRecovery": {
+      "crashRestartMs": 232.22,
+      "reclaimStatus": 201,
+      "recoveredFlag": true,
+      "recoveredJobIdMatches": true,
+      "fenceGenerationIncrementedTo": 4
+    }
+  },
+  "negativeSecurityScenarios": {
+    "uploadWithoutWorkstationInspection": {
+      "status": 409,
+      "errorCode": "WORKSTATION_ARTIFACT_INSPECTION_REQUIRED"
+    },
+    "forgedInspectionSignature": {
+      "status": 401,
+      "errorCode": "INSPECTION_SIGNATURE_INVALID"
+    },
+    "wrongSigningCertificate": {
+      "status": 409,
+      "errorCode": "APK_IDENTITY_MISMATCH"
+    },
+    "corruptArtifactBytesChecksumMismatch": {
+      "status": 409,
+      "errorCode": "CHECKSUM_MISMATCH"
+    },
+    "expiredLaunchGate": {
+      "status": 409,
+      "errorCode": "LAUNCH_GATE_EXPIRED"
+    },
+    "wrongReleaseCommitSha": {
+      "status": 409,
+      "errorCode": "BASELINE_MISMATCH"
+    },
+    "versionCodeRegression": {
+      "status": 409,
+      "errorCode": "VERSION_CODE_REGRESSION"
+    },
+    "promoteStableWithoutApproval": {
+      "status": 409,
+      "errorCode": "APPROVAL_REQUIRED"
+    },
+    "revokedAgentFencedAndRejected": {
+      "revokeStatus": 201,
+      "interruptedJobs": 1,
+      "revokedJobUpdateStatus": 403,
+      "revokedJobUpdateError": "AGENT_NOT_ENROLLED",
+      "reenrollWithoutRotationStatus": 409,
+      "reenrollWithoutRotationError": "AGENT_CREDENTIAL_ROTATION_REQUIRED"
+    },
+    "staleLeaseGenerationFenced": {
+      "status": 409,
+      "errorCode": "LEASE_FENCED"
+    }
+  },
+  "performanceAndResourceTelemetry": {
+    "startupRssKiB": 67668,
+    "postLoadRssKiB": 68852,
+    "sqliteDbBytes": 4096,
+    "sqliteWalBytes": 1227792,
+    "manifestEndpointLatencyMs": {
+      "samples": 25,
+      "min": 2.62,
+      "p50": 4.343,
+      "p95": 5.861,
+      "max": 8.172,
+      "avg": 4.293
+    }
+  }
+}

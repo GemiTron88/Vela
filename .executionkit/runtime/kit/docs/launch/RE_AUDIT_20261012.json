@@ -1,0 +1,75 @@
+{
+  "schema": "launch-unification-reaudit/v1",
+  "audited_heads": {
+    "ExecutionKit": "e9695e691012019e35e23aba4bd3319317ec6d4a",
+    "APKrelease": "04d225d68ece643438d22ceaf77408811adc3b68",
+    "Studio": "2a2e45234f2f849665f75b9baaecb0e168461dc9",
+    "FLOW": "2aa01f76657caf27b9af9112161b54d7d34c7c40"
+  },
+  "environment": {
+    "node": "24.19.0",
+    "python": "3.12.14",
+    "source": "pinned GitHub blob materialization; isolated snapshot, not production hosts",
+    "php": "unavailable locally; current Studio CI success verified on GitHub"
+  },
+  "tests": {
+    "launch_mobile_and_web": {
+      "pass": 69,
+      "fail": 0
+    },
+    "apk_node": {
+      "pass": 57,
+      "fail": 0
+    },
+    "apk_python": {
+      "pass": 2,
+      "fail": 0
+    },
+    "cli_included_targeted": {
+      "pass": 76,
+      "fail": 1,
+      "reason": "CLI help expectation omits existing backup subcommand"
+    },
+    "v4_check": {
+      "status": "FAILED",
+      "first_stage": {
+        "tests": 1002,
+        "pass": 974,
+        "fail": 28,
+        "skip": 0
+      },
+      "later_stages": "NOT_RUN",
+      "limitation": "Includes Git-metadata/platform-sensitive snapshot failures; do not classify all 28 as production bugs."
+    },
+    "distribution": {
+      "status": "FAILED",
+      "code": "TEST_FILE_NOT_BASELINED",
+      "file": "tests/launch-mobile.test.mjs"
+    },
+    "isolated_startup_cleanup": {
+      "status": "FAIL",
+      "expected_unknown_uuid_directory_preserved": true,
+      "actual_preserved": false,
+      "real_data_touched": false
+    },
+    "studio_current_main_ci": {
+      "run_id": 38204192128,
+      "job_id": 114663924933,
+      "pass": 60,
+      "assertions": 493,
+      "sha": "2a2e45234f2f849665f75b9baaecb0e168461dc9",
+      "verified_steps": [
+        "PHP syntax",
+        "Tests",
+        "Compile Blade views",
+        "Routes"
+      ]
+    }
+  },
+  "installation": {
+    "FLOW": "5d7e8886211c2ed0416d957cc559f7f0f4f377b7",
+    "Studio": "4bc7f731b322af9b1c4f356404a7cbd642e8913b",
+    "Studio_installed_mobile_adapter": false
+  },
+  "native_and_host_acceptance": "NOT_VERIFIED_IN_THIS_AUDIT"
+}
