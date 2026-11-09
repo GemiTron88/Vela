@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "executionkit-task-proof/v1",
+  "taskId": "VELA-BRIDGE-02",
+  "stateAtSeal": "ACCEPTED",
+  "phase": "VELA",
+  "sealedAt": "2026-11-09T18:08:31.785Z",
+  "taskSource": "TODO.md",
+  "verification": "python3 scripts/test_road_features_tsv.py",
+  "originalEvidence": "docs/execution/evidence/tasks/VELA-BRIDGE-02/receipt.json",
+  "code": null,
+  "artifacts": [
+    {
+      "sourcePath": ".executionkit/evidence/raw/todo-complete-VELA-BRIDGE-02.json",
+      "durablePath": "docs/execution/evidence/tasks/VELA-BRIDGE-02/artifacts/01-todo-complete-VELA-BRIDGE-02.json",
+      "sha256": "19ae0a29529ec018f734df2e95bc4a0043002e26eab8c9f18c995582fb049b7f",
+      "bytes": 544
+    },
+    {
+      "sourcePath": ".executionkit/gates/reconcile-task.json",
+      "durablePath": "docs/execution/evidence/tasks/VELA-BRIDGE-02/artifacts/02-reconcile-task.json",
+      "sha256": "fad6dbe46833aa72ae92b1abcb62cab6fe90d9f77c345194399c5d67d08b13b4",
+      "bytes": 8874
+    }
+  ],
+  "extra": {
+    "targetStatus": "ACCEPTED",
+    "evidenceSummary": "docs/execution/evidence/tasks/VELA-BRIDGE-02/receipt.json"
+  }
+}

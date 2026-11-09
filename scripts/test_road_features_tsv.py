@@ -117,6 +117,20 @@ class RoadFeaturesTsvTest(unittest.TestCase):
             cols = [line.rstrip("\n").split("\t") for line in f]
         self.assertEqual([["T", "0"], ["T", ""], ["S", "90"]], [c[2:] for c in cols])
 
+    def test_maptron_vela_bridge_contract(self):
+        bridge_path = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+            "core", "src", "main", "java", "app", "vela", "core", "bridge", "MapTronVelaBridge.kt"
+        )
+        self.assertTrue(os.path.isfile(bridge_path), "MapTronVelaBridge.kt must exist in Vela core")
+        with open(bridge_path, "r", encoding="utf-8") as f:
+            src = f.read()
+        self.assertIn('const val CHANNEL_NAME: String = "net.gemitron.maptron/vela_navigation"', src)
+        self.assertIn('const val EXECUTION_MODE: String = "vela_native"', src)
+        self.assertIn("fun computeOffRouteCorridorMeters", src)
+        self.assertIn("fun handleMethodCall", src)
+
 
 if __name__ == "__main__":
     unittest.main()
+

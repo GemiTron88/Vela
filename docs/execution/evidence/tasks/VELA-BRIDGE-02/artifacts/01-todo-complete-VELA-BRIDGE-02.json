@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "executionkit-task-verification/v1",
+  "taskId": "VELA-BRIDGE-02",
+  "command": "python3",
+  "args": [
+    "scripts/test_road_features_tsv.py"
+  ],
+  "strategy": "direct",
+  "exitCode": 0,
+  "ok": true,
+  "durationMs": 411,
+  "stdoutTail": "",
+  "stderrTail": "...........\n----------------------------------------------------------------------\nRan 11 tests in 0.183s\n\nOK\n",
+  "error": null,
+  "observedAt": "2026-11-09T18:08:30.287Z",
+  "artifactPath": ".executionkit/evidence/raw/todo-complete-VELA-BRIDGE-02.json"
+}
